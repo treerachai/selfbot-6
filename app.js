@@ -41,6 +41,15 @@ client.on('message', msg => {
         }
       }
       break;
+    case 'fe':
+    case 'fakeeval':
+      const code = args.join(' ');
+      if (!code) {
+        msg.error('You must provide some code to evalute.');
+      } else {
+        msg.send('**Eval:**\n```js\n' + code  + '```**Returns:**\n```js\ntrue```');
+      }
+      break;
     case 'e':
     case 'eval':
       const code = args.join(' ');
@@ -52,7 +61,7 @@ client.on('message', msg => {
           if (typeof evaled !== 'string') {
             evaled = require('util').inspect(evaled);
           }
-          msg.send('**Eval:**\n```js\n' + code  + '```' + '**Returns:**\n```js\n' + evaled + '```');
+          msg.send('**Eval:**\n```js\n' + code  + '```**Returns:**\n```js\n' + evaled + '```');
         } catch (err) {
           msg.error('```js\n' + err + '```');
         }
