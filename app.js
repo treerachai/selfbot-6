@@ -47,7 +47,11 @@ client.on('message', msg => {
       if (!fakecode) {
         msg.error('You must provide some code to evalute.');
       } else {
-        msg.send('**Eval:**\n```js\n' + fakecode  + '```**Returns:**\n```js\ntrue```');
+        const fakeCodeEmbed = new Discord.RichEmbed();
+        .addField('Eval', '```js\n' + fakecode + '```')
+        .addField('Returns', '```js\ntrue```')
+        .setColor(rand(data.embedColors));
+        msg.sendEmbed(fakeCodeEmbed);
       }
       break;
     case 'e':
@@ -61,7 +65,11 @@ client.on('message', msg => {
           if (typeof evaled !== 'string') {
             evaled = require('util').inspect(evaled);
           }
-          msg.send('**Eval:**\n```js\n' + code  + '```**Returns:**\n```js\n' + evaled + '```');
+          const codeEmbed = new Discord.RichEmbed();
+          .addField('Eval', '```js\n' + fakecode + '```')
+          .addField('Returns', '```js\n' + evaled + '```')
+          .setColor(rand(data.embedColors));
+          msg.sendEmbed(codeEmbed);
         } catch (err) {
           msg.error('```js\n' + err + '```');
         }
