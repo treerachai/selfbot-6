@@ -52,9 +52,9 @@ client.on('message', msg => {
           if (typeof evaled !== 'string') {
             evaled = require('util').inspect(evaled);
           }
-          msg.send(evaled);
+          msg.send('**Eval:**\n```js\n' + code  + '```' + '**Returns:**\n```js\n' + evaled + '```');
         } catch (err) {
-          msg.error(err);
+          msg.error('```js\n' + err + '```');
         }
       }
       break;
