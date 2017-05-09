@@ -12,7 +12,7 @@ client.on('ready', () => console.log('Selfbot has successfully connected.'));
 
 client.on('message', msg => {
   if (!msg) return;
-  if (msg.author.id !== credentials.id) return;
+  if (msg.author.id !== client.user.id) return;
   if (!msg.content.startsWith(credentials.prefix)) return;
 
   msg.delete()
@@ -67,6 +67,18 @@ client.on('message', msg => {
         }
       }
       break;
+    case 'stats':
+    case 'statistics':
+      const embed = new Discord.RichEmbed()
+        .addField('Author', 'John#0969', true)
+        .addField('Framework', 'Discord.js ' + Discord.version, true)
+        .addField('Memory', (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2) + ' MB', true)
+        .addField('Users', client.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString(), true)
+        .addField('Servers', client.guilds.size.toLocaleString(), true)
+        .addField('Channels', client.channels.size.toLocaleString(), true)
+        .setColor(rand(data.embedColors));
+      msg.sendEmbed(embed);
+      break;
     case '8':
     case '8ball':
       const question = args.join(' ');
@@ -117,19 +129,23 @@ client.on('message', msg => {
   }
 });
 
+Discord.Message.prototype.sendEmbed = function(spicyEmbed) {
+  return this.channel.send({ embed: spicyEmbed })
+  .catch((e) => {
+    if (e.code === 403) {
+      this.channel.send("You do not have permission to send embeds here.");
+    } else {
+      this.error(e.message);
+    }
+  });
+};
+
 Discord.Message.prototype.send = function(content) {
   if (credentials.embedDefault) {
     const embed = new Discord.RichEmbed()
       .setColor(rand(data.embedColors))
       .setDescription(content);
-    return this.channel.send({ embed })
-    .catch((e) => {
-      if (e.code === 403) {
-        this.channel.send("You do not have permission to send embeds here.")
-      } else {
-        this.channel.error(e.message);
-      }
-    });
+    return this.sendEmbed(embed);
   } else {
     return this.channel.send(content)
     .catch((e) => this.error(e.message));
@@ -141,11 +157,9 @@ Discord.Message.prototype.error = function(content) {
     const embed = new Discord.RichEmbed()
       .setColor([255, 0, 0])
       .setDescription(content);
-    return this.channel.send({ embed })
-    .catch(() => null);
+    return this.sendEmbed(embed);
   } else {
-    return this.channel.send(content)
-    .catch(() => null);
+    return this.channel.send(content);
   }
 };
 
