@@ -1,0 +1,23 @@
+{
+  "name": "selfbot",
+  "version": "1.0.0",
+  "description": "Cleanest Selfbot around.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "selfbot",
+    "bot",
+    "discord.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RealBlazeIt/SelfBot"
+  },
+  "author": "John",
+  "license": "UNI",
+  "dependencies": {
+    "discord.js": "github:hydrabolt/discord.js"
+  }
+}
