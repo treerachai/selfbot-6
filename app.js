@@ -66,7 +66,7 @@ client.on('message', msg => {
             evaled = require('util').inspect(evaled);
           }
           const codeEmbed = new Discord.RichEmbed()
-          .addField('Eval', '```js\n' + fakecode + '```')
+          .addField('Eval', '```js\n' + code + '```')
           .addField('Returns', '```js\n' + evaled + '```')
           .setColor(rand(data.embedColors));
           msg.sendEmbed(codeEmbed);
