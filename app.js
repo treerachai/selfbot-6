@@ -43,11 +43,11 @@ client.on('message', msg => {
       break;
     case 'fe':
     case 'fakeeval':
-      const code = args.join(' ');
-      if (!code) {
+      const fakecode = args.join(' ');
+      if (!fakecode) {
         msg.error('You must provide some code to evalute.');
       } else {
-        msg.send('**Eval:**\n```js\n' + code  + '```**Returns:**\n```js\ntrue```');
+        msg.send('**Eval:**\n```js\n' + fakecode  + '```**Returns:**\n```js\ntrue```');
       }
       break;
     case 'e':
