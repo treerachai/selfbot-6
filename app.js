@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const util = require('util');
 const client = new Discord.Client();
 const credentials = require('./credentials.json');
 const data = require('./data.json');
@@ -40,6 +41,22 @@ client.on('message', msg => {
         }
       }
       break;
+    case 'e':
+    case 'eval':
+      const code = args.join(' ');
+      if (!code) {
+        msg.error('You must provide some code to evalute.');
+      } else {
+        try {
+          let evaled = eval(code);
+          if (typeof evaled !== 'string') {
+            evaled = require('util').inspect(evaled);
+          }
+          msg.send(evaled);
+        } catch (err) {
+          msg.error(err);
+        }
+      }
     case '8':
     case '8ball':
       const question = args.join(' ');
@@ -83,6 +100,8 @@ client.on('message', msg => {
     default:
         if (credentials.embedDefault) {
           msg.send(content);
+        } else {
+          msg.send("This command does not exist.");
         }
       break;
   }
