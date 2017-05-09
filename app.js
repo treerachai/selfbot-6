@@ -11,7 +11,7 @@ client.on('ready', () => console.log('Selfbot has successfully connected.'));
 
 client.on('message', msg => {
   if (!msg) return;
-  if (msg.author.id !== '290820869964431360') return;
+  if (msg.author.id !== credentials.id) return;
   if (!msg.content.startsWith(credentials.prefix)) return;
 
   msg.delete()
@@ -28,7 +28,7 @@ client.on('message', msg => {
   switch (command) {
     case 'n':
     case 'nick':
-      if (!msg.guild) {
+      if (!guildMember) {
         msg.error('You may only use this command in a guild.')
       } else {
         const nickname = args.join(' ');
@@ -46,7 +46,7 @@ client.on('message', msg => {
       if (!question) {
         msg.error('You must provide a question to ask the mystical 8ball.');
       } else {
-        msg.send('**Question:** ' + question + '\n\n' + '**Answer:** ' + rand(data.eightBallAnswers) + '.');
+        msg.send('**Question:** ' + question + '\n\n**Answer:** ' + rand(data.eightBallAnswers) + '.');
       }
       break;
     case 'l':
@@ -125,3 +125,7 @@ function rand(array) {
 }
 
 client.login(credentials.token);
+
+process.on('unhandledRejection', err => console.error('Uncaught Promise Error: \n' + err.stack));
+
+process.on('unhandledException', err => console.error('Uncaught Exception: \n' + err.stack));
