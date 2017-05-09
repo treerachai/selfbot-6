@@ -57,6 +57,7 @@ client.on('message', msg => {
           msg.error(err);
         }
       }
+      break;
     case '8':
     case '8ball':
       const question = args.join(' ');
