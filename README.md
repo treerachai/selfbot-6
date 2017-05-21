@@ -3,7 +3,9 @@ In order to run the bot, you must create a Credentials.json file, following the 
 
 Forked by PapaJohn#7777
 
+
 # Commands in this Fork
+
 n - nickname
 
 8 - 8ball
