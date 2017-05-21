@@ -233,31 +233,46 @@ Discord.Message.prototype.sendEmbed = function(spicyEmbed) {
   });
 };
 
-Discord.Message.prototype.send = function(content) {
+Discord.Message.prototype.send = function(description) {
   if (credentials.embedDefault) {
     const embed = new Discord.RichEmbed()
       .setColor(rand(data.embedColors))
-      .setDescription(content);
+      .setDescription(description);
     return this.sendEmbed(embed);
   } else {
-    return this.channel.send(content)
+    return this.channel.send(description)
     .catch((e) => this.error(e.message));
   }
 };
 
-Discord.Message.prototype.error = function(content) {
+Discord.Message.prototype.error = function(description) {
   if (credentials.embedDefault) {
     const embed = new Discord.RichEmbed()
       .setColor([255, 0, 0])
-      .setDescription(content);
-    return this.sendEmbed(embed);
+      .setDescription(description);
+    return this.channel.send({ embed:embed })
+    .catch((e) => {
+      if (e.code === 403) {
+        this.channel.send("You do not have permission to send embeds here.");
+      } else {
+        this.channel.send(e.message);
+      }
+    });
   } else {
-    return this.channel.send(content);
+    return this.channel.send(description);
   }
 };
 
 function rand(array) {
   return array[Math.floor(Math.random() * array.length)];
+}
+
+function handleError(channel, error) {
+  if (error.code === 403) {
+    channel.send("You do not have permission to do that.");
+  } else {
+    channel.send(error.message);
+  }
 }
 
 client.login(credentials.token);
