@@ -36,8 +36,12 @@ me - Your Username, Descriminator, and ID
 
 emoji - sends your message in emojis
 
+
+
 Using just the prefix then a message will send the message in an embed
 
-Things to NOT do
+
+
+# Things to NOT do
 
 eval credentials, this will leak your token and access to your account
