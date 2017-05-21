@@ -47,3 +47,7 @@ Using just the prefix then a message will send the message in an embed
 # Things to NOT do
 
 eval credentials, this will leak your token and access to your account
+
+# Other Info
+
+This fork will log all commands in the command prompt for you
