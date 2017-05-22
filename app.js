@@ -211,6 +211,9 @@ client.on('message', msg => {
       msg.send('Rebooting...')
       .then(() => process.exit(1));
       break;
+	default:
+          msg.send(content);
+      break;
   }
   console.log('  '+credentials.prefix+content);
 });
