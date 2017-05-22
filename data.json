@@ -12,6 +12,18 @@
     [150, 36, 237],
     [168, 237, 0]
   ],
+  "numbers":[
+    "zero",
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine"
+  ],
   "eightBallAnswers":[
     "Why certainly",
     "No fucking kidding retard",
