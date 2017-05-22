@@ -27,6 +27,15 @@ client.on('message', msg => {
   if (msg.guild) guildMember = msg.guild.member(msg.author);
 
   switch (command) {
+	case 'a':
+    case 'avatar':
+      if (msg.mentions.users.size === 0){
+        msg.error('You must mention a user in order to fetch their avatar url.');
+      } else {
+        const mentionedUser = msg.mentions.users.first()
+         msg.channel.send(mentionedUser.avatarURL);
+      }
+      break;
 	case 'emote':
 	case 'emoji':
       if (!args) {
