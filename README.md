@@ -55,3 +55,12 @@ eval credentials, this will leak your token and access to your account
 # Other Info
 
 This fork will log all commands in the command prompt for you
+
+# Install help
+Install node.js with npm
+
+install git and add to a folder with the selfbot files (Shift+right click, open git gui here)
+
+open command prompt in that folder (Shift+right click, command prompt option) and run the command: npm i -S hydrabolt/discord.js
+
+now run RunSelfBot.bat
