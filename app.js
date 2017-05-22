@@ -27,14 +27,8 @@ client.on('message', msg => {
   if (msg.guild) guildMember = msg.guild.member(msg.author);
 
   switch (command) {
-	case 'a':
-    case 'avatar':
-      if (msg.mentions.users.size === 0){
-        msg.error('You must mention a user in order to fetch their avatar url.');
-      } else {
-        const mentionedUser = msg.mentions.users.first()
-         msg.channel.send(mentionedUser.avatarURL);
-      }
+	case 'ping':
+      msg.send('Ping: ' + client.ping.toFixed(2));
       break;
 	case 'emote':
 	case 'emoji':
@@ -195,9 +189,6 @@ client.on('message', msg => {
     case 'shrug':
       msg.channel.send('¯\\_(ツ)_/¯');
       break;
-    case 'ping':
-      msg.send('Ping: ' + client.ping.toFixed(2));
-      break;
     case 'p':
     case 'prune':
       let messagesToDelete = parseInt(args[0]);
@@ -213,12 +204,24 @@ client.on('message', msg => {
           });
         });
       break;
+	case 'a':
+    case 'avatar':
+      if (msg.mentions.users.size === 0){
+        msg.error('You must mention a user in order to fetch their avatar url.');
+      } else {
+        msg.channel.send(msg.mentions.users.first().avatarURL());
+      }
+      break;
     case 'r':
 	  break; 
     case 'reboot':
       msg.send('Rebooting...')
       .then(() => process.exit(1));
       break;
+	case 'mt':
+	case 'gt':
+	  msg.channel.send('```css\n'+(msg.content.slice(credentials.prefix.length + 2))+'\n```');
+	  break;
     default:
         if (credentials.embedDefault) {
           msg.send(content);
