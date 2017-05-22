@@ -27,8 +27,16 @@ client.on('message', msg => {
   if (msg.guild) guildMember = msg.guild.member(msg.author);
 
   switch (command) {
+	case 'help':
+	case 'git':
+	case 'github':
+	  const hembed = new Discord.RichEmbed()
+	  .addField('Link to repo for this fork','https://github.com/VapidSlay/SelfBot')
+	  .setColor(rand(data.embedColors));
+	  msg.sendEmbed(hembed);
+	  break;
 	case 'ping':
-      msg.send('Ping: ' + client.ping.toFixed(2));
+      msg.send('Ping: ' + client.ping.toFixed(2) + ' ms');
       break;
 	case 'emote':
 	case 'emoji':
@@ -38,35 +46,20 @@ client.on('message', msg => {
         const chars = Array.from(args.join(' ').toLowerCase());
         let message = '';
         for (let index in chars) {
-          if (!chars[index].match(/[a-z]/i)) {
+          if (!chars[index].match(/[a-z]|[0-9]/i)) {
             if (chars[index] === ' ') {
               message += '    ';
             } else {
               message += chars[index];
             }
           } else {
-            message += ':regional_indicator_' + chars[index] + ':';
-          }
-        }
-        msg.channel.send(message);
-      }
-      break;
-	case 'eemote':
-	case 'eemoji':
-      if (!args) {
-        msg.error('You must provide a message to emojify.');
-      } else {
-        const chars = Array.from(args.join(' ').toLowerCase());
-        let message = '';
-        for (let index in chars) {
-          if (!chars[index].match(/[a-z]/i)) {
-            if (chars[index] === ' ') {
-              message += '    ';
-            } else {
-              message += chars[index];
+            const number = parseInt(chars[index]);
+            if (!isNaN(number)) {
+              message += ':' + data.numbers[number] + ':';
             }
-          } else {
-            message += ':regional_indicator_' + chars[index] + ': ';
+            else {
+              message += ':regional_indicator_' + chars[index] + ':';
+            }
           }
         }
         msg.channel.send(message);
@@ -162,7 +155,7 @@ client.on('message', msg => {
         .addField('Forked by', 'PapaJohn#7777', true)
 		.addField('Servers', client.guilds.size.toLocaleString(), true)
 		.addField('Memory', (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2) + ' MB', true)
-		.addField('Ping', client.ping.toFixed(2), true)
+		.addField('Ping', client.ping.toFixed(2) + ' ms', true)
 		.addField('Uptime', hours+' hours, '+minutes+' minutes', true)
         .setColor(rand(data.embedColors));
 	  msg.sendEmbed(ssembed);
@@ -218,31 +211,13 @@ client.on('message', msg => {
       msg.send('Rebooting...')
       .then(() => process.exit(1));
       break;
-	case 'mt':
-	case 'gt':
-	  msg.channel.send('```css\n'+(msg.content.slice(credentials.prefix.length + 2))+'\n```');
-	  break;
-    default:
-        if (credentials.embedDefault) {
-          msg.send(content);
-        } else {
-          msg.send("This command does not exist.");
-        }
-      break;
-	  
   }
-  console.log('  .'+content);
+  console.log('  '+credentials.prefix+content);
 });
 
 Discord.Message.prototype.sendEmbed = function(spicyEmbed) {
   return this.channel.send({ embed: spicyEmbed })
-  .catch((e) => {
-    if (e.code === 403) {
-      this.channel.send("You do not have permission to send embeds here.");
-    } else {
-      this.error(e.message);
-    }
-  });
+  .catch((e) => handleError(this.channel, e));
 };
 
 Discord.Message.prototype.send = function(description) {
@@ -253,7 +228,7 @@ Discord.Message.prototype.send = function(description) {
     return this.sendEmbed(embed);
   } else {
     return this.channel.send(description)
-    .catch((e) => this.error(e.message));
+    .catch((e) => handleError(this.channel, e));
   }
 };
 
@@ -263,13 +238,7 @@ Discord.Message.prototype.error = function(description) {
       .setColor([255, 0, 0])
       .setDescription(description);
     return this.channel.send({ embed:embed })
-    .catch((e) => {
-      if (e.code === 403) {
-        this.channel.send("You do not have permission to send embeds here.");
-      } else {
-        this.channel.send(e.message);
-      }
-    });
+    .catch((e) => handleError(this.channel, e));
   } else {
     return this.channel.send(description);
   }
