@@ -38,10 +38,6 @@ me - Your Username, Descriminator, and ID
 
 emoji - sends your message in emojis
 
-eemoji - same as the emoji command but adds a space after each emoji
-
-gt - sends the message in a css code block to be green text
-
 avatar - links the avatar of a pinged user
 
 
