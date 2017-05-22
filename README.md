@@ -38,6 +38,7 @@ me - Your Username, Descriminator, and ID
 
 emoji - sends your message in emojis
 
+gt - sends the message in a css code block to be green text
 
 avatar - links the avatar of a pinged user
 
