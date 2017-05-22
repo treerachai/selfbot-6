@@ -38,6 +38,8 @@ me - Your Username, Descriminator, and ID
 
 emoji - sends your message in emojis
 
+avatar - links the avatar of a pinged user
+
 
 
 Using just the prefix then a message will send the message in an embed
