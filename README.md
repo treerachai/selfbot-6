@@ -38,6 +38,7 @@ me - Your Username, Descriminator, and ID
 
 emoji - sends your message in emojis
 
+
 avatar - links the avatar of a pinged user
 
 
