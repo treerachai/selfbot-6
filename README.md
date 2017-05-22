@@ -63,4 +63,6 @@ install git and add to a folder with the selfbot files (Shift+right click, open 
 
 open command prompt in that folder (Shift+right click, command prompt option) and run the command: npm i -S hydrabolt/discord.js
 
+rename "credentials example.json" to "credentials.json" and add your discord token where it obviously goes
+
 now run RunSelfBot.bat
