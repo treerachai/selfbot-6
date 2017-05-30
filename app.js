@@ -205,9 +205,29 @@ client.on('message', msg => {
         msg.channel.send(msg.mentions.users.first().avatarURL());
       }
       break;
+	case 'userstats':
+	case 'us':
+	  if (msg.mentions.users.size === 0){
+		msg.error('You must mention a user for this command to work');
+	  } else {
+	  var usDiscrimo = msg.mentions.users.first().discriminator, discrimString = msg.mentions.users.first().discriminator.toString(), check = new RegExp("^(\d)(?!\1+$)\d{11}$");
+	  const usembedo = new Discord.RichEmbed()
+	    .setTitle('Stats for: '+msg.mentions.users.first().username+"#"+usDiscrimo)
+		.setThumbnail(msg.mentions.users.first().displayAvatarURL)
+		.addField('Nickname',msg.mentions.members.first().displayName,true)
+		.addField('ID',msg.mentions.users.first().id,true)
+		.addField('Status',msg.mentions.users.first().presence.status,true)
+		.addField('Highest Role',msg.mentions.members.first().highestRole,true)
+		.addField('Joined This Server On',msg.mentions.members.first().joinedAt.toString().substring(0, 16),true)
+		.addField('Account Created On',(msg.mentions.users.first().createdAt).toString().substring(0, 16),true)
+	    .setColor(rand(data.embedColors));
+		msg.sendEmbed(usembedo);
+	  }
+	  break;
     case 'r':
 	  break; 
     case 'reboot':
+	  console.log('  '+credentials.prefix+content);
       msg.send('Rebooting...')
       .then(() => process.exit(1));
       break;
