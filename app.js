@@ -224,9 +224,9 @@ client.on('message', msg => {
 	  } else {
 	  var usDiscrimo = msg.mentions.users.first().discriminator, discrimString = msg.mentions.users.first().discriminator.toString(), check = new RegExp("^(\d)(?!\1+$)\d{11}$");
 	  const usembedo = new Discord.RichEmbed()
-	    .setTitle('Stats for: '+msg.mentions.users.first().username+"#"+usDiscrimo)
+	    .setTitle('Stats for: `'+msg.mentions.users.first().username+'#'+usDiscrimo+'`')
 		.setThumbnail(msg.mentions.users.first().displayAvatarURL)
-		.addField('Nickname',msg.mentions.members.first().displayName,true)
+		.addField('Nickname','`'+msg.mentions.members.first().displayName+'`',true)
 		.addField('ID',msg.mentions.users.first().id,true)
 		.addField('Status',msg.mentions.users.first().presence.status,true)
 		.addField('Highest Role',msg.mentions.members.first().highestRole,true)
@@ -241,10 +241,11 @@ client.on('message', msg => {
 	  if (!msg.guild){
 		  msg.error('This command must be used in a guild.');
 	  } else {
+		  var goDiscrim = msg.guild.owner.user.discriminator, discrimString = msg.guild.owner.user.discriminator.toString(), check = new RegExp("^(\d)(?!\1+$)\d{11}$");
 		  const gsembed = new Discord.RichEmbed()
-		  .setTitle('Stats for: '+msg.guild.name)
+		  .setTitle('Stats for: `'+msg.guild.name+'`')
 		  .setThumbnail(msg.guild.iconURL())
-		  .addField('Guild Owner','<@'+msg.guild.owner.id+'>',true)
+		  .addField('Guild Owner','`'+msg.guild.owner.user.username+'#'+goDiscrim+'`',true)
 		  .addField('Members',msg.guild.memberCount,true)
 		  .addField('Region',msg.guild.region,true)
 		  .addField('Created At',msg.guild.createdAt.toString().substring(0, 16), true)
