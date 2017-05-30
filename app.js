@@ -79,13 +79,6 @@ client.on('message', msg => {
         }
       }
       break;
-	case 'me':
-	  var currentDiscrim = client.user.discriminator, discrimString = client.user.discriminator.toString(), check = new RegExp("^(\d)(?!\1+$)\d{11}$");
-	  const meembed = new Discord.RichEmbed()
-	  .addField(client.user.username + '#' + discrimString, '<@' + client.user.id + '>' + '\nid: ' + client.user.id)
-	  .setColor(rand(data.embedColors));
-      msg.sendEmbed(meembed);
-	  break;
     case 'fe':
     case 'fakeeval':
       const fakecode = args.join(' ');
@@ -101,7 +94,7 @@ client.on('message', msg => {
       break;
 	case 'servers':
 	  const sembed = new Discord.RichEmbed()
-	  .addField('Servers', client.guilds.map(g=>g.name).join('\n'))
+	  .addField('Servers', client.guilds.map(g=>g.name).join(', '))
 	  .setColor(rand(data.embedColors));
 	  msg.sendEmbed(sembed);
 	  break;
@@ -207,6 +200,21 @@ client.on('message', msg => {
       break;
 	case 'userstats':
 	case 'us':
+	  if (!msg.guild){
+		if (msg.mentions.users.size === 0){
+		msg.error('You must mention a user for this command to work');
+	  } else {
+		var usnDiscrimo = msg.mentions.users.first().discriminator, discrimString = msg.mentions.users.first().discriminator.toString(), check = new RegExp("^(\d)(?!\1+$)\d{11}$");
+	    const usnembedo = new Discord.RichEmbed()
+	    .setTitle('Stats for: '+msg.mentions.users.first().username+"#"+usnDiscrimo)
+		.setThumbnail(msg.mentions.users.first().displayAvatarURL)
+		.addField('ID',msg.mentions.users.first().id,true)
+		.addField('Status',msg.mentions.users.first().presence.status,true)
+		.addField('Account Created On',(msg.mentions.users.first().createdAt).toString().substring(0, 16),true)
+	    .setColor(rand(data.embedColors));
+		msg.sendEmbed(usnembedo);
+	  }
+	  } else {
 	  if (msg.mentions.users.size === 0){
 		msg.error('You must mention a user for this command to work');
 	  } else {
@@ -222,7 +230,7 @@ client.on('message', msg => {
 		.addField('Account Created On',(msg.mentions.users.first().createdAt).toString().substring(0, 16),true)
 	    .setColor(rand(data.embedColors));
 		msg.sendEmbed(usembedo);
-	  }
+	  }}
 	  break;
     case 'r':
 	  break; 
