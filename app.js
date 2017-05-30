@@ -79,6 +79,13 @@ client.on('message', msg => {
         }
       }
       break;
+	case 'status':
+	  if (args[0] != 'online'&&args[0] != 'idle'&&args[0] != 'dnd'&&args[0] != 'invisible'){
+		msg.error('Status must be one of the following: online, idle, dnd, invisible');
+	  } else {
+	  client.user.setStatus(args[0]);
+	  }
+	  break;
     case 'fe':
     case 'fakeeval':
       const fakecode = args.join(' ');
