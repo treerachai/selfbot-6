@@ -211,23 +211,19 @@ client.on('message', msg => {
       break;
 	case 'userstats':
 	case 'us':
-	  if (!msg.guild){
-		if (msg.mentions.users.size === 0){
+	  if (msg.mentions.users.size === 0){
 		msg.error('You must mention a user for this command to work');
 	  } else {
+	  if (!msg.guild){
 		var usnDiscrimo = msg.mentions.users.first().discriminator, discrimString = msg.mentions.users.first().discriminator.toString(), check = new RegExp("^(\d)(?!\1+$)\d{11}$");
 	    const usnembedo = new Discord.RichEmbed()
-	    .setTitle('Stats for: '+msg.mentions.users.first().username+"#"+usnDiscrimo)
+	    .setTitle('Stats for: `'+msg.mentions.users.first().username+'#'+usnDiscrimo+'`')
 		.setThumbnail(msg.mentions.users.first().displayAvatarURL)
 		.addField('ID',msg.mentions.users.first().id,true)
 		.addField('Status',msg.mentions.users.first().presence.status,true)
 		.addField('Account Created On',(msg.mentions.users.first().createdAt).toString().substring(0, 16),true)
 	    .setColor(rand(data.embedColors));
 		msg.sendEmbed(usnembedo);
-	  }
-	  } else {
-	  if (msg.mentions.users.size === 0){
-		msg.error('You must mention a user for this command to work');
 	  } else {
 	  var usDiscrimo = msg.mentions.users.first().discriminator, discrimString = msg.mentions.users.first().discriminator.toString(), check = new RegExp("^(\d)(?!\1+$)\d{11}$");
 	  const usembedo = new Discord.RichEmbed()
