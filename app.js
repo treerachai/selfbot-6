@@ -159,7 +159,11 @@ client.on('message', msg => {
       if (!question) {
         msg.error('You must provide a question to ask the mystical 8ball.');
       } else {
-        msg.send('**Question:** ' + question + '\n\n**Answer:** ' + rand(data.eightBallAnswers) + '.');
+		const eightembed = new Discord.RichEmbed()
+		.addField('Question',question)
+		.addField('Answer',rand(data.eightBallAnswers))
+		.setColor(rand(data.embedColors));
+		msg.sendEmbed(eightembed);
       }
       break;
     case 'l':
@@ -227,10 +231,26 @@ client.on('message', msg => {
 		.addField('Status',msg.mentions.users.first().presence.status,true)
 		.addField('Highest Role',msg.mentions.members.first().highestRole,true)
 		.addField('Joined This Server On',msg.mentions.members.first().joinedAt.toString().substring(0, 16),true)
-		.addField('Account Created On',(msg.mentions.users.first().createdAt).toString().substring(0, 16),true)
+		.addField('Account Created On',msg.mentions.users.first().createdAt.toString().substring(0, 16),true)
 	    .setColor(rand(data.embedColors));
 		msg.sendEmbed(usembedo);
 	  }}
+	  break;
+	case 'guildstats':
+	case 'gs':
+	  if (!msg.guild){
+		  msg.error('This command must be used in a guild.');
+	  } else {
+		  const gsembed = new Discord.RichEmbed()
+		  .setTitle('Stats for: '+msg.guild.name)
+		  .setThumbnail(msg.guild.iconURL())
+		  .addField('Guild Owner','<@'+msg.guild.owner.id+'>',true)
+		  .addField('Members',msg.guild.memberCount,true)
+		  .addField('Region',msg.guild.region,true)
+		  .addField('Created At',msg.guild.createdAt.toString().substring(0, 16), true)
+		  .setColor(rand(data.embedColors));
+		  msg.sendEmbed(gsembed);
+	  }
 	  break;
     case 'r':
 	  break; 
