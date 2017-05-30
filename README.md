@@ -34,8 +34,6 @@ servers - displays the names of all servers you're in
 
 ss - alternate statistics
 
-me - Your Username, Descriminator, and ID
-
 emoji - sends your message in emojis
 
 avatar - links the avatar of a pinged user
