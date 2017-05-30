@@ -41,6 +41,8 @@ us - shows statistics for a pinged user
 
 gs - shows statistics for current guild
 
+status - sets your status to what you specify
+
 Using just the prefix then a message will send the message in an embed
 
 [For other aliases to commands, look into app.js under the command switch, should be pretty obvious]
