@@ -40,6 +40,8 @@ emoji - sends your message in emojis
 
 avatar - links the avatar of a pinged user
 
+us - shows statistics for a pinged user
+
 
 
 Using just the prefix then a message will send the message in an embed
