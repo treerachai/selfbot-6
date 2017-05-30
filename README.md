@@ -40,11 +40,11 @@ avatar - links the avatar of a pinged user
 
 us - shows statistics for a pinged user
 
-
+gs - shows statistics for current guild
 
 Using just the prefix then a message will send the message in an embed
 
-
+[For other aliases to commands, look into app.js under the command switch, should be pretty obvious]
 
 # Things to NOT do
 
