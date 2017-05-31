@@ -8,7 +8,7 @@ client.on('disconnect', () => console.log('=====================\nDisconnected')
 
 client.on('reconnect', () => console.log('=====================\nReconnecting...'));
 
-client.on('ready', () => console.log('Succesfully Connected\n=====================\nLogged Commands:\n====================='));
+client.on('ready', () => console.log('=====================\nSuccesfully Connected\n  :Logged Commands:\n====================='));
 
 client.on('message', msg => {
   if (!msg) return;
@@ -213,31 +213,23 @@ client.on('message', msg => {
 	case 'us':
 	  if (msg.mentions.users.size === 0){
 		msg.error('You must mention a user for this command to work');
-	  } else {
-	  if (!msg.guild){
-		var usnDiscrimo = msg.mentions.users.first().discriminator, discrimString = msg.mentions.users.first().discriminator.toString(), check = new RegExp("^(\d)(?!\1+$)\d{11}$");
-	    const usnembedo = new Discord.RichEmbed()
-	    .setTitle('Stats for: `'+msg.mentions.users.first().username+'#'+usnDiscrimo+'`')
-		.setThumbnail(msg.mentions.users.first().displayAvatarURL)
-		.addField('ID',msg.mentions.users.first().id,true)
-		.addField('Status',msg.mentions.users.first().presence.status,true)
-		.addField('Account Created On',(msg.mentions.users.first().createdAt).toString().substring(0, 16),true)
-	    .setColor(rand(data.embedColors));
-		msg.sendEmbed(usnembedo);
-	  } else {
+      } else {
 	  var usDiscrimo = msg.mentions.users.first().discriminator, discrimString = msg.mentions.users.first().discriminator.toString(), check = new RegExp("^(\d)(?!\1+$)\d{11}$");
 	  const usembedo = new Discord.RichEmbed()
 	    .setTitle('Stats for: `'+msg.mentions.users.first().username+'#'+usDiscrimo+'`')
-		.setThumbnail(msg.mentions.users.first().displayAvatarURL)
-		.addField('Nickname','`'+msg.mentions.members.first().displayName+'`',true)
-		.addField('ID',msg.mentions.users.first().id,true)
-		.addField('Status',msg.mentions.users.first().presence.status,true)
-		.addField('Highest Role',msg.mentions.members.first().highestRole,true)
-		.addField('Joined This Server On',msg.mentions.members.first().joinedAt.toString().substring(0, 16),true)
-		.addField('Account Created On',msg.mentions.users.first().createdAt.toString().substring(0, 16),true)
-	    .setColor(rand(data.embedColors));
+		.setThumbnail(msg.mentions.users.first().displayAvatarURL);
+		if(msg.guild)
+		usembedo.addField('Nickname','`'+msg.mentions.members.first().displayName+'`',true);
+		usembedo.addField('ID',msg.mentions.users.first().id,true);
+		usembedo.addField('Status',msg.mentions.users.first().presence.status,true);
+		if(msg.guild){
+		usembedo.addField('Highest Role',msg.mentions.members.first().highestRole,true);
+		usembedo.addField('Joined This Server On',msg.mentions.members.first().joinedAt.toString().substring(0, 16),true);
+		}
+		usembedo.addField('Account Created On',msg.mentions.users.first().createdAt.toString().substring(0, 16),true);
+	    usembedo.setColor(rand(data.embedColors));
 		msg.sendEmbed(usembedo);
-	  }}
+	  }
 	  break;
 	case 'guildstats':
 	case 'gs':
@@ -257,9 +249,8 @@ client.on('message', msg => {
 	  }
 	  break;
     case 'r':
-	  break; 
+	  break;
     case 'reboot':
-	  console.log('  '+credentials.prefix+content);
       msg.send('Rebooting...')
       .then(() => process.exit(1));
       break;
