@@ -17,7 +17,7 @@ ping - sends ping
 
 p - prunes messages
 
-reboot - stops the selfbot
+reboot - restarts the selfbot
 
 fe - fake eval
 
