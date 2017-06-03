@@ -43,6 +43,8 @@ gs - shows statistics for current guild
 
 status - sets your status to what you specify
 
+discrim - finds users with the same descriminator that you specify (helpful for discrim rerolling)
+
 Using just the prefix then a message will send the message in an embed
 
 [For other aliases to commands, look into app.js under the command switch, should be pretty obvious]
@@ -62,7 +64,7 @@ This fork will log all commands in the command prompt for you
 
 3. open command prompt in that folder (Shift+right click, command prompt option) and run the command: npm i -S hydrabolt/discord.js
 
-4. rename "credentials example.json" to "credentials.json" and add your discord token where it obviously goes
+4. rename "credentials example.json" to "credentials.json" and add your discord token where it obviously goes (and change prefix to whatever you want)
 
 5. now run RunSelfBot.bat
 
