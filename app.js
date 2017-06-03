@@ -65,8 +65,8 @@ client.on('message', msg => {
         msg.channel.send(message);
       }
       break;
-    case 'n':
-    case 'nick':
+  case 'n':
+  case 'nick':
       if (!guildMember) {
         msg.error('You may only use this command in a guild.')
       } else {
@@ -134,8 +134,8 @@ client.on('message', msg => {
 	  var seconds = ut%60;
 	  msg.send('Uptime: '+hours+' hours, '+minutes+' minutes, '+seconds+' seconds');
 	  break;
-    case 'stats':
-    case 'statistics':
+  case 'stats':
+  case 'statistics':
       const embed = new Discord.RichEmbed()
         .addField('Author', 'John#0969', true)
         .addField('Framework', 'Discord.js ' + Discord.version, true)
@@ -146,7 +146,7 @@ client.on('message', msg => {
         .setColor(rand(data.embedColors));
       msg.sendEmbed(embed);
       break;
-	 case 'ss':
+	case 'ss':
 	  var ssut = parseFloat(((client.uptime)/(1000))).toFixed(0);
 	  var hours = ~~(ssut/3600);
 	  var minutes = ~~((ssut%3600)/60);
@@ -160,8 +160,8 @@ client.on('message', msg => {
         .setColor(rand(data.embedColors));
 	  msg.sendEmbed(ssembed);
       break;
-    case '8':
-    case '8ball':
+  case '8':
+  case '8ball':
       const question = args.join(' ');
       if (!question) {
         msg.error('You must provide a question to ask the mystical 8ball.');
@@ -173,21 +173,39 @@ client.on('message', msg => {
 		msg.sendEmbed(eightembed);
       }
       break;
-    case 'l':
-    case 'lenny':
+  case 'l':
+  case 'lenny':
       msg.channel.send('( ͡° ͜ʖ ͡°)');
       break;
+  case 'discrim':
+    if(args.toString().length != 4) msg.error('You must enter a 4 digit discriminator')
+    else{
+    const matches = msg.client.users.findAll('discriminator', args.toString());
+    if (matches.length === 0) {
+            msg.error('There are no matches for this discriminator, try joining more servers to add to the list of potential matches.');
+        } else {
+            let message = '```';
+            for (const user in matches) {
+                message += matches[user].username + '#' + args.toString() + '\n';
+        }
+            const discrembed = new Discord.RichEmbed()
+            .setTitle('Results for Discrim #'+args.toString())
+            .setDescription(message + '```')
+            .setColor(rand(data.embedColors));
+            msg.sendEmbed(discrembed);
+        }}
+    break;
 	case 'm':
 	case 'mem':
 	case 'memory':
 		msg.send('Memory: ' + (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2) + ' MB');
 		break;
-    case 's':
-    case 'shrug':
+  case 's':
+  case 'shrug':
       msg.channel.send('¯\\_(ツ)_/¯');
       break;
-    case 'p':
-    case 'prune':
+  case 'p':
+  case 'prune':
       let messagesToDelete = parseInt(args[0]);
       messagesToDelete = messagesToDelete || 10;
       msg.channel.fetchMessages({limit: 100})
@@ -202,7 +220,7 @@ client.on('message', msg => {
         });
       break;
 	case 'a':
-    case 'avatar':
+  case 'avatar':
       if (msg.mentions.users.size === 0){
         msg.error('You must mention a user in order to fetch their avatar url.');
       } else {
