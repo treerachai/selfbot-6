@@ -37,7 +37,7 @@ emoji - sends your message in emojis
 
 avatar - links the avatar of a pinged user
 
-us - shows statistics for a pinged user
+us - shows statistics for yourself, a pinged user, or a user with the specified display name / nickname
 
 gs - shows statistics for current guild
 
