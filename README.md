@@ -5,49 +5,51 @@ In order to run the bot, you must create a Credentials.json file, following the 
 
 # Commands in this Fork
 
-n - nickname
+n/nick [name] - changes your nickname to what you specify
 
-8 - 8ball
+8/8ball [question] - asks the mystical 8ball a question
 
-l - ( ͡° ͜ʖ ͡°)
+l/lenny - ( ͡° ͜ʖ ͡°)
 
-s - shrug
+s/shrug - shrug
 
-ping - sends ping
+ping - sends your ping in ms
 
-p - prunes messages
+p/prune [amount] - prunes messages (default is 10)
 
 reboot - restarts the selfbot
 
-fe - fake eval
+fe/fakeeval [fake code] - fake eval, returns true
 
-e - eval
+e/eval [code] - evaluates code
 
-stats - statistics
+stats/statistics - statistics
 
-r - instantly deletes the message
+r [text] - instantly deletes the message
 
-ut - bot uptime 
+ut/uptime - bot uptime 
 
 servers - displays the names of all servers you're in
 
 ss - alternate statistics
 
-emoji - sends your message in emojis
+emoji/emote [text] - sends your message in emojis
 
-avatar - links the avatar of a pinged user
+avatar/a [mention or display name/nickname] - links the avatar of a mentioned user or a user with that display name
 
-us - shows statistics for yourself, a pinged user, or a user with the specified display name / nickname
+us/userstats [mention or display name/nickname] - shows statistics for yourself, a mentioned user or a user with that display name
 
-gs - shows statistics for current guild
+guildstats/gs - shows statistics for current guild
 
-status - sets your status to what you specify
+status [status] - sets your status to what you specify
 
-discrim - finds users with the same descriminator that you specify (helpful for discrim rerolling)
+discrim [discriminator] - finds users with the same descriminator that you specify (helpful for discrim rerolling)
+
+sa/setavatar [image link] - changes your avatar to the image you link
+
+help/git/github - Sends a link to this repository
 
 Using just the prefix then a message will send the message in an embed
-
-[For other aliases to commands, look into app.js under the command switch, should be pretty obvious]
 
 # Things to NOT do
 
