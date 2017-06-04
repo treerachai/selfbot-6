@@ -83,8 +83,7 @@ client.on('message', msg => {
 	  client.user.setStatus(args[0]);
 	  }
 	  break;
-    case 'fe':
-    case 'fakeeval':
+  case 'fe': case 'fakeeval':
       const fakecode = args.join(' ');
       if (!fakecode) {
         msg.error('You must provide some code to evalute.');
@@ -102,8 +101,7 @@ client.on('message', msg => {
 	  .setColor(rand(data.embedColors));
 	  msg.sendEmbed(sembed);
 	  break;
-    case 'e':
-    case 'eval':
+  case 'e': case 'eval':
       const code = args.join(' ');
       if (!code) {
         msg.error('You must provide some code to evalute.');
@@ -291,7 +289,7 @@ client.on('message', msg => {
 		  msg.sendEmbed(gsembed);
 	  }
 	  break;
-    case 'r':
+  case 'r':
 	  break;
     case 'reboot':
       msg.send('Rebooting...')
