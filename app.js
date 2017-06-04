@@ -244,7 +244,8 @@ client.on('message', msg => {
         .addField('Status',ususer.user.presence.status,true)
         .addField('Highest Role',ususer.highestRole,true)
         .addField('Joined This Server On',ususer.joinedAt.toString().substring(0, 16),true)
-        .addField('Account Created On',ususer.user.createdAt.toString().substring(0, 16),true);
+        .addField('Account Created On',ususer.user.createdAt.toString().substring(0, 16),true)
+        .setColor(ususer.displayHexColor);
     } else {
       var ususer = msg.author;
       if (msg.mentions.users.size > 0) ususer = msg.mentions.users.first();
@@ -256,9 +257,9 @@ client.on('message', msg => {
   		  .setThumbnail(ususer.displayAvatarURL)
   		  .addField('ID',ususer.id,true)
   		  .addField('Status',ususer.presence.status,true)
-  		  .addField('Account Created On',ususer.createdAt.toString().substring(0, 16),true);
+  		  .addField('Account Created On',ususer.createdAt.toString().substring(0, 16),true)
+        .setColor(rand(data.embedColors));
     }
-    usembedo.setColor(rand(data.embedColors));
     msg.sendEmbed(usembedo);
     break;
 	case 'guildstats': case 'gs':
