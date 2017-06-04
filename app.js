@@ -22,14 +22,13 @@ client.on('message', msg => {
   const contentArray = content.split(' ');
   const command = contentArray[0].toLowerCase();
   const args = contentArray.slice(1);
+  const singlearg = msg.content.slice(credentials.prefix.length+contentArray[0].length+1)
 
   let guildMember;
   if (msg.guild) guildMember = msg.guild.member(msg.author);
 
   switch (command) {
-	case 'help':
-	case 'git':
-	case 'github':
+	case 'help': case 'git': case 'github':
 	  const hembed = new Discord.RichEmbed()
 	  .addField('Link to repo for this fork','https://github.com/VapidSlay/SelfBot')
 	  .setColor(rand(data.embedColors));
@@ -38,8 +37,7 @@ client.on('message', msg => {
 	case 'ping':
       msg.send('Ping: ' + client.ping.toFixed(2) + ' ms');
       break;
-	case 'emote':
-	case 'emoji':
+	case 'emote': case 'emoji':
       if (!args) {
         msg.error('You must provide a message to emojify.');
       } else {
@@ -65,8 +63,7 @@ client.on('message', msg => {
         msg.channel.send(message);
       }
       break;
-  case 'n':
-  case 'nick':
+  case 'n': case 'nick':
       if (!guildMember) {
         msg.error('You may only use this command in a guild.')
       } else {
@@ -126,16 +123,14 @@ client.on('message', msg => {
         }
       }
       break;
-	case 'ut':
-	case 'uptime':
+	case 'ut': case 'uptime':
 	  var ut = parseFloat(((client.uptime)/(1000))).toFixed(0);
 	  var hours = ~~(ut/3600);
 	  var minutes = ~~((ut%3600)/60);
 	  var seconds = ut%60;
 	  msg.send('Uptime: '+hours+' hours, '+minutes+' minutes, '+seconds+' seconds');
 	  break;
-  case 'stats':
-  case 'statistics':
+  case 'stats': case 'statistics':
       const embed = new Discord.RichEmbed()
         .addField('Author', 'John#0969', true)
         .addField('Framework', 'Discord.js ' + Discord.version, true)
@@ -160,8 +155,7 @@ client.on('message', msg => {
         .setColor(rand(data.embedColors));
 	  msg.sendEmbed(ssembed);
       break;
-  case '8':
-  case '8ball':
+  case '8': case '8ball':
       const question = args.join(' ');
       if (!question) {
         msg.error('You must provide a question to ask the mystical 8ball.');
@@ -173,8 +167,7 @@ client.on('message', msg => {
 		msg.sendEmbed(eightembed);
       }
       break;
-  case 'l':
-  case 'lenny':
+  case 'l': case 'lenny':
       msg.channel.send('( ͡° ͜ʖ ͡°)');
       break;
   case 'discrim':
@@ -184,7 +177,7 @@ client.on('message', msg => {
     if (matches.length === 0) {
             msg.error('There are no matches for this discriminator, try joining more servers to add to the list of potential matches.');
         } else {
-            let message = '```';
+            let message = '```css\n';
             for (const user in matches) {
                 message += matches[user].username + '#' + args.toString() + '\n';
         }
@@ -195,17 +188,13 @@ client.on('message', msg => {
             msg.sendEmbed(discrembed);
         }}
     break;
-	case 'm':
-	case 'mem':
-	case 'memory':
+	case 'm': case 'mem': case 'memory':
 		msg.send('Memory: ' + (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2) + ' MB');
 		break;
-  case 's':
-  case 'shrug':
+  case 's': case 'shrug':
       msg.channel.send('¯\\_(ツ)_/¯');
       break;
-  case 'p':
-  case 'prune':
+  case 'p': case 'prune':
       let messagesToDelete = parseInt(args[0]);
       messagesToDelete = messagesToDelete || 10;
       msg.channel.fetchMessages({limit: 100})
@@ -219,46 +208,67 @@ client.on('message', msg => {
           });
         });
       break;
-	case 'a':
-  case 'avatar':
+	case 'a': case 'avatar':
       if (msg.mentions.users.size === 0){
-        msg.error('You must mention a user in order to fetch their avatar url.');
+       if(!msg.guild) msg.error('You must mention a user if not in a guild')
+       else {
+        msg.send(singlearg.toString());
+        const avauser = msg.guild.members.findAll('displayName', singlearg.toString());
+        if (avauser.length > 1) msg.error('Multiple Matches Found, Try Mentioning the User Instead');
+        else if (avauser.length != 1) msg.error('No Match Found, This Command is Case Sensitive');
+        else msg.channel.send(avauser[0].user.avatarURL());
+       }
       } else {
         msg.channel.send(msg.mentions.users.first().avatarURL());
       }
       break;
-	case 'userstats':
-	case 'us':
-	  if (msg.mentions.users.size === 0){
-		msg.error('You must mention a user for this command to work');
-      } else {
-	  var usDiscrimo = msg.mentions.users.first().discriminator, discrimString = msg.mentions.users.first().discriminator.toString(), check = new RegExp("^(\d)(?!\1+$)\d{11}$");
-	  const usembedo = new Discord.RichEmbed()
-	    .setTitle('Stats for: `'+msg.mentions.users.first().username+'#'+usDiscrimo+'`')
-		.setThumbnail(msg.mentions.users.first().displayAvatarURL);
-		if(msg.guild)
-		usembedo.addField('Nickname','`'+msg.mentions.members.first().displayName+'`',true);
-		usembedo.addField('ID',msg.mentions.users.first().id,true);
-		usembedo.addField('Status',msg.mentions.users.first().presence.status,true);
-		if(msg.guild){
-		usembedo.addField('Highest Role',msg.mentions.members.first().highestRole,true);
-		usembedo.addField('Joined This Server On',msg.mentions.members.first().joinedAt.toString().substring(0, 16),true);
-		}
-		usembedo.addField('Account Created On',msg.mentions.users.first().createdAt.toString().substring(0, 16),true);
-	    usembedo.setColor(rand(data.embedColors));
-		msg.sendEmbed(usembedo);
-	  }
-	  break;
-	case 'guildstats':
-	case 'gs':
+	case 'userstats': case 'us':
+    const usembedo = new Discord.RichEmbed();
+    if (msg.guild){
+      var ususer = msg.member;
+      if (msg.mentions.users.size > 0) ususer = msg.mentions.members.first()
+      else if (singlearg){
+        const usoptions = msg.guild.members.findAll('displayName', singlearg.toString());
+        ususer = usoptions[0];
+        if (usoptions.length > 1) {
+          msg.error('Multiple Matches Found, Try Mentioning the User Instead');
+          break;
+        } else if (usoptions.length != 1) {
+          msg.error('No Match Found, This Command is Case Sensitive');
+          break;
+      }}
+        usembedo.setTitle('Stats for: `'+ususer.user.tag+'`')
+        .setThumbnail(ususer.user.displayAvatarURL)
+        .addField('Nickname','`'+ususer.displayName+'`',true)
+        .addField('ID',ususer.user.id,true)
+        .addField('Status',ususer.user.presence.status,true)
+        .addField('Highest Role',ususer.highestRole,true)
+        .addField('Joined This Server On',ususer.joinedAt.toString().substring(0, 16),true)
+        .addField('Account Created On',ususer.user.createdAt.toString().substring(0, 16),true);
+    } else {
+      var ususer = msg.author;
+      if (msg.mentions.users.size > 0) ususer = msg.mentions.users.first();
+      else if (singlearg) {
+        msg.error('You must mention the target user to use this command outside a guild');
+        break;
+      }
+  	    usembedo.setTitle('Stats for: `'+ususer.tag+'`')
+  		  .setThumbnail(ususer.displayAvatarURL)
+  		  .addField('ID',ususer.id,true)
+  		  .addField('Status',ususer.presence.status,true)
+  		  .addField('Account Created On',ususer.createdAt.toString().substring(0, 16),true);
+    }
+    usembedo.setColor(rand(data.embedColors));
+    msg.sendEmbed(usembedo);
+    break;
+	case 'guildstats': case 'gs':
 	  if (!msg.guild){
 		  msg.error('This command must be used in a guild.');
 	  } else {
-		  var goDiscrim = msg.guild.owner.user.discriminator, discrimString = msg.guild.owner.user.discriminator.toString(), check = new RegExp("^(\d)(?!\1+$)\d{11}$");
 		  const gsembed = new Discord.RichEmbed()
 		  .setTitle('Stats for: `'+msg.guild.name+'`')
 		  .setThumbnail(msg.guild.iconURL())
-		  .addField('Guild Owner','`'+msg.guild.owner.user.username+'#'+goDiscrim+'`',true)
+		  .addField('Guild Owner','`'+msg.guild.owner.user.tag+'`',true)
 		  .addField('Members',msg.guild.memberCount,true)
 		  .addField('Region',msg.guild.region,true)
 		  .addField('Created At',msg.guild.createdAt.toString().substring(0, 16), true)
