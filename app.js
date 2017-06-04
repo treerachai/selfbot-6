@@ -223,8 +223,8 @@ client.on('message', msg => {
 	case 'a': case 'avatar':
       if (msg.mentions.users.size === 0){
        if(!msg.guild) msg.error('You must mention a user if not in a guild')
+       else if (!singlearg) msg.channel.send(client.user.avatarURL());
        else {
-        msg.send(singlearg.toString());
         const avauser = msg.guild.members.findAll('displayName', singlearg.toString());
         if (avauser.length > 1) msg.error('Multiple Matches Found, Try Mentioning the User Instead');
         else if (avauser.length != 1) msg.error('No Match Found, This Command is Case Sensitive');
