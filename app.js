@@ -208,6 +208,20 @@ client.on('message', msg => {
           });
         });
       break;
+  case 'setavatar': case 'sa':
+    if(!singlearg) msg.error('You must provide a valid link to an image')
+    else{
+    client.user.setAvatar(singlearg)
+      .catch(Error);
+    wait(1000);
+    const saembed = new Discord.RichEmbed()
+    .addField('Your Avatar is now:',client.user.displayAvatarURL,true)
+    .setImage(client.user.displayAvatarURL)
+    .setFooter('If your avatar did not change, you are either changing it too fast or using an invalid link')
+    .setColor(rand(data.embedColors));
+    msg.sendEmbed(saembed);
+    }
+    break;
 	case 'a': case 'avatar':
       if (msg.mentions.users.size === 0){
        if(!msg.guild) msg.error('You must mention a user if not in a guild')
@@ -289,6 +303,12 @@ client.on('message', msg => {
   }
   console.log('  '+credentials.prefix+content);
 });
+
+function wait(ms){
+   var start = new Date().getTime();
+   var end = start;
+   while(end < start + ms) end = new Date().getTime();
+}
 
 Discord.Message.prototype.sendEmbed = function(spicyEmbed) {
   return this.channel.send({ embed: spicyEmbed })
