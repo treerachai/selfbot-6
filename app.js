@@ -216,7 +216,8 @@ client.on('message', msg => {
       else{
         client.user.setAvatar(impuser[0].user.avatarURL())
           .catch(Error);
-        guildMember.setNickname(impuser[0].displayName);
+        guildMember.setNickname(impuser[0].displayName)
+          .catch(Error);
       }
      }
      } else msg.error('This command can only be used in a guild');
