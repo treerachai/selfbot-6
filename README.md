@@ -49,6 +49,8 @@ sa/setavatar [image link] - changes your avatar to the image you link
 
 help/git/github - Sends a link to this repository
 
+impersonate [mention or display name/nickname] - copies the avatar and displayname of a mentioned user or a user with that display name
+
 Using just the prefix then a message will send the message in an embed
 
 # Things to NOT do
