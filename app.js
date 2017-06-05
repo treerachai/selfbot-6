@@ -31,6 +31,7 @@ client.on('message', msg => {
 	case 'help': case 'git': case 'github':
 	  const hembed = new Discord.RichEmbed()
 	  .addField('Link to repo for this fork','https://github.com/VapidSlay/SelfBot')
+    .setFooter('Check by regularly to ensure you get the latest updates!')
 	  .setColor(rand(data.embedColors));
 	  msg.sendEmbed(hembed);
 	  break;
