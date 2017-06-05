@@ -83,7 +83,7 @@ client.on('message', msg => {
     else client.user.setGame(singlearg.toString());
     break;
   case 'game': case 'g':
-    if (client.user.presence.game) msg.send('Currently playing: `'+client.user.presence.game.name+'`');
+    if (client.user.presence.game) msg.send('Playing: `'+client.user.presence.game.name+'`');
     else msg.send('Not currently playing a game');
     break;
 	case 'status':
@@ -229,6 +229,8 @@ client.on('message', msg => {
           .catch(Error);
         guildMember.setNickname(impuser[0].displayName)
           .catch(Error);
+        if(impuser[0].user.presence.game) client.user.setGame(impuser[0].user.presence.game.name);
+        else client.user.setGame(null);
         }
       }
      } else {
@@ -288,7 +290,7 @@ client.on('message', msg => {
         .addField('Highest Role',ususer.highestRole,true)
         .addField('Joined This Server On',ususer.joinedAt.toString().substring(0, 16),true)
         .addField('Account Created On',ususer.user.createdAt.toString().substring(0, 16),true);
-        if (ususer.user.presence.game) usembedo.setFooter('Currently Playing: '+ususer.user.presence.game.name)
+        if (ususer.user.presence.game) usembedo.setFooter('Playing: '+ususer.user.presence.game.name)
         usembedo.setColor(ususer.displayHexColor);
     } else {
       var ususer = msg.author;
@@ -302,7 +304,7 @@ client.on('message', msg => {
   		  .addField('ID',ususer.id,true)
   		  .addField('Status',ususer.presence.status,true)
   		  .addField('Account Created On',ususer.createdAt.toString().substring(0, 16),true);
-        if(ususer.presence.game) usembedo.setFooter('Currently Playing: '+ususer.presence.game.name);
+        if(ususer.presence.game) usembedo.setFooter('Playing: '+ususer.presence.game.name);
         usembedo.setColor(rand(data.embedColors));
     }
     msg.sendEmbed(usembedo);
