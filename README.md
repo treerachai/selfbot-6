@@ -53,7 +53,7 @@ sg/setgame [text] - Sets what game you are currently playing, leave empty to set
 
 g/game - shows you what game you are playing (helpful if you used setgame)
 
-impersonate [mention or display name/nickname] - copies the avatar and displayname of a mentioned user or a user with that display name
+impersonate [mention or display name/nickname] - copies the avatar, displayname, and game of a mentioned user or a user with that display name
 
 Using just the prefix then a message will send the message in an embed
 
