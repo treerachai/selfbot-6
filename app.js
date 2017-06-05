@@ -209,6 +209,7 @@ client.on('message', msg => {
       break;
   case 'impersonate':
     if (guildMember){
+     if (msg.mentions.members.size === 0){
      if (!singlearg) msg.error('You must specify a user to impersonate');
      else {
       const impuser = msg.guild.members.findAll('displayName', singlearg.toString());
@@ -219,7 +220,13 @@ client.on('message', msg => {
           .catch(Error);
         guildMember.setNickname(impuser[0].displayName)
           .catch(Error);
+        }
       }
+     } else {
+       client.user.setAvatar(msg.mentions.users.first().avatarURL())
+         .catch(Error);
+       guildMember.setNickname(msg.mentions.members.first().displayName)
+         .catch(Error);
      }
      } else msg.error('This command can only be used in a guild');
       break;
