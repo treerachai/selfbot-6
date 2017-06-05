@@ -49,7 +49,7 @@ sa/setavatar [image link] - changes your avatar to the image you link
 
 help/git/github - Sends a link to this repository
 
-sg/setgame [text] - Sets what game you are currently playing (only visible to others)
+sg/setgame [text] - Sets what game you are currently playing, leave empty to set yourself to not be playing a game (only visible to others)
 
 g/game - shows you what game you are playing (helpful if you used setgame)
 
