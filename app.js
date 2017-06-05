@@ -77,6 +77,15 @@ client.on('message', msg => {
         }
       }
       break;
+  case 'setgame': case 'sg':
+    if (!singlearg || singlearg.length < 1) client.user.setGame(null);
+    else if (singlearg.length > 128) client.user.setGame(singlearg.toString().substring(0,128));
+    else client.user.setGame(singlearg.toString());
+    break;
+  case 'game': case 'g':
+    if (client.user.presence.game) msg.send('Currently playing: `'+client.user.presence.game.name+'`');
+    else msg.send('Not currently playing a game');
+    break;
 	case 'status':
 	  if (args[0] != 'online'&&args[0] != 'idle'&&args[0] != 'dnd'&&args[0] != 'invisible'){
 		msg.error('Status must be one of the following: online, idle, dnd, invisible');
