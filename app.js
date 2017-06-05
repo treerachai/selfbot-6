@@ -22,7 +22,7 @@ client.on('message', msg => {
   const contentArray = content.split(' ');
   const command = contentArray[0].toLowerCase();
   const args = contentArray.slice(1);
-  const singlearg = msg.content.slice(credentials.prefix.length+contentArray[0].length+1)
+  const singlearg = msg.content.slice(credentials.prefix.length+contentArray[0].length+1);
 
   let guildMember;
   if (msg.guild) guildMember = msg.guild.member(msg.author);
