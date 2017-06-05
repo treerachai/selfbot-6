@@ -288,6 +288,7 @@ client.on('message', msg => {
         .addField('Highest Role',ususer.highestRole,true)
         .addField('Joined This Server On',ususer.joinedAt.toString().substring(0, 16),true)
         .addField('Account Created On',ususer.user.createdAt.toString().substring(0, 16),true)
+        .setFooter('Currently Playing: '+ususer.user.presence.game.name)
         .setColor(ususer.displayHexColor);
     } else {
       var ususer = msg.author;
@@ -301,6 +302,7 @@ client.on('message', msg => {
   		  .addField('ID',ususer.id,true)
   		  .addField('Status',ususer.presence.status,true)
   		  .addField('Account Created On',ususer.createdAt.toString().substring(0, 16),true)
+        .setFooter('Currently Playing: '+ususer.presence.game.name)
         .setColor(rand(data.embedColors));
     }
     msg.sendEmbed(usembedo);
