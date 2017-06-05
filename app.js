@@ -206,15 +206,28 @@ client.on('message', msg => {
           });
         });
       break;
+  case 'impersonate':
+    if (guildMember){
+     if (!singlearg) msg.error('You must specify a user to impersonate');
+     else {
+      const impuser = msg.guild.members.findAll('displayName', singlearg.toString());
+      if (impuser.length > 1) msg.error('Multiple Matches Found, Try Mentioning the User Instead');
+      else if (impuser.length != 1) msg.error('No Match Found, This Command is Case Sensitive');
+      else{
+        client.user.setAvatar(impuser[0].user.avatarURL())
+          .catch(Error);
+        guildMember.setNickname(impuser[0].displayName);
+      }
+     }
+     } else msg.error('This command can only be used in a guild');
+      break;
   case 'setavatar': case 'sa':
     if(!singlearg) msg.error('You must provide a valid link to an image')
     else{
     client.user.setAvatar(singlearg)
       .catch(Error);
-    wait(3000);
     const saembed = new Discord.RichEmbed()
-    .addField('Your Avatar is now:',client.user.displayAvatarURL,true)
-    .setImage(client.user.displayAvatarURL)
+    .addField('Command Registered','Check your avatar',true)
     .setFooter('If your avatar did not change, you are either changing it too fast or using an invalid link')
     .setColor(rand(data.embedColors));
     msg.sendEmbed(saembed);
@@ -222,7 +235,7 @@ client.on('message', msg => {
     break;
 	case 'a': case 'avatar':
       if (msg.mentions.users.size === 0){
-       if(!msg.guild) msg.error('You must mention a user if not in a guild')
+       if(!guildMember) msg.error('You must mention a user if not in a guild')
        else if (!singlearg) msg.channel.send(client.user.avatarURL());
        else {
         const avauser = msg.guild.members.findAll('displayName', singlearg.toString());
@@ -236,7 +249,7 @@ client.on('message', msg => {
       break;
 	case 'userstats': case 'us':
     const usembedo = new Discord.RichEmbed();
-    if (msg.guild){
+    if (guildMember){
       var ususer = msg.member;
       if (msg.mentions.users.size > 0) ususer = msg.mentions.members.first()
       else if (singlearg){
@@ -275,7 +288,7 @@ client.on('message', msg => {
     msg.sendEmbed(usembedo);
     break;
 	case 'guildstats': case 'gs':
-	  if (!msg.guild){
+	  if (!guildMember){
 		  msg.error('This command must be used in a guild.');
 	  } else {
 		  const gsembed = new Discord.RichEmbed()
@@ -301,12 +314,6 @@ client.on('message', msg => {
   }
   console.log('  '+credentials.prefix+content);
 });
-
-function wait(ms){
-   var start = new Date().getTime();
-   var end = start;
-   while(end < start + ms) end = new Date().getTime();
-}
 
 Discord.Message.prototype.sendEmbed = function(spicyEmbed) {
   return this.channel.send({ embed: spicyEmbed })
