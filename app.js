@@ -287,9 +287,9 @@ client.on('message', msg => {
         .addField('Status',ususer.user.presence.status,true)
         .addField('Highest Role',ususer.highestRole,true)
         .addField('Joined This Server On',ususer.joinedAt.toString().substring(0, 16),true)
-        .addField('Account Created On',ususer.user.createdAt.toString().substring(0, 16),true)
-        .setFooter('Currently Playing: '+ususer.user.presence.game.name)
-        .setColor(ususer.displayHexColor);
+        .addField('Account Created On',ususer.user.createdAt.toString().substring(0, 16),true);
+        if (ususer.user.presence.game) usembedo.setFooter('Currently Playing: '+ususer.user.presence.game.name)
+        usembedo.setColor(ususer.displayHexColor);
     } else {
       var ususer = msg.author;
       if (msg.mentions.users.size > 0) ususer = msg.mentions.users.first();
@@ -301,9 +301,9 @@ client.on('message', msg => {
   		  .setThumbnail(ususer.displayAvatarURL)
   		  .addField('ID',ususer.id,true)
   		  .addField('Status',ususer.presence.status,true)
-  		  .addField('Account Created On',ususer.createdAt.toString().substring(0, 16),true)
-        .setFooter('Currently Playing: '+ususer.presence.game.name)
-        .setColor(rand(data.embedColors));
+  		  .addField('Account Created On',ususer.createdAt.toString().substring(0, 16),true);
+        if(ususer.presence.game) usembedo.setFooter('Currently Playing: '+ususer.presence.game.name);
+        usembedo.setColor(rand(data.embedColors));
     }
     msg.sendEmbed(usembedo);
     break;
