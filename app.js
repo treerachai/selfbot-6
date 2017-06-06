@@ -233,95 +233,63 @@ client.on('message', msg => {
       break;
   case 'impersonate':
     if (guildMember){
-     if (msg.mentions.members.size === 0){
      if (!singlearg) msg.error('You must specify a user to impersonate');
      else {
-      const impuser = msg.guild.members.findAll('displayName', singlearg.toString());
-      if (impuser.length > 1) msg.error('Multiple Matches Found, Try Mentioning the User Instead');
-      else if (impuser.length != 1) msg.error('No Match Found, This Command is Case Sensitive');
+      var impuser = client.users.find('tag', singlearg.toString());
+      if (msg.mentions.users.size !== 0) impuser = msg.mentions.users.first();
+      if (!impuser) msg.error('No Match Found, This Command is Case Sensitive');
+      else if (!msg.guild.members.has(impuser.id)) msg.error('That user is not in this guild');
       else{
-        client.user.setAvatar(impuser[0].user.avatarURL())
+      const impmember = msg.guild.members.find('id', impuser.id);
+        if (impuser.displayAvatarURL !== impuser.defaultAvatarURL) client.user.setAvatar(impuser.avatarURL('png',2048)) .catch(Error);
+        else client.user.setAvatar(impuser.defaultAvatarURL) .catch(Error);
+        guildMember.setNickname(impmember.displayName)
           .catch(Error);
-        guildMember.setNickname(impuser[0].displayName)
-          .catch(Error);
-        if(impuser[0].user.presence.game) client.user.setGame(impuser[0].user.presence.game.name);
+        if(impuser.presence.game) client.user.setGame(impuser.presence.game.name);
         else client.user.setGame(null);
         }
       }
-     } else {
-       client.user.setAvatar(msg.mentions.users.first().avatarURL())
-         .catch(Error);
-       guildMember.setNickname(msg.mentions.members.first().displayName)
-         .catch(Error);
-     }
      } else msg.error('This command can only be used in a guild');
       break;
   case 'setavatar': case 'sa':
     if(!singlearg) msg.error('You must provide a valid link to an image')
-    else{
-    client.user.setAvatar(singlearg)
-      .catch(Error);
-    const saembed = new Discord.RichEmbed()
-    .addField('Command Registered','Check your avatar',true)
-    .setFooter('If your avatar did not change, you are either changing it too fast or using an invalid link')
-    .setColor(rand(data.embedColors));
-    msg.sendEmbed(saembed);
-    }
+    else client.user.setAvatar(singlearg) .catch(Error);
     break;
 	case 'a': case 'avatar':
-      if (msg.mentions.users.size === 0){
-       if(!guildMember) msg.error('You must mention a user if not in a guild')
-       else if (!singlearg) msg.channel.send(client.user.avatarURL());
+       if (!singlearg) msg.channel.send(client.user.avatarURL('png',2048));
        else {
-        const avauser = msg.guild.members.findAll('displayName', singlearg.toString());
-        if (avauser.length > 1) msg.error('Multiple Matches Found, Try Mentioning the User Instead');
-        else if (avauser.length != 1) msg.error('No Match Found, This Command is Case Sensitive');
-        else msg.channel.send(avauser[0].user.avatarURL());
+        var avauser = msg.client.users.find('tag', singlearg.toString());
+        if (msg.mentions.users.size !== 0) avauser = msg.mentions.users.first();
+        if (!avauser) msg.error('No Match Found, This Command is Case Sensitive');
+        else {
+          if (avauser.displayAvatarURL !== avauser.defaultAvatarURL) msg.channel.send(avauser.avatarURL('png',2048));
+          else msg.error('This user does not have an avatar');
+        }
        }
-      } else {
-        msg.channel.send(msg.mentions.users.first().avatarURL());
-      }
       break;
 	case 'userstats': case 'us':
     const usembedo = new Discord.RichEmbed();
-    if (guildMember){
-      var ususer = msg.member;
-      if (msg.mentions.users.size > 0) ususer = msg.mentions.members.first()
+      var ususer = client.user;
+      if (msg.mentions.users.size > 0) ususer = msg.mentions.members.first();
       else if (singlearg){
-        const usoptions = msg.guild.members.findAll('displayName', singlearg.toString());
-        ususer = usoptions[0];
-        if (usoptions.length > 1) {
-          msg.error('Multiple Matches Found, Try Mentioning the User Instead');
-          break;
-        } else if (usoptions.length != 1) {
+        ususer = client.users.find('tag', singlearg.toString());
+        if (!ususer) {
           msg.error('No Match Found, This Command is Case Sensitive');
           break;
       }}
-        usembedo.setTitle('Stats for: `'+ususer.user.tag+'`')
-        .setThumbnail(ususer.user.displayAvatarURL)
-        .addField('Nickname','`'+ususer.displayName+'`',true)
-        .addField('ID',ususer.user.id,true)
-        .addField('Status',ususer.user.presence.status,true)
-        .addField('Highest Role',ususer.highestRole,true)
-        .addField('Joined This Server On',ususer.joinedAt.toString().substring(0, 16),true)
-        .addField('Account Created On',ususer.user.createdAt.toString().substring(0, 16),true);
-        if (ususer.user.presence.game) usembedo.setFooter('Playing: '+ususer.user.presence.game.name)
-        usembedo.setColor(ususer.displayHexColor);
-    } else {
-      var ususer = msg.author;
-      if (msg.mentions.users.size > 0) ususer = msg.mentions.users.first();
-      else if (singlearg) {
-        msg.error('You must mention the target user to use this command outside a guild');
-        break;
-      }
-  	    usembedo.setTitle('Stats for: `'+ususer.tag+'`')
-  		  .setThumbnail(ususer.displayAvatarURL)
-  		  .addField('ID',ususer.id,true)
-  		  .addField('Status',ususer.presence.status,true)
-  		  .addField('Account Created On',ususer.createdAt.toString().substring(0, 16),true);
-        if(ususer.presence.game) usembedo.setFooter('Playing: '+ususer.presence.game.name);
-        usembedo.setColor(rand(data.embedColors));
-    }
+        usembedo.setTitle('Stats for: `'+ususer.tag+'`')
+        .setThumbnail(ususer.displayAvatarURL)
+        .addField('ID',ususer.id,true)
+        .addField('Status',ususer.presence.status,true)
+        .addField('Account Created On',ususer.createdAt.toString().substring(0, 16),true);
+        if (guildMember && msg.guild.members.has(ususer.id)){
+        const usmember = msg.guild.members.find('id', ususer.id);
+        usembedo.addField('Nickname','`'+usmember.displayName+'`',true)
+        .addField('Highest Role',usmember.highestRole,true)
+        .addField('Joined This Server On',usmember.joinedAt.toString().substring(0, 16),true)
+        .setColor(usmember.displayHexColor);
+      } else usembedo.setColor(rand(data.embedColors));
+        if (ususer.presence.game) usembedo.setFooter('Playing: '+ususer.presence.game.name);
     msg.sendEmbed(usembedo);
     break;
 	case 'guildstats': case 'gs':
