@@ -35,6 +35,21 @@ client.on('message', msg => {
 	  .setColor(rand(data.embedColors));
 	  msg.sendEmbed(hembed);
 	  break;
+  case 'poll':
+   if (!singlearg){ msg.error('Invalid poll, heres an example: `'+credentials.prefix+'poll This is the title|Option 1|Option 2`'); break; }
+    const pollop = singlearg.toString().split('|');
+    if (pollop.length > 10 || pollop.length < 3){ msg.error('You must have between 2 and 9 options for the poll'); break; }
+    if (singlearg.toString().length > 1900){ msg.error('Are you trying to break me? Use less characters'); break; }
+    var pollmsg = ':ballot_box: __**'+pollop[0]+'**__';
+    for (var i = 1; i < pollop.length; i++){
+      pollmsg = pollmsg+'\n:'+data.numbers[i]+': '+pollop[i];
+    }
+    msg.send(pollmsg).then(async m=> {
+      for (var i = 1; i < pollop.length; i++){
+        await m.react(data.uninumbers[i]);
+      }
+    })
+    break;
 	case 'ping':
       msg.send('Ping: ' + client.ping.toFixed(2) + ' ms');
       break;
@@ -324,9 +339,9 @@ client.on('message', msg => {
 		  msg.sendEmbed(gsembed);
 	  }
 	  break;
-  case 'r':
+  case 'r': case 'remove':
 	  break;
-    case 'reboot':
+  case 'reboot':
       msg.send('Rebooting...')
       .then(() => process.exit(1));
       break;
