@@ -47,6 +47,8 @@ discrim [discriminator] - finds users with the same descriminator that you speci
 
 sa/setavatar [image link] - changes your avatar to the image you link
 
+poll [Title|Option 1|Option 2...] - creates a mini-poll with reactions with up to 9 options
+
 help/git/github - Sends a link to this repository
 
 sg/setgame [text] - Sets what game you are currently playing, leave empty to set yourself to not be playing a game (only visible to others)
