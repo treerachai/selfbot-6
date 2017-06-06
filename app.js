@@ -270,7 +270,7 @@ client.on('message', msg => {
 	case 'userstats': case 'us':
     const usembedo = new Discord.RichEmbed();
       var ususer = client.user;
-      if (msg.mentions.users.size > 0) ususer = msg.mentions.members.first();
+      if (msg.mentions.users.size > 0) ususer = msg.mentions.users.first();
       else if (singlearg){
         ususer = client.users.find('tag', singlearg.toString());
         if (!ususer) {
