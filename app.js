@@ -46,7 +46,7 @@ client.on('message', msg => {
     }
     msg.send(pollmsg).then(async m=> {
       for (var i = 1; i < pollop.length; i++){
-        await m.react(data.uninumbers[i]);
+        await m.react(data.uninumbers[i]) .catch(Error);
       }
     })
     break;
@@ -120,12 +120,6 @@ client.on('message', msg => {
         msg.sendEmbed(fakeCodeEmbed);
       }
       break;
-	case 'servers':
-	  const sembed = new Discord.RichEmbed()
-	  .addField('Servers', client.guilds.map(g=>g.name).join(', '))
-	  .setColor(rand(data.embedColors));
-	  msg.sendEmbed(sembed);
-	  break;
   case 'e': case 'eval':
       const code = args.join(' ');
       if (!code) {
@@ -202,7 +196,7 @@ client.on('message', msg => {
         } else {
             let message = '```css\n';
             for (const user in matches) {
-                message += matches[user].username + '#' + args.toString() + '\n';
+                message += matches[user].username + '#' + args.toString() + ', ';
         }
             const discrembed = new Discord.RichEmbed()
             .setTitle('Results for Discrim #'+args.toString())
@@ -357,7 +351,9 @@ function handleError(channel, error) {
   if (error.code === 403) {
     channel.send("You do not have permission to do that.");
   } else {
-    channel.send(error.message);
+    channel.send(error.message).then(async m=> {
+      await m.delete({timeout:5000});
+    });
   }
 }
 
