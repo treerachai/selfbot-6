@@ -29,8 +29,6 @@ r [text] - instantly deletes the message
 
 ut/uptime - bot uptime 
 
-servers - displays the names of all servers you're in
-
 ss - alternate statistics
 
 emoji/emote [text] - sends your message in emojis
