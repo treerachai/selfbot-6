@@ -225,6 +225,30 @@ client.on('message', msg => {
           });
         });
       break;
+  case 'quote': case 'q':
+    if (!singlearg){ msg.error('Invalid search. Proper format: `.quote User|Text To Search For`'); break; }
+    const qa = singlearg.toString().split('|');
+    var quser = client.users.find('tag', qa[0]);
+    if (msg.mentions.users.size !== 0) quser = msg.mentions.users.first();
+    const qsearch = qa[1];
+    if (!quser){ msg.error('User not found'); break; }
+    msg.channel.fetchMessages({limit: 100})
+    .then(messages => {
+      let quote_array = messages.array();
+      quote_array = quote_array.filter(m => m.author.id === quser.id);
+      quote_array = quote_array.filter(m => m.cleanContent.toLowerCase().includes(qsearch.toLowerCase()));
+      if (quote_array.length === 0) msg.error('No results found');
+      else if (quote_array[0].cleanContent.length > 1900) msg.error('Message too long to quote');
+      else {
+      const quembed = new Discord.RichEmbed()
+      .setAuthor(quser.tag, quser.displayAvatarURL)
+      .setDescription(quote_array[0].cleanContent)
+      .setTimestamp(quote_array[0].createdAt)
+      .setColor(rand(data.embedColors));
+      msg.sendEmbed(quembed);
+      }
+    });
+    break;
   case 'impersonate':
     if (guildMember){
      if (!singlearg) msg.error('You must specify a user to impersonate');
