@@ -17,6 +17,8 @@ ping - sends your ping in ms
 
 p/prune [amount] - prunes messages (default is 10)
 
+q/quote [mention or username#discrim]|[text] - searches the last 100 messages by the specified user for one that contains the specified text and quotes the most recent match
+
 reboot - restarts the selfbot
 
 fe/fakeeval [fake code] - fake eval, returns true
