@@ -28,10 +28,11 @@ client.on('message', msg => {
   if (msg.guild) guildMember = msg.guild.member(msg.author);
 
   switch (command) {
-	case 'help': case 'git': case 'github':
+	case 'help': case 'git': case 'github': case 'server':
 	  const hembed = new Discord.RichEmbed()
 	  .addField('Link to repo for this fork','https://github.com/VapidSlay/SelfBot')
-    .setFooter('Check by regularly to ensure you get the latest updates!')
+    .addField('Link to the Server for this Selfbot', 'https://discord.gg/zz9KTka',true)
+    .setFooter('Check the repo regularly to ensure you get the latest updates!')
 	  .setColor(rand(data.embedColors));
 	  msg.sendEmbed(hembed);
 	  break;
@@ -165,10 +166,10 @@ client.on('message', msg => {
       const ssembed = new Discord.RichEmbed()
         .addField('Author', 'John#0969', true)
         .addField('Forked by', 'PapaJohn#7777', true)
-		.addField('Servers', client.guilds.size.toLocaleString(), true)
-		.addField('Memory', (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2) + ' MB', true)
-		.addField('Ping', client.ping.toFixed(2) + ' ms', true)
-		.addField('Uptime', hours+' hours, '+minutes+' minutes', true)
+		    .addField('Servers', client.guilds.size.toLocaleString(), true)
+		    .addField('Memory', (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2) + ' MB', true)
+		    .addField('Ping', client.ping.toFixed(2) + ' ms', true)
+		    .addField('Uptime', hours+' hours, '+minutes+' minutes', true)
         .setColor(rand(data.embedColors));
 	  msg.sendEmbed(ssembed);
       break;
@@ -228,6 +229,7 @@ client.on('message', msg => {
   case 'quote': case 'q':
     if (!singlearg){ msg.error('Invalid search. Proper format: `.quote User|Text To Search For`'); break; }
     const qa = singlearg.toString().split('|');
+    if (qa.length < 2){ msg.error('Invalid search. Proper format: `.quote User|Text To Search For`'); break; }
     var quser = client.users.find('tag', qa[0]);
     if (msg.mentions.users.size !== 0) quser = msg.mentions.users.first();
     const qsearch = qa[1];
@@ -236,9 +238,9 @@ client.on('message', msg => {
     .then(messages => {
       let quote_array = messages.array();
       quote_array = quote_array.filter(m => m.author.id === quser.id);
-      quote_array = quote_array.filter(m => m.cleanContent.toLowerCase().includes(qsearch.toLowerCase()));
+      quote_array = quote_array.filter(m => m.content.toLowerCase().includes(qsearch.toLowerCase()));
       if (quote_array.length === 0) msg.error('No results found');
-      else if (quote_array[0].cleanContent.length > 1900) msg.error('Message too long to quote');
+      else if (quote_array[0].content.length > 1900) msg.error('Message too long to quote');
       else {
       const quembed = new Discord.RichEmbed()
       .setAuthor(quser.tag, quser.displayAvatarURL)
