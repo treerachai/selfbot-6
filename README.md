@@ -9,9 +9,9 @@ n/nick [name] - changes your nickname to what you specify
 
 8/8ball [question] - asks the mystical 8ball a question
 
-l/lenny - ( ͡° ͜ʖ ͡°)
+l/lenny - like /shrug, but with lenny instead ( ͡° ͜ʖ ͡°)
 
-s/shrug - shrug
+s/shrug - works just like /shrug
 
 ping - sends your ping in ms
 
