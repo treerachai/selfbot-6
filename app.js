@@ -186,7 +186,7 @@ client.on('message', msg => {
       }
       break;
   case 'l': case 'lenny':
-      msg.channel.send('( ͡° ͜ʖ ͡°)');
+      msg.channel.send(singlearg+' ( ͡° ͜ʖ ͡°)');
       break;
   case 'discrim':
     if(args.toString().length != 4) msg.error('You must enter a 4 digit discriminator')
