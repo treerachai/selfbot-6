@@ -239,6 +239,7 @@ client.on('message', msg => {
       let quote_array = messages.array();
       quote_array = quote_array.filter(m => m.author.id === quser.id);
       quote_array = quote_array.filter(m => m.content.toLowerCase().includes(qsearch.toLowerCase()));
+      quote_array = quote_array.filter(m => !(m.content.toLowerCase().startsWith('.q')));
       if (quote_array.length === 0) msg.error('No results found');
       else if (quote_array[0].content.length > 1900) msg.error('Message too long to quote');
       else {
