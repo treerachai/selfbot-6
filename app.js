@@ -248,6 +248,10 @@ client.on('message', msg => {
       .setTimestamp(quote_array[0].createdAt)
       .setColor(rand(data.embedColors));
       msg.sendEmbed(quembed);
+      if (quote_array.length>1){
+        msg.send('**'+(quote_array.length-1)+' other matches found**').then(async m => {
+          await m.delete({timeout:10000}) .catch(Error);
+        })}
       }
     });
     break;
