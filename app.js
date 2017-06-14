@@ -230,9 +230,9 @@ client.on('message', msg => {
         });
       break;
   case 'quote': case 'q':
-    if (!singlearg){ msg.error('Invalid search. Proper format: `.quote User|Text To Search For`'); break; }
+    if (!singlearg){ msg.error('Invalid search. Proper format: `.quote [Mention or Username#discrim]|Text To Search For`'); break; }
     const qa = singlearg.toString().split('|');
-    if (qa.length < 2){ msg.error('Invalid search. Proper format: `.quote User|Text To Search For`'); break; }
+    if (qa.length < 2){ msg.error('Invalid search. Proper format: `.quote [Mention or Username#discrim]|Text To Search For`'); break; }
     var quser = client.users.find('tag', qa[0]);
     if (msg.mentions.users.size !== 0) quser = msg.mentions.users.first();
     const qsearch = qa[1];
