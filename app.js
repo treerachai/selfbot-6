@@ -196,8 +196,11 @@ client.on('message', msg => {
             msg.error('There are no matches for this discriminator, try joining more servers to add to the list of potential matches.');
         } else {
             let message = '```css\n';
+            var discrimc = 0;
             for (const user in matches) {
-                message += matches[user].username + '#' + args.toString() + ', ';
+                discrimc++;
+                message += matches[user].username + '#' + args.toString();
+                if (discrimc !== matches.length) message += ', ';
         }
             const discrembed = new Discord.RichEmbed()
             .setTitle('Results for Discrim #'+args.toString())
