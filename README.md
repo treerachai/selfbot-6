@@ -49,7 +49,7 @@ sa/setavatar [image link] - changes your avatar to the image you link
 
 poll [Title|Option 1|Option 2...] - creates a mini-poll with reactions with up to 9 options
 
-help/git/github - Sends a link to this repository
+help/git/github/server - Sends a link to this repository and the server
 
 sg/setgame [text] - Sets what game you are currently playing, leave empty to set yourself to not be playing a game (only visible to others)
 
