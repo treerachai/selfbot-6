@@ -32,7 +32,7 @@ reboot - restarts the selfbot
 
 fe/fakeeval [fake code] - fake eval, returns true
 
-e/eval [code] - evaluates code
+e/eval [code] - evaluates code (Be VERY careful with this. If you don't have knowledge of javascript and discord.js don't use this, as it could be dangerous)
 
 stats/statistics - statistics
 
@@ -67,11 +67,3 @@ g/game - shows you what game you are playing (helpful if you used setgame)
 impersonate [mention or username#discrim] - copies the avatar, displayname, and game of a specified user in that guild
 
 Using just the prefix then a message will send the message in an embed
-
-# Things to NOT do
-
-eval credentials, this will leak your token and access to your account
-
-# Other Info
-
-This fork will log all commands in the command prompt for you
