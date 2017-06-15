@@ -32,7 +32,6 @@ client.on('message', msg => {
 	  const hembed = new Discord.RichEmbed()
 	  .addField('Link to repo for this fork','https://github.com/VapidSlay/SelfBot')
     .addField('Link to the Server for this Selfbot', 'https://discord.gg/zz9KTka',true)
-    .setFooter('Check the repo regularly to ensure you get the latest updates!')
 	  .setColor(rand(data.embedColors));
 	  msg.sendEmbed(hembed);
 	  break;
