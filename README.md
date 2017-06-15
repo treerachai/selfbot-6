@@ -2,13 +2,15 @@
 
 1. Install node.js (most recent version) with npm: https://nodejs.org/en/ [If this causes you trouble, heres some extra help on installing them: http://blog.teamtreehouse.com/install-node-js-npm-windows]
 
-2. Download the Installer here: http://www.mediafire.com/file/24thn21fp76ax2p/Install_Selfbot.bat
+2. Install git here: https://git-scm.com/download/win (when installing, just use whatever defaults it gives to you in any options)
 
-3. Put the Installer (Install Selfbot.bat) in a folder of your choosing and run it (its a bat file so your computer is gonna scream about it being unsafe just like they do with all bat files, also after this you wont need the installer anymore so you can delete it)
+3. Download the Installer here: http://www.mediafire.com/file/24thn21fp76ax2p/Install_Selfbot.bat
 
-4. Open the new Selfbot Folder and rename credentials example.json to credentials.json and add your discord token where it's indicated
+4. Put the Installer (Install Selfbot.bat) in a folder of your choosing and run it (its a bat file so your computer is gonna scream about it being unsafe just like they do with all bat files, also after this you wont need the installer anymore so you can delete it)
 
-5. Run RunSelfBot.bat
+5. Open the new Selfbot Folder and rename credentials example.json to credentials.json and add your discord token where it's indicated
+
+6. Run RunSelfBot.bat
 
 (To update, all you need to do is run UpdateSelfbot.bat and then restart the selfbot)
 
