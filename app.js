@@ -31,7 +31,7 @@ client.on('message', msg => {
 	case 'help': case 'git': case 'github': case 'server':
 	  const hembed = new Discord.RichEmbed()
 	  .addField('Link to repo for this fork','https://github.com/VapidSlay/SelfBot')
-    .addField('Link to the Server for this Selfbot', 'https://discord.gg/zz9KTka',true)
+    .addField('Additional Help Can be found Here:', 'https://discord.gg/zz9KTka',true)
 	  .setColor(rand(data.embedColors));
 	  msg.sendEmbed(hembed);
 	  break;
