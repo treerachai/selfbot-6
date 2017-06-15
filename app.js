@@ -28,7 +28,16 @@ client.on('message', msg => {
   if (msg.guild) guildMember = msg.guild.member(msg.author);
 
   switch (command) {
-	case 'help': case 'git': case 'github': case 'server':
+  case 'b': case 'bold':
+    msg.channel.send('**'+singlearg.toString()+'**');
+    break;
+  case 'u': case 'underline':
+    msg.channel.send('__'+singlearg.toString()+'__');
+    break;
+  case 'i': case 'italics':
+    msg.channel.send('*'+singlearg.toString()+'*');
+    break;
+	case 'help': case 'git': case 'github': case 'server': case 'commands':
 	  const hembed = new Discord.RichEmbed()
 	  .addField('Link to repo for this fork','https://github.com/VapidSlay/SelfBot')
     .addField('Additional Help Can be found Here:', 'https://discord.gg/zz9KTka',true)
