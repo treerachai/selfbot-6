@@ -1,3 +1,5 @@
+# A Discord.js Selfbot by PapaJohn#7777 forked from an old version of John#0969
+
 # Install Help (Windows)
 
 1. Install node.js (most recent version) with npm: https://nodejs.org/en/ [If this causes you trouble, heres some extra help on installing them: http://blog.teamtreehouse.com/install-node-js-npm-windows]
