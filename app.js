@@ -33,7 +33,7 @@ client.on('message', msg => {
     break;
   case 'rplus': case 'rp': case 'r+':
     msg.channel.send(singlearg.toString()).then(async m=> {
-      m.delete();
+      m.delete() .catch(Error);
     })
     break;
   case 'u': case 'underline':
