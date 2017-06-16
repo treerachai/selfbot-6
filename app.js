@@ -31,6 +31,11 @@ client.on('message', msg => {
   case 'b': case 'bold':
     msg.channel.send('**'+singlearg.toString()+'**');
     break;
+  case 'rplus': case 'rp': case 'r+':
+    msg.channel.send(singlearg.toString()).then(async m=> {
+      m.delete();
+    })
+    break;
   case 'u': case 'underline':
     msg.channel.send('__'+singlearg.toString()+'__');
     break;

@@ -48,6 +48,8 @@ stats/statistics - statistics
 
 r [text] - instantly deletes the message
 
+rp/rplus/r+ [text] - sends the text as a separate message then deletes it. Useful for stealth using commands for other bots
+
 ut/uptime - bot uptime
 
 ss - alternate statistics
