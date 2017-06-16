@@ -260,7 +260,7 @@ client.on('message', msg => {
       else if (quote_array[0].content.length > 1900) msg.error('Message too long to quote');
       else {
       const quembed = new Discord.RichEmbed()
-      .setAuthor(quser.tag, quser.displayAvatarURL)
+      .setAuthor(quser.tag, quser.displayAvatarURL())
       .setDescription(quote_array[0].cleanContent)
       .setTimestamp(quote_array[0].createdAt)
       .setColor(rand(data.embedColors));
@@ -282,10 +282,8 @@ client.on('message', msg => {
       else if (!msg.guild.members.has(impuser.id)) msg.error('That user is not in this guild');
       else{
       const impmember = msg.guild.members.find('id', impuser.id);
-        if (impuser.displayAvatarURL !== impuser.defaultAvatarURL) client.user.setAvatar(impuser.avatarURL('png',2048)) .catch(Error);
-        else client.user.setAvatar(impuser.defaultAvatarURL) .catch(Error);
-        guildMember.setNickname(impmember.displayName)
-          .catch(Error);
+        client.user.setAvatar(impuser.displayAvatarURL({format:'png',size:2048})) .catch(Error);
+        guildMember.setNickname(impmember.displayName) .catch(Error);
         if(impuser.presence.game) client.user.setGame(impuser.presence.game.name);
         else client.user.setGame(null);
         }
@@ -294,17 +292,16 @@ client.on('message', msg => {
       break;
   case 'setavatar': case 'sa':
     if(!singlearg) msg.error('You must provide a valid link to an image')
-    else client.user.setAvatar(singlearg) .catch(Error);
+    else client.user.setAvatar(singlearg.toString()) .catch(Error);
     break;
 	case 'a': case 'avatar':
-       if (!singlearg) msg.channel.send(client.user.avatarURL('png',2048));
+       if (!singlearg) msg.channel.send(client.user.displayAvatarURL({format:'png',size:2048}));
        else {
         var avauser = msg.client.users.find('tag', singlearg.toString());
         if (msg.mentions.users.size !== 0) avauser = msg.mentions.users.first();
         if (!avauser) msg.error('No Match Found, This Command is Case Sensitive');
         else {
-          if (avauser.displayAvatarURL !== avauser.defaultAvatarURL) msg.channel.send(avauser.avatarURL('png',2048));
-          else msg.error('This user does not have an avatar');
+          msg.channel.send(avauser.displayAvatarURL({format:'png',size:2048}));
         }
        }
       break;
@@ -319,7 +316,7 @@ client.on('message', msg => {
           break;
       }}
         usembedo.setTitle('Stats for: `'+ususer.tag+'`')
-        .setThumbnail(ususer.displayAvatarURL)
+        .setThumbnail(ususer.displayAvatarURL())
         .addField('ID',ususer.id,true)
         .addField('Status',ususer.presence.status,true)
         .addField('Account Created On',ususer.createdAt.toString().substring(0, 16),true);
