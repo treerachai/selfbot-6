@@ -32,7 +32,7 @@ client.on('message', msg => {
     msg.channel.send('**'+singlearg.toString()+'**');
     break;
   case 'h': case 'happy':
-    msg.send(singlearg+' ᕕ( ᐛ )ᕗ');
+    msg.channel.send(singlearg+' ᕕ( ᐛ )ᕗ');
     break;
   case 'rplus': case 'rp': case 'r+':
     msg.channel.send(singlearg.toString()).then(async m=> {
