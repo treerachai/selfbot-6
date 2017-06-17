@@ -45,13 +45,19 @@ client.on('message', msg => {
   case 'i': case 'italics':
     msg.channel.send('*'+singlearg.toString()+'*');
     break;
-	case 'help': case 'git': case 'github': case 'server': case 'commands':
+	case 'help': case 'git': case 'github': case 'commands':
 	  const hembed = new Discord.RichEmbed()
 	  .addField('Link to repo for this fork','https://github.com/VapidSlay/SelfBot')
-    .addField('Additional Help Can be found Here:', 'https://discord.gg/zz9KTka',true)
+    .setFooter('Additional help can be found with the server command')
 	  .setColor(rand(data.embedColors));
 	  msg.sendEmbed(hembed);
 	  break;
+  case 'server':
+    const servembed = new Discord.RichEmbed()
+    .addField('Link to this selfbot\'s server', 'https://discord.gg/zz9KTka')
+    .setColor(rand(data.embedColors));
+    msg.sendEmbed(servembed);
+    break;
   case 'poll':
    if (!singlearg){ msg.error('Invalid poll, heres an example: `'+credentials.prefix+'poll This is the title|Option 1|Option 2`'); break; }
     const pollop = singlearg.toString().split('|');
