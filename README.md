@@ -20,6 +20,8 @@
 
 b/bold [text] - bolds your text for you
 
+h/happy - like /sgrug, but with ᕕ( ᐛ )ᕗ instead
+
 i/italics [text] - italicizes your text for you
 
 u/underline [text] - underlines your text for you

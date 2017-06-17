@@ -31,6 +31,9 @@ client.on('message', msg => {
   case 'b': case 'bold':
     msg.channel.send('**'+singlearg.toString()+'**');
     break;
+  case 'h': case 'happy':
+    msg.send(singlearg+' ᕕ( ᐛ )ᕗ');
+    break;
   case 'rplus': case 'rp': case 'r+':
     msg.channel.send(singlearg.toString()).then(async m=> {
       m.delete() .catch(Error);
