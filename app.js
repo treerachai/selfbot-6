@@ -270,7 +270,7 @@ client.on('message', msg => {
       else {
       const quembed = new Discord.RichEmbed()
       .setAuthor(quser.tag, quser.displayAvatarURL())
-      .setDescription(quote_array[0].cleanContent)
+      .setDescription(quote_array[0].content)
       .setTimestamp(quote_array[0].createdAt)
       .setColor(rand(data.embedColors));
       msg.sendEmbed(quembed);
@@ -280,6 +280,21 @@ client.on('message', msg => {
         })}
       }
     });
+    break;
+  case 'quoteid': case 'qid':
+    if (!singlearg){ msg.error('You must provide a valid message id'); break;}
+    const qidmsg = msg.channel.fetchMessage(singlearg).then(message => {
+    if (message.content.length > 1900) msg.error('Message too long to quote');
+    else{
+    const qidauthor = message.author;
+    const qidembed = new Discord.RichEmbed()
+    .setAuthor(qidauthor.tag, qidauthor.displayAvatarURL())
+    .setDescription(message.content)
+    .setTimestamp(message.createdAt)
+    .setColor(rand(data.embedColors));
+    msg.sendEmbed(qidembed);
+    }
+    }) .catch(error => msg.error('No message found in this channel with the id: `'+singlearg+'`'));
     break;
   case 'impersonate':
     if (guildMember){

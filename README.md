@@ -2,7 +2,7 @@
 
 # Install Help (Windows)
 
-1. Install node.js (most recent version) with npm: https://nodejs.org/en/ [If this causes you trouble, heres some extra help on installing them: http://blog.teamtreehouse.com/install-node-js-npm-windows]
+1. Install node.js (most recent version) WITH NPM: https://nodejs.org/en/ [MAKE SURE YOU HAVE THE NPM OPTION SELECTED WHEN INSTALLING, AS SEEN HERE http://prntscr.com/fkwdax]
 
 2. Install git here: https://git-scm.com/download/win (when installing, just use whatever defaults it gives to you in any options)
 
@@ -40,6 +40,8 @@ p/prune [amount] - prunes messages (default is 10)
 
 q/quote [mention or username#discrim]|[text] - searches the last 100 messages by the specified user for one that contains the specified text and quotes the most recent match
 
+quoteid/qid [message id] - quotes a message in this channel with the given id
+
 reboot - restarts the selfbot
 
 fe/fakeeval [fake code] - fake eval, returns true
@@ -72,7 +74,9 @@ sa/setavatar [image link] - changes your avatar to the image you link
 
 poll [Title|Option 1|Option 2...] - creates a mini-poll with reactions with up to 9 options
 
-help/git/github/server - Sends a link to this repository and the server
+help/git/github - Sends a link to this repository
+
+server - sends a link to the server for this Selfbot
 
 sg/setgame [text] - Sets what game you are currently playing, leave empty to set yourself to not be playing a game (only visible to others)
 
