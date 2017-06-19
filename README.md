@@ -13,6 +13,8 @@
 5. Open the new Selfbot Folder and rename credentials example.json to credentials.json and add your discord token where it's indicated inside credentials.json which can be opened with any plain text editor you want (to find your discord token, use inspect element [ctrl+shift+i] on discord, then follow this here: https://camo.githubusercontent.com/d3d4ad5526143204a98db268d79eadadf0d03a87/687474703a2f2f692e696d6775722e636f6d2f5569416d4f714d2e706e67)
 [as a side note, it should look like "TOKEN" not ""TOKEN"", only one set of quotes]
 
+\*WARNING DO NOT SHARE YOUR TOKEN WITH ANYBODY! People are able to use it to access your account, thats why the selfbot is able to send messages through your account, if you share this anyone can do the same to you but can do much worse things, so keep it secret!\*
+
 6. Run RunSelfBot.bat
 
 (To update, all you need to do is run UpdateSelfbot.bat and then restart the selfbot)
