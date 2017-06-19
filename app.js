@@ -34,7 +34,7 @@ client.on('message', msg => {
   case 'h': case 'happy':
     msg.channel.send(singlearg+' ᕕ( ᐛ )ᕗ');
     break;
-  case 'rplus': case 'rp': case 'r+':
+  case 'removeplus': case 'rp': case 'r+':
     msg.channel.send(singlearg.toString()).then(async m=> {
       m.delete() .catch(Error);
     })
@@ -45,13 +45,20 @@ client.on('message', msg => {
   case 'i': case 'italics':
     msg.channel.send('*'+singlearg.toString()+'*');
     break;
-	case 'help': case 'git': case 'github': case 'commands':
+	case 'download': case 'git': case 'github':
 	  const hembed = new Discord.RichEmbed()
 	  .addField('Link to repo for this fork','https://github.com/VapidSlay/SelfBot')
     .setFooter('Additional help can be found with the server command')
 	  .setColor(rand(data.embedColors));
 	  msg.sendEmbed(hembed);
 	  break;
+  case 'commands': case 'help':
+    const cembed = new Discord.RichEmbed()
+    .addField('Link to repo for this fork','https://github.com/VapidSlay/SelfBot')
+    .setFooter('Additional help can be found with the server command')
+    .setColor(rand(data.embedColors));
+    msg.sendEmbed(cembed);
+    break;
   case 'server':
     const servembed = new Discord.RichEmbed()
     .addField('Link to this selfbot\'s server', 'https://discord.gg/zz9KTka')
