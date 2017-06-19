@@ -54,7 +54,7 @@ client.on('message', msg => {
 	  break;
   case 'commands': case 'help':
     const cembed = new Discord.RichEmbed()
-    .addField('Link to repo for this fork','https://github.com/VapidSlay/SelfBot')
+    .addField('List of all commands can be found here','https://vapidslay.github.io/Selfbot/')
     .setFooter('Additional help can be found with the server command')
     .setColor(rand(data.embedColors));
     msg.sendEmbed(cembed);
