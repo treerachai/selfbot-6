@@ -1,231 +1,205 @@
-<!DOCTYPE html>
-<html>
-<body>
-<style>
-.demo {
-  border:1px solid #C0C0C0;
-  border-collapse:collapse;
-  padding:5px;
-}
-.demo th {
-  border:1px solid #C0C0C0;
-  padding:5px;
-  background:#F0F0F0;
-}
-.demo td {
-  border:1px solid #C0C0C0;
-  padding:5px;
-}
-</style>
-<table class="demo">
-<caption>Command Information and Help</caption>
+<table><caption>Command Information and Help</caption>
 <thead>
-<tr>
-  <th>Command</th>
-  <th>Example</th>
-  <th>Information</th>
-  <th>Argument Info</th>
-</tr>
+<tr><th>Command</th><th>Example</th><th>Information</th><th>Argument Info</th></tr>
 </thead>
 <tbody>
 <tr>
-  <td>avatar/a [user]</td>
-  <td>avatar PapaJohn#7777</td>
-  <td>This command will return a link to the selected user's avatar. If no user is provided, it will target you instead.</td>
-  <td>&nbsp;[user] is optional but can be a mention or Username#discrim</td>
+<td>avatar/a [user]</td>
+<td>avatar PapaJohn#7777</td>
+<td>This command will return a link to the selected user's avatar. If no user is provided, it will target you instead.</td>
+<td>&nbsp;[user] is optional but can be a mention or Username#discrim</td>
 </tr>
 <tr>
-  <td>bold/b [text]</td>
-  <td>bold This is my message</td>
-  <td>&nbsp;Will bold your message for you.</td>
-  <td>[bold] is required and can be any text&nbsp;</td>
+<td>bold/b [text]</td>
+<td>bold This is my message</td>
+<td>&nbsp;Will bold your message for you.</td>
+<td>[bold] is required and can be any text&nbsp;</td>
 </tr>
 <tr>
-  <td>&nbsp;commands/help</td>
-  <td>&nbsp;commands</td>
-  <td>&nbsp;Sends you a link to this page</td>
-  <td>&nbsp;No arguments required</td>
+<td>&nbsp;commands/help</td>
+<td>&nbsp;commands</td>
+<td>&nbsp;Sends you a link to this page</td>
+<td>&nbsp;No arguments required</td>
 </tr>
 <tr>
-  <td>&nbsp;discrim [discrim]</td>
-  <td>&nbsp;discrim 7777</td>
-  <td>&nbsp;Shows all users with the specified discrim that you share a server with</td>
-  <td>[discrim] is required and is the 4 digit discriminator&nbsp;</td>
+<td>&nbsp;discrim [discrim]</td>
+<td>&nbsp;discrim 7777</td>
+<td>&nbsp;Shows all users with the specified discrim that you share a server with</td>
+<td>[discrim] is required and is the 4 digit discriminator&nbsp;</td>
 </tr>
 <tr>
-  <td>&nbsp;download/git/github</td>
-  <td>&nbsp;download</td>
-  <td>&nbsp;Sends a link to the github page for this selfbot</td>
-  <td>No arguments required&nbsp;</td>
+<td>&nbsp;download/git/github</td>
+<td>&nbsp;download</td>
+<td>&nbsp;Sends a link to the github page for this selfbot</td>
+<td>No arguments required&nbsp;</td>
 </tr>
 <tr>
-  <td>&nbsp;emoji/emote [text]</td>
-  <td>&nbsp;emoji This is my message</td>
-  <td>&nbsp;Converts the given message to emojis</td>
-  <td>[text] is required and must be alphanumeric to be converted&nbsp;</td>
+<td>&nbsp;emoji/emote [text]</td>
+<td>&nbsp;emoji This is my message</td>
+<td>&nbsp;Converts the given message to emojis</td>
+<td>[text] is required and must be alphanumeric to be converted&nbsp;</td>
 </tr>
 <tr>
-  <td>&nbsp;eval/e [code]</td>
-  <td>&nbsp;eval 2+2</td>
-  <td>WARNING: This command can be very dangerous and potentially harmful if used incorrectly. Do not use it if you do not know what you are doing</td>
-  <td>[code] is required and is javascript code&nbsp;</td>
+<td>&nbsp;eval/e [code]</td>
+<td>&nbsp;eval 2+2</td>
+<td>WARNING: This command can be very dangerous and potentially harmful if used incorrectly. Do not use it if you do not know what you are doing</td>
+<td>[code] is required and is javascript code&nbsp;</td>
 </tr>
 <tr>
-  <td>&nbsp;fakeeval/fe [fakecode]</td>
-  <td>&nbsp;fakeeval 'PapaJohnsSelfBot' === 'BestSelfBot'</td>
-  <td>Looks like eval, but always returns 'true'</td>
-  <td>&nbsp;[fakecode] is required and can be anything</td>
+<td>&nbsp;fakeeval/fe [fakecode]</td>
+<td>&nbsp;fakeeval 'PapaJohnsSelfBot' === 'BestSelfBot'</td>
+<td>Looks like eval, but always returns 'true'</td>
+<td>&nbsp;[fakecode] is required and can be anything</td>
 </tr>
 <tr>
-  <td>&nbsp;game/g</td>
-  <td>&nbsp;game</td>
-  <td>Tells you what game you are playing, helpful if you used setgame</td>
-  <td>No arguments required</td>
+<td>&nbsp;game/g</td>
+<td>&nbsp;game</td>
+<td>Tells you what game you are playing, helpful if you used setgame</td>
+<td>No arguments required</td>
 </tr>
 <tr>
-  <td>&nbsp;guildstats/gs</td>
-  <td>&nbsp;guildstats</td>
-  <td>&nbsp;Shows you statistics for the current guild</td>
-  <td>&nbsp;No arguments required</td>
+<td>&nbsp;guildstats/gs</td>
+<td>&nbsp;guildstats</td>
+<td>&nbsp;Shows you statistics for the current guild</td>
+<td>&nbsp;No arguments required</td>
 </tr>
 <tr>
-  <td>&nbsp;happy/h [text]</td>
-  <td>&nbsp;happy This selfbot is great!</td>
-  <td>&nbsp;Adds " ᕕ( ᐛ )ᕗ" to your message</td>
-  <td>[text] is optional and can be anything you want&nbsp;</td>
+<td>&nbsp;happy/h [text]</td>
+<td>&nbsp;happy This selfbot is great!</td>
+<td>&nbsp;Adds " ᕕ( ᐛ )ᕗ" to your message</td>
+<td>[text] is optional and can be anything you want&nbsp;</td>
 </tr>
 <tr>
-  <td>&nbsp;impersonate [user]</td>
-  <td>&nbsp;impersonate PapaJohn#7777</td>
-  <td>Copies the avatar, nickname, and game of the targeted user</td>
-  <td>[user] is required and can be a mention or Username#discrim&nbsp;</td>
+<td>&nbsp;impersonate [user]</td>
+<td>&nbsp;impersonate PapaJohn#7777</td>
+<td>Copies the avatar, nickname, and game of the targeted user</td>
+<td>[user] is required and can be a mention or Username#discrim&nbsp;</td>
 </tr>
 <tr>
-  <td>&nbsp;italics/i [text]</td>
-  <td>&nbsp;italics This is my message</td>
-  <td>Italicizes your text</td>
-  <td>[text] is required and can be anything&nbsp;</td>
+<td>&nbsp;italics/i [text]</td>
+<td>&nbsp;italics This is my message</td>
+<td>Italicizes your text</td>
+<td>[text] is required and can be anything&nbsp;</td>
 </tr>
 <tr>
-  <td>&nbsp;lenny/l [text]</td>
-  <td>&nbsp;lenny Nice nudes</td>
-  <td>&nbsp;Adds "&nbsp;( ͡° ͜ʖ ͡°)" to your message</td>
-  <td>[text] is optional and can be anything</td>
+<td>&nbsp;lenny/l [text]</td>
+<td>&nbsp;lenny Nice nudes</td>
+<td>&nbsp;Adds "&nbsp;( ͡&deg; ͜ʖ ͡&deg;)" to your message</td>
+<td>[text] is optional and can be anything</td>
 </tr>
 <tr>
-  <td>&nbsp;memory/mem/m</td>
-  <td>&nbsp;memory</td>
-  <td>Shows how much memory the selfbot is using</td>
-  <td>No arguments required</td>
+<td>&nbsp;memory/mem/m</td>
+<td>&nbsp;memory</td>
+<td>Shows how much memory the selfbot is using</td>
+<td>No arguments required</td>
 </tr>
 <tr>
-  <td>&nbsp;nick/n [name]</td>
-  <td>&nbsp;nick Papa John</td>
-  <td>Changes your nickname in the current server to what you specify (if you have permission)</td>
-  <td>[name] is required and must fit the guidelines for being a nickname</td>
+<td>&nbsp;nick/n [name]</td>
+<td>&nbsp;nick Papa John</td>
+<td>Changes your nickname in the current server to what you specify (if you have permission)</td>
+<td>[name] is required and must fit the guidelines for being a nickname</td>
 </tr>
 <tr>
-  <td>&nbsp;ping</td>
-  <td>&nbsp;ping</td>
-  <td>Shows your selfbots ping</td>
-  <td>No arguments required</td>
+<td>&nbsp;ping</td>
+<td>&nbsp;ping</td>
+<td>Shows your selfbots ping</td>
+<td>No arguments required</td>
 </tr>
 <tr>
-  <td>poll [Title]|[Option 1]|[Option 2]. . .</td>
-  <td>poll Is Papa Johns selfbot the best?|Yes|No|I can add more options??</td>
-  <td>Creates a poll with reactions that has up to 9 choices<br></td>
-  <td>&nbsp;[Title] is required and can be anything you want<br>[Option 1] and [Option 2] are required and can be anything you want, more options can be added up to 9</td>
+<td>poll [Title]|[Option 1]|[Option 2]. . .</td>
+<td>poll Is Papa Johns selfbot the best?|Yes|No|I can add more options??</td>
+<td>Creates a poll with reactions that has up to 9 choices</td>
+<td>&nbsp;[Title] is required and can be anything you want<br />[Option 1] and [Option 2] are required and can be anything you want, more options can be added up to 9</td>
 </tr>
 <tr>
-  <td>prune/p [amount]</td>
-  <td>prune 5</td>
-  <td>Removes your last messages in the channel</td>
-  <td>[amount] is optional but must be from 1-100, defaults to 10 if no amount is given</td>
+<td>prune/p [amount]</td>
+<td>prune 5</td>
+<td>Removes your last messages in the channel</td>
+<td>[amount] is optional but must be from 1-100, defaults to 10 if no amount is given</td>
 </tr>
 <tr>
-  <td>&nbsp;quote/q [user]|[text]</td>
-  <td>quote PapaJohn#7777|potato</td>
-  <td>quotes the last message in the channel found from [user] that contains [text]</td>
-  <td>[user] is required and can be a mention or Username#discrim<br>[text] is required and can be anything&nbsp;</td>
+<td>&nbsp;quote/q [user]|[text]</td>
+<td>quote PapaJohn#7777|potato</td>
+<td>quotes the last message in the channel found from [user] that contains [text]</td>
+<td>[user] is required and can be a mention or Username#discrim<br />[text] is required and can be anything&nbsp;</td>
 </tr>
 <tr>
-  <td>quoteid/qid [messageid]</td>
-  <td>quote 123454206669001131</td>
-  <td>quotes a message from the channel with the id given</td>
-  <td>[messageid] is required and must be the id of a message from the same channel</td>
+<td>quoteid/qid [messageid]</td>
+<td>quote 123454206669001131</td>
+<td>quotes a message from the channel with the id given</td>
+<td>[messageid] is required and must be the id of a message from the same channel</td>
 </tr>
 <tr>
-  <td>reboot</td>
-  <td>reboot</td>
-  <td>reboots the selfbot</td>
-  <td>No arguments required</td>
+<td>reboot</td>
+<td>reboot</td>
+<td>reboots the selfbot</td>
+<td>No arguments required</td>
 </tr>
 <tr>
-  <td>remove/r [text]</td>
-  <td>r @PapaJohn</td>
-  <td>instantly deletes the message</td>
-  <td>[text] is optional and can be anything</td>
+<td>remove/r [text]</td>
+<td>r @PapaJohn</td>
+<td>instantly deletes the message</td>
+<td>[text] is optional and can be anything</td>
 </tr>
 <tr>
-  <td>removeplus/r+/rp [text]</td>
-  <td>rp $help</td>
-  <td>sends [text] as a message then instantly deletes it</td>
-  <td>[text] is required and can be anything&nbsp;</td>
+<td>removeplus/r+/rp [text]</td>
+<td>rp $help</td>
+<td>sends [text] as a message then instantly deletes it</td>
+<td>[text] is required and can be anything&nbsp;</td>
 </tr>
 <tr>
-  <td>server</td>
-  <td>server</td>
-  <td>sends a link to this Selfbot's server</td>
-  <td>No arguments required</td>
+<td>server</td>
+<td>server</td>
+<td>sends a link to this Selfbot's server</td>
+<td>No arguments required</td>
 </tr>
 <tr>
-  <td>setgame/sg [game]</td>
-  <td>setgame Super Mario 64: Last Impact</td>
-  <td>sets the game you are currently playing to [game]. (You wont be able to see this, but others will. You can use the game command to see what game you are playing)</td>
-  <td>[game] is required and can be anything&nbsp;</td>
+<td>setgame/sg [game]</td>
+<td>setgame Super Mario 64: Last Impact</td>
+<td>sets the game you are currently playing to [game]. (You wont be able to see this, but others will. You can use the game command to see what game you are playing)</td>
+<td>[game] is required and can be anything&nbsp;</td>
 </tr>
 <tr>
-  <td>shrug/s [text]</td>
-  <td>shrug I dont know</td>
-  <td>works just like the integrated shrug command</td>
-  <td>[text] is optional and can be anything</td>
+<td>shrug/s [text]</td>
+<td>shrug I dont know</td>
+<td>works just like the integrated shrug command</td>
+<td>[text] is optional and can be anything</td>
 </tr>
 <tr>
-  <td>ss</td>
-  <td>&nbsp;ss</td>
-  <td>alternate statistics command</td>
-  <td>No arguments required</td>
+<td>ss</td>
+<td>&nbsp;ss</td>
+<td>alternate statistics command</td>
+<td>No arguments required</td>
 </tr>
 <tr>
-  <td>statistics/stats</td>
-  <td>statistics</td>
-  <td>gives you some statistics</td>
-  <td>No arguments required&nbsp;</td>
+<td>statistics/stats</td>
+<td>statistics</td>
+<td>gives you some statistics</td>
+<td>No arguments required&nbsp;</td>
 </tr>
 <tr>
-  <td>status [status]</td>
-  <td>status invisible</td>
-  <td>Sets your status to [status]</td>
-  <td>[status] is required and must be 'online', 'idle', 'dnd', or 'invisible'</td>
+<td>status [status]</td>
+<td>status invisible</td>
+<td>Sets your status to [status]</td>
+<td>[status] is required and must be 'online', 'idle', 'dnd', or 'invisible'</td>
 </tr>
 <tr>
-  <td>underline/u [text]</td>
-  <td>underline This is my message</td>
-  <td>Underlines the given text</td>
-  <td>[text] is required and can be anything</td>
+<td>underline/u [text]</td>
+<td>underline This is my message</td>
+<td>Underlines the given text</td>
+<td>[text] is required and can be anything</td>
 </tr>
 <tr>
-  <td>uptime/ut</td>
-  <td>uptime</td>
-  <td>Shows how long the selfbot has been running</td>
-  <td>No arguments required</td>
+<td>uptime/ut</td>
+<td>uptime</td>
+<td>Shows how long the selfbot has been running</td>
+<td>No arguments required</td>
 </tr>
 <tr>
-  <td>userstats/us [user]</td>
-  <td>userstats PapaJohn#7777</td>
-  <td>Shows some stats for [user]</td>
-  <td>[user] is optional but must be a mention or Username#discrim, if no user is provided, it will default to yourself</td>
+<td>userstats/us [user]</td>
+<td>userstats PapaJohn#7777</td>
+<td>Shows some stats for [user]</td>
+<td>[user] is optional but must be a mention or Username#discrim, if no user is provided, it will default to yourself</td>
 </tr>
-<tbody>
+</tbody>
 </table>
-</html>
