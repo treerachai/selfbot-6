@@ -10,8 +10,10 @@
 
 4. Put the Installer (Install Selfbot.bat) in a folder of your choosing and run it (its a bat file so your computer is gonna scream about it being unsafe just like they do with all bat files, also after this you wont need the installer anymore so you can delete it)
 
-5. Open the new Selfbot Folder and rename credentials example.json to credentials.json and add your discord token where it's indicated (to find your discord token, use inspect element [ctrl+shift+i] on discord, then follow this here: https://camo.githubusercontent.com/d3d4ad5526143204a98db268d79eadadf0d03a87/687474703a2f2f692e696d6775722e636f6d2f5569416d4f714d2e706e67)
+5. Open the new Selfbot Folder and rename credentials example.json to credentials.json and add your discord token where it's indicated inside credentials.json which can be opened with any plain text editor you want (to find your discord token, use inspect element [ctrl+shift+i] on discord, then follow this here: https://camo.githubusercontent.com/d3d4ad5526143204a98db268d79eadadf0d03a87/687474703a2f2f692e696d6775722e636f6d2f5569416d4f714d2e706e67)
 
 6. Run RunSelfBot.bat
 
 (To update, all you need to do is run UpdateSelfbot.bat and then restart the selfbot)
+
+If you are still having trouble after following these steps, join this server and ask PapaJohn#7777 for help: https://discord.gg/zz9KTka
