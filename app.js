@@ -263,6 +263,7 @@ client.on('message', msg => {
     if (qa.length < 2){ msg.error('Invalid search. Proper format: `.quote [Mention or Username#discrim]|Text To Search For`'); break; }
     var quser = client.users.find('tag', qa[0]);
     if (msg.mentions.users.size !== 0) quser = msg.mentions.users.first();
+    if (!quser) quser = client.users.find('id', qa[0]);
     const qsearch = qa[1];
     if (!quser){ msg.error('User not found'); break; }
     msg.channel.fetchMessages({limit: 100})
@@ -308,6 +309,7 @@ client.on('message', msg => {
      else {
       var impuser = client.users.find('tag', singlearg.toString());
       if (msg.mentions.users.size !== 0) impuser = msg.mentions.users.first();
+      if (!impuser) impuser = client.users.find('id', singlearg.toString());
       if (!impuser) msg.error('No Match Found, This Command is Case Sensitive');
       else if (!msg.guild.members.has(impuser.id)) msg.error('That user is not in this guild');
       else{
@@ -329,6 +331,7 @@ client.on('message', msg => {
        else {
         var avauser = msg.client.users.find('tag', singlearg.toString());
         if (msg.mentions.users.size !== 0) avauser = msg.mentions.users.first();
+        if (!avauser) avauser = client.users.find('id', singlearg.toString());
         if (!avauser) msg.error('No Match Found, This Command is Case Sensitive');
         else {
           msg.channel.send(avauser.displayAvatarURL({format:'png',size:2048}));
@@ -341,6 +344,7 @@ client.on('message', msg => {
       if (msg.mentions.users.size > 0) ususer = msg.mentions.users.first();
       else if (singlearg){
         ususer = client.users.find('tag', singlearg.toString());
+      if (!ususer) ususer = client.users.find('id', singlearg.toString());
         if (!ususer) {
           msg.error('No Match Found, This Command is Case Sensitive');
           break;
