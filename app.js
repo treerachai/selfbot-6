@@ -169,6 +169,21 @@ client.on('message', msg => {
         }
       }
       break;
+  case 'calculator': case 'calc':
+    const calcform = singlearg.replace(/[^0-9+\-*/()]/gi, '');
+    if (!calcform){ msg.error('You must provide something valid to calculate'); break; }
+    try{
+      let calcans = eval(calcform);
+      if (typeof calcans !== 'string') {
+        calcans = require('util').inspect(calcans);
+      }
+      const calcEmbed = new Discord.RichEmbed()
+      .setTitle('Calculator')
+      .setDescription('```js\n'+calcform+' = '+calcans+'```')
+      .setColor(rand(data.embedColors));
+      msg.sendEmbed(calcEmbed);
+    } catch (err) { msg.error('```js\n' + err + '```');}
+    break;
 	case 'ut': case 'uptime':
 	  var ut = parseFloat(((client.uptime)/(1000))).toFixed(0);
 	  var hours = ~~(ut/3600);
