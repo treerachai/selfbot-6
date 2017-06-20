@@ -246,7 +246,22 @@ client.on('message', msg => {
     if (singlearg) maxroll = parseInt(singlearg.replace(/[^0-9]/gi, ''));
     if (maxroll < 1 || maxroll > Number.MAX_SAFE_INTEGER || maxroll!==maxroll){ msg.error('Your max roll must be a number between 1 and '+Number.MAX_SAFE_INTEGER); break;}
     var rollresult = Math.floor((Math.random() * maxroll) + 1);
-    msg.send('You rolled a '+rollresult+' out of '+maxroll);
+    msg.send(':game_die: You rolled a '+rollresult+' out of '+maxroll);
+    break;
+  case 'coinflip': case 'coin': case 'flip':
+    var flips = 1;
+    if (singlearg) flips = parseInt(singlearg.replace(/[^0-9]/gi, ''));
+    if (flips < 1 || flips > 100000000 || flips!==flips){ msg.error('The amount of coin flips must be between 1 and 100 million'); break;}
+    var heads = 0;
+    var tails = 0;
+     for (var i = 0; i < flips; i++){
+      var flip = Math.floor((Math.random() * 2) + 1);
+      if (flip === 1) heads++;
+      else tails++;
+     }
+     var headpercent = (Math.round((heads/flips)*10000)/100); if (headpercent===Infinity) headpercent = 0;
+     var tailspercent = (Math.round((tails/flips)*10000)/100); if (tailspercent===Infinity) tailspercent = 0;
+    msg.send('```ruby\nResults of '+flips+' coin flips \nHeads: '+heads+' ('+headpercent+'%)\nTails: '+tails+' ('+tailspercent+'%)```');
     break;
 	case 'm': case 'mem': case 'memory':
 		msg.send('Memory: ' + (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2) + ' MB');
