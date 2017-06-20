@@ -248,6 +248,40 @@ client.on('message', msg => {
     var rollresult = Math.floor((Math.random() * maxroll) + 1);
     msg.send(':game_die: You rolled a '+rollresult+' out of '+maxroll);
     break;
+  case 'rps':
+    var userchoice = singlearg.toLowerCase();
+    var botchoice = 'Hey you can read code';
+    var rpswin = 'pls dont expose mai easter egg';
+
+    if (userchoice === 'rock') userchoice = userchoice + ' :full_moon:';
+    else if (userchoice === 'paper') userchoice = userchoice + ' :page_facing_up:';
+    else if (userchoice === 'scissors') userchoice = userchoice + ' :scissors:';
+
+    var rpsrando = Math.floor((Math.random() * 3) + 1);
+    if (rpsrando === 1) botchoice = 'rock :full_moon:';
+    else if (rpsrando === 2) botchoice = 'paper  :page_facing_up:';
+    else botchoice = 'scissors :scissors:';
+
+    if(userchoice===botchoice) rpswin = 'It\'s a tie!';
+    else if(userchoice==="rock :full_moon:"){
+        if(botchoice==="scissors :scissors:") rpswin = "Rock Wins!";
+        else rpswin = "Paper Wins!";
+    } else if(userchoice==="paper :page_facing_up:"){
+        if(botchoice==="rock :full_moon:") rpswin = "Paper Wins!";
+        else rpswin = "Scissors Wins!";
+    } else if(userchoice==="scissors :scissors:"){
+        if(botchoice==="rock :full_moon:") rpswin = "Rock Wins!";
+        else rpswin = "Scissors Wins!";
+    } else { msg.error('You must choose either rock, paper, or scissors'); break;}
+    userchoice = userchoice.charAt(0).toUpperCase() + userchoice.slice(1);
+    botchoice = botchoice.charAt(0).toUpperCase() + botchoice.slice(1);
+    const rpsEmbed = new Discord.RichEmbed()
+    .setTitle(rpswin)
+    .addField('Your Choice',userchoice,true)
+    .addField('My Choice',botchoice,true)
+    .setColor(rand(data.embedColors));
+    msg.sendEmbed(rpsEmbed);
+    break;
   case 'coinflip': case 'coin': case 'flip':
     var flips = 1;
     if (singlearg) flips = parseInt(singlearg.replace(/[^0-9]/gi, ''));
