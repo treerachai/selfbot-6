@@ -177,27 +177,16 @@ client.on('message', msg => {
 	  msg.send('Uptime: '+hours+' hours, '+minutes+' minutes, '+seconds+' seconds');
 	  break;
   case 'stats': case 'statistics':
-      const embed = new Discord.RichEmbed()
-        .addField('Author', 'John#0969', true)
-        .addField('Framework', 'Discord.js ' + Discord.version, true)
-        .addField('Memory', (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2) + ' MB', true)
-        .addField('Users', client.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString(), true)
-        .addField('Servers', client.guilds.size.toLocaleString(), true)
-        .addField('Forked by', 'PapaJohn#7777', true)
-        .setColor(rand(data.embedColors));
-      msg.sendEmbed(embed);
-      break;
-	case 'ss':
 	  var ssut = parseFloat(((client.uptime)/(1000))).toFixed(0);
 	  var hours = ~~(ssut/3600);
 	  var minutes = ~~((ssut%3600)/60);
       const ssembed = new Discord.RichEmbed()
-        .addField('Author', 'John#0969', true)
-        .addField('Forked by', 'PapaJohn#7777', true)
-		    .addField('Servers', client.guilds.size.toLocaleString(), true)
+        .addField('Ping', client.ping.toFixed(2) + ' ms', true)
 		    .addField('Memory', (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2) + ' MB', true)
-		    .addField('Ping', client.ping.toFixed(2) + ' ms', true)
 		    .addField('Uptime', hours+' hours, '+minutes+' minutes', true)
+        .addField('Servers', client.guilds.size.toLocaleString(), true)
+        .addField('Channels', client.channels.size , true)
+        .addField('Users', client.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString(), true)
         .setColor(rand(data.embedColors));
 	  msg.sendEmbed(ssembed);
       break;
