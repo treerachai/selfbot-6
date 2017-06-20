@@ -1,4 +1,6 @@
-# A Discord.js Selfbot by PapaJohn#7777 forked from an old version of John#0969's selfbot
+# A Discord.js Selfbot by PapaJohn#7777
+
+forked from an old version of John#0969's Selfbot
 
 # Install Help (Windows)
 
