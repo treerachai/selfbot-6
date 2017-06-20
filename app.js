@@ -241,6 +241,13 @@ client.on('message', msg => {
             msg.sendEmbed(discrembed);
         }}
     break;
+  case 'roll':
+    var maxroll = 6;
+    if (singlearg) maxroll = parseInt(singlearg.replace(/[^0-9]/gi, ''));
+    if (maxroll < 1 || maxroll > Number.MAX_SAFE_INTEGER || maxroll!==maxroll){ msg.error('Your max roll must be a number between 1 and '+Number.MAX_SAFE_INTEGER); break;}
+    var rollresult = Math.floor((Math.random() * maxroll) + 1);
+    msg.send('You rolled a '+rollresult+' out of '+maxroll);
+    break;
 	case 'm': case 'mem': case 'memory':
 		msg.send('Memory: ' + (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2) + ' MB');
 		break;
