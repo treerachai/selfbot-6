@@ -170,7 +170,7 @@ client.on('message', msg => {
       }
       break;
   case 'calculator': case 'calc':
-    const calcform = singlearg.replace(/[^0-9+\-*/()]/gi, '');
+    const calcform = singlearg.replace(/[^0-9+\-*/().]/gi, '');
     if (!calcform){ msg.error('You must provide something valid to calculate'); break; }
     try{
       let calcans = eval(calcform);
