@@ -108,6 +108,9 @@ client.on('message', msg => {
         .setColor(rand(data.embedColors));
       msg.sendEmbed(cembed);
       break;
+    case 'disapprove': case 'da':
+      msg.channel.send(singlearg+' ಠ_ಠ');
+      break;
     case 'discrim':
       if (args.toString().length != 4) msg.error('You must enter a 4 digit discriminator')
       else {
