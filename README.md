@@ -8,7 +8,7 @@ forked from an old version of John#0969's Selfbot
 
 2. Install git here: https://git-scm.com/download/win (when installing, just use whatever defaults it gives to you in any options)
 
-3. Download the Installer here: http://www.mediafire.com/file/24thn21fp76ax2p/Install_Selfbot.bat
+3. Download the Installer here: https://drive.google.com/file/d/0B07gEfyceilqQWpleDJpclctQmM/view?usp=sharing
 
 4. Put the Installer (Install Selfbot.bat) in a folder of your choosing and run it (its a bat file so your computer is gonna scream about it being unsafe just like they do with all bat files, also after this you wont need the installer anymore so you can delete it)
 
