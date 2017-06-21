@@ -368,6 +368,9 @@ client.on('message', msg => {
         }
       }).catch(error => msg.error('No message found in this channel with the id: `' + singlearg + '`'));
       break;
+    case 'rageflip': case 'rf':
+      msg.channel.send(singlearg+' ┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻');
+      break;
     case 'reboot':
       msg.send('Rebooting...')
         .then(() => process.exit(1));
