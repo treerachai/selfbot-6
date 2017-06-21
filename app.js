@@ -397,7 +397,7 @@ client.on('message', msg => {
 
       var rpsrando = Math.floor((Math.random() * 3) + 1);
       if (rpsrando === 1) botchoice = 'rock :full_moon:';
-      else if (rpsrando === 2) botchoice = 'paper  :page_facing_up:';
+      else if (rpsrando === 2) botchoice = 'paper :page_facing_up:';
       else botchoice = 'scissors :scissors:';
 
       if (userchoice === botchoice) rpswin = 'It\'s a tie!';
