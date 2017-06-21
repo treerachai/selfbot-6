@@ -28,28 +28,78 @@ client.on('message', msg => {
   if (msg.guild) guildMember = msg.guild.member(msg.author);
 
   switch (command) {
-    case 'b': case 'bold':
+    case '8ball': case '8':
+      const question = args.join(' ');
+      if (!question) {
+        msg.error('You must provide a question to ask the mystical 8ball.');
+      } else {
+        const eightembed = new Discord.RichEmbed()
+          .addField('Question', question)
+          .addField('Answer', rand(data.eightBallAnswers))
+          .setColor(rand(data.embedColors));
+        msg.sendEmbed(eightembed);
+      }
+      break;
+    case 'avatar': case 'a':
+      if (!singlearg) msg.channel.send(client.user.displayAvatarURL({
+        format: 'png',
+        size: 2048
+      }));
+      else {
+        var avauser = msg.client.users.find('tag', singlearg.toString());
+        if (msg.mentions.users.size !== 0) avauser = msg.mentions.users.first();
+        if (!avauser) avauser = client.users.find('id', singlearg.toString());
+        if (!avauser) msg.error('No Match Found, This Command is Case Sensitive');
+        else {
+          msg.channel.send(avauser.displayAvatarURL({
+            format: 'png',
+            size: 2048
+          }));
+        }
+      }
+      break;
+    case 'bold': case 'b':
       msg.channel.send('**' + singlearg.toString() + '**');
       break;
-    case 'h': case 'happy':
-      msg.channel.send(singlearg + ' ᕕ( ᐛ )ᕗ');
+    case 'calculator': case 'calc':
+      const calcform = singlearg.replace(/[^0-9+\-*/().]/gi, '');
+      if (!calcform) {
+        msg.error('You must provide something valid to calculate');
+        break;
+      }
+      try {
+        let calcans = eval(calcform);
+        if (typeof calcans !== 'string') {
+          calcans = require('util').inspect(calcans);
+        }
+        const calcEmbed = new Discord.RichEmbed()
+          .setTitle('Calculator')
+          .setDescription('```js\n' + calcform + ' = ' + calcans + '```')
+          .setColor(rand(data.embedColors));
+        msg.sendEmbed(calcEmbed);
+      } catch (err) {
+        msg.error('```js\n' + err + '```');
+      }
       break;
-    case 'removeplus': case 'rp': case 'r+':
-      msg.channel.send(singlearg.toString()).then(async m => {
-        m.delete().catch(Error);
-      })
-      break;
-    case 'u': case 'underline':
-      msg.channel.send('__' + singlearg.toString() + '__');
-      break;
-    case 'i': case 'italics':
-      msg.channel.send('*' + singlearg.toString() + '*');
-      break;
-    case 'download': case 'git': case 'github':
-      const hembed = new Discord.RichEmbed()
-        .addField('Link to repo for this fork', 'https://github.com/VapidSlay/SelfBot')
-        .setColor(rand(data.embedColors));
-      msg.sendEmbed(hembed);
+    case 'coinflip': case 'coin': case 'flip':
+      var flips = 1;
+      if (singlearg) flips = parseInt(singlearg.replace(/[^0-9]/gi, ''));
+      if (flips < 1 || flips > 100000000 || flips !== flips) {
+        msg.error('The amount of coin flips must be between 1 and 100 million');
+        break;
+      }
+      var heads = 0;
+      var tails = 0;
+      for (var i = 0; i < flips; i++) {
+        var flip = Math.floor((Math.random() * 2) + 1);
+        if (flip === 1) heads++;
+        else tails++;
+      }
+      var headpercent = (Math.round((heads / flips) * 10000) / 100);
+      if (headpercent === Infinity) headpercent = 0;
+      var tailspercent = (Math.round((tails / flips) * 10000) / 100);
+      if (tailspercent === Infinity) tailspercent = 0;
+      msg.send('```ruby\nResults of ' + flips + ' coin flips \nHeads: ' + heads + ' (' + headpercent + '%)\nTails: ' + tails + ' (' + tailspercent + '%)```');
       break;
     case 'commands': case 'help':
       const cembed = new Discord.RichEmbed()
@@ -58,11 +108,159 @@ client.on('message', msg => {
         .setColor(rand(data.embedColors));
       msg.sendEmbed(cembed);
       break;
-    case 'server':
-      const servembed = new Discord.RichEmbed()
-        .addField('Link to this selfbot\'s server', 'https://discord.gg/zz9KTka')
+    case 'discrim':
+      if (args.toString().length != 4) msg.error('You must enter a 4 digit discriminator')
+      else {
+        const matches = msg.client.users.findAll('discriminator', args.toString());
+        if (matches.length === 0) {
+          msg.error('There are no matches for this discriminator, try joining more servers to add to the list of potential matches.');
+        } else {
+          let message = '```css\n';
+          var discrimc = 0;
+          for (const user in matches) {
+            discrimc++;
+            message += matches[user].username + '#' + args.toString();
+            if (discrimc !== matches.length) message += ', ';
+          }
+          const discrembed = new Discord.RichEmbed()
+            .setTitle('Results for Discrim #' + args.toString())
+            .setDescription(message + '```')
+            .setColor(rand(data.embedColors));
+          msg.sendEmbed(discrembed);
+        }
+      }
+      break;
+    case 'download': case 'git': case 'github':
+      const hembed = new Discord.RichEmbed()
+        .addField('Link to repo for this fork', 'https://github.com/VapidSlay/SelfBot')
         .setColor(rand(data.embedColors));
-      msg.sendEmbed(servembed);
+      msg.sendEmbed(hembed);
+      break;
+    case 'emoji': case 'emote':
+      if (!args) {
+        msg.error('You must provide a message to emojify.');
+      } else {
+        const chars = Array.from(args.join(' ').toLowerCase());
+        let message = '';
+        for (let index in chars) {
+          if (!chars[index].match(/[a-z]|[0-9]/i)) {
+            if (chars[index] === ' ') {
+              message += '    ';
+            } else {
+              message += chars[index];
+            }
+          } else {
+            const number = parseInt(chars[index]);
+            if (!isNaN(number)) {
+              message += ':' + data.numbers[number] + ':';
+            } else {
+              message += ':regional_indicator_' + chars[index] + ':';
+            }
+          }
+        }
+        msg.channel.send(message);
+      }
+      break;
+    case 'eval': case 'e':
+      const code = args.join(' ');
+      if (!code) {
+        msg.error('You must provide some code to evalute.');
+      } else {
+        try {
+          let evaled = eval(code);
+          if (typeof evaled !== 'string') {
+            evaled = require('util').inspect(evaled);
+          }
+          const codeEmbed = new Discord.RichEmbed()
+            .addField('Eval', '```js\n' + code + '```')
+            .addField('Returns', '```js\n' + evaled + '```')
+            .setColor(rand(data.embedColors));
+          msg.sendEmbed(codeEmbed);
+        } catch (err) {
+          msg.error('```js\n' + err + '```');
+        }
+      }
+      break;
+    case 'fakeeval': case 'fe':
+      const fakecode = args.join(' ');
+      if (!fakecode) {
+        msg.error('You must provide some code to evalute.');
+      } else {
+        const fakeCodeEmbed = new Discord.RichEmbed()
+          .addField('Eval', '```js\n' + fakecode + '```')
+          .addField('Returns', '```js\ntrue```')
+          .setColor(rand(data.embedColors));
+        msg.sendEmbed(fakeCodeEmbed);
+      }
+      break;
+    case 'game': case 'g':
+      if (client.user.presence.game) msg.send('Playing: `' + client.user.presence.game.name + '`');
+      else msg.send('Not currently playing a game');
+      break;
+    case 'guildstats': case 'gs':
+      if (!guildMember) {
+        msg.error('This command must be used in a guild.');
+      } else {
+        const gsembed = new Discord.RichEmbed()
+          .setTitle('Stats for: `' + msg.guild.name + '`')
+          .setThumbnail(msg.guild.iconURL())
+          .addField('Guild Owner', '`' + msg.guild.owner.user.tag + '`', true)
+          .addField('Members', msg.guild.memberCount, true)
+          .addField('Region', msg.guild.region, true)
+          .addField('Created At', msg.guild.createdAt.toString().substring(0, 16), true)
+          .setColor(rand(data.embedColors));
+        msg.sendEmbed(gsembed);
+      }
+      break;
+    case 'h': case 'happy':
+      msg.channel.send(singlearg + ' ᕕ( ᐛ )ᕗ');
+      break;
+    case 'impersonate':
+      if (guildMember) {
+        if (!singlearg) msg.error('You must specify a user to impersonate');
+        else {
+          var impuser = client.users.find('tag', singlearg.toString());
+          if (msg.mentions.users.size !== 0) impuser = msg.mentions.users.first();
+          if (!impuser) impuser = client.users.find('id', singlearg.toString());
+          if (!impuser) msg.error('No Match Found, This Command is Case Sensitive');
+          else if (!msg.guild.members.has(impuser.id)) msg.error('That user is not in this guild');
+          else {
+            const impmember = msg.guild.members.find('id', impuser.id);
+            client.user.setAvatar(impuser.displayAvatarURL({
+              format: 'png',
+              size: 2048
+            })).catch(Error);
+            guildMember.setNickname(impmember.displayName).catch(Error);
+            if (impuser.presence.game) client.user.setGame(impuser.presence.game.name);
+            else client.user.setGame(null);
+          }
+        }
+      } else msg.error('This command can only be used in a guild');
+      break;
+    case 'italics': case 'i':
+      msg.channel.send('*' + singlearg.toString() + '*');
+      break;
+    case 'lenny': case 'l':
+      msg.channel.send(singlearg + ' ( ͡° ͜ʖ ͡°)');
+      break;
+    case 'memory': case 'mem': case 'm':
+      msg.send('Memory: ' + (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2) + ' MB');
+      break;
+    case 'nick': case 'n':
+      if (!guildMember) {
+        msg.error('You may only use this command in a guild.')
+      } else {
+        const nickname = args.join(' ');
+        if (!nickname) {
+          msg.error('You must provide a new nickname.');
+        } else {
+          guildMember.setNickname(nickname)
+            .catch((e) => msg.error(e.message));
+        }
+      }
+      break;
+    case 'ping':
+      msg.send('Ping: ' + client.ping.toFixed(2) + ' ms');
       break;
     case 'poll':
       if (!singlearg) {
@@ -88,247 +286,7 @@ client.on('message', msg => {
         }
       })
       break;
-    case 'ping':
-      msg.send('Ping: ' + client.ping.toFixed(2) + ' ms');
-      break;
-    case 'emote': case 'emoji':
-      if (!args) {
-        msg.error('You must provide a message to emojify.');
-      } else {
-        const chars = Array.from(args.join(' ').toLowerCase());
-        let message = '';
-        for (let index in chars) {
-          if (!chars[index].match(/[a-z]|[0-9]/i)) {
-            if (chars[index] === ' ') {
-              message += '    ';
-            } else {
-              message += chars[index];
-            }
-          } else {
-            const number = parseInt(chars[index]);
-            if (!isNaN(number)) {
-              message += ':' + data.numbers[number] + ':';
-            } else {
-              message += ':regional_indicator_' + chars[index] + ':';
-            }
-          }
-        }
-        msg.channel.send(message);
-      }
-      break;
-    case 'n': case 'nick':
-      if (!guildMember) {
-        msg.error('You may only use this command in a guild.')
-      } else {
-        const nickname = args.join(' ');
-        if (!nickname) {
-          msg.error('You must provide a new nickname.');
-        } else {
-          guildMember.setNickname(nickname)
-            .catch((e) => msg.error(e.message));
-        }
-      }
-      break;
-    case 'setgame': case 'sg':
-      if (!singlearg || singlearg.length < 1) client.user.setGame(null);
-      else if (singlearg.length > 128) client.user.setGame(singlearg.toString().substring(0, 128));
-      else client.user.setGame(singlearg.toString());
-      break;
-    case 'game': case 'g':
-      if (client.user.presence.game) msg.send('Playing: `' + client.user.presence.game.name + '`');
-      else msg.send('Not currently playing a game');
-      break;
-    case 'status':
-      if (args[0] != 'online' && args[0] != 'idle' && args[0] != 'dnd' && args[0] != 'invisible') {
-        msg.error('Status must be one of the following: online, idle, dnd, invisible');
-      } else {
-        client.user.setStatus(args[0]);
-      }
-      break;
-    case 'fe': case 'fakeeval':
-      const fakecode = args.join(' ');
-      if (!fakecode) {
-        msg.error('You must provide some code to evalute.');
-      } else {
-        const fakeCodeEmbed = new Discord.RichEmbed()
-          .addField('Eval', '```js\n' + fakecode + '```')
-          .addField('Returns', '```js\ntrue```')
-          .setColor(rand(data.embedColors));
-        msg.sendEmbed(fakeCodeEmbed);
-      }
-      break;
-    case 'e': case 'eval':
-      const code = args.join(' ');
-      if (!code) {
-        msg.error('You must provide some code to evalute.');
-      } else {
-        try {
-          let evaled = eval(code);
-          if (typeof evaled !== 'string') {
-            evaled = require('util').inspect(evaled);
-          }
-          const codeEmbed = new Discord.RichEmbed()
-            .addField('Eval', '```js\n' + code + '```')
-            .addField('Returns', '```js\n' + evaled + '```')
-            .setColor(rand(data.embedColors));
-          msg.sendEmbed(codeEmbed);
-        } catch (err) {
-          msg.error('```js\n' + err + '```');
-        }
-      }
-      break;
-    case 'calculator': case 'calc':
-      const calcform = singlearg.replace(/[^0-9+\-*/().]/gi, '');
-      if (!calcform) {
-        msg.error('You must provide something valid to calculate');
-        break;
-      }
-      try {
-        let calcans = eval(calcform);
-        if (typeof calcans !== 'string') {
-          calcans = require('util').inspect(calcans);
-        }
-        const calcEmbed = new Discord.RichEmbed()
-          .setTitle('Calculator')
-          .setDescription('```js\n' + calcform + ' = ' + calcans + '```')
-          .setColor(rand(data.embedColors));
-        msg.sendEmbed(calcEmbed);
-      } catch (err) {
-        msg.error('```js\n' + err + '```');
-      }
-      break;
-    case 'ut': case 'uptime':
-      var ut = parseFloat(((client.uptime) / (1000))).toFixed(0);
-      var hours = ~~(ut / 3600);
-      var minutes = ~~((ut % 3600) / 60);
-      var seconds = ut % 60;
-      msg.send('Uptime: ' + hours + ' hours, ' + minutes + ' minutes, ' + seconds + ' seconds');
-      break;
-    case 'stats': case 'statistics':
-      var ssut = parseFloat(((client.uptime) / (1000))).toFixed(0);
-      var hours = ~~(ssut / 3600);
-      var minutes = ~~((ssut % 3600) / 60);
-      const ssembed = new Discord.RichEmbed()
-        .addField('Ping', client.ping.toFixed(2) + ' ms', true)
-        .addField('Memory', (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2) + ' MB', true)
-        .addField('Uptime', hours + ' hours, ' + minutes + ' minutes', true)
-        .addField('Servers', client.guilds.size.toLocaleString(), true)
-        .addField('Channels', client.channels.size, true)
-        .addField('Users', client.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString(), true)
-        .setColor(rand(data.embedColors));
-      msg.sendEmbed(ssembed);
-      break;
-    case '8': case '8ball':
-      const question = args.join(' ');
-      if (!question) {
-        msg.error('You must provide a question to ask the mystical 8ball.');
-      } else {
-        const eightembed = new Discord.RichEmbed()
-          .addField('Question', question)
-          .addField('Answer', rand(data.eightBallAnswers))
-          .setColor(rand(data.embedColors));
-        msg.sendEmbed(eightembed);
-      }
-      break;
-    case 'l': case 'lenny':
-      msg.channel.send(singlearg + ' ( ͡° ͜ʖ ͡°)');
-      break;
-    case 'discrim':
-      if (args.toString().length != 4) msg.error('You must enter a 4 digit discriminator')
-      else {
-        const matches = msg.client.users.findAll('discriminator', args.toString());
-        if (matches.length === 0) {
-          msg.error('There are no matches for this discriminator, try joining more servers to add to the list of potential matches.');
-        } else {
-          let message = '```css\n';
-          var discrimc = 0;
-          for (const user in matches) {
-            discrimc++;
-            message += matches[user].username + '#' + args.toString();
-            if (discrimc !== matches.length) message += ', ';
-          }
-          const discrembed = new Discord.RichEmbed()
-            .setTitle('Results for Discrim #' + args.toString())
-            .setDescription(message + '```')
-            .setColor(rand(data.embedColors));
-          msg.sendEmbed(discrembed);
-        }
-      }
-      break;
-    case 'roll':
-      var maxroll = 6;
-      if (singlearg) maxroll = parseInt(singlearg.replace(/[^0-9]/gi, ''));
-      if (maxroll < 1 || maxroll > Number.MAX_SAFE_INTEGER || maxroll !== maxroll) {
-        msg.error('Your max roll must be a number between 1 and ' + Number.MAX_SAFE_INTEGER);
-        break;
-      }
-      var rollresult = Math.floor((Math.random() * maxroll) + 1);
-      msg.send(':game_die: You rolled a ' + rollresult + ' out of ' + maxroll);
-      break;
-    case 'rps':
-      var userchoice = singlearg.toLowerCase();
-      var botchoice = 'Hey you can read code';
-      var rpswin = 'pls dont expose mai easter egg';
-
-      if (userchoice === 'rock') userchoice = userchoice + ' :full_moon:';
-      else if (userchoice === 'paper') userchoice = userchoice + ' :page_facing_up:';
-      else if (userchoice === 'scissors') userchoice = userchoice + ' :scissors:';
-
-      var rpsrando = Math.floor((Math.random() * 3) + 1);
-      if (rpsrando === 1) botchoice = 'rock :full_moon:';
-      else if (rpsrando === 2) botchoice = 'paper  :page_facing_up:';
-      else botchoice = 'scissors :scissors:';
-
-      if (userchoice === botchoice) rpswin = 'It\'s a tie!';
-      else if (userchoice === "rock :full_moon:") {
-        if (botchoice === "scissors :scissors:") rpswin = "Rock Wins!";
-        else rpswin = "Paper Wins!";
-      } else if (userchoice === "paper :page_facing_up:") {
-        if (botchoice === "rock :full_moon:") rpswin = "Paper Wins!";
-        else rpswin = "Scissors Wins!";
-      } else if (userchoice === "scissors :scissors:") {
-        if (botchoice === "rock :full_moon:") rpswin = "Rock Wins!";
-        else rpswin = "Scissors Wins!";
-      } else {
-        msg.error('You must choose either rock, paper, or scissors');
-        break;
-      }
-      userchoice = userchoice.charAt(0).toUpperCase() + userchoice.slice(1);
-      botchoice = botchoice.charAt(0).toUpperCase() + botchoice.slice(1);
-      const rpsEmbed = new Discord.RichEmbed()
-        .setTitle(rpswin)
-        .addField('Your Choice', userchoice, true)
-        .addField('My Choice', botchoice, true)
-        .setColor(rand(data.embedColors));
-      msg.sendEmbed(rpsEmbed);
-      break;
-    case 'coinflip': case 'coin': case 'flip':
-      var flips = 1;
-      if (singlearg) flips = parseInt(singlearg.replace(/[^0-9]/gi, ''));
-      if (flips < 1 || flips > 100000000 || flips !== flips) {
-        msg.error('The amount of coin flips must be between 1 and 100 million');
-        break;
-      }
-      var heads = 0;
-      var tails = 0;
-      for (var i = 0; i < flips; i++) {
-        var flip = Math.floor((Math.random() * 2) + 1);
-        if (flip === 1) heads++;
-        else tails++;
-      }
-      var headpercent = (Math.round((heads / flips) * 10000) / 100);
-      if (headpercent === Infinity) headpercent = 0;
-      var tailspercent = (Math.round((tails / flips) * 10000) / 100);
-      if (tailspercent === Infinity) tailspercent = 0;
-      msg.send('```ruby\nResults of ' + flips + ' coin flips \nHeads: ' + heads + ' (' + headpercent + '%)\nTails: ' + tails + ' (' + tailspercent + '%)```');
-      break;
-    case 'm': case 'mem': case 'memory':
-      msg.send('Memory: ' + (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2) + ' MB');
-      break;
-    case 's': case 'shrug':
-      msg.channel.send(singlearg + ' ¯\\_(ツ)_/¯');
-      break;
-    case 'p': case 'prune':
+    case 'prune': case 'p':
       let messagesToDelete = parseInt(args[0]);
       messagesToDelete = messagesToDelete || 10;
       msg.channel.fetchMessages({
@@ -407,49 +365,112 @@ client.on('message', msg => {
         }
       }).catch(error => msg.error('No message found in this channel with the id: `' + singlearg + '`'));
       break;
-    case 'impersonate':
-      if (guildMember) {
-        if (!singlearg) msg.error('You must specify a user to impersonate');
-        else {
-          var impuser = client.users.find('tag', singlearg.toString());
-          if (msg.mentions.users.size !== 0) impuser = msg.mentions.users.first();
-          if (!impuser) impuser = client.users.find('id', singlearg.toString());
-          if (!impuser) msg.error('No Match Found, This Command is Case Sensitive');
-          else if (!msg.guild.members.has(impuser.id)) msg.error('That user is not in this guild');
-          else {
-            const impmember = msg.guild.members.find('id', impuser.id);
-            client.user.setAvatar(impuser.displayAvatarURL({
-              format: 'png',
-              size: 2048
-            })).catch(Error);
-            guildMember.setNickname(impmember.displayName).catch(Error);
-            if (impuser.presence.game) client.user.setGame(impuser.presence.game.name);
-            else client.user.setGame(null);
-          }
-        }
-      } else msg.error('This command can only be used in a guild');
+    case 'reboot':
+      msg.send('Rebooting...')
+        .then(() => process.exit(1));
+      break;
+    case 'remove': case 'r':
+      break;
+    case 'removeplus': case 'rp': case 'r+':
+      msg.channel.send(singlearg.toString()).then(async m => {
+        m.delete().catch(Error);
+      })
+      break;
+    case 'roll':
+      var maxroll = 6;
+      if (singlearg) maxroll = parseInt(singlearg.replace(/[^0-9]/gi, ''));
+      if (maxroll < 1 || maxroll > Number.MAX_SAFE_INTEGER || maxroll !== maxroll) {
+        msg.error('Your max roll must be a number between 1 and ' + Number.MAX_SAFE_INTEGER);
+        break;
+      }
+      var rollresult = Math.floor((Math.random() * maxroll) + 1);
+      msg.send(':game_die: You rolled a ' + rollresult + ' out of ' + maxroll);
+      break;
+    case 'rps':
+      var userchoice = singlearg.toLowerCase();
+      var botchoice = 'Hey you can read code';
+      var rpswin = 'pls dont expose mai easter egg';
+
+      if (userchoice === 'rock') userchoice = userchoice + ' :full_moon:';
+      else if (userchoice === 'paper') userchoice = userchoice + ' :page_facing_up:';
+      else if (userchoice === 'scissors') userchoice = userchoice + ' :scissors:';
+
+      var rpsrando = Math.floor((Math.random() * 3) + 1);
+      if (rpsrando === 1) botchoice = 'rock :full_moon:';
+      else if (rpsrando === 2) botchoice = 'paper  :page_facing_up:';
+      else botchoice = 'scissors :scissors:';
+
+      if (userchoice === botchoice) rpswin = 'It\'s a tie!';
+      else if (userchoice === "rock :full_moon:") {
+        if (botchoice === "scissors :scissors:") rpswin = "Rock Wins!";
+        else rpswin = "Paper Wins!";
+      } else if (userchoice === "paper :page_facing_up:") {
+        if (botchoice === "rock :full_moon:") rpswin = "Paper Wins!";
+        else rpswin = "Scissors Wins!";
+      } else if (userchoice === "scissors :scissors:") {
+        if (botchoice === "rock :full_moon:") rpswin = "Rock Wins!";
+        else rpswin = "Scissors Wins!";
+      } else {
+        msg.error('You must choose either rock, paper, or scissors');
+        break;
+      }
+      userchoice = userchoice.charAt(0).toUpperCase() + userchoice.slice(1);
+      botchoice = botchoice.charAt(0).toUpperCase() + botchoice.slice(1);
+      const rpsEmbed = new Discord.RichEmbed()
+        .setTitle(rpswin)
+        .addField('Your Choice', userchoice, true)
+        .addField('My Choice', botchoice, true)
+        .setColor(rand(data.embedColors));
+      msg.sendEmbed(rpsEmbed);
+      break;
+    case 'server':
+      const servembed = new Discord.RichEmbed()
+        .addField('Link to this selfbot\'s server', 'https://discord.gg/zz9KTka')
+        .setColor(rand(data.embedColors));
+      msg.sendEmbed(servembed);
+      break;
+    case 'setgame': case 'sg':
+      if (!singlearg || singlearg.length < 1) client.user.setGame(null);
+      else if (singlearg.length > 128) client.user.setGame(singlearg.toString().substring(0, 128));
+      else client.user.setGame(singlearg.toString());
       break;
     case 'setavatar': case 'sa':
       if (!singlearg) msg.error('You must provide a valid link to an image')
       else client.user.setAvatar(singlearg.toString()).catch(Error);
       break;
-    case 'a': case 'avatar':
-      if (!singlearg) msg.channel.send(client.user.displayAvatarURL({
-        format: 'png',
-        size: 2048
-      }));
-      else {
-        var avauser = msg.client.users.find('tag', singlearg.toString());
-        if (msg.mentions.users.size !== 0) avauser = msg.mentions.users.first();
-        if (!avauser) avauser = client.users.find('id', singlearg.toString());
-        if (!avauser) msg.error('No Match Found, This Command is Case Sensitive');
-        else {
-          msg.channel.send(avauser.displayAvatarURL({
-            format: 'png',
-            size: 2048
-          }));
-        }
+    case 'shrug': case 's':
+      msg.channel.send(singlearg + ' ¯\\_(ツ)_/¯');
+      break;
+    case 'statistics': case 'stats':
+      var ssut = parseFloat(((client.uptime) / (1000))).toFixed(0);
+      var hours = ~~(ssut / 3600);
+      var minutes = ~~((ssut % 3600) / 60);
+      const ssembed = new Discord.RichEmbed()
+        .addField('Ping', client.ping.toFixed(2) + ' ms', true)
+        .addField('Memory', (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2) + ' MB', true)
+        .addField('Uptime', hours + ' hours, ' + minutes + ' minutes', true)
+        .addField('Servers', client.guilds.size.toLocaleString(), true)
+        .addField('Channels', client.channels.size, true)
+        .addField('Users', client.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString(), true)
+        .setColor(rand(data.embedColors));
+      msg.sendEmbed(ssembed);
+      break;
+    case 'status':
+      if (args[0] != 'online' && args[0] != 'idle' && args[0] != 'dnd' && args[0] != 'invisible') {
+        msg.error('Status must be one of the following: online, idle, dnd, invisible');
+      } else {
+        client.user.setStatus(args[0]);
       }
+      break;
+    case 'u': case 'underline':
+      msg.channel.send('__' + singlearg.toString() + '__');
+      break;
+    case 'ut': case 'uptime':
+      var ut = parseFloat(((client.uptime) / (1000))).toFixed(0);
+      var hours = ~~(ut / 3600);
+      var minutes = ~~((ut % 3600) / 60);
+      var seconds = ut % 60;
+      msg.send('Uptime: ' + hours + ' hours, ' + minutes + ' minutes, ' + seconds + ' seconds');
       break;
     case 'userstats': case 'us':
       const usembedo = new Discord.RichEmbed();
@@ -477,27 +498,6 @@ client.on('message', msg => {
       } else usembedo.setColor(rand(data.embedColors));
       if (ususer.presence.game) usembedo.setFooter('Playing: ' + ususer.presence.game.name);
       msg.sendEmbed(usembedo);
-      break;
-    case 'guildstats': case 'gs':
-      if (!guildMember) {
-        msg.error('This command must be used in a guild.');
-      } else {
-        const gsembed = new Discord.RichEmbed()
-          .setTitle('Stats for: `' + msg.guild.name + '`')
-          .setThumbnail(msg.guild.iconURL())
-          .addField('Guild Owner', '`' + msg.guild.owner.user.tag + '`', true)
-          .addField('Members', msg.guild.memberCount, true)
-          .addField('Region', msg.guild.region, true)
-          .addField('Created At', msg.guild.createdAt.toString().substring(0, 16), true)
-          .setColor(rand(data.embedColors));
-        msg.sendEmbed(gsembed);
-      }
-      break;
-    case 'r': case 'remove':
-      break;
-    case 'reboot':
-      msg.send('Rebooting...')
-        .then(() => process.exit(1));
       break;
     default:
       msg.send(content);
