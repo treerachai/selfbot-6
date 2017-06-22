@@ -46,7 +46,7 @@ client.on('message', msg => {
         size: 2048
       }));
       else {
-        var avauser = msg.client.users.find('tag', singlearg.toString());
+        let avauser = msg.client.users.find('tag', singlearg.toString());
         if (msg.mentions.users.size !== 0) avauser = msg.mentions.users.first();
         if (!avauser) avauser = client.users.find('id', singlearg.toString());
         if (!avauser) msg.error('No Match Found, This Command is Case Sensitive');
@@ -82,22 +82,22 @@ client.on('message', msg => {
       }
       break;
     case 'coinflip': case 'coin': case 'flip':
-      var flips = 1;
+      let flips = 1;
       if (singlearg) flips = parseInt(singlearg.replace(/[^0-9]/gi, ''));
       if (flips < 1 || flips > 100000000 || flips !== flips) {
         msg.error('The amount of coin flips must be between 1 and 100 million');
         break;
       }
-      var heads = 0;
-      var tails = 0;
+      let heads = 0;
+      let tails = 0;
       for (var i = 0; i < flips; i++) {
-        var flip = Math.floor((Math.random() * 2) + 1);
+        let flip = Math.floor((Math.random() * 2) + 1);
         if (flip === 1) heads++;
         else tails++;
       }
-      var headpercent = (Math.round((heads / flips) * 10000) / 100);
+      let headpercent = (Math.round((heads / flips) * 10000) / 100);
       if (headpercent === Infinity) headpercent = 0;
-      var tailspercent = (Math.round((tails / flips) * 10000) / 100);
+      let tailspercent = (Math.round((tails / flips) * 10000) / 100);
       if (tailspercent === Infinity) tailspercent = 0;
       msg.send('```ruby\nResults of ' + flips + ' coin flips \nHeads: ' + heads + ' (' + headpercent + '%)\nTails: ' + tails + ' (' + tailspercent + '%)```');
       break;
@@ -119,7 +119,7 @@ client.on('message', msg => {
           msg.error('There are no matches for this discriminator, try joining more servers to add to the list of potential matches.');
         } else {
           let message = '```css\n';
-          var discrimc = 0;
+          let discrimc = 0;
           for (const user in matches) {
             discrimc++;
             message += matches[user].username + '#' + args.toString();
@@ -222,7 +222,7 @@ client.on('message', msg => {
       if (guildMember) {
         if (!singlearg) msg.error('You must specify a user to impersonate');
         else {
-          var impuser = client.users.find('tag', singlearg.toString());
+          let impuser = client.users.find('tag', singlearg.toString());
           if (msg.mentions.users.size !== 0) impuser = msg.mentions.users.first();
           if (!impuser) impuser = client.users.find('id', singlearg.toString());
           if (!impuser) msg.error('No Match Found, This Command is Case Sensitive');
@@ -279,7 +279,7 @@ client.on('message', msg => {
         msg.error('Are you trying to break me? Use less characters');
         break;
       }
-      var pollmsg = ':ballot_box: __**' + pollop[0] + '**__';
+      let pollmsg = ':ballot_box: __**' + pollop[0] + '**__';
       for (var i = 1; i < pollop.length; i++) {
         pollmsg = pollmsg + '\n:' + data.numbers[i] + ': ' + pollop[i];
       }
@@ -315,7 +315,7 @@ client.on('message', msg => {
         msg.error('Invalid search. Proper format: `.quote [Mention or Username#discrim]|Text To Search For`');
         break;
       }
-      var quser = client.users.find('tag', qa[0]);
+      let quser = client.users.find('tag', qa[0]);
       if (msg.mentions.users.size !== 0) quser = msg.mentions.users.first();
       if (!quser) quser = client.users.find('id', qa[0]);
       const qsearch = qa[1];
@@ -383,25 +383,25 @@ client.on('message', msg => {
       })
       break;
     case 'roll':
-      var maxroll = 6;
+      let maxroll = 6;
       if (singlearg) maxroll = parseInt(singlearg.replace(/[^0-9]/gi, ''));
       if (maxroll < 1 || maxroll > Number.MAX_SAFE_INTEGER || maxroll !== maxroll) {
         msg.error('Your max roll must be a number between 1 and ' + Number.MAX_SAFE_INTEGER);
         break;
       }
-      var rollresult = Math.floor((Math.random() * maxroll) + 1);
+      let rollresult = Math.floor((Math.random() * maxroll) + 1);
       msg.send(':game_die: You rolled a ' + rollresult + ' out of ' + maxroll);
       break;
     case 'rps':
-      var userchoice = singlearg.toLowerCase();
-      var botchoice = 'Hey you can read code';
-      var rpswin = 'pls dont expose mai easter egg';
+      let userchoice = singlearg.toLowerCase();
+      let botchoice = 'Hey you can read code';
+      let rpswin = 'pls dont expose mai easter egg';
 
       if (userchoice === 'rock') userchoice = userchoice + ' :full_moon:';
       else if (userchoice === 'paper') userchoice = userchoice + ' :page_facing_up:';
       else if (userchoice === 'scissors') userchoice = userchoice + ' :scissors:';
 
-      var rpsrando = Math.floor((Math.random() * 3) + 1);
+      let rpsrando = Math.floor((Math.random() * 3) + 1);
       if (rpsrando === 1) botchoice = 'rock :full_moon:';
       else if (rpsrando === 2) botchoice = 'paper :page_facing_up:';
       else botchoice = 'scissors :scissors:';
@@ -448,13 +448,13 @@ client.on('message', msg => {
       msg.channel.send(singlearg + ' ¯\\_(ツ)_/¯');
       break;
     case 'statistics': case 'stats':
-      var ssut = parseFloat(((client.uptime) / (1000))).toFixed(0);
-      var hours = ~~(ssut / 3600);
-      var minutes = ~~((ssut % 3600) / 60);
+      let ssut = parseFloat(((client.uptime) / (1000))).toFixed(0);
+      const sshours = ~~(ssut / 3600);
+      const ssminutes = ~~((ssut % 3600) / 60);
       const ssembed = new Discord.RichEmbed()
         .addField('Ping', client.ping.toFixed(2) + ' ms', true)
         .addField('Memory', (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2) + ' MB', true)
-        .addField('Uptime', hours + ' hours, ' + minutes + ' minutes', true)
+        .addField('Uptime', sshours + ' hours, ' + ssminutes + ' minutes', true)
         .addField('Servers', client.guilds.size.toLocaleString(), true)
         .addField('Channels', client.channels.size, true)
         .addField('Users', client.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString(), true)
@@ -472,15 +472,15 @@ client.on('message', msg => {
       msg.channel.send('__' + singlearg.toString() + '__');
       break;
     case 'ut': case 'uptime':
-      var ut = parseFloat(((client.uptime) / (1000))).toFixed(0);
-      var hours = ~~(ut / 3600);
-      var minutes = ~~((ut % 3600) / 60);
-      var seconds = ut % 60;
+      let ut = parseFloat(((client.uptime) / (1000))).toFixed(0);
+      const hours = ~~(ut / 3600);
+      const minutes = ~~((ut % 3600) / 60);
+      const seconds = ut % 60;
       msg.send('Uptime: ' + hours + ' hours, ' + minutes + ' minutes, ' + seconds + ' seconds');
       break;
     case 'userstats': case 'us':
       const usembedo = new Discord.RichEmbed();
-      var ususer = client.user;
+      let ususer = client.user;
       if (msg.mentions.users.size > 0) ususer = msg.mentions.users.first();
       else if (singlearg) {
         ususer = client.users.find('tag', singlearg.toString());
