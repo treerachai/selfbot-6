@@ -3,6 +3,7 @@ const util = require('util');
 const client = new Discord.Client();
 const credentials = require('./credentials.json');
 const data = require('./data.json');
+const git = require('simple-git');
 
 client.on('disconnect', () => console.log('=====================\nDisconnected'));
 
@@ -84,7 +85,7 @@ client.on('message', msg => {
     case 'choose': case 'ch':
       if (!singlearg){ msg.error('You must provide options to choose from. Example: `choose Vanilla|Chocolate`'); break;}
       const choptions = singlearg.toString().split('|');
-      if (choptions < 2){ msg.error('You must provide at least 2 options'); break;}
+      if (choptions.length < 2){ msg.error('You must provide at least 2 options'); break;}
       const chchoice = rand(choptions);
       let chmsg = 'Out of: ';
       for (let option in choptions){
@@ -483,6 +484,11 @@ client.on('message', msg => {
       break;
     case 'u': case 'underline':
       msg.channel.send('__' + singlearg.toString() + '__');
+      break;
+    case 'update':
+      msg.send('Updating...');
+      git.pull()
+        .then(() => process.exit(1));
       break;
     case 'ut': case 'uptime':
       let ut = parseFloat(((client.uptime) / (1000))).toFixed(0);
