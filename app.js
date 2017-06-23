@@ -3,7 +3,6 @@ const util = require('util');
 const client = new Discord.Client();
 const credentials = require('./credentials.json');
 const data = require('./data.json');
-const exec = require('child_process');
 
 client.on('disconnect', () => console.log('=====================\nDisconnected'));
 
@@ -486,14 +485,15 @@ client.on('message', msg => {
       msg.channel.send('__' + singlearg.toString() + '__');
       break;
     case 'update':
-      exec('git pull', (error, stdout, stderr) => {
-        if (error) {
-          console.error(`exec error: ${error}`);
-          return;
-        }
-        console.log(`stdout: ${stdout}`);
+      const { exec } = require('child_process');
+        exec('git pull', (error, stdout, stderr) => {
+         if (error) {
+         console.error(`exec error: ${error}`);
+             return;
+          }
+         console.log(`stdout: ${stdout}`);
         console.log(`stderr: ${stderr}`);
-      });
+          });
       break;
     case 'ut': case 'uptime':
       let ut = parseFloat(((client.uptime) / (1000))).toFixed(0);
