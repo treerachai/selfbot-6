@@ -3,7 +3,6 @@ const util = require('util');
 const client = new Discord.Client();
 const credentials = require('./credentials.json');
 const data = require('./data.json');
-const git = require('simple-git')();
 
 client.on('disconnect', () => console.log('=====================\nDisconnected'));
 
@@ -487,10 +486,12 @@ client.on('message', msg => {
       break;
     case 'update':
       msg.send('Updating...');
-      git.pull(function(err, update) {
+      require('simple-git')()
+         .pull(function(err, update) {
             if(update && update.summary.changes) {
                require('child_process').exec('npm restart');
             }
+         });
       break;
     case 'ut': case 'uptime':
       let ut = parseFloat(((client.uptime) / (1000))).toFixed(0);
