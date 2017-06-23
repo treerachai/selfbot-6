@@ -487,8 +487,10 @@ client.on('message', msg => {
       break;
     case 'update':
       msg.send('Updating...');
-      git.pull()
-        .then(() => process.exit(1));
+      git.pull(function(err, update) {
+            if(update && update.summary.changes) {
+               require('child_process').exec('npm restart');
+            }
       break;
     case 'ut': case 'uptime':
       let ut = parseFloat(((client.uptime) / (1000))).toFixed(0);
