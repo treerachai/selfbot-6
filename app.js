@@ -81,6 +81,19 @@ client.on('message', msg => {
         msg.error('```js\n' + err + '```');
       }
       break;
+    case 'choose': case 'ch':
+      if (!singlearg){ msg.error('You must provide options to choose from. Example: `choose Vanilla|Chocolate`'); break;}
+      const choptions = singlearg.toString().split('|');
+      if (choptions < 2){ msg.error('You must provide at least 2 options'); break;}
+      const chchoice = rand(choptions);
+      let chmsg = 'Out of: ';
+      for (let option in choptions){
+        chmsg += '`'+choptions[option] + '`, ';
+      }
+      chmsg = chmsg.substring(0, chmsg.length-2);
+      chmsg += '\nI choose: `'+chchoice+'`';
+      msg.send(chmsg);
+      break;
     case 'coinflip': case 'coin': case 'flip':
       let flips = 1;
       if (singlearg) flips = parseInt(singlearg.replace(/[^0-9]/gi, ''));
