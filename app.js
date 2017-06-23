@@ -494,9 +494,10 @@ client.on('message', msg => {
           }
          console.log(`Update Info: ${stdout}`);
         if (stderr) console.log(`stderr: ${stderr}`);
-          });
-          msg.send('Rebooting...')
-            .then(() => process.exit(1));
+      }).then({
+        msg.send('Rebooting...')
+          .then(() => process.exit(1));
+      });
       break;
     case 'ut': case 'uptime':
       let ut = parseFloat(((client.uptime) / (1000))).toFixed(0);
