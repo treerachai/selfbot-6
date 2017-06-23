@@ -103,7 +103,7 @@ client.on('message', msg => {
       break;
     case 'commands': case 'help':
       const cembed = new Discord.RichEmbed()
-        .addField('List of all commands can be found here', 'https://vapidslay.github.io/Selfbot/')
+        .addField('List of all commands can be found here', 'https://vapidslay.github.io/SelfbotDocumentation/')
         .setFooter('Additional help can be found with the server command')
         .setColor(rand(data.embedColors));
       msg.sendEmbed(cembed);
