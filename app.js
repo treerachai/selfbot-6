@@ -3,7 +3,7 @@ const util = require('util');
 const client = new Discord.Client();
 const credentials = require('./credentials.json');
 const data = require('./data.json');
-const git = require('simple-git');
+const git = require('simple-git')();
 
 client.on('disconnect', () => console.log('=====================\nDisconnected'));
 
