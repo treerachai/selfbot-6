@@ -484,15 +484,6 @@ client.on('message', msg => {
     case 'u': case 'underline':
       msg.channel.send('__' + singlearg.toString() + '__');
       break;
-    case 'update':
-      msg.send('Updating....');
-      require('simple-git')()
-         .pull(function(err, update) {
-            if(update && update.summary.changes) {
-               process.exit(1);
-            }
-         });
-      break;
     case 'ut': case 'uptime':
       let ut = parseFloat(((client.uptime) / (1000))).toFixed(0);
       const hours = ~~(ut / 3600);
