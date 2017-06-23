@@ -492,7 +492,7 @@ client.on('message', msg => {
          console.error(`exec error: ${error}`);
              return;
           }
-         console.log(`Update Info: ${stdout}`);
+         console.log(`Update Log:\n ${stdout}`);
         if (stderr) console.log(`stderr: ${stderr}`);
       });
       setTimeout(function(){
