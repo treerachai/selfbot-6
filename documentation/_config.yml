@@ -1,5 +1,5 @@
-title: Help and Command List
+title: Command List
 description: For PapaJohn#7777's Discord Selfbot
-show_downloads: true
+show_downloads: false
 google_analytics:
-theme: jekyll-theme-hacker
+theme:
