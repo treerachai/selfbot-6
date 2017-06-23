@@ -485,11 +485,11 @@ client.on('message', msg => {
       msg.channel.send('__' + singlearg.toString() + '__');
       break;
     case 'update':
-      msg.send('Updating....');
+      msg.send('Updating...');
       require('simple-git')()
          .pull(function(err, update) {
             if(update && update.summary.changes) {
-               require('child_process').exec('npm restart');
+               process.exit(1);
             }
          });
       break;
