@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html>
 <style>
+	h1 {
+		text-align: center;
+	}
+
+	p {
+		text-align: center;
+	}
+
 	.demo {
 		font-family: courier;
 	}
@@ -287,5 +295,28 @@
 		</tr>
 		<tbody>
 </table>
+<hr>
+
+<body>
+	<h1>Join the official server for this Selfbot</h1>
+	<p>Get notified of all spicy updates and get the chance to give your input and suggestions for new features!</p>
+	<script type="text/javascript" src="//cdn.jsdelivr.net/discord-widget/latest/discord-widget.min.js"></script>
+	<script type="text/javascript">
+		discordWidget.init({
+			serverId: '214827540139868160',
+			title: 'Papa John\'s Selfbot Server',
+			join: true,
+			alphabetical: false,
+			theme: 'dark',
+			hideChannels: [],
+			showAllUsers: true,
+			allUsersDefaultState: true,
+			showNick: false
+		});
+		discordWidget.render();
+	</script>
+
+	<div class="discord-widget"></div>
+</body>
 
 </html>
