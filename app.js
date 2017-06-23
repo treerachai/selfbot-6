@@ -485,15 +485,18 @@ client.on('message', msg => {
       msg.channel.send('__' + singlearg.toString() + '__');
       break;
     case 'update':
+      msg.send('Checking for updates...');
       const { exec } = require('child_process');
         exec('git pull', (error, stdout, stderr) => {
          if (error) {
          console.error(`exec error: ${error}`);
              return;
           }
-         console.log(`stdout: ${stdout}`);
+         console.log(`Update Info: ${stdout}`);
         if (stderr) console.log(`stderr: ${stderr}`);
           });
+          msg.send('Rebooting...')
+            .then(() => process.exit(1));
       break;
     case 'ut': case 'uptime':
       let ut = parseFloat(((client.uptime) / (1000))).toFixed(0);
