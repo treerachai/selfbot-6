@@ -492,7 +492,7 @@ client.on('message', msg => {
              return;
           }
          console.log(`stdout: ${stdout}`);
-        console.log(`stderr: ${stderr}`);
+        if (stderr) console.log(`stderr: ${stderr}`);
           });
       break;
     case 'ut': case 'uptime':
