@@ -177,6 +177,13 @@ client.on('message', msg => {
         msg.channel.send(message);
       }
       break;
+    case 'enlarge': case 'el':
+      if (!singlearg){ msg.error('You must provide a custom emoji to enlarge'); break;}
+      let elmatches = singlearg.match(/<:([a-zA-Z0-9_]+):(\d+)>/);
+      if (!elmatches){ msg.error('Invalid emoji, must be a custom emoji'); break;}
+      let elmatch = client.emojis.get(elmatches[2]);
+      msg.channel.send(elmatch.url);
+      break;
     case 'eval': case 'e':
       const code = args.join(' ');
       if (!code) {
