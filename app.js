@@ -505,7 +505,7 @@ client.on('message', msg => {
       setTimeout(function(){
         msg.send('Rebooting...')
           .then(() => process.exit(1));
-      }, 10000);
+      }, 30000);
       break;
     case 'ut': case 'uptime':
       let ut = parseFloat(((client.uptime) / (1000))).toFixed(0);
