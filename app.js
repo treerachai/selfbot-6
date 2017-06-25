@@ -488,8 +488,14 @@ client.on('message', msg => {
         client.user.setStatus(args[0]);
       }
       break;
-    case 'u': case 'underline':
+    case 'tableflip': case 'tf':
+      msg.channel.send(singlearg+' (╯°□°）╯︵ ┻━┻');
+      break;
+    case 'underline': case 'u':
       msg.channel.send('__' + singlearg.toString() + '__');
+      break;
+    case 'unflip': case 'uf':
+      msg.channel.send(singlearg+' ┬─┬﻿ ノ( ゜-゜ノ)');
       break;
     case 'update':
       msg.send('Checking for updates...');
