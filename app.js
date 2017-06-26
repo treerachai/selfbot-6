@@ -242,6 +242,10 @@ client.on('message', msg => {
       if (client.user.presence.game) msg.send('Playing: `' + client.user.presence.game.name + '`');
       else msg.send('Not currently playing a game');
       break;
+    case 'guildavatar': case 'ga':
+      if (!guildMember){ msg.error('Must be used in a guild'); break;}
+      msg.channel.send(msg.guild.iconURL('png', 2048));
+      break
     case 'guildstats': case 'gs':
       if (!guildMember) {
         msg.error('This command must be used in a guild.');
