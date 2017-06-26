@@ -3,6 +3,8 @@ const util = require('util');
 const client = new Discord.Client();
 const credentials = require('./credentials.json');
 const data = require('./data.json');
+const fs = require("fs");
+let prefix = credentials.prefix;
 
 client.on('disconnect', () => console.log('=====================\nDisconnected'));
 
@@ -13,16 +15,17 @@ client.on('ready', () => console.log('=====================\nSuccesfully Connect
 client.on('message', msg => {
   if (!msg) return;
   if (msg.author.id !== client.user.id) return;
-  if (!msg.content.startsWith(credentials.prefix)) return;
+  if (msg.content === 'getprefix'){ msg.send('Your current prefix is: `'+prefix+'`'); msg.delete().catch(() => null);}
+  if (!msg.content.startsWith(prefix)) return;
 
   msg.delete()
     .catch(() => null);
 
-  const content = msg.content.slice(credentials.prefix.length);
+  const content = msg.content.slice(prefix.length);
   const contentArray = content.split(' ');
   const command = contentArray[0].toLowerCase();
   const args = contentArray.slice(1);
-  const singlearg = msg.content.slice(credentials.prefix.length + contentArray[0].length + 1);
+  const singlearg = msg.content.slice(prefix.length + contentArray[0].length + 1);
 
   let guildMember;
   if (msg.guild) guildMember = msg.guild.member(msg.author);
@@ -482,6 +485,18 @@ client.on('message', msg => {
     case 'setavatar': case 'sa':
       if (!singlearg) msg.error('You must provide a valid link to an image')
       else client.user.setAvatar(singlearg.toString()).catch(Error);
+      break;
+    case 'setprefix':
+      if (!singlearg || singlearg.length > 3 || singlearg.length < 1){ msg.error('Must provide a valid prefix of 1-3 characters'); break;}
+      let prefjson = JSON.parse(fs.readFileSync("./credentials.json", "utf8"));
+      prefjson.prefix = singlearg;
+      fs.writeFile("./credentials.json", JSON.stringify(prefjson), (err) => {
+        if (err) console.error(err);
+        else {
+          prefix = singlearg;
+          msg.send('Prefix set to : `'+prefix+'`');
+        }
+      })
       break;
     case 'shrug': case 's':
       msg.channel.send(singlearg + ' ¯\\_(ツ)_/¯');
