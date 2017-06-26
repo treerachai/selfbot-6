@@ -40,6 +40,25 @@ client.on('message', msg => {
         msg.sendEmbed(eightembed);
       }
       break;
+    case 'altcheck': case 'ac':
+      if (!guildMember){ msg.error('You must be in a guild to use this command'); break;}
+      let altmember = msg.guild.members.find('id', client.user.id);
+      if (singlearg){
+        altmember = msg.guild.members.find('tag', singlearg.toString());
+        if (!altmember) altmember = msg.guild.members.find('id', singlearg.toString());
+        if (!altmember) {
+          msg.error('No Match Found, This Command is Case Sensitive');
+          break;
+        }
+      }
+      const altembed = new Discord.RichEmbed()
+      .setAuthor(altmember.user.tag + ' ('+altmember.id+')', altmember.user.displayAvatarURL())
+      .addField('Account Created', altmember.user.createdAt.toString().substring(0,24))
+      .addField('Joined this Server', altmember.joinedAt.toString().substring(0,24))
+      .setColor(rand(data.embedColors));
+      if (altmember.joinedTimestamp - altmember.user.createdTimestamp < 3600000) altembed.setFooter('Likely an alt');
+      msg.sendEmbed(altembed);
+      break;
     case 'avatar': case 'a':
       if (!singlearg) msg.channel.send(client.user.displayAvatarURL({
         format: 'png',
