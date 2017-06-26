@@ -585,7 +585,7 @@ client.on('message', msg => {
       msg.send(content);
       break;
   }
-  console.log('  ' + credentials.prefix + content);
+  console.log('  ' + prefix + content);
 });
 
 Discord.Message.prototype.sendEmbed = function(spicyEmbed) {
