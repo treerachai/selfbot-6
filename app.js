@@ -97,8 +97,8 @@ client.on('message', msg => {
     case 'coinflip': case 'coin': case 'flip':
       let flips = 1;
       if (singlearg) flips = parseInt(singlearg.replace(/[^0-9]/gi, ''));
-      if (flips < 1 || flips > 100000000 || flips !== flips) {
-        msg.error('The amount of coin flips must be between 1 and 100 million');
+      if (flips < 1 || flips > 1000000 || flips !== flips) {
+        msg.error('The amount of coin flips must be between 1 and 1 million');
         break;
       }
       let heads = 0;
@@ -417,9 +417,9 @@ client.on('message', msg => {
       let botchoice = 'Hey you can read code';
       let rpswin = 'pls dont expose mai easter egg';
 
-      if (userchoice === 'rock') userchoice = userchoice + ' :full_moon:';
-      else if (userchoice === 'paper') userchoice = userchoice + ' :page_facing_up:';
-      else if (userchoice === 'scissors') userchoice = userchoice + ' :scissors:';
+      if (userchoice === 'rock' || userchoice === 'r') userchoice = 'rock :full_moon:';
+      else if (userchoice === 'paper' || userchoice === 'p') userchoice = 'paper :page_facing_up:';
+      else if (userchoice === 'scissors' || userchoice === 's') userchoice = 'scissors :scissors:';
 
       let rpsrando = Math.floor((Math.random() * 3) + 1);
       if (rpsrando === 1) botchoice = 'rock :full_moon:';
