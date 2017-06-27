@@ -238,6 +238,9 @@ client.on('message', msg => {
         msg.sendEmbed(fakeCodeEmbed);
       }
       break;
+    case 'fliptable': case 'ft':
+      msg.channel.send(singlearg+' ノ┬─┬ノ ︵ ( \\o°o)\\');
+      break;
     case 'game': case 'g':
       if (client.user.presence.game) msg.send('Playing: `' + client.user.presence.game.name + '`');
       else msg.send('Not currently playing a game');
@@ -285,6 +288,9 @@ client.on('message', msg => {
           }
         }
       } else msg.error('This command can only be used in a guild');
+      break;
+    case 'innocent': case 'in':
+      msg.channel.send(singlearg+' ʘ‿ʘ');
       break;
     case 'italics': case 'i':
       msg.channel.send('*' + singlearg.toString() + '*');
