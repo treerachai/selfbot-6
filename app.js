@@ -47,10 +47,12 @@ client.on('message', msg => {
       if (!guildMember){ msg.error('You must be in a guild to use this command'); break;}
       let altmember = msg.guild.members.find('id', client.user.id);
       if (singlearg){
-        altmember = msg.guild.members.find('tag', singlearg.toString());
+        altmember = msg.client.users.find('tag', singlearg.toString());
+        if (altmember) altmember = msg.guild.members.find('id', altmember.id);
         if (!altmember) altmember = msg.guild.members.find('id', singlearg.toString());
+        if (msg.mentions.members.size !== 0) altmember = msg.mentions.members.first();
         if (!altmember) {
-          msg.error('No Match Found, This Command is Case Sensitive');
+          msg.error('No Match Found');
           break;
         }
       }
@@ -606,19 +608,13 @@ Discord.Message.prototype.sendEmbed = function(spicyEmbed) {
 };
 
 Discord.Message.prototype.send = function(description) {
-  if (credentials.embedDefault) {
     const embed = new Discord.RichEmbed()
       .setColor(rand(data.embedColors))
       .setDescription(description);
     return this.sendEmbed(embed);
-  } else {
-    return this.channel.send(description)
-      .catch((e) => handleError(this.channel, e));
-  }
 };
 
 Discord.Message.prototype.error = function(description) {
-  if (credentials.embedDefault) {
     const embed = new Discord.RichEmbed()
       .setColor([255, 0, 0])
       .setDescription(description);
@@ -626,9 +622,6 @@ Discord.Message.prototype.error = function(description) {
         embed: embed
       })
       .catch((e) => handleError(this.channel, e));
-  } else {
-    return this.channel.send(description);
-  }
 };
 
 function rand(array) {
