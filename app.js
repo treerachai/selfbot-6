@@ -502,6 +502,19 @@ client.on('message', msg => {
     case 'shrug': case 's':
       msg.channel.send(singlearg + ' ¯\\_(ツ)_/¯');
       break;
+    case 'spam':
+      if (!singlearg){ msg.error('You must provide something to spam'); break;}
+      const spamsplit = singlearg.toString().split('|');
+      if (spamsplit.length < 1){ msg.error('Invalid command. Example: `spam [message]|[amount]`'); break;}
+      let spamsg = spamsplit[0];
+      let spamount = 10;
+      if (spamsplit.length > 1) spamount = parseInt(spamsplit[1].replace(/[^0-9]/gi, ''));
+      if (!spamount || !spamsg){ msg.error('Invalid command. Example: `spam [message]|[amount]`'); break;}
+      if (spamount > 100 || spamount < 1){ msg.error('Amount must be from 1-100'); break;}
+      for (var i = 0; i < spamount; i++){
+        msg.channel.send(spamsg);
+      }
+      break;
     case 'statistics': case 'stats':
       let ssut = parseFloat(((client.uptime) / (1000))).toFixed(0);
       const sshours = ~~(ssut / 3600);
