@@ -248,23 +248,36 @@ client.on('message', msg => {
       else msg.send('Not currently playing a game');
       break;
     case 'guildavatar': case 'ga':
-      if (!guildMember){ msg.error('Must be used in a guild'); break;}
-      msg.channel.send(msg.guild.iconURL('png', 2048));
+      if (!guildMember && !singlearg) { msg.error('To use this command outside a guild, you must specify a guild'); break;}
+      let gaguild;
+      if (!singlearg) gaguild = msg.guild;
+      else {
+        gaguild = client.guilds.find('name', singlearg);
+        if (gaguild.length > 1){ msg.error('Multiple matches found'); break;}
+        if (!gaguild) gaguild = client.guilds.find('id', singlearg);
+      }
+      if (!gaguild){ msg.error('No match found'); break;}
+      msg.channel.send(gaguild.iconURL('png', 2048));
       break
     case 'guildstats': case 'gs':
-      if (!guildMember) {
-        msg.error('This command must be used in a guild.');
-      } else {
+      if (!guildMember && !singlearg) { msg.error('To use this command outside a guild, you must specify a guild'); break;}
+      let gsguild;
+      if (!singlearg) gsguild = msg.guild;
+      else {
+        gsguild = client.guilds.find('name', singlearg);
+        if (gsguild.length > 1){ msg.error('Multiple matches found'); break;}
+        if (!gsguild) gsguild = client.guilds.find('id', singlearg);
+      }
+      if (!gsguild){ msg.error('No match found'); break;}
         const gsembed = new Discord.RichEmbed()
-          .setTitle('Stats for: `' + msg.guild.name + '`')
-          .setThumbnail(msg.guild.iconURL())
-          .addField('Guild Owner', '`' + msg.guild.owner.user.tag + '`', true)
-          .addField('Members', msg.guild.memberCount, true)
-          .addField('Region', msg.guild.region, true)
-          .addField('Created At', msg.guild.createdAt.toString().substring(0, 16), true)
+          .setTitle('Stats for: `' + gsguild.name + '`')
+          .setThumbnail(gsguild.iconURL())
+          .addField('Guild Owner', '`' + gsguild.owner.user.tag + '`', true)
+          .addField('Members', gsguild.memberCount, true)
+          .addField('Region', gsguild.region, true)
+          .addField('Created At', gsguild.createdAt.toString().substring(0, 16), true)
           .setColor(rand(data.embedColors));
         msg.sendEmbed(gsembed);
-      }
       break;
     case 'h': case 'happy':
       msg.channel.send(singlearg + ' ᕕ( ᐛ )ᕗ');
