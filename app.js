@@ -239,25 +239,13 @@ client.on('message', msg => {
       break;
     case 'guildavatar': case 'ga':
       if (!guildMember && !singlearg) { msg.error('To use this command outside a guild, you must specify a guild'); break;}
-      let gaguild;
-      if (!singlearg) gaguild = msg.guild;
-      else {
-        gaguild = client.guilds.find('name', singlearg);
-        if (gaguild.length > 1){ msg.error('Multiple matches found'); break;}
-        if (!gaguild) gaguild = client.guilds.find('id', singlearg);
-      }
+      let gaguild = findGuild(msg);
       if (!gaguild){ msg.error('No match found'); break;}
       msg.channel.send(gaguild.iconURL('png', 2048));
       break
     case 'guildstats': case 'gs':
       if (!guildMember && !singlearg) { msg.error('To use this command outside a guild, you must specify a guild'); break;}
-      let gsguild;
-      if (!singlearg) gsguild = msg.guild;
-      else {
-        gsguild = client.guilds.find('name', singlearg);
-        if (gsguild.length > 1){ msg.error('Multiple matches found'); break;}
-        if (!gsguild) gsguild = client.guilds.find('id', singlearg);
-      }
+      let gsguild = findGuild(msg);
       if (!gsguild){ msg.error('No match found'); break;}
         const gsembed = new Discord.RichEmbed()
           .setTitle('Stats for: `' + gsguild.name + '`')
@@ -586,6 +574,12 @@ client.on('message', msg => {
       if (ususer.presence.game) usembedo.setFooter('Playing: ' + ususer.presence.game.name);
       msg.sendEmbed(usembedo);
       break;
+    case 'test':
+      if (!guildMember && !singlearg) { msg.error('To use this command outside a guild, you must specify a guild'); break;}
+      let testguild = findGuild(msg);
+      if (!testguild){ msg.error('No match found'); break;}
+      msg.send(testguild.name);
+      break;
     default:
       msg.send(content);
       break;
@@ -604,6 +598,18 @@ function findUser(msg) {
     }
   }
   return user;
+};
+
+function findGuild(msg){
+  const arg = msg.content.slice(prefix.length).split(' ').slice(1).join(' ').toString();
+  let guild;
+  if (!arg) guild = msg.guild;
+  else{
+    guild = client.guilds.find('name', arg);
+    if (guild){ if (guild.length > 1) guild = guild[0];}
+    if (!guild) guild = client.guilds.find('id', arg);
+  }
+  return guild;
 };
 
 Discord.Message.prototype.sendEmbed = function(spicyEmbed) {
