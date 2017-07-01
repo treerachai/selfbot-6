@@ -65,22 +65,12 @@ client.on('message', msg => {
       msg.sendEmbed(altembed);
       break;
     case 'avatar': case 'a':
-      if (!singlearg) msg.channel.send(client.user.displayAvatarURL({
-        format: 'png',
-        size: 2048
-      }));
-      else {
-        let avauser = msg.client.users.find('tag', singlearg.toString());
-        if (msg.mentions.users.size !== 0) avauser = msg.mentions.users.first();
-        if (!avauser) avauser = client.users.find('id', singlearg.toString());
-        if (!avauser) msg.error('No Match Found, This Command is Case Sensitive');
-        else {
+        let avauser = findUser(msg);
+        if (!avauser){ msg.error('No match found'); break;}
           msg.channel.send(avauser.displayAvatarURL({
             format: 'png',
             size: 2048
           }));
-        }
-      }
       break;
     case 'bold': case 'b':
       msg.channel.send('**' + singlearg.toString() + '**');
@@ -286,10 +276,8 @@ client.on('message', msg => {
       if (guildMember) {
         if (!singlearg) msg.error('You must specify a user to impersonate');
         else {
-          let impuser = client.users.find('tag', singlearg.toString());
-          if (msg.mentions.users.size !== 0) impuser = msg.mentions.users.first();
-          if (!impuser) impuser = client.users.find('id', singlearg.toString());
-          if (!impuser) msg.error('No Match Found, This Command is Case Sensitive');
+          let impuser = findUser(msg);
+          if (!impuser) msg.error('No Match Found');
           else if (!msg.guild.members.has(impuser.id)) msg.error('That user is not in this guild');
           else {
             const impmember = msg.guild.members.find('id', impuser.id);
@@ -581,16 +569,8 @@ client.on('message', msg => {
       break;
     case 'userstats': case 'us':
       const usembedo = new Discord.RichEmbed();
-      let ususer = client.user;
-      if (msg.mentions.users.size > 0) ususer = msg.mentions.users.first();
-      else if (singlearg) {
-        ususer = client.users.find('tag', singlearg.toString());
-        if (!ususer) ususer = client.users.find('id', singlearg.toString());
-        if (!ususer) {
-          msg.error('No Match Found, This Command is Case Sensitive');
-          break;
-        }
-      }
+      let ususer = findUser(msg);
+      if (!ususer){ msg.error('No match found'); break; }
       usembedo.setTitle('Stats for: `' + ususer.tag + '`')
         .setThumbnail(ususer.displayAvatarURL())
         .addField('ID', ususer.id, true)
@@ -612,6 +592,19 @@ client.on('message', msg => {
   }
   console.log('  ' + prefix + content);
 });
+
+function findUser(msg) {
+  const arg = msg.content.slice(prefix.length).split(' ').slice(1).join(' ').toString();
+  let user = client.user;
+  if (arg){
+    if (msg.mentions.users.size > 0) user = msg.mentions.users.first();
+    else{
+      user = client.users.find('tag', arg);
+      if (!user) user = client.users.find('id', arg);
+    }
+  }
+  return user;
+};
 
 Discord.Message.prototype.sendEmbed = function(spicyEmbed) {
   return this.channel.send({
