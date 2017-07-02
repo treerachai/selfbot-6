@@ -130,7 +130,7 @@ client.on('message', msg => {
       break;
     case 'commands': case 'help':
       const cembed = new Discord.RichEmbed()
-        .addField('List of all commands can be found here', 'https://vapidslay.github.io/SelfbotDocumentation/')
+        .setDescription('[Click Here for a list of all commands](https://vapidslay.github.io/SelfbotDocumentation/)')
         .setFooter('Additional help can be found with the server command')
         .setColor(rand(data.embedColors));
       msg.sendEmbed(cembed);
@@ -474,7 +474,7 @@ client.on('message', msg => {
       break;
     case 'server':
       const servembed = new Discord.RichEmbed()
-        .addField('Link to this selfbot\'s server', 'https://discord.gg/zz9KTka')
+        .setDescription('[Click here to join this selfbot\'s server](https://discord.gg/zz9KTka)')
         .setColor(rand(data.embedColors));
       msg.sendEmbed(servembed);
       break;
