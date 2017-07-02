@@ -162,7 +162,8 @@ client.on('message', msg => {
       break;
     case 'download': case 'git': case 'github':
       const hembed = new Discord.RichEmbed()
-        .addField('Link to repo for this fork', 'https://github.com/VapidSlay/SelfBot')
+        .setDescription('[Link to repo for this fork](https://github.com/VapidSlay/SelfBot)')
+        .setFooter('Includes install instructions')
         .setColor(rand(data.embedColors));
       msg.sendEmbed(hembed);
       break;
