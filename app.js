@@ -309,6 +309,11 @@ client.on('message', msg => {
     case 'ping':
       msg.send('Ping: ' + client.ping.toFixed(2) + ' ms');
       break;
+    case 'pingplus': case 'p+': case 'pp':
+      msg.channel.send('Ping: ' + client.ping.toFixed(2) + ' ms').then(async m => {
+          m.edit(m+'\nDelay: '+(m.createdTimestamp-msg.createdTimestamp)+' ms');
+      });
+      break;
     case 'poll':
       if (!singlearg) {
         msg.error('Invalid poll, heres an example: `' + credentials.prefix + 'poll This is the title|Option 1|Option 2`');
