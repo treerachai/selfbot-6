@@ -251,7 +251,7 @@ client.on('message', msg => {
       .setImage(gaguild.iconURL('png', 2048))
       .setColor(rand(data.embedColors));
       msg.sendEmbed(gaembed);
-      break
+      break;
     case 'guildstats': case 'gs':
       if (!guildMember && !singlearg) { msg.error('To use this command outside a guild, you must specify a guild'); break;}
       let gsguild = findGuild(msg);
