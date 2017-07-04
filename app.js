@@ -47,9 +47,9 @@ client.on('message', msg => {
       if (!guildMember){ msg.error('You must be in a guild to use this command'); break;}
       let altmember = msg.guild.members.find('id', client.user.id);
       if (singlearg){
-        altmember = msg.client.users.find('tag', singlearg.toString());
+        altmember = msg.client.users.find('tag', singlearg);
         if (altmember) altmember = msg.guild.members.find('id', altmember.id);
-        if (!altmember) altmember = msg.guild.members.find('id', singlearg.toString());
+        if (!altmember) altmember = msg.guild.members.find('id', singlearg);
         if (msg.mentions.members.size !== 0) altmember = msg.mentions.members.first();
         if (!altmember) {
           msg.error('No Match Found');
@@ -65,15 +65,19 @@ client.on('message', msg => {
       msg.sendEmbed(altembed);
       break;
     case 'avatar': case 'a':
-        let avauser = findUser(msg);
+        const avauser = findUser(msg);
         if (!avauser){ msg.error('No match found'); break;}
-          msg.channel.send(avauser.displayAvatarURL({
+        const avaembed = new Discord.RichEmbed()
+          .setTitle(avauser.tag+'\'s Avatar')
+          .setImage(avauser.displayAvatarURL({
             format: 'png',
             size: 2048
-          }));
+          }))
+          .setColor(rand(data.embedColors));
+          msg.sendEmbed(avaembed);
       break;
     case 'bold': case 'b':
-      msg.channel.send('**' + singlearg.toString() + '**');
+      msg.channel.send('**' + singlearg + '**');
       break;
     case 'calculator': case 'calc':
       const calcform = singlearg.replace(/[^0-9+\-*/().]/gi, '');
@@ -97,7 +101,7 @@ client.on('message', msg => {
       break;
     case 'choose': case 'ch':
       if (!singlearg){ msg.error('You must provide options to choose from. Example: `choose Vanilla|Chocolate`'); break;}
-      const choptions = singlearg.toString().split('|');
+      const choptions = singlearg.split('|');
       if (choptions.length < 2){ msg.error('You must provide at least 2 options'); break;}
       const chchoice = rand(choptions);
       let chmsg = 'Out of: ';
@@ -240,9 +244,13 @@ client.on('message', msg => {
       break;
     case 'guildavatar': case 'ga':
       if (!guildMember && !singlearg) { msg.error('To use this command outside a guild, you must specify a guild'); break;}
-      let gaguild = findGuild(msg);
+      const gaguild = findGuild(msg);
       if (!gaguild){ msg.error('No match found'); break;}
-      msg.channel.send(gaguild.iconURL('png', 2048));
+      const gaembed = new Discord.RichEmbed()
+      .setTitle(gaguild.name+'\'s Icon')
+      .setImage(gaguild.iconURL('png', 2048))
+      .setColor(rand(data.embedColors));
+      msg.sendEmbed(gaembed);
       break
     case 'guildstats': case 'gs':
       if (!guildMember && !singlearg) { msg.error('To use this command outside a guild, you must specify a guild'); break;}
@@ -285,7 +293,7 @@ client.on('message', msg => {
       msg.channel.send(singlearg+' ʘ‿ʘ');
       break;
     case 'italics': case 'i':
-      msg.channel.send('*' + singlearg.toString() + '*');
+      msg.channel.send('*' + singlearg + '*');
       break;
     case 'lenny': case 'l':
       msg.channel.send(singlearg + ' ( ͡° ͜ʖ ͡°)');
@@ -319,12 +327,12 @@ client.on('message', msg => {
         msg.error('Invalid poll, heres an example: `' + credentials.prefix + 'poll This is the title|Option 1|Option 2`');
         break;
       }
-      const pollop = singlearg.toString().split('|');
+      const pollop = singlearg.split('|');
       if (pollop.length > 10 || pollop.length < 3) {
         msg.error('You must have between 2 and 9 options for the poll');
         break;
       }
-      if (singlearg.toString().length > 1900) {
+      if (singlearg.length > 1900) {
         msg.error('Are you trying to break me? Use less characters');
         break;
       }
@@ -359,7 +367,7 @@ client.on('message', msg => {
         msg.error('Invalid search. Proper format: `.quote [Mention or Username#discrim]|Text To Search For`');
         break;
       }
-      const qa = singlearg.toString().split('|');
+      const qa = singlearg.split('|');
       if (qa.length < 2) {
         msg.error('Invalid search. Proper format: `.quote [Mention or Username#discrim]|Text To Search For`');
         break;
@@ -427,7 +435,7 @@ client.on('message', msg => {
     case 'remove': case 'r':
       break;
     case 'removeplus': case 'rp': case 'r+':
-      msg.channel.send(singlearg.toString()).then(async m => {
+      msg.channel.send(singlearg).then(async m => {
         m.delete().catch(Error);
       })
       break;
@@ -486,12 +494,12 @@ client.on('message', msg => {
       break;
     case 'setgame': case 'sg':
       if (!singlearg || singlearg.length < 1) client.user.setGame(null);
-      else if (singlearg.length > 128) client.user.setGame(singlearg.toString().substring(0, 128));
-      else client.user.setGame(singlearg.toString());
+      else if (singlearg.length > 128) client.user.setGame(singlearg.substring(0, 128));
+      else client.user.setGame(singlearg);
       break;
     case 'setavatar': case 'sa':
       if (!singlearg) msg.error('You must provide a valid link to an image')
-      else client.user.setAvatar(singlearg.toString()).catch(Error);
+      else client.user.setAvatar(singlearg).catch(Error);
       break;
     case 'setprefix':
       if (!singlearg || singlearg.length > 3 || singlearg.length < 1){ msg.error('Must provide a valid prefix of 1-3 characters'); break;}
@@ -510,7 +518,7 @@ client.on('message', msg => {
       break;
     case 'spam':
       if (!singlearg){ msg.error('You must provide something to spam'); break;}
-      const spamsplit = singlearg.toString().split('|');
+      const spamsplit = singlearg.split('|');
       if (spamsplit.length < 1){ msg.error('Invalid command. Example: `spam [message]|[amount]`'); break;}
       let spamsg = spamsplit[0];
       let spamount = 10;
@@ -546,7 +554,7 @@ client.on('message', msg => {
       msg.channel.send(singlearg+' (╯°□°）╯︵ ┻━┻');
       break;
     case 'underline': case 'u':
-      msg.channel.send('__' + singlearg.toString() + '__');
+      msg.channel.send('__' + singlearg + '__');
       break;
     case 'unflip': case 'uf':
       msg.channel.send(singlearg+' ┬─┬﻿ ノ( ゜-゜ノ)');
@@ -592,12 +600,6 @@ client.on('message', msg => {
       } else usembedo.setColor(rand(data.embedColors));
       if (ususer.presence.game) usembedo.setFooter('Playing: ' + ususer.presence.game.name);
       msg.sendEmbed(usembedo);
-      break;
-    case 'test':
-      if (!guildMember && !singlearg) { msg.error('To use this command outside a guild, you must specify a guild'); break;}
-      let testguild = findGuild(msg);
-      if (!testguild){ msg.error('No match found'); break;}
-      msg.send(testguild.name);
       break;
     default:
       msg.send(content);
