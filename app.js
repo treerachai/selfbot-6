@@ -26,6 +26,7 @@ client.on('message', msg => {
   const command = contentArray[0].toLowerCase();
   const args = contentArray.slice(1);
   const singlearg = msg.content.slice(prefix.length + contentArray[0].length + 1);
+  let credjson = JSON.parse(fs.readFileSync("./credentials.json", "utf8"));
 
   let guildMember;
   if (msg.guild) guildMember = msg.guild.member(msg.author);
@@ -131,6 +132,9 @@ client.on('message', msg => {
       let tailspercent = (Math.round((tails / flips) * 10000) / 100);
       if (tailspercent === Infinity) tailspercent = 0;
       msg.send('```ruby\nResults of ' + flips + ' coin flips \nHeads: ' + heads + ' (' + headpercent + '%)\nTails: ' + tails + ' (' + tailspercent + '%)```');
+      break;
+    case 'commandcount': case 'cc':
+      msg.send('Total Commands Used: '+(credjson.commandcount+1));
       break;
     case 'commands': case 'help':
       const cembed = new Discord.MessageEmbed()
@@ -503,15 +507,14 @@ client.on('message', msg => {
       break;
     case 'setprefix':
       if (!singlearg || singlearg.length > 3 || singlearg.length < 1){ msg.error('Must provide a valid prefix of 1-3 characters'); break;}
-      let prefjson = JSON.parse(fs.readFileSync("./credentials.json", "utf8"));
-      prefjson.prefix = singlearg;
-      fs.writeFile("./credentials.json", JSON.stringify(prefjson), (err) => {
+      credjson.prefix = singlearg;
+      fs.writeFile("./credentials.json", JSON.stringify(credjson), (err) => {
         if (err) console.error(err);
         else {
           prefix = singlearg;
           msg.send('Prefix set to : `'+prefix+'`');
         }
-      })
+      });
       break;
     case 'shrug': case 's':
       msg.channel.send(singlearg + ' ¯\\_(ツ)_/¯');
@@ -606,6 +609,10 @@ client.on('message', msg => {
       break;
   }
   console.log('  ' + prefix + content);
+  credjson.commandcount++;
+  fs.writeFile("./credentials.json", JSON.stringify(credjson), (err) => {
+    if (err) console.error(err);
+  });
 });
 
 function findUser(msg) {
