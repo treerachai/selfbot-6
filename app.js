@@ -36,7 +36,7 @@ client.on('message', msg => {
       if (!question) {
         msg.error('You must provide a question to ask the mystical 8ball.');
       } else {
-        const eightembed = new Discord.RichEmbed()
+        const eightembed = new Discord.MessageEmbed()
           .addField('Question', question)
           .addField('Answer', rand(data.eightBallAnswers))
           .setColor(rand(data.embedColors));
@@ -56,7 +56,7 @@ client.on('message', msg => {
           break;
         }
       }
-      const altembed = new Discord.RichEmbed()
+      const altembed = new Discord.MessageEmbed()
       .setAuthor(altmember.user.tag + ' ('+altmember.id+')', altmember.user.displayAvatarURL())
       .addField('Account Created', altmember.user.createdAt.toString().substring(0,24))
       .addField('Joined this Server', altmember.joinedAt.toString().substring(0,24))
@@ -67,7 +67,7 @@ client.on('message', msg => {
     case 'avatar': case 'a':
         const avauser = findUser(msg);
         if (!avauser){ msg.error('No match found'); break;}
-        const avaembed = new Discord.RichEmbed()
+        const avaembed = new Discord.MessageEmbed()
           .setTitle(avauser.tag+'\'s Avatar')
           .setImage(avauser.displayAvatarURL({
             format: 'png',
@@ -90,7 +90,7 @@ client.on('message', msg => {
         if (typeof calcans !== 'string') {
           calcans = require('util').inspect(calcans);
         }
-        const calcEmbed = new Discord.RichEmbed()
+        const calcEmbed = new Discord.MessageEmbed()
           .setTitle('Calculator')
           .setDescription('```js\n' + calcform + ' = ' + calcans + '```')
           .setColor(rand(data.embedColors));
@@ -133,7 +133,7 @@ client.on('message', msg => {
       msg.send('```ruby\nResults of ' + flips + ' coin flips \nHeads: ' + heads + ' (' + headpercent + '%)\nTails: ' + tails + ' (' + tailspercent + '%)```');
       break;
     case 'commands': case 'help':
-      const cembed = new Discord.RichEmbed()
+      const cembed = new Discord.MessageEmbed()
         .setDescription('[Click Here for a list of all commands](https://vapidslay.github.io/SelfbotDocumentation/)')
         .setFooter('Additional help can be found with the server command')
         .setColor(rand(data.embedColors));
@@ -156,7 +156,7 @@ client.on('message', msg => {
             message += matches[user].username + '#' + args.toString();
             if (discrimc !== matches.length) message += ', ';
           }
-          const discrembed = new Discord.RichEmbed()
+          const discrembed = new Discord.MessageEmbed()
             .setTitle('Results for Discrim #' + args.toString())
             .setDescription(message + '```')
             .setColor(rand(data.embedColors));
@@ -165,7 +165,7 @@ client.on('message', msg => {
       }
       break;
     case 'download': case 'git': case 'github':
-      const hembed = new Discord.RichEmbed()
+      const hembed = new Discord.MessageEmbed()
         .setDescription('[Link to repo for this fork](https://github.com/VapidSlay/SelfBot)')
         .setFooter('Includes install instructions')
         .setColor(rand(data.embedColors));
@@ -213,7 +213,7 @@ client.on('message', msg => {
           if (typeof evaled !== 'string') {
             evaled = require('util').inspect(evaled);
           }
-          const codeEmbed = new Discord.RichEmbed()
+          const codeEmbed = new Discord.MessageEmbed()
             .addField('Eval', '```js\n' + code + '```')
             .addField('Returns', '```js\n' + evaled + '```')
             .setColor(rand(data.embedColors));
@@ -228,7 +228,7 @@ client.on('message', msg => {
       if (!fakecode) {
         msg.error('You must provide some code to evalute.');
       } else {
-        const fakeCodeEmbed = new Discord.RichEmbed()
+        const fakeCodeEmbed = new Discord.MessageEmbed()
           .addField('Eval', '```js\n' + fakecode + '```')
           .addField('Returns', '```js\ntrue```')
           .setColor(rand(data.embedColors));
@@ -246,7 +246,7 @@ client.on('message', msg => {
       if (!guildMember && !singlearg) { msg.error('To use this command outside a guild, you must specify a guild'); break;}
       const gaguild = findGuild(msg);
       if (!gaguild){ msg.error('No match found'); break;}
-      const gaembed = new Discord.RichEmbed()
+      const gaembed = new Discord.MessageEmbed()
       .setTitle(gaguild.name+'\'s Icon')
       .setImage(gaguild.iconURL('png', 2048))
       .setColor(rand(data.embedColors));
@@ -256,7 +256,7 @@ client.on('message', msg => {
       if (!guildMember && !singlearg) { msg.error('To use this command outside a guild, you must specify a guild'); break;}
       let gsguild = findGuild(msg);
       if (!gsguild){ msg.error('No match found'); break;}
-        const gsembed = new Discord.RichEmbed()
+        const gsembed = new Discord.MessageEmbed()
           .setTitle('Stats for: `' + gsguild.name + '`')
           .setThumbnail(gsguild.iconURL())
           .addField('Guild Owner', '`' + gsguild.owner.user.tag + '`', true)
@@ -391,7 +391,7 @@ client.on('message', msg => {
           if (quote_array.length === 0) msg.error('No results found');
           else if (quote_array[0].content.length > 1900) msg.error('Message too long to quote');
           else {
-            const quembed = new Discord.RichEmbed()
+            const quembed = new Discord.MessageEmbed()
               .setAuthor(quser.tag, quser.displayAvatarURL())
               .setDescription(quote_array[0].content)
               .setTimestamp(quote_array[0].createdAt)
@@ -416,7 +416,7 @@ client.on('message', msg => {
         if (message.content.length > 1900) msg.error('Message too long to quote');
         else {
           const qidauthor = message.author;
-          const qidembed = new Discord.RichEmbed()
+          const qidembed = new Discord.MessageEmbed()
             .setAuthor(qidauthor.tag, qidauthor.displayAvatarURL())
             .setDescription(message.content)
             .setTimestamp(message.createdAt)
@@ -479,7 +479,7 @@ client.on('message', msg => {
       }
       userchoice = userchoice.charAt(0).toUpperCase() + userchoice.slice(1);
       botchoice = botchoice.charAt(0).toUpperCase() + botchoice.slice(1);
-      const rpsEmbed = new Discord.RichEmbed()
+      const rpsEmbed = new Discord.MessageEmbed()
         .setTitle(rpswin)
         .addField('Your Choice', userchoice, true)
         .addField('My Choice', botchoice, true)
@@ -487,7 +487,7 @@ client.on('message', msg => {
       msg.sendEmbed(rpsEmbed);
       break;
     case 'server':
-      const servembed = new Discord.RichEmbed()
+      const servembed = new Discord.MessageEmbed()
         .setDescription('[Click here to join this selfbot\'s server](https://discord.gg/zz9KTka)')
         .setColor(rand(data.embedColors));
       msg.sendEmbed(servembed);
@@ -533,7 +533,7 @@ client.on('message', msg => {
       let ssut = parseFloat(((client.uptime) / (1000))).toFixed(0);
       const sshours = ~~(ssut / 3600);
       const ssminutes = ~~((ssut % 3600) / 60);
-      const ssembed = new Discord.RichEmbed()
+      const ssembed = new Discord.MessageEmbed()
         .addField('Ping', client.ping.toFixed(2) + ' ms', true)
         .addField('Memory', (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2) + ' MB', true)
         .addField('Uptime', sshours + ' hours, ' + ssminutes + ' minutes', true)
@@ -583,7 +583,7 @@ client.on('message', msg => {
       msg.send('Uptime: ' + hours + ' hours, ' + minutes + ' minutes, ' + seconds + ' seconds');
       break;
     case 'userstats': case 'us':
-      const usembedo = new Discord.RichEmbed();
+      const usembedo = new Discord.MessageEmbed();
       let ususer = findUser(msg);
       if (!ususer){ msg.error('No match found'); break; }
       usembedo.setTitle('Stats for: `' + ususer.tag + '`')
@@ -641,14 +641,14 @@ Discord.Message.prototype.sendEmbed = function(spicyEmbed) {
 };
 
 Discord.Message.prototype.send = function(description) {
-    const embed = new Discord.RichEmbed()
+    const embed = new Discord.MessageEmbed()
       .setColor(rand(data.embedColors))
       .setDescription(description);
     return this.sendEmbed(embed);
 };
 
 Discord.Message.prototype.error = function(description) {
-    const embed = new Discord.RichEmbed()
+    const embed = new Discord.MessageEmbed()
       .setColor([255, 0, 0])
       .setDescription(description);
     return this.channel.send({
