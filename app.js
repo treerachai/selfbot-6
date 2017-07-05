@@ -257,9 +257,9 @@ client.on('message', msg => {
       if (!gsguild){ msg.error('No match found'); break;}
         const gsembed = new Discord.MessageEmbed()
           .setTitle('Stats for: `' + gsguild.name + '`')
-          .setThumbnail(gsguild.iconURL())
-          .addField('Guild Owner', '`' + gsguild.owner.user.tag + '`', true)
-          .addField('Members', gsguild.memberCount, true)
+          .setThumbnail(gsguild.iconURL());
+          if(gsguild.owner) gsembed.addField('Guild Owner', '`' + gsguild.owner.user.tag + '`', true);
+          gsembed.addField('Members', gsguild.memberCount, true)
           .addField('Region', gsguild.region, true)
           .addField('Created At', gsguild.createdAt.toString().substring(0, 16), true)
           .setColor(rand(data.embedColors));
