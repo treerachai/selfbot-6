@@ -41,17 +41,11 @@ client.on('message', msg => {
       break;
     case 'altcheck': case 'ac':
       if (!guildMember){ msg.error('You must be in a guild to use this command'); break;}
-      let altmember = msg.guild.members.find('id', client.user.id);
-      if (singlearg){
-        altmember = msg.client.users.find('tag', singlearg);
-        if (altmember) altmember = msg.guild.members.find('id', altmember.id);
-        if (!altmember) altmember = msg.guild.members.find('id', singlearg);
-        if (msg.mentions.members.size !== 0) altmember = msg.mentions.members.first();
+      let altmember = findMember(msg);
         if (!altmember) {
           msg.error('No Match Found');
           break;
         }
-      }
       const altembed = new Discord.MessageEmbed()
       .setAuthor(altmember.user.tag + ' ('+altmember.id+')', altmember.user.displayAvatarURL())
       .addField('Account Created', altmember.user.createdAt.toString().substring(0,24))
@@ -633,6 +627,18 @@ function findGuild(msg){
     if (!guild) guild = client.guilds.find('id', arg);
   }
   return guild;
+};
+
+function findMember(msg) {
+  const arg = msg.content.slice(prefix.length).split(' ').slice(1).join(' ').toString();
+  let member = msg.guild.members.find('id', client.user.id);
+  if (arg){
+    member = msg.client.users.find('tag', arg);
+    if (member) member = msg.guild.members.find('id', member.id);
+    if (!member) member = msg.guild.members.find('id', arg);
+    if (msg.mentions.members.size !== 0) member = msg.mentions.members.first();
+  }
+  return member;
 };
 
 Discord.Message.prototype.sendEmbed = function(spicyEmbed) {
