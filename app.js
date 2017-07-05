@@ -200,7 +200,10 @@ client.on('message', msg => {
       let elmatches = singlearg.match(/<:([a-zA-Z0-9_]+):(\d+)>/);
       if (!elmatches){ msg.error('Invalid emoji, must be a custom emoji'); break;}
       let elmatch = client.emojis.get(elmatches[2]);
-      msg.channel.send(elmatch.url);
+      const elembed = new Discord.MessageEmbed()
+      .setImage(elmatch.url)
+      .setColor(rand(data.embedColors));
+      msg.sendEmbed(elembed);
       break;
     case 'eval': case 'e':
       const code = args.join(' ');
