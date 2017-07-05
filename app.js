@@ -1,14 +1,10 @@
 const Discord = require('discord.js');
 const util = require('util');
-const client = new Discord.Client();
 const credentials = require('./credentials.json');
 const data = require('./data.json');
 const fs = require("fs");
 let prefix = credentials.prefix;
-
-client.on('disconnect', () => console.log('=====================\nDisconnected'));
-
-client.on('reconnect', () => console.log('=====================\nReconnecting...'));
+const client = new Discord.Client({ disabledEvents:data.disabledEvents });
 
 client.on('ready', () => console.log('=====================\nSuccesfully Connected\n  :Logged Commands:\n====================='));
 
@@ -141,6 +137,9 @@ client.on('message', msg => {
       break;
     case 'disapprove': case 'da':
       msg.channel.send(singlearg+' ಠ_ಠ');
+      break;
+    case 'discordjs': case 'djs':
+      msg.send('[Documentation for Discord.js version '+Discord.version+'](https://discord.js.org/#/docs/main/master/general/welcome)');
       break;
     case 'discrim':
       if (args.toString().length != 4) msg.error('You must enter a 4 digit discriminator')
