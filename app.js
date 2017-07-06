@@ -4,14 +4,19 @@ const credentials = require('./credentials.json');
 const data = require('./data.json');
 const fs = require("fs");
 let prefix = credentials.prefix;
-const client = new Discord.Client({ disabledEvents:data.disabledEvents });
+const client = new Discord.Client({
+  disabledEvents: data.disabledEvents
+});
 
 client.on('ready', () => console.log('=====================\nSuccesfully Connected\n  :Logged Commands:\n====================='));
 
 client.on('message', msg => {
   if (!msg) return;
   if (msg.author.id !== client.user.id) return;
-  if (msg.content === 'getprefix'){ msg.send('Your current prefix is: `'+prefix+'`'); msg.delete().catch(() => null);}
+  if (msg.content === 'getprefix') {
+    msg.send('Your current prefix is: `' + prefix + '`');
+    msg.delete().catch(() => null);
+  }
   if (!msg.content.startsWith(prefix)) return;
 
   msg.delete()
@@ -40,31 +45,37 @@ client.on('message', msg => {
       }
       break;
     case 'altcheck': case 'ac':
-      if (!guildMember){ msg.error('You must be in a guild to use this command'); break;}
+      if (!guildMember) {
+        msg.error('You must be in a guild to use this command');
+        break;
+      }
       let altmember = findMember(msg);
-        if (!altmember) {
-          msg.error('No Match Found');
-          break;
-        }
+      if (!altmember) {
+        msg.error('No Match Found');
+        break;
+      }
       const altembed = new Discord.MessageEmbed()
-      .setAuthor(altmember.user.tag + ' ('+altmember.id+')', altmember.user.displayAvatarURL())
-      .addField('Account Created', altmember.user.createdAt.toString().substring(0,24))
-      .addField('Joined this Server', altmember.joinedAt.toString().substring(0,24))
-      .setColor(rand(data.embedColors));
+        .setAuthor(altmember.user.tag + ' (' + altmember.id + ')', altmember.user.displayAvatarURL())
+        .addField('Account Created', altmember.user.createdAt.toString().substring(0, 24))
+        .addField('Joined this Server', altmember.joinedAt.toString().substring(0, 24))
+        .setColor(rand(data.embedColors));
       if (altmember.joinedTimestamp - altmember.user.createdTimestamp < 3600000) altembed.setFooter('Likely an alt');
       msg.sendEmbed(altembed);
       break;
     case 'avatar': case 'a':
-        const avauser = findUser(msg);
-        if (!avauser){ msg.error('No match found'); break;}
-        const avaembed = new Discord.MessageEmbed()
-          .setTitle(avauser.tag+'\'s Avatar')
-          .setImage(avauser.displayAvatarURL({
-            format: 'png',
-            size: 2048
-          }))
-          .setColor(rand(data.embedColors));
-          msg.sendEmbed(avaembed);
+      const avauser = findUser(msg);
+      if (!avauser) {
+        msg.error('No match found');
+        break;
+      }
+      const avaembed = new Discord.MessageEmbed()
+        .setTitle(avauser.tag + '\'s Avatar')
+        .setImage(avauser.displayAvatarURL({
+          format: 'png',
+          size: 2048
+        }))
+        .setColor(rand(data.embedColors));
+      msg.sendEmbed(avaembed);
       break;
     case 'bold': case 'b':
       msg.channel.send('**' + singlearg + '**');
@@ -90,16 +101,22 @@ client.on('message', msg => {
       }
       break;
     case 'choose': case 'ch':
-      if (!singlearg){ msg.error('You must provide options to choose from. Example: `choose Vanilla|Chocolate`'); break;}
+      if (!singlearg) {
+        msg.error('You must provide options to choose from. Example: `choose Vanilla|Chocolate`');
+        break;
+      }
       const choptions = singlearg.split('|');
-      if (choptions.length < 2){ msg.error('You must provide at least 2 options'); break;}
+      if (choptions.length < 2) {
+        msg.error('You must provide at least 2 options');
+        break;
+      }
       const chchoice = rand(choptions);
       let chmsg = 'Out of: ';
-      for (let option in choptions){
-        chmsg += '`'+choptions[option] + '`, ';
+      for (let option in choptions) {
+        chmsg += '`' + choptions[option] + '`, ';
       }
-      chmsg = chmsg.substring(0, chmsg.length-2);
-      chmsg += '\nI choose: `'+chchoice+'`';
+      chmsg = chmsg.substring(0, chmsg.length - 2);
+      chmsg += '\nI choose: `' + chchoice + '`';
       msg.send(chmsg);
       break;
     case 'coinflip': case 'coin': case 'flip':
@@ -130,10 +147,10 @@ client.on('message', msg => {
       msg.sendEmbed(cembed);
       break;
     case 'disapprove': case 'da':
-      msg.channel.send(singlearg+' ಠ_ಠ');
+      msg.channel.send(singlearg + ' ಠ_ಠ');
       break;
     case 'discordjs': case 'djs':
-      msg.send('[Documentation for Discord.js version '+Discord.version+'](https://discord.js.org/#/docs/main/master/general/welcome)');
+      msg.send('[Documentation for Discord.js version ' + Discord.version + '](https://discord.js.org/#/docs/main/master/general/welcome)');
       break;
     case 'discrim':
       if (args.toString().length != 4) msg.error('You must enter a 4 digit discriminator')
@@ -190,13 +207,19 @@ client.on('message', msg => {
       }
       break;
     case 'enlarge': case 'el':
-      if (!singlearg){ msg.error('You must provide a custom emoji to enlarge'); break;}
+      if (!singlearg) {
+        msg.error('You must provide a custom emoji to enlarge');
+        break;
+      }
       let elmatches = singlearg.match(/<:([a-zA-Z0-9_]+):(\d+)>/);
-      if (!elmatches){ msg.error('Invalid emoji, must be a custom emoji'); break;}
+      if (!elmatches) {
+        msg.error('Invalid emoji, must be a custom emoji');
+        break;
+      }
       let elmatch = client.emojis.get(elmatches[2]);
       const elembed = new Discord.MessageEmbed()
-      .setImage(elmatch.url)
-      .setColor(rand(data.embedColors));
+        .setImage(elmatch.url)
+        .setColor(rand(data.embedColors));
       msg.sendEmbed(elembed);
       break;
     case 'eval': case 'e':
@@ -232,37 +255,50 @@ client.on('message', msg => {
       }
       break;
     case 'fliptable': case 'ft':
-      msg.channel.send(singlearg+' ノ┬─┬ノ ︵ ( \\o°o)\\');
+      msg.channel.send(singlearg + ' ノ┬─┬ノ ︵ ( \\o°o)\\');
       break;
     case 'game': case 'g':
       if (client.user.presence.game) msg.send('Playing: `' + client.user.presence.game.name + '`');
       else msg.send('Not currently playing a game');
       break;
     case 'guildavatar': case 'ga':
-      if (!guildMember && !singlearg) { msg.error('To use this command outside a guild, you must specify a guild'); break;}
+      if (!guildMember && !singlearg) {
+        msg.error('To use this command outside a guild, you must specify a guild');
+        break;
+      }
       const gaguild = findGuild(msg);
-      if (!gaguild){ msg.error('No match found'); break;}
+      if (!gaguild) {
+        msg.error('No match found');
+        break;
+      }
       const gaembed = new Discord.MessageEmbed()
-      .setTitle(gaguild.name+'\'s Icon')
-      .setImage(gaguild.iconURL('png', 2048))
-      .setColor(rand(data.embedColors));
+        .setTitle(gaguild.name + '\'s Icon')
+        .setImage(gaguild.iconURL('png', 2048))
+        .setColor(rand(data.embedColors));
       msg.sendEmbed(gaembed);
       break;
     case 'guildstats': case 'gs':
-      if (!guildMember && !singlearg) { msg.error('To use this command outside a guild, you must specify a guild'); break;}
+      if (!guildMember && !singlearg) {
+        msg.error('To use this command outside a guild, you must specify a guild');
+        break;
+      }
       let gsguild = findGuild(msg);
-      if (!gsguild){ msg.error('No match found'); break;}
-        const gsembed = new Discord.MessageEmbed()
-          .setTitle('Stats for: `' + gsguild.name + '`')
-          .setThumbnail(gsguild.iconURL());
-          if(gsguild.owner) gsembed.addField('Guild Owner', '`' + gsguild.owner.user.tag + '`', true);
-          gsembed.addField('Members', gsguild.memberCount, true)
-          .addField('Region', gsguild.region, true)
-          .addField('Created At', gsguild.createdAt.toString().substring(0, 16), true)
-          .setColor(rand(data.embedColors));
-        msg.sendEmbed(gsembed);
+      if (!gsguild) {
+        msg.error('No match found');
+        break;
+      }
+      const gsembed = new Discord.MessageEmbed()
+        .setTitle('Stats for: `' + gsguild.name + '`')
+        .setThumbnail(gsguild.iconURL());
+      if (gsguild.owner) gsembed.addField('Guild Owner', '`' + gsguild.owner.user.tag + '`', true);
+      gsembed.addField('Members', gsguild.memberCount, true)
+        .addField('Channels', gsguild.channels.array().length, true)
+        .addField('Region', gsguild.region, true)
+        .addField('Created At', gsguild.createdAt.toString().substring(0, 16), true)
+        .setColor(rand(data.embedColors));
+      msg.sendEmbed(gsembed);
       break;
-    case 'h': case 'happy':
+    case 'happy': case 'h':
       msg.channel.send(singlearg + ' ᕕ( ᐛ )ᕗ');
       break;
     case 'impersonate':
@@ -286,7 +322,7 @@ client.on('message', msg => {
       } else msg.error('This command can only be used in a guild');
       break;
     case 'innocent': case 'in':
-      msg.channel.send(singlearg+' ʘ‿ʘ');
+      msg.channel.send(singlearg + ' ʘ‿ʘ');
       break;
     case 'italics': case 'i':
       msg.channel.send('*' + singlearg + '*');
@@ -315,7 +351,7 @@ client.on('message', msg => {
       break;
     case 'pingplus': case 'p+': case 'pp':
       msg.channel.send('Ping: ' + client.ping.toFixed(2) + ' ms').then(async m => {
-          m.edit(m+'\nDelay: '+(m.createdTimestamp-msg.createdTimestamp)+' ms');
+        m.edit(m + '\nDelay: ' + (m.createdTimestamp - msg.createdTimestamp) + ' ms');
       });
       break;
     case 'poll':
@@ -422,7 +458,7 @@ client.on('message', msg => {
       }).catch(error => msg.error('No message found in this channel with the id: `' + singlearg + '`'));
       break;
     case 'rageflip': case 'rf':
-      msg.channel.send(singlearg+' ┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻');
+      msg.channel.send(singlearg + ' ┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻');
       break;
     case 'reboot':
       msg.send('Rebooting...')
@@ -488,24 +524,27 @@ client.on('message', msg => {
         .setColor(rand(data.embedColors));
       msg.sendEmbed(servembed);
       break;
+    case 'setavatar': case 'sa':
+      if (!singlearg) msg.error('You must provide a valid link to an image')
+      else client.user.setAvatar(singlearg).catch(Error);
+      break;
     case 'setgame': case 'sg':
       if (!singlearg || singlearg.length < 1) client.user.setGame(null);
       else if (singlearg.length > 128) client.user.setGame(singlearg.substring(0, 128));
       else client.user.setGame(singlearg);
       break;
-    case 'setavatar': case 'sa':
-      if (!singlearg) msg.error('You must provide a valid link to an image')
-      else client.user.setAvatar(singlearg).catch(Error);
-      break;
     case 'setprefix':
-      if (!singlearg || singlearg.length > 3 || singlearg.length < 1){ msg.error('Must provide a valid prefix of 1-3 characters'); break;}
+      if (!singlearg || singlearg.length > 3 || singlearg.length < 1) {
+        msg.error('Must provide a valid prefix of 1-3 characters');
+        break;
+      }
       let prefjson = JSON.parse(fs.readFileSync("./credentials.json", "utf8"));
       prefjson.prefix = singlearg;
       fs.writeFile("./credentials.json", JSON.stringify(prefjson), (err) => {
         if (err) console.error(err);
         else {
           prefix = singlearg;
-          msg.send('Prefix set to : `'+prefix+'`');
+          msg.send('Prefix set to : `' + prefix + '`');
         }
       })
       break;
@@ -513,15 +552,27 @@ client.on('message', msg => {
       msg.channel.send(singlearg + ' ¯\\_(ツ)_/¯');
       break;
     case 'spam':
-      if (!singlearg){ msg.error('You must provide something to spam'); break;}
+      if (!singlearg) {
+        msg.error('You must provide something to spam');
+        break;
+      }
       const spamsplit = singlearg.split('|');
-      if (spamsplit.length < 1){ msg.error('Invalid command. Example: `spam [message]|[amount]`'); break;}
+      if (spamsplit.length < 1) {
+        msg.error('Invalid command. Example: `spam [message]|[amount]`');
+        break;
+      }
       const spamsg = spamsplit[0];
       let spamount = 10;
       if (spamsplit.length > 1) spamount = parseInt(spamsplit[1].replace(/[^0-9]/gi, ''));
-      if (!spamount || !spamsg){ msg.error('Invalid command. Example: `spam [message]|[amount]`'); break;}
-      if (spamount > 100 || spamount < 1){ msg.error('Amount must be from 1-100'); break;}
-      for (var i = 0; i < spamount; i++){
+      if (!spamount || !spamsg) {
+        msg.error('Invalid command. Example: `spam [message]|[amount]`');
+        break;
+      }
+      if (spamount > 100 || spamount < 1) {
+        msg.error('Amount must be from 1-100');
+        break;
+      }
+      for (var i = 0; i < spamount; i++) {
         msg.channel.send(spamsg);
       }
       break;
@@ -547,26 +598,26 @@ client.on('message', msg => {
       }
       break;
     case 'tableflip': case 'tf':
-      msg.channel.send(singlearg+' (╯°□°）╯︵ ┻━┻');
+      msg.channel.send(singlearg + ' (╯°□°）╯︵ ┻━┻');
       break;
     case 'underline': case 'u':
       msg.channel.send('__' + singlearg + '__');
       break;
     case 'unflip': case 'uf':
-      msg.channel.send(singlearg+' ┬─┬﻿ ノ( ゜-゜ノ)');
+      msg.channel.send(singlearg + ' ┬─┬﻿ ノ( ゜-゜ノ)');
       break;
     case 'update':
       msg.send('Checking for updates...');
-      const { exec } = require('child_process');
-        exec('git pull', (error, stdout, stderr) => {
-         if (error) {
-         console.error(`exec error: ${error}`);
-             return;
-          }
-         console.log(`Update Log:\n ${stdout}`);
+      const {exec} = require('child_process');
+      exec('git pull', (error, stdout, stderr) => {
+        if (error) {
+          console.error(`exec error: ${error}`);
+          return;
+        }
+        console.log(`Update Log:\n ${stdout}`);
         if (stderr) console.log(`stderr: ${stderr}`);
       });
-      setTimeout(function(){
+      setTimeout(function() {
         msg.send('Rebooting...')
           .then(() => process.exit(1));
       }, 30000);
@@ -581,7 +632,10 @@ client.on('message', msg => {
     case 'userstats': case 'us':
       const usembedo = new Discord.MessageEmbed();
       let ususer = findUser(msg);
-      if (!ususer){ msg.error('No match found'); break; }
+      if (!ususer) {
+        msg.error('No match found');
+        break;
+      }
       usembedo.setTitle('Stats for: `' + ususer.tag + '`')
         .setThumbnail(ususer.displayAvatarURL())
         .addField('ID', ususer.id, true)
@@ -607,9 +661,9 @@ client.on('message', msg => {
 function findUser(msg) {
   const arg = msg.content.slice(prefix.length).split(' ').slice(1).join(' ').toString();
   let user = client.user;
-  if (arg){
+  if (arg) {
     if (msg.mentions.users.size > 0) user = msg.mentions.users.first();
-    else{
+    else {
       user = client.users.find('tag', arg);
       if (!user) user = client.users.find('id', arg);
     }
@@ -617,13 +671,15 @@ function findUser(msg) {
   return user;
 };
 
-function findGuild(msg){
+function findGuild(msg) {
   const arg = msg.content.slice(prefix.length).split(' ').slice(1).join(' ').toString();
   let guild;
   if (!arg) guild = msg.guild;
-  else{
+  else {
     guild = client.guilds.find('name', arg);
-    if (guild){ if (guild.length > 1) guild = guild[0];}
+    if (guild) {
+      if (guild.length > 1) guild = guild[0];
+    }
     if (!guild) guild = client.guilds.find('id', arg);
   }
   return guild;
@@ -632,7 +688,7 @@ function findGuild(msg){
 function findMember(msg) {
   const arg = msg.content.slice(prefix.length).split(' ').slice(1).join(' ').toString();
   let member = msg.guild.members.find('id', client.user.id);
-  if (arg){
+  if (arg) {
     member = msg.client.users.find('tag', arg);
     if (member) member = msg.guild.members.find('id', member.id);
     if (!member) member = msg.guild.members.find('id', arg);
@@ -649,20 +705,20 @@ Discord.Message.prototype.sendEmbed = function(spicyEmbed) {
 };
 
 Discord.Message.prototype.send = function(description) {
-    const embed = new Discord.MessageEmbed()
-      .setColor(rand(data.embedColors))
-      .setDescription(description);
-    return this.sendEmbed(embed);
+  const embed = new Discord.MessageEmbed()
+    .setColor(rand(data.embedColors))
+    .setDescription(description);
+  return this.sendEmbed(embed);
 };
 
 Discord.Message.prototype.error = function(description) {
-    const embed = new Discord.MessageEmbed()
-      .setColor([255, 0, 0])
-      .setDescription(description);
-    return this.channel.send({
-        embed: embed
-      })
-      .catch((e) => handleError(this.channel, e));
+  const embed = new Discord.MessageEmbed()
+    .setColor([255, 0, 0])
+    .setDescription(description);
+  return this.channel.send({
+      embed: embed
+    })
+    .catch((e) => handleError(this.channel, e));
 };
 
 function rand(array) {
