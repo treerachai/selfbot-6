@@ -1,7 +1,7 @@
 {
   "name": "selfbot",
   "version": "1.0.0",
-  "description": "Cleanest Selfbot around.",
+  "description": "A Discord.js selfbot by PapaJohn#7777",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,9 +13,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/RealBlazeIt/SelfBot"
+    "url": "https://github.com/VapidSlay/SelfBot"
   },
-  "author": "John",
+  "author": "PapaJohn",
   "license": "UNI",
   "dependencies": {
     "discord.js": "github:hydrabolt/discord.js"
