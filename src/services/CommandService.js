@@ -26,8 +26,6 @@ class CommandService {
         let message;
 
         switch (result.commandError) {
-          case patron.CommandError.InvalidPrefix:
-            return;
           case patron.CommandError.CommandNotFound:
             return util.Messenger.send(msg.channel, msg.content.slice(prefix.length));
           case patron.CommandError.Exception:
