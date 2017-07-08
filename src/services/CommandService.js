@@ -29,7 +29,7 @@ class CommandService {
           case patron.CommandError.CommandNotFound:
             return util.Messenger.send(msg.channel, msg.content.slice(prefix.length));
           case patron.CommandError.Exception:
-            if (result.error !== undefined) {
+            if (result.error.code !== undefined) {
               if (result.error.code === 400) { 
                 message = 'There seems to have been a bad request. Please report this issue with context to PapaJohn#7777.';
               } else if (result.error.code === 404 || result.error.code === 50013) {
