@@ -1,4 +1,4 @@
-const patron = require('patron');
+const patron = require('patron.js');
 
 class Utility extends patron.Group {
   constructor() {

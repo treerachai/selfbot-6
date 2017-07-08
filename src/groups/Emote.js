@@ -1,4 +1,4 @@
-const patron = require('patron');
+const patron = require('patron.js');
 
 class Emote extends patron.Group {
   constructor() {

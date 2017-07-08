@@ -1,4 +1,4 @@
-const patron = require('patron');
+const patron = require('patron.js');
 const prefix = require('../credentials.json').prefix;
 const util = require('../utility');
 
@@ -12,10 +12,10 @@ class CommandService {
     this.client.on('message', async (msg) => {
       if (msg.author.id !== msg.client.user.id) {
         return;
-      }
-
-      if (msg.content.startsWith(prefix)) {
+      } else if (msg.content.startsWith(prefix)) {
         msg.delete();
+      } else {
+        return;
       }
 
       const context = new patron.Context(msg);

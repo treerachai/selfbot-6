@@ -24,10 +24,7 @@
   },
   "homepage": "https://github.com/VapidSlay/Selfbot#readme",
   "dependencies": {
-    "bufferutil": "^3.0.1",
     "discord.js": "^11.1.0",
-    "patron": "github:realblazeit/patron",
-    "patron.js": "github:realblazeit/patron",
-    "uws": "^0.14.1"
+    "patron.js": "github:realblazeit/patron"
   }
 }

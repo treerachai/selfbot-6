@@ -1,5 +1,5 @@
 const path = require('path');
-const patron = require('patron');
+const patron = require('patron.js');
 const discord = require('discord.js');
 const EventService = require('./services/EventService.js');
 const CommandService = require('./services/CommandService.js');
