@@ -14,6 +14,8 @@ registry.registerDefaultTypeReaders();
 registry.registerGroupsIn(path.join(__dirname, 'groups'));
 registry.registerCommandsIn(path.join(__dirname, 'commands'));
 
+client.registry = Object.freeze(registry);
+
 new EventService(client).initiate();
 
 new CommandService(client, registry).run().catch(console.error);
