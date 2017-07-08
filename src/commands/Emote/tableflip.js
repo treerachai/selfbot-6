@@ -15,7 +15,8 @@ class Tableflip extends patron.Command {
           key: 'text',
           type: 'string',
           example: 'They forgot the breadsticks',
-          isRemainder: true
+          isRemainder: true,
+          default: ''
         })
       ]
     });

@@ -15,7 +15,8 @@ class Lenny extends patron.Command {
           key: 'text',
           type: 'string',
           example: 'I see what you did there',
-          isRemainder: true
+          isRemainder: true,
+          default: ''
         })
       ]
     });

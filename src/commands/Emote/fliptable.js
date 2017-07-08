@@ -15,7 +15,8 @@ class Fliptable extends patron.Command {
           key: 'text',
           type: 'string',
           example: 'The tables have had enough',
-          isRemainder: true
+          isRemainder: true,
+          default: ''
         })
       ]
     });
