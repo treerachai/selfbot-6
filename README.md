@@ -1,12 +1,10 @@
-# A Discord.js Selfbot by PapaJohn#7777
+# Papa John's SelfBot
 
-forked from an old version of John#0969's Selfbot
+## Install Instructions (Windows)
 
-# Install Instructions (Windows)
+1. Install the current Node.js: https://nodejs.org/en/.
 
-1. Install node.js (most recent version) WITH NPM: https://nodejs.org/en/ [MAKE SURE YOU HAVE THE NPM OPTION SELECTED WHEN INSTALLING, AS SEEN HERE http://prntscr.com/fkwdax]
-
-2. Install git here: https://git-scm.com/download/win (when installing, just use whatever defaults it gives to you in any options)
+2. Install git here: https://git-scm.com/download/win.
 
 3. Download the Installer here: https://drive.google.com/file/d/0B07gEfyceilqQWpleDJpclctQmM/view?usp=sharing
 

@@ -12,6 +12,7 @@
     [150, 36, 237],
     [168, 237, 0]
   ],
+  "errorColor": [255, 0, 0],
   "numbers":[
     "zero",
     "one",
@@ -57,10 +58,8 @@
   "disabledEvents":[
     "RESUMED",
     "GUILD_SYNC",
-    "GUILD_CREATE",
     "GUILD_DELETE",
     "GUILD_UPDATE",
-    "GUILD_MEMBER_ADD",
     "GUILD_MEMBER_REMOVE",
     "GUILD_MEMBER_UPDATE",
     "GUILD_MEMBERS_CHUNK",
@@ -69,7 +68,6 @@
     "GUILD_ROLE_UPDATE",
     "GUILD_BAN_ADD",
     "GUILD_BAN_REMOVE",
-    "CHANNEL_CREATE",
     "CHANNEL_DELETE",
     "CHANNEL_UPDATE",
     "CHANNEL_PINS_UPDATE",

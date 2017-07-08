@@ -1,23 +1,33 @@
 {
   "name": "selfbot",
   "version": "1.0.0",
-  "description": "A Discord.js selfbot by PapaJohn#7777",
-  "main": "app.js",
+  "description": "Papa John's Selfbot.",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node src/index.js"
   },
-  "keywords": [
-    "selfbot",
-    "bot",
-    "discord.js"
-  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/VapidSlay/SelfBot"
+    "url": "git+https://github.com/VapidSlay/Selfbot.git"
   },
-  "author": "PapaJohn",
-  "license": "UNI",
+  "keywords": [
+    "discord.js",
+    "patron.js",
+    "papajohn",
+    "selfbot",
+    "bot"
+  ],
+  "author": "PapaJohn#7777",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/VapidSlay/Selfbot/issues"
+  },
+  "homepage": "https://github.com/VapidSlay/Selfbot#readme",
   "dependencies": {
-    "discord.js": "github:hydrabolt/discord.js"
+    "bufferutil": "^3.0.1",
+    "discord.js": "^11.1.0",
+    "patron": "github:realblazeit/patron",
+    "patron.js": "github:realblazeit/patron",
+    "uws": "^0.14.1"
   }
 }
