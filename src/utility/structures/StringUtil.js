@@ -1,6 +1,6 @@
 class StringUtil {
   static isNullOrWhiteSpace(input) {
-    return (typeof input === 'undefined' || input == null) || input.replace(/\s/g, '').length === 0;
+    return !input || input.replace(/\s/g, '').length === 0;
   }
 }
 
