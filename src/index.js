@@ -16,6 +16,6 @@ registry.registerCommandsIn(path.join(__dirname, 'commands'));
 
 new EventService(client).initiate();
 
-new CommandService(client, registry).run();
+new CommandService(client, registry).run().catch(console.error);
 
 client.login(credentials.token);
