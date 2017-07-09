@@ -1,5 +1,6 @@
 const patron = require('patron.js');
 const util = require('../../utility');
+const data = require('../../data.json');
 
 class Eightball extends patron.Command {
   constructor() {
@@ -22,25 +23,7 @@ class Eightball extends patron.Command {
   }
 
   async run(context, args) {
-    const responses = [
-      'Why certainly',
-      'It is certain',
-      'Absolutely',
-      'Unavoidably so',
-      'Without a doubt',
-      'Most definitely',
-      'As I see it, yes',
-      'Most likely',
-      'In your dreams',
-      'Don\'t count on it',
-      'Inevitably no',
-      'Surely not',
-      'My sources say no',
-      'Not a chance buddy',
-      'Not even a little bit',
-      'Very doubtful'
-    ];
-    return util.Messenger.send(context.channel, ':8ball:: ' + util.Random.arrayElement(responses), 'Question: ' + args.question);
+    return util.Messenger.send(context.channel, ':8ball:: ' + util.Random.arrayElement(data.eightBallAnswers), 'Question: ' + args.question);
   }
 }
 
