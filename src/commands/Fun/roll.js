@@ -1,5 +1,6 @@
 const patron = require('patron.js');
 const util = require('../../utility');
+const Minimum = require('../../preconditions/minimum.js');
 
 class Roll extends patron.Command {
   constructor() {
@@ -15,7 +16,8 @@ class Roll extends patron.Command {
           type: 'float',
           example: '100',
           isRemainder: true,
-          default: '6'
+          default: '6',
+          preconditions: [new Minimum(1)]
         })
       ]
     });
