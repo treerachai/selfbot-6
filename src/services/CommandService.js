@@ -18,9 +18,7 @@ class CommandService {
         return;
       }
 
-      const context = new patron.Context(msg);
-
-      const result = await this.handler.run(context, prefix);
+      const result = await this.handler.run(msg, prefix);
 
       if (!result.isSuccess) {
         let message;
@@ -31,7 +29,7 @@ class CommandService {
           case patron.CommandError.Exception:
             if (result.error.code !== undefined) {
               if (result.error.code === 400) { 
-                message = 'There seems to have been a bad request. Please report this issue with context to PapaJohn#7777.';
+                message = 'There seems to have been a bad request. Please report this issue with msg to PapaJohn#7777.';
               } else if (result.error.code === 404 || result.error.code === 50013) {
                 message = 'You do not have permission to do that.';
               } else if (result.error.code === 50007) {
@@ -54,7 +52,7 @@ class CommandService {
             break;
         }
 
-        return util.Messenger.sendError(context.channel, message);
+        return util.Messenger.sendError(msg.channel, message);
       }
     });
   }

@@ -22,8 +22,8 @@ class Fliptable extends patron.Command {
     });
   }
 
-  async run(context, args) {
-    return context.channel.send(args.text + ' ノ┬─┬ノ ︵ ( \\o°o)\\');
+  async run(msg, args) {
+    return msg.channel.send(args.text + ' ノ┬─┬ノ ︵ ( \\o°o)\\');
   }
 }
 

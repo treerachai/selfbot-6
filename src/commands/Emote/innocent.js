@@ -22,8 +22,8 @@ class Innocent extends patron.Command {
     });
   }
 
-  async run(context, args) {
-    return context.channel.send(args.text + ' ʘ‿ʘ');
+  async run(msg, args) {
+    return msg.channel.send(args.text + ' ʘ‿ʘ');
   }
 }
 

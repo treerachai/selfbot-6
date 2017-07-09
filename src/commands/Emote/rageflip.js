@@ -22,8 +22,8 @@ class Rageflip extends patron.Command {
     });
   }
 
-  async run(context, args) {
-    return context.channel.send(args.text + ' ┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻');
+  async run(msg, args) {
+    return msg.channel.send(args.text + ' ┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻');
   }
 }
 

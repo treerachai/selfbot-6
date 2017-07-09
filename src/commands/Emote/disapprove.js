@@ -22,8 +22,8 @@ class Disapprove extends patron.Command {
     });
   }
 
-  async run(context, args) {
-    return context.channel.send(args.text + ' ಠ_ಠ');
+  async run(msg, args) {
+    return msg.channel.send(args.text + ' ಠ_ಠ');
   }
 }
 
