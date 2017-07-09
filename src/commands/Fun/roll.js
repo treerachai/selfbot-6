@@ -23,9 +23,9 @@ class Roll extends patron.Command {
     });
   }
 
-  async run(context, args) {
+  async run(msg, args) {
       const roll = util.Random.nextInt(1, args.maxroll);
-      return util.Messenger.send(context.channel, ':game_die: You rolled a ' + roll + ' out of ' + args.maxroll);
+      return util.Messenger.send(msg.channel, ':game_die: You rolled a ' + roll + ' out of ' + args.maxroll);
   }
 }
 

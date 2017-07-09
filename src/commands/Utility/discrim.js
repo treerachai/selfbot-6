@@ -15,18 +15,16 @@ class Discrim extends patron.Command {
           name: 'discrim',
           key: 'discrim',
           type: 'string',
-          example: '7777',
-          isRemainder: true,
-          default: patron.Default.Author.discriminator
+          example: '7777'
         })
       ]
     });
   }
 
-  async run(context, args) {
-    const matches = context.client.users.findAll('discriminator', args.discrim);
+  async run(msg, args) {
+    const matches = msg.client.users.findAll('discriminator', args.discrim);
     if (matches.length === 0){
-      return util.Messenger.sendError(context.channel, 'No match found for discrim #' + args.discrim);
+      return util.Messenger.sendError(msg.channel, 'No match found for discrim #' + args.discrim);
     } else {
       let message = '```css\n';
       let discrimc = 0;
@@ -41,7 +39,7 @@ class Discrim extends patron.Command {
       const embed = new Discord.RichEmbed()
          .setTitle('Results for Discrim #' + args.discrim)
          .setDescription(message + '```');
-      util.Messenger.sendEmbed(context.channel, embed);
+      util.Messenger.sendEmbed(msg.channel, embed);
     }
   }
 }
