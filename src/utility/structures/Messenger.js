@@ -16,6 +16,12 @@ class Messenger {
     return channel.send({ embed: embed });
   }
 
+  static sendEmbed(channel, commandEmbed){
+    const embed = commandEmbed
+    .setColor(Random.arrayElement(data.embedColors));
+    return channel.send({ embed: embed });
+  }
+
   static sendError(channel, description, title = '') {
     return this.send(channel, description, title, data.errorColor);
   }
