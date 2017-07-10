@@ -1,5 +1,3 @@
-# Papa John's SelfBot
-
 ## Install Instructions (Windows)
 
 1. Install [node.js (most recent version) WITH NPM:](https://nodejs.org/en/) [MAKE SURE YOU HAVE THE NPM OPTION SELECTED WHEN INSTALLING, AS SEEN [HERE](http://prntscr.com/fkwdax)]
