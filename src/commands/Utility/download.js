@@ -5,7 +5,7 @@ class Download extends patron.Command {
   constructor() {
     super({
       name: 'download',
-      aliases: ['git', 'github'],
+      aliases: ['git', 'github', 'repo', 'repository'],
       group: 'utility',
       description: 'Get a link to this Selfbot\'s Github Repository',
       guildOnly: false
