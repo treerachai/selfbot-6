@@ -24,7 +24,8 @@ class Help extends patron.Command {
 
   async run(msg,args) {
     if (util.StringUtil.isNullOrWhiteSpace(args.command)){
-      return util.Messenger.send(msg.channel, 'Use `' + credentials.prefix + 'help [command name]` to view information about any command!\nA full command list is coming soon...');
+      return util.Messenger.send(msg.channel, 'A full list of commands can be found here: https://vapidslay.github.io/selfbot/commands/' + 
+      '\n\nUse `' + credentials.prefix + 'help [command name]` to view information about any command!');
     } else {
       args.command = args.command.startsWith(credentials.prefix) ? args.command.slice(credentials.prefix.length) : args.command;
 

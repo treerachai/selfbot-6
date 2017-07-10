@@ -42,8 +42,8 @@ Help|Information about the recent lack of commands.|`.help [command]`
 Altcheck|Check when a user's account was created and when they joined the guild|`.altcheck [@member]`
 Discrim|Finds users with the specified discriminator|`.discrim <discrim>`
 Djs|Get a link to the documentation of the Discord.js version this Selfbot uses|`.djs`
-Download|Get a link to this Selfbot's Github Repository|`.download`
 Eval|Evaluate JavaScript code|`.eval <code>`
+Git|Get a link to this Selfbot's Github Repository|`.git`
 Calc|Do basic adding, subtracting, multiplying, and dividing|`.calc <problem>`
 Ping|See your ping|`.ping`
 Reboot|Reboots the selfbot|`.reboot`
