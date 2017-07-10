@@ -24,7 +24,7 @@ class Help extends patron.Command {
 
   async run(msg,args) {
     if (util.StringUtil.isNullOrWhiteSpace(args.command)){
-      return util.Messenger.send(msg.channel, 'Hey your test is doing things');
+      return util.Messenger.send(msg.channel, 'Use `' + credentials.prefix + 'help [command name]` to view information about any command!\nA full command list is coming soon...');
     } else {
       args.command = args.command.startsWith(credentials.prefix) ? args.command.slice(credentials.prefix.length) : args.command;
 
