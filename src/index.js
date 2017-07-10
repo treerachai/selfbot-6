@@ -3,6 +3,7 @@ const patron = require('patron.js');
 const discord = require('discord.js');
 const EventService = require('./services/EventService.js');
 const CommandService = require('./services/CommandService.js');
+const Documentation = require('./services/Documentation.js');
 const data = require('./data.json');
 const credentials = require('./credentials.json');
 
@@ -19,5 +20,7 @@ client.registry = Object.freeze(registry);
 new EventService(client).initiate();
 
 new CommandService(client, registry).run().catch(console.error);
+
+Documentation.createAndSave(registry);
 
 client.login(credentials.token);

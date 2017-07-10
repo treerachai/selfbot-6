@@ -1,0 +1,7 @@
+site_name: Papa John's Selfbot
+repo_url: https://github.com/VapidSlay/Selfbot
+pages:
+    - Home: index.md
+    - Setup: setup.md
+    - Commands: commands.md
+theme: readthedocs
