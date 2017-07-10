@@ -13,7 +13,7 @@ class Ping extends patron.Command {
   }
 
   async run(msg) { 
-      return util.Messenger.send(msg.channel, 'Ping: ' + msg.client.ping + ' ms');
+      return util.Messenger.send(msg.channel, 'Ping: ' + msg.client.ping.toFixed(0) + ' ms');
   }
 }
 
