@@ -12,7 +12,7 @@ class Reboot extends patron.Command {
   }
 
   async run(context) {
-    return util.Messenger.send(context.channel, 'Rebooting...').then(() => process.exit(1));
+    return util.Messenger.send(context.channel, 'Rebooting...').then(() => process.exit(0));
   }
 }
 
