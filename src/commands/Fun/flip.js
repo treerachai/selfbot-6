@@ -9,7 +9,7 @@ class Flip extends patron.Command {
       name: 'flip',
       aliases: ['coinflip', 'coin'],
       group: 'fun',
-      description: 'Flips a coin, or multiple coins',
+      description: 'Flip up to 100,000 coins',
       guildOnly: false,
       args: [
         new patron.Argument({

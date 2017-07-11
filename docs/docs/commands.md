@@ -30,7 +30,7 @@ Command | Description | Usage
 8ball|Ask the Magical 8ball your question|`.8ball <question>`
 Avatar|Get the avatar of a user|`.avatar [@user]`
 Emoji|Turns your message into emojis|`.emoji <text>`
-Flip|Flips a coin, or multiple coins|`.flip [amount]`
+Flip|Flip up to 100,000 coins|`.flip [amount]`
 Game|Shows what game a user is playing|`.game [@user]`
 Roll|Rolls a random number|`.roll [Max Roll]`
 Setgame|Sets what game you are playing|`.setgame [name]`
