@@ -8,7 +8,7 @@ class Help extends patron.Command {
       name: 'help',
       aliases: ['info', 'information'],
       group: 'utility',
-      description: 'Information about the recent lack of commands.',
+      description: 'View command information',
       guildOnly: false,
       args:[
         new patron.Argument({

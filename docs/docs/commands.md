@@ -38,7 +38,7 @@ Setgame|Sets what game you are playing|`.setgame [name]`
 ### Utility
 Command | Description | Usage
 ---------------- | --------------| -------
-Help|Information about the recent lack of commands.|`.help [command]`
+Help|View command information|`.help [command]`
 Altcheck|Check when a user's account was created and when they joined the guild|`.altcheck [@member]`
 Discrim|Finds users with the specified discriminator|`.discrim <discrim>`
 Djs|Get a link to the documentation of the Discord.js version this Selfbot uses|`.djs`
