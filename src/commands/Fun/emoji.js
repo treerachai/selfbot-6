@@ -35,9 +35,9 @@ class Emoji extends patron.Command {
       } else {
         const number = parseInt(args.text[index]);
         if (!isNaN(number)) {
-          message += ':' + data.numbers[number] + ':';
+          message += ':' + data.numbers[number] + ': ';
         } else {
-          message += ':regional_indicator_' + args.text[index] + ':';
+          message += ':regional_indicator_' + args.text[index] + ': ';
         }
       }
     }
