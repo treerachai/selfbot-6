@@ -1,6 +1,7 @@
 const patron = require('patron.js');
 const util = require('../../utility');
 const Discord = require('discord.js');
+const Charactercount = require('../../preconditions/charactercount.js');
 
 class Discrim extends patron.Command {
   constructor() {
@@ -15,13 +16,17 @@ class Discrim extends patron.Command {
           name: 'discrim',
           key: 'discrim',
           type: 'string',
-          example: '7777'
+          example: '7777',
+          preconditions: [new Charactercount(4)]
         })
       ]
     });
   }
 
   async run(msg, args) {
+    if (args.discrim.replace(/[^0-9]/gi, '').length !== 4){
+      return util.Messenger.sendError(msg.channel, 'You have provided an invalid discrim.')
+    }
     const matches = msg.client.users.findAll('discriminator', args.discrim);
     if (matches.length === 0){
       return util.Messenger.sendError(msg.channel, 'No match found for discrim #' + args.discrim);
