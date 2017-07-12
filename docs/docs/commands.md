@@ -50,3 +50,4 @@ Reboot|Reboots the selfbot|`.reboot`
 Server|Sends an invite to this Selfbot's server|`.server`
 Stats|See some statistics about the Selfbot|`.stats`
 Uptime|See how long your selfbot has been running|`.uptime`
+Userstats|Get a user's statistics|`.userstats [@user]`
