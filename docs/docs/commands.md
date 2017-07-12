@@ -27,16 +27,17 @@ Unflip|Adds " ┬─┬﻿ ノ( ゜-゜ノ)" to your message|`.unflip [text]`
 ### Fun
 Command | Description | Usage
 ---------------- | --------------| -------
+Guildicon|Get a guild's icon|`.guildicon [guild]`
 8ball|Ask the Magical 8ball your question|`.8ball <question>`
-Avatar|Get the avatar of a user|`.avatar [@user]`
 Emoji|Turns your message into emojis|`.emoji <text>`
 Flip|Flip up to 100,000 coins|`.flip [amount]`
 Game|Shows what game a user is playing|`.game [@user]`
-Guildicon|Get a guild's icon|`.guildicon [guild]`
+Avatar|Get the avatar of a user|`.avatar [@user]`
 Guildstats|Get a guild's statistics|`.guildstats [guild]`
 Memberstats|Get a member's statistics|`.memberstats [@member]`
 Roll|Rolls a random number|`.roll [Max Roll]`
 Setgame|Sets what game you are playing|`.setgame [name]`
+Userid|Get the uid of a user|`.userid [@user]`
 
 ### Utility
 Command | Description | Usage
