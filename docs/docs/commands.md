@@ -50,6 +50,7 @@ Eval|Evaluate JavaScript code|`.eval <code>`
 Git|Get a link to this Selfbot's Github Repository|`.git`
 Calc|Do basic adding, subtracting, multiplying, and dividing|`.calc <problem>`
 Ping|See your ping|`.ping`
+Prune|Deletes your last messages in the current channel|`.prune [amount]`
 Reboot|Reboots the selfbot|`.reboot`
 Server|Sends an invite to this Selfbot's server|`.server`
 Stats|See some statistics about the Selfbot|`.stats`
