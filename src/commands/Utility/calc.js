@@ -16,7 +16,7 @@ class Calc extends patron.Command {
           key: 'input',
           type: 'string',
           example: '3*(2+3)/4-2',
-          isRemainder: true
+          remainder: true
         })
       ]
     });

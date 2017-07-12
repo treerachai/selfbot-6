@@ -15,7 +15,7 @@ class Rageflip extends patron.Command {
           key: 'text',
           type: 'string',
           example: 'I see what you did there',
-          isRemainder: true,
+          remainder: true,
           default: ''
         })
       ]

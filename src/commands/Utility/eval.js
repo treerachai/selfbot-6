@@ -16,7 +16,7 @@ class Eval extends patron.Command {
           key: 'code',
           type: 'string',
           example: 'msg.author.tag',
-          isRemainder: true
+          remainder: true
         })
       ]
     });

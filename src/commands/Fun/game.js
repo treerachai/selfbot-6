@@ -16,7 +16,7 @@ class Game extends patron.Command {
           key: 'user',
           type: 'user',
           example: 'I don\'t know',
-          isRemainder: true,
+          remainder: true,
           default: patron.Default.Author
         })
       ]

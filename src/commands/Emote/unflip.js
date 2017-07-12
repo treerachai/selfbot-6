@@ -15,7 +15,7 @@ class Unflip extends patron.Command {
           key: 'text',
           type: 'string',
           example: 'But they gave me some coupons',
-          isRemainder: true,
+          remainder: true,
           default: ''
         })
       ]

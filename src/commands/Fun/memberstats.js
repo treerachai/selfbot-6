@@ -16,7 +16,7 @@ class Userstats extends patron.Command {
           key: 'member',
           type: 'member',
           example: 'PapaJohn#7777',
-          isRemainder: true,
+          remainder: true,
           default: patron.Default.Member
         })
       ]

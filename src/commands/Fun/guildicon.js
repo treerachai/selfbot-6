@@ -16,7 +16,7 @@ class Guildicon extends patron.Command {
           key: 'guild',
           type: 'guild',
           example: 'Papa John\'s Selfbot',
-          isRemainder: true,
+          remainder: true,
           default: patron.Default.Guild
         })
       ]

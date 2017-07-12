@@ -15,7 +15,7 @@ class Roll extends patron.Command {
           key: 'maxroll',
           type: 'float',
           example: '100',
-          isRemainder: true,
+          remainder: true,
           default: 6,
           preconditions: [new Minimum(1)]
         })

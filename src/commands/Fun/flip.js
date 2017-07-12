@@ -17,7 +17,7 @@ class Flip extends patron.Command {
           key: 'flips',
           type: 'float',
           example: '10',
-          isRemainder: true,
+          remainder: true,
           default: '1',
           preconditions: [new Minimum(1), new Maximum(100000)]
         })

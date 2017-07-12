@@ -17,7 +17,7 @@ class Emoji extends patron.Command {
           key: 'text',
           type: 'string',
           example: 'What do you mean',
-          isRemainder: true
+          remainder: true
         })
       ]
     });

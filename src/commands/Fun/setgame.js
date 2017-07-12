@@ -16,7 +16,7 @@ class Setgame extends patron.Command {
           key: 'name',
           type: 'string',
           example: 'with himself',
-          isRemainder: true,
+          remainder: true,
           default: null
         })
       ]

@@ -16,7 +16,7 @@ class Eightball extends patron.Command {
           key: 'question',
           type: 'string',
           example: 'Is the 8ball accurate?',
-          isRemainder: true
+          remainder: true
         })
       ]
     });

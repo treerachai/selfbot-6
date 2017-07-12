@@ -16,7 +16,7 @@ class Userid extends patron.Command {
           key: 'user',
           type: 'user',
           example: 'PapaJohn#7777',
-          isRemainder: true,
+          remainder: true,
           default: patron.Default.Author
         })
       ]
