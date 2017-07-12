@@ -29,6 +29,7 @@ Command | Description | Usage
 ---------------- | --------------| -------
 Guildicon|Get a guild's icon|`.guildicon [guild]`
 8ball|Ask the Magical 8ball your question|`.8ball <question>`
+Choose|Have the Selfbot help you choose between a set of options|`.choose <choice>`
 Emoji|Turns your message into emojis|`.emoji <text>`
 Flip|Flip up to 100,000 coins|`.flip [amount]`
 Game|Shows what game a user is playing|`.game [@user]`
