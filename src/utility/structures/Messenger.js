@@ -16,9 +16,9 @@ class Messenger {
     return channel.send({ embed: embed });
   }
 
-  static sendEmbed(channel, commandEmbed){
+  static sendEmbed(channel, commandEmbed, color = null) {
     const embed = commandEmbed
-    .setColor(Random.arrayElement(data.embedColors));
+      .setColor(color || Random.arrayElement(data.embedColors));
     return channel.send({ embed: embed });
   }
 
