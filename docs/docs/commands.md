@@ -18,6 +18,7 @@ Disapprove|Adds "ಠ_ಠ" to your message|`.disapprove [text]`
 Fliptable|Adds "ノ┬─┬ノ ︵ ( \o°o)\" to your message|`.fliptable [text]`
 Happy|Adds "ᕕ( ᐛ )ᕗ" to your message|`.happy [text]`
 Innocent|Adds "ʘ‿ʘ" to your message|`.innocent [text]`
+Kms|Kill yourself in a 3 frame animation|`.kms`
 Lenny|Adds "( ͡° ͜ʖ ͡°)" to your message|`.lenny [text]`
 Rageflip|Adds "┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻" to your message|`.rageflip [text]`
 Shrug|Adds "¯\_(ツ)_/¯" to your message|`.shrug [text]`
