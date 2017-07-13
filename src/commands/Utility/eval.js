@@ -6,7 +6,6 @@ class Eval extends patron.Command {
   constructor() {
     super({
       name: 'eval',
-      aliases: ['e'],
       group: 'utility',
       description: 'Evaluate JavaScript code',
       guildOnly: false,
