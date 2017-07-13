@@ -1,7 +1,7 @@
 const patron = require('patron.js');
 const util = require('../../utility');
 const Minimum = require('../../preconditions/minimum.js');
-const Maximum = require('../../preconditions/maximum.js')
+const Maximum = require('../../preconditions/maximum.js');
 
 class Prune extends patron.Command {
   constructor() {
@@ -34,9 +34,9 @@ class Prune extends patron.Command {
         msg_array = msg_array.filter(m => m.author.id === msg.client.user.id);
         msg_array.length = args.amount + 1;
         msg_array.map(m => {
-            m.delete()
-              .catch(() => null)
-          });
+          m.delete()
+            .catch(() => null);
+        });
       });
   }
 }

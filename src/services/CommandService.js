@@ -20,7 +20,7 @@ class CommandService {
 
       const result = await this.handler.run(msg, prefix);
 
-      if (!result.isSuccess) {
+      if (!result.success) {
         let message;
 
         switch (result.commandError) {

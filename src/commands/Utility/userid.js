@@ -24,11 +24,11 @@ class Userid extends patron.Command {
   }
 
   async run(msg, args) {
-     const embed = new Discord.RichEmbed()
+    const embed = new Discord.RichEmbed()
       .addField(args.user.tag + '\'s id', args.user.id, true)
-      .setThumbnail(args.user.displayAvatarURL)
+      .setThumbnail(args.user.displayAvatarURL);
       
-      return util.Messenger.sendEmbed(msg.channel, embed);
+    return util.Messenger.sendEmbed(msg.channel, embed);
   }
 }
 

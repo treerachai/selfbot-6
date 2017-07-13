@@ -25,6 +25,7 @@
   "homepage": "https://github.com/VapidSlay/Selfbot#readme",
   "dependencies": {
     "discord.js": "^11.1.0",
+    "eslint": "^4.2.0",
     "patron.js": "github:realblazeit/patron"
   }
 }

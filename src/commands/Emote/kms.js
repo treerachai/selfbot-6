@@ -14,15 +14,11 @@ class Kms extends patron.Command {
   }
 
   async run(msg) {
-    msg.channel.send(':joy: :gun:').then(async m => {
-      setTimeout(function() {m.edit(':boom: :gun:').catch(Error).then(async m => {
-        setTimeout(function() {
-          m.edit(':skull: :gun:').catch(Error);
-        }, 1000);
-      });
-    }, 3000);
-    });
-  return;
+    const m = await msg.channel.send(':joy: :gun:');
+    await util.PromiseUtil.delay(3000);
+    await m.edit(':boom: :gun:');
+    await util.PromiseUtil.delay(1000);
+    await m.edit(':skull: :gun:');
   }
 }
 

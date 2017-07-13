@@ -15,7 +15,7 @@ class Djs extends patron.Command {
 
   async run(msg) {
     return util.Messenger.send(msg.channel, 'https://discord.js.org/#/docs/main/stable/general/welcome',
-     'This Selfbot uses Discord.js version: ' + Discord.version);
+      'This Selfbot uses Discord.js version: ' + Discord.version);
   }
 }
 

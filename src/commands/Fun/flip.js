@@ -1,7 +1,7 @@
 const patron = require('patron.js');
 const util = require('../../utility');
 const Minimum = require('../../preconditions/minimum.js');
-const Maximum = require('../../preconditions/maximum.js')
+const Maximum = require('../../preconditions/maximum.js');
 
 class Flip extends patron.Command {
   constructor() {

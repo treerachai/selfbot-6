@@ -24,9 +24,9 @@ class Guildicon extends patron.Command {
   }
 
   async run(msg, args) {
-     const embed = new Discord.RichEmbed()
-       .setTitle(args.guild.name + '\'s Icon')
-       .setImage(args.guild.iconURL);
+    const embed = new Discord.RichEmbed()
+      .setTitle(args.guild.name + '\'s Icon')
+      .setImage(args.guild.iconURL);
     return util.Messenger.sendEmbed(msg.channel, embed);
   }
 }

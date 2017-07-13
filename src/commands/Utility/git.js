@@ -13,7 +13,7 @@ class Git extends patron.Command {
   }
 
   async run(msg) {
-    return util.Messenger.send(msg.channel, 'https://github.com/VapidSlay/selfBot', 'This Selfbot\'s Respoitory');
+    return util.Messenger.send(msg.channel, 'https://github.com/VapidSlay/selfbot', 'This Selfbot\'s Respoitory');
   }
 }
 

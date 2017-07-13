@@ -24,7 +24,7 @@ class Userstats extends patron.Command {
   }
 
   async run(msg, args) {
-     const embed = new Discord.RichEmbed()
+    const embed = new Discord.RichEmbed()
       .setTitle(args.member.user.tag + ' (' + args.member.user.id + ')')
       .setThumbnail(args.member.user.displayAvatarURL)
       .addField('Status', args.member.user.presence.status, true)
@@ -32,7 +32,7 @@ class Userstats extends patron.Command {
       .addField('Nickname', '`' + args.member.displayName + '`', true)
       .addField('Highest Role', args.member.highestRole, true)
       .addField('Joined This Server On', args.member.joinedAt.toString().substring(0, 16), true);
-      return util.Messenger.sendEmbed(msg.channel, embed, args.member.displayHexColor);
+    return util.Messenger.sendEmbed(msg.channel, embed, args.member.displayHexColor);
 
   }
 }

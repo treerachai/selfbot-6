@@ -31,16 +31,16 @@ class Discrim extends patron.Command {
       let message = '```css\n';
       let discrimc = 0;
 
-       for (const user in matches) {
+      for (const user in matches) {
         discrimc++;
         message += matches[user].username + '#' + args.discrim;
 
         if (discrimc !== matches.length) message += ', ';
-       }
+      }
 
       const embed = new Discord.RichEmbed()
-         .setTitle('Results for Discrim #' + args.discrim)
-         .setDescription(message + '```');
+        .setTitle('Results for Discrim #' + args.discrim)
+        .setDescription(message + '```');
       util.Messenger.sendEmbed(msg.channel, embed);
     }
   }

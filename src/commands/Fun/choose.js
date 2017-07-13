@@ -23,7 +23,7 @@ class Choose extends patron.Command {
   }
 
   async run(msg, args) {
-    let message = 'Out of: '
+    let message = 'Out of: ';
     for (const element of args.choices) {
       message += '`' + element + '`';
       if (element !== args.choices[args.choices.length-1]) {

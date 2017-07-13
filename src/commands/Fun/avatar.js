@@ -24,11 +24,11 @@ class Avatar extends patron.Command {
   }
 
   async run(msg, args) {
-     const embed = new Discord.RichEmbed()
+    const embed = new Discord.RichEmbed()
       .setTitle(args.user.tag + '\'s Avatar')
       .setImage(args.user.displayAvatarURL);
       
-      return util.Messenger.sendEmbed(msg.channel, embed);
+    return util.Messenger.sendEmbed(msg.channel, embed);
   }
 }
 

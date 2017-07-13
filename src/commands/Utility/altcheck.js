@@ -28,9 +28,9 @@ class Altcheck extends patron.Command {
       .setAuthor(args.member.user.tag + ' (' + args.member.id + ')', args.member.user.displayAvatarURL)
       .addField('Account Created', args.member.user.createdAt.toString().substring(0, 24))
       .addField('Joined this Server', args.member.joinedAt.toString().substring(0, 24));
-      if (args.member.joinedTimestamp - args.member.user.createdTimestamp < 3600000) {
-         embed.setFooter('Joined server within 1 hour of account creation');
-      }
+    if (args.member.joinedTimestamp - args.member.user.createdTimestamp < 3600000) {
+      embed.setFooter('Joined server within 1 hour of account creation');
+    }
     return util.Messenger.sendEmbed(msg.channel, embed);
   }
 }
