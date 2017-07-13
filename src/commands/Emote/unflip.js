@@ -1,5 +1,4 @@
 const patron = require('patron.js');
-const util = require('../../utility');
 
 class Unflip extends patron.Command {
   constructor() {

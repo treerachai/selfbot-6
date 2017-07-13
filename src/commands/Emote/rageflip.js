@@ -1,5 +1,4 @@
 const patron = require('patron.js');
-const util = require('../../utility');
 
 class Rageflip extends patron.Command {
   constructor() {
