@@ -1,6 +1,7 @@
 const patron = require('patron.js');
 const util = require('../../utility');
 const data = require('../../data.json');
+const Discord = require('discord.js');
 
 class Eightball extends patron.Command {
   constructor() {
@@ -23,7 +24,10 @@ class Eightball extends patron.Command {
   }
 
   async run(msg, args) {
-    return util.Messenger.send(msg.channel, ':8ball:: ' + util.Random.arrayElement(data.eightBallAnswers), 'Question: ' + args.question);
+    const embed = new Discord.RichEmbed()
+      .setAuthor(args.question, msg.client.user.displayAvatarURL)
+      .setDescription(':8ball:: ' + util.Random.arrayElement(data.eightBallAnswers));
+    return util.Messenger.sendEmbed(msg.channel, embed);
   }
 }
 
