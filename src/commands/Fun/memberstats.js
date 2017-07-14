@@ -29,9 +29,13 @@ class Userstats extends patron.Command {
       .setThumbnail(args.member.user.displayAvatarURL)
       .addField('Nickname', '`' + args.member.displayName + '`', true)
       .addField('Status', args.member.user.presence.status, true)
-      .addField('Highest Role', args.member.highestRole, true)
-      .addField('Last Sent a Message On', args.member.user.lastMessage.createdAt.toString().substring(0, 24), true)
-      .addField('Account Created On', args.member.user.createdAt.toString().substring(0, 16), true)
+      .addField('Highest Role', args.member.highestRole, true);
+    if (args.member.user.lastMessage !== null) {
+      embed.addField('Last Message', args.member.user.lastMessage.createdAt.toString().substring(0, 24), true);
+    } else {
+      embed.addField('Last Message', 'No Message Found', true);
+    }
+    embed.addField('Account Created On', args.member.user.createdAt.toString().substring(0, 16), true)
       .addField('Joined This Server On', args.member.joinedAt.toString().substring(0, 16), true);
     return util.Messenger.sendEmbed(msg.channel, embed, args.member.displayHexColor);
 
