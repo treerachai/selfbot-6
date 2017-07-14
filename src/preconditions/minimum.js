@@ -8,7 +8,7 @@ class Minimum extends patron.ArgumentPrecondition {
 
   async run(command, context, argument, value) {
     if (value < this.min) {
-      return patron.PreconditionResult.fromError(command, argument.name + ' cannot be smaller than ' + this.min);
+      return patron.PreconditionResult.fromError(command, argument.name + ' cannot be smaller than ' + this.min + '.');
     }
 
     return patron.PreconditionResult.fromSuccess();
