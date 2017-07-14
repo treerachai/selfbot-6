@@ -27,10 +27,11 @@ class Userstats extends patron.Command {
     const embed = new Discord.RichEmbed()
       .setTitle(args.member.user.tag + ' (' + args.member.user.id + ')')
       .setThumbnail(args.member.user.displayAvatarURL)
-      .addField('Status', args.member.user.presence.status, true)
-      .addField('Account Created On', args.member.user.createdAt.toString().substring(0, 16), true)
       .addField('Nickname', '`' + args.member.displayName + '`', true)
+      .addField('Status', args.member.user.presence.status, true)
       .addField('Highest Role', args.member.highestRole, true)
+      .addField('Last Sent a Message On', args.member.user.lastMessage.createdAt.toString().substring(0, 24), true)
+      .addField('Account Created On', args.member.user.createdAt.toString().substring(0, 16), true)
       .addField('Joined This Server On', args.member.joinedAt.toString().substring(0, 16), true);
     return util.Messenger.sendEmbed(msg.channel, embed, args.member.displayHexColor);
 
