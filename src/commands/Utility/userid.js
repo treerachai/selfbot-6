@@ -27,7 +27,7 @@ class Userid extends patron.Command {
     const embed = new Discord.RichEmbed()
       .addField(args.user.tag + '\'s id', args.user.id, true)
       .setThumbnail(args.user.displayAvatarURL);
-      
+
     return util.Messenger.sendEmbed(msg.channel, embed);
   }
 }

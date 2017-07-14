@@ -1,6 +1,5 @@
 const patron = require('patron.js');
 const util = require('../../utility');
-const Discord = require('discord.js');
 
 class Kms extends patron.Command {
   constructor() {

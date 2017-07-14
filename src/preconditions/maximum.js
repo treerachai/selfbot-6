@@ -1,5 +1,4 @@
 const patron = require('patron.js');
-const util = require('../utility');
 
 class Maximum extends patron.ArgumentPrecondition {
   constructor(max) {
@@ -8,11 +7,11 @@ class Maximum extends patron.ArgumentPrecondition {
   }
 
   async run(command, context, argument, value) {
-    if (value > this.max) { 
+    if (value > this.max) {
       return patron.PreconditionResult.fromError(command, 'Value too large');
-    } else {
-      return patron.PreconditionResult.fromSuccess();
     }
+
+    return patron.PreconditionResult.fromSuccess();
   }
 }
 

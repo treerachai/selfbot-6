@@ -27,7 +27,9 @@ class Guildstats extends patron.Command {
     const embed = new Discord.RichEmbed()
       .setTitle(args.guild.name)
       .setThumbnail(args.guild.iconURL);
-    if (args.guild.owner !== null) embed.addField('Guild Owner', '`' + args.guild.owner.user.tag + '`', true);
+    if (args.guild.owner !== null) {
+      embed.addField('Guild Owner', '`' + args.guild.owner.user.tag + '`', true);
+    }
     embed.addField('Members', args.guild.memberCount, true)
       .addField('Channels', args.guild.channels.array().length, true)
       .addField('Region', args.guild.region, true)

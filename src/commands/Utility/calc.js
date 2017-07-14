@@ -24,22 +24,22 @@ class Calc extends patron.Command {
 
   async run(msg, args) {
     const code = args.input.replace(/[^0-9+\-*/().]/gi, '');
-    if (!code){
+    if (!code) {
       return util.Messenger.sendError(msg.channel, 'You must provide something valid to calculate');
-    } else {
-      try {
-        let answer = eval(code);
-        if (typeof answer !== 'string') {
-          answer = require('util').inspect(answer);
-        }
-        const embed = new Discord.RichEmbed()
-          .setTitle('Calculator')
-          .setDescription('```js\n' + code + ' = ' + answer + '```');
-        return util.Messenger.sendEmbed(msg.channel, embed);
-      } catch (err) {
-        return util.Messenger.sendError(msg.channel, '```js\n' + err + '```');
-      }
     }
+    try {
+      let answer = eval(code);
+      if (typeof answer !== 'string') {
+        answer = require('util').inspect(answer);
+      }
+      const embed = new Discord.RichEmbed()
+        .setTitle('Calculator')
+        .setDescription('```js\n' + code + ' = ' + answer + '```');
+      return util.Messenger.sendEmbed(msg.channel, embed);
+    } catch (err) {
+      return util.Messenger.sendError(msg.channel, '```js\n' + err + '```');
+    }
+
   }
 }
 

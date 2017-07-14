@@ -29,7 +29,7 @@ class Flip extends patron.Command {
     let heads = 0;
     let tails = 0;
     for (let i = 0; i < args.flips; i++) {
-      let flip = Math.floor(Math.random() * 2);
+      const flip = Math.floor(Math.random() * 2);
       if (flip === 0) {
         heads++;
       } else {

@@ -6,7 +6,7 @@ const util = require('../utility');
 
 class Documentation {
   async createAndSave(registry) {
-    let commandsDocumentation = 'All commands are catagorized by groups. Each of the following sections is a group.\n\nThe syntax of the command usage is:\n\n`Optional paramater: []`\n\n`Required paramater: <>`\n\n##Table Of Contents\n'; 
+    let commandsDocumentation = 'All commands are catagorized by groups. Each of the following sections is a group.\n\nThe syntax of the command usage is:\n\n`Optional paramater: []`\n\n`Required paramater: <>`\n\n##Table Of Contents\n';
 
     let tableOfContents = '';
     let commandInfo = '';
@@ -15,7 +15,7 @@ class Documentation {
 
     for (const group of sortedGroups) {
       const formattedGroupName = util.StringUtil.upperFirstChar(group.name);
-      
+
       tableOfContents += '- [' + formattedGroupName + '](#' + group.name.toLowerCase() + ')\n';
 
       commandInfo += '\n### '+ formattedGroupName +'\n';
@@ -40,5 +40,4 @@ class Documentation {
 }
 
 module.exports = new Documentation();
-
 

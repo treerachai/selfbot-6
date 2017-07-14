@@ -1,5 +1,4 @@
 const patron = require('patron.js');
-const util = require('../utility');
 
 class Minimum extends patron.ArgumentPrecondition {
   constructor(min) {
@@ -8,11 +7,11 @@ class Minimum extends patron.ArgumentPrecondition {
   }
 
   async run(command, context, argument, value) {
-    if (value < this.min) { 
+    if (value < this.min) {
       return patron.PreconditionResult.fromError(command, 'Value too small');
-    } else {
-      return patron.PreconditionResult.fromSuccess();
     }
+
+    return patron.PreconditionResult.fromSuccess();
   }
 }
 

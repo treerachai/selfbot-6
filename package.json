@@ -4,7 +4,8 @@
   "description": "Papa John's Selfbot.",
   "main": "src/index.js",
   "scripts": {
-    "test": "node src/index.js"
+    "start": "node src/index.js",
+    "lint": "eslint --fix src/**"
   },
   "repository": {
     "type": "git",
@@ -25,7 +26,12 @@
   "homepage": "https://github.com/VapidSlay/Selfbot#readme",
   "dependencies": {
     "discord.js": "^11.1.0",
-    "eslint": "^4.2.0",
-    "patron.js": "github:realblazeit/patron"
+    "patron.js": "^1.0.3"
+  },
+  "eslintIgnore": [
+    "**/*.json"
+  ],
+  "devDependencies": {
+    "eslint": "^4.2.0"
   }
 }

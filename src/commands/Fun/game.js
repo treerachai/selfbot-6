@@ -1,6 +1,5 @@
 const patron = require('patron.js');
 const util = require('../../utility');
-const Discord = require('discord.js');
 
 class Game extends patron.Command {
   constructor() {
@@ -26,9 +25,9 @@ class Game extends patron.Command {
   async run(msg, args) {
     if (args.user.presence.game !== null) {
       return util.Messenger.send(msg.channel, '`' + args.user.tag + '` is playing: `' + args.user.presence.game.name + '`');
-    } else {
-      return util.Messenger.send(msg.channel, '`' + args.user.tag + '` is not currently playing a game');
     }
+    return util.Messenger.send(msg.channel, '`' + args.user.tag + '` is not currently playing a game');
+
   }
 }
 

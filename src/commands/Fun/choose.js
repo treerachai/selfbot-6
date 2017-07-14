@@ -1,6 +1,5 @@
 const patron = require('patron.js');
 const util = require('../../utility');
-const data = require('../../data.json');
 
 class Choose extends patron.Command {
   constructor() {
@@ -15,7 +14,7 @@ class Choose extends patron.Command {
           name: 'choice',
           key: 'choices',
           type: 'string',
-          example: '\"Papa John\'s Pizza\"',
+          example: '"Papa John\'s Pizza"',
           infinite: true
         })
       ]

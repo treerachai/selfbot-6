@@ -28,7 +28,7 @@ class CommandService {
             return util.Messenger.send(msg.channel, msg.content.slice(prefix.length));
           case patron.CommandError.Exception:
             if (result.error.code !== undefined) {
-              if (result.error.code === 400) { 
+              if (result.error.code === 400) {
                 message = 'There seems to have been a bad request. Please report this issue with msg to PapaJohn#7777.';
               } else if (result.error.code === 404 || result.error.code === 50013) {
                 message = 'You do not have permission to do that.';

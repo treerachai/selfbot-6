@@ -1,5 +1,4 @@
 const patron = require('patron.js');
-const util = require('../../utility');
 const Minimum = require('../../preconditions/minimum.js');
 const Maximum = require('../../preconditions/maximum.js');
 
@@ -30,10 +29,10 @@ class Prune extends patron.Command {
       limit: 100
     })
       .then(messages => {
-        let msg_array = messages.array();
-        msg_array = msg_array.filter(m => m.author.id === msg.client.user.id);
-        msg_array.length = args.amount + 1;
-        msg_array.map(m => {
+        let msgArray = messages.array();
+        msgArray = msgArray.filter(m => m.author.id === msg.client.user.id);
+        msgArray.length = args.amount + 1;
+        msgArray.map(m => {
           m.delete()
             .catch(() => null);
         });

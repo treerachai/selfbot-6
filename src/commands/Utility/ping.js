@@ -1,6 +1,5 @@
 const patron = require('patron.js');
 const util = require('../../utility');
-const Discord = require('discord.js');
 
 class Ping extends patron.Command {
   constructor() {
@@ -12,7 +11,7 @@ class Ping extends patron.Command {
     });
   }
 
-  async run(msg) { 
+  async run(msg) {
     return util.Messenger.send(msg.channel, 'Ping: ' + msg.client.ping.toFixed(0) + ' ms');
   }
 }

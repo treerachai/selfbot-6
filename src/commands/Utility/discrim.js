@@ -25,24 +25,26 @@ class Discrim extends patron.Command {
 
   async run(msg, args) {
     const matches = msg.client.users.findAll('discriminator', args.discrim);
-    if (matches.length === 0){
+    if (matches.length === 0) {
       return util.Messenger.sendError(msg.channel, 'No match found for discrim #' + args.discrim);
-    } else {
-      let message = '```css\n';
-      let discrimc = 0;
-
-      for (const user in matches) {
-        discrimc++;
-        message += matches[user].username + '#' + args.discrim;
-
-        if (discrimc !== matches.length) message += ', ';
-      }
-
-      const embed = new Discord.RichEmbed()
-        .setTitle('Results for Discrim #' + args.discrim)
-        .setDescription(message + '```');
-      util.Messenger.sendEmbed(msg.channel, embed);
     }
+    let message = '```css\n';
+    let discrimc = 0;
+
+    for (const user in matches) {
+      discrimc++;
+      message += matches[user].username + '#' + args.discrim;
+
+      if (discrimc !== matches.length) {
+        message += ', ';
+      }
+    }
+
+    const embed = new Discord.RichEmbed()
+      .setTitle('Results for Discrim #' + args.discrim)
+      .setDescription(message + '```');
+    util.Messenger.sendEmbed(msg.channel, embed);
+
   }
 }
 

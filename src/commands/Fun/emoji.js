@@ -1,6 +1,4 @@
 const patron = require('patron.js');
-const util = require('../../utility');
-const Discord = require('discord.js');
 const data = require('../../data.json');
 
 class Emoji extends patron.Command {
@@ -25,9 +23,9 @@ class Emoji extends patron.Command {
 
   async run(msg, args) {
     let message = '';
-    for (let index in args.text) {
+    for (const index in args.text) {
       if (!args.text[index].match(/[a-z]|[0-9]/i)) {
-        if (args.text[index] === ' '){
+        if (args.text[index] === ' ') {
           message += '    ';
         } else {
           message += args.text[index];

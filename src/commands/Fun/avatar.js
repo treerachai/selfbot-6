@@ -27,7 +27,7 @@ class Avatar extends patron.Command {
     const embed = new Discord.RichEmbed()
       .setTitle(args.user.tag + '\'s Avatar')
       .setImage(args.user.displayAvatarURL);
-      
+
     return util.Messenger.sendEmbed(msg.channel, embed);
   }
 }

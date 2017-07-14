@@ -5,5 +5,6 @@ class PromiseUtil {
         resolve();
       }, ms);
     });
-}}
+  }
+}
 module.exports = PromiseUtil;

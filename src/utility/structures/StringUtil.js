@@ -13,5 +13,4 @@ class StringUtil {
 
 }
 
-
 module.exports = StringUtil;
