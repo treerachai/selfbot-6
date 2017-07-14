@@ -4,7 +4,7 @@
 
 2. Install [git here](https://git-scm.com/download/win) (when installing, just use whatever defaults it gives to you in any options)
 
-3. Download the [Installer here](https://drive.google.com/file/d/0B07gEfyceilqTVJoM2JVbEg4MVk/view)
+3. Download the [Installer here](https://drive.google.com/file/d/0B07gEfyceilqV29nRF9vcWpxVHc/view?usp=sharing)
 
 4. Put the Installer (Install_Selfbot.bat) in a folder of your choosing and run it (its a bat file so your computer is gonna scream about it being unsafe just like they do with all bat files, so don't worry)
 
