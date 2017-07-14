@@ -32,8 +32,6 @@ class Userstats extends patron.Command {
       .addField('Highest Role', args.member.highestRole, true);
     if (args.member.user.lastMessage !== null) {
       embed.addField('Last Message', args.member.user.lastMessage.createdAt.toString().substring(0, 24), true);
-    } else {
-      embed.addField('Last Message', 'No Message Found', true);
     }
     embed.addField('Account Created On', args.member.user.createdAt.toString().substring(0, 16), true)
       .addField('Joined This Server On', args.member.joinedAt.toString().substring(0, 16), true);
