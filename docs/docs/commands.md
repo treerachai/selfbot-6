@@ -28,13 +28,14 @@ Unflip|Adds " ┬─┬﻿ ノ( ゜-゜ノ)" to your message|`.unflip [text]`
 ### Fun
 Command | Description | Usage
 ---------------- | --------------| -------
-Guildicon|Get a guild's icon|`.guildicon [guild]`
+Ghostping|Ghost pings all members of a role.|`.ghostping <@role>`
 8ball|Ask the Magical 8ball your question|`.8ball <question>`
 Choose|Have the Selfbot help you choose between a set of options|`.choose <choice>`
 Emoji|Turns your message into emojis|`.emoji <text>`
 Flip|Flip up to 100,000 coins|`.flip [amount]`
 Game|Shows what game a user is playing|`.game [@user]`
 Avatar|Get the avatar of a user|`.avatar [@user]`
+Guildicon|Get a guild's icon|`.guildicon [guild]`
 Guildstats|Get a guild's statistics|`.guildstats [guild]`
 Memberstats|Get a member's statistics|`.memberstats [@member]`
 Roll|Rolls a random number|`.roll [Max Roll]`
