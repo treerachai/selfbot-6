@@ -7,7 +7,6 @@ class GhostPing extends patron.Command {
       aliases: ['gp'],
       group: 'fun',
       description: 'Ghost pings all members of a role.',
-      guildOnly: false,
       args: [
         new patron.Argument({
           name: 'role',

@@ -47,11 +47,12 @@ Command | Description | Usage
 ---------------- | --------------| -------
 Help|View command information|`.help [command]`
 Altcheck|Check when a user's account was created and when they joined the guild|`.altcheck [@member]`
+Calc|Do basic adding, subtracting, multiplying, and dividing|`.calc <problem>`
 Discrim|Finds users with the specified discriminator|`.discrim <discrim>`
 Djs|Get a link to the documentation of the Discord.js version this Selfbot uses|`.djs`
 Eval|Evaluate JavaScript code|`.eval <code>`
 Git|Get a link to this Selfbot's Github Repository|`.git`
-Calc|Do basic adding, subtracting, multiplying, and dividing|`.calc <problem>`
+Banall|Ban all users in a role from a specific guild.|`.banall <guild> <role name>`
 Ping|See your ping|`.ping`
 Prune|Deletes your last messages in the current channel|`.prune [amount]`
 Reboot|Reboots the selfbot|`.reboot`
