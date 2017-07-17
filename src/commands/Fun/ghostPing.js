@@ -4,7 +4,7 @@ class GhostPing extends patron.Command {
   constructor() {
     super({
       name: 'ghostping',
-      aliases: ['gh'],
+      aliases: ['gp'],
       group: 'fun',
       description: 'Ghost pings all members of a role.',
       guildOnly: false,
