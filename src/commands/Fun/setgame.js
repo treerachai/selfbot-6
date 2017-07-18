@@ -15,7 +15,7 @@ class Setgame extends patron.Command {
           type: 'string',
           example: 'with himself',
           remainder: true,
-          default: null
+          defaultValue: null
         })
       ]
     });

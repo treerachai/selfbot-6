@@ -17,7 +17,7 @@ class Prune extends patron.Command {
           type: 'float',
           example: '10',
           remainder: true,
-          default: 10,
+          defaultValue: 10,
           preconditions: [new Minimum(1), new Maximum(100)]
         })
       ]

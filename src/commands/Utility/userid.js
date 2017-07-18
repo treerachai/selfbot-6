@@ -17,7 +17,7 @@ class Userid extends patron.Command {
           type: 'user',
           example: 'PapaJohn#7777',
           remainder: true,
-          default: patron.Default.Author
+          defaultValue: patron.ArgumentDefault.Author
         })
       ]
     });

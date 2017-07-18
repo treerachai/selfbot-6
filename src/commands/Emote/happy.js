@@ -15,7 +15,7 @@ class Happy extends patron.Command {
           type: 'string',
           example: 'I love this selfbot',
           remainder: true,
-          default: ''
+          defaultValue: ''
         })
       ]
     });

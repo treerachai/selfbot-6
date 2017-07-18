@@ -17,7 +17,7 @@ class Guildicon extends patron.Command {
           type: 'guild',
           example: 'Papa John\'s Selfbot',
           remainder: true,
-          default: patron.Default.Guild
+          defaultValue: patron.ArgumentDefault.Guild
         })
       ]
     });

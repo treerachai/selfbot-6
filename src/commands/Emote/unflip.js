@@ -15,7 +15,7 @@ class Unflip extends patron.Command {
           type: 'string',
           example: 'But they gave me some coupons',
           remainder: true,
-          default: ''
+          defaultValue: ''
         })
       ]
     });

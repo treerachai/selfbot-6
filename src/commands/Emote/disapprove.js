@@ -15,7 +15,7 @@ class Disapprove extends patron.Command {
           type: 'string',
           example: 'I\'m not so sure about that',
           remainder: true,
-          default: ''
+          defaultValue: ''
         })
       ]
     });

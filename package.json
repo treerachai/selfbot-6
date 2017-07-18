@@ -26,7 +26,7 @@
   "homepage": "https://github.com/VapidSlay/Selfbot#readme",
   "dependencies": {
     "discord.js": "^11.1.0",
-    "patron.js": "^1.0.4"
+    "patron.js": "git+https://github.com/RealBlazeIt/patron.js.git"
   },
   "eslintIgnore": [
     "**/*.json"

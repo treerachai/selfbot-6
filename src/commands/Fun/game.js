@@ -16,7 +16,7 @@ class Game extends patron.Command {
           type: 'user',
           example: 'I don\'t know',
           remainder: true,
-          default: patron.Default.Author
+          defaultValue: patron.ArgumentDefault.Author
         })
       ]
     });

@@ -17,7 +17,7 @@ class Altcheck extends patron.Command {
           type: 'member',
           example: 'PapaJohn#7777',
           remainder: true,
-          default: patron.Default.Member
+          defaultValue: patron.ArgumentDefault.Member
         })
       ]
     });

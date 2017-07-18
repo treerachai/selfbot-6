@@ -15,7 +15,7 @@ class Shrug extends patron.Command {
           type: 'string',
           example: 'I don\'t know',
           remainder: true,
-          default: ''
+          defaultValue: ''
         })
       ]
     });

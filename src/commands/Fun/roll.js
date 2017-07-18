@@ -16,7 +16,7 @@ class Roll extends patron.Command {
           type: 'float',
           example: '100',
           remainder: true,
-          default: 6,
+          defaultValue: 6,
           preconditions: [new Minimum(1)]
         })
       ]

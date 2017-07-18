@@ -15,7 +15,7 @@ class Innocent extends patron.Command {
           type: 'string',
           example: 'Somehow the money just disappeared',
           remainder: true,
-          default: ''
+          defaultValue: ''
         })
       ]
     });
