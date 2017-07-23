@@ -7,5 +7,9 @@ class NumberUtil {
       hours: parseInt(input / (1000 * 60 * 60))
     };
   }
+
+  static toUSD(input) {
+    return '$' + input.toFixed(2);
+  }
 }
 module.exports = NumberUtil;
