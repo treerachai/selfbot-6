@@ -2,6 +2,7 @@ const patron = require('patron.js');
 const util = require('../../utility');
 const Minimum = require('../../preconditions/minimum.js');
 const Maximum = require('../../preconditions/maximum.js');
+const Decimal = require('../../preconditions/decimal.js');
 
 class Flip extends patron.Command {
   constructor() {
@@ -19,7 +20,7 @@ class Flip extends patron.Command {
           example: '10',
           remainder: true,
           defaultValue: '1',
-          preconditions: [new Minimum(1), new Maximum(100000)]
+          preconditions: [new Minimum(1), new Maximum(100000), new Decimal(0)]
         })
       ]
     });
