@@ -1,5 +1,6 @@
 module.exports = (client) => {
   client.on('ready', async () => {
-    console.log('Papa John\'s Selfbot has successfully connected.');
+    const d = new Date();
+    console.log(d.getHours() + ':' + d.getMinutes() + ' - Papa John\'s Selfbot has successfully connected.');
   });
 };
