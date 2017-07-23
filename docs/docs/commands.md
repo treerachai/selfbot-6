@@ -28,18 +28,19 @@ Unflip|Adds " ┬─┬﻿ ノ( ゜-゜ノ)" to your message|`.unflip [text]`
 ### Fun
 Command | Description | Usage
 ---------------- | --------------| -------
-Ghostping|Ghost pings all members of a role.|`.ghostping <@role>`
+Guildicon|Get a guild's icon|`.guildicon [guild]`
 8ball|Ask the Magical 8ball your question|`.8ball <question>`
 Choose|Have the Selfbot help you choose between a set of options|`.choose <choice>`
 Emoji|Turns your message into emojis|`.emoji <text>`
 Flip|Flip up to 100,000 coins|`.flip [amount]`
 Game|Shows what game a user is playing|`.game [@user]`
+Ghostping|Ghost pings all members of a role.|`.ghostping <@role>`
 Avatar|Get the avatar of a user|`.avatar [@user]`
-Guildicon|Get a guild's icon|`.guildicon [guild]`
 Guildstats|Get a guild's statistics|`.guildstats [guild]`
 Memberstats|Get a member's statistics|`.memberstats [@member]`
 Roll|Rolls a random number|`.roll [Max Roll]`
 Setgame|Sets what game you are playing|`.setgame [name]`
+Slots|Play a Slot Machine|`.slots [Bet]`
 Userid|Get the uid of a user|`.userid [@user]`
 
 ### Utility
@@ -51,8 +52,10 @@ Calc|Do basic adding, subtracting, multiplying, and dividing|`.calc <problem>`
 Discrim|Finds users with the specified discriminator|`.discrim <discrim>`
 Djs|Get a link to the documentation of the Discord.js version this Selfbot uses|`.djs`
 Eval|Evaluate JavaScript code|`.eval <code>`
+Exec|Execute JavaScript code|`.exec <code>`
 Git|Get a link to this Selfbot's Github Repository|`.git`
 Banall|Ban all users in a role from a specific guild.|`.banall <guild> <role name>`
+Nick|Changes your nickname in the current guild|`.nick <nickname>`
 Ping|See your ping|`.ping`
 Prune|Deletes your last messages in the current channel|`.prune [amount]`
 Reboot|Reboots the selfbot|`.reboot`
