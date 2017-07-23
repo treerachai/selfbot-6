@@ -1,6 +1,6 @@
 const patron = require('patron.js');
 
-class Includes extends patron.ArgumentPrecondition {
+class Exclude extends patron.ArgumentPrecondition {
   constructor(string) {
     super();
     this.string = string;
@@ -15,4 +15,4 @@ class Includes extends patron.ArgumentPrecondition {
   }
 }
 
-module.exports = Includes;
+module.exports = Exclude;

@@ -1,7 +1,7 @@
 const patron = require('patron.js');
 const util = require('../../utility');
 const Discord = require('discord.js');
-const Includes = require('../../preconditions/includes.js');
+const Exclude = require('../../preconditions/exclude.js');
 
 class Eval extends patron.Command {
   constructor() {
@@ -17,7 +17,7 @@ class Eval extends patron.Command {
           type: 'string',
           example: 'msg.author.tag',
           remainder: true,
-          preconditions: [new Includes('client')]
+          preconditions: [new Exclude('client')]
         })
       ]
     });
