@@ -28,18 +28,19 @@ Unflip|Adds " ┬─┬﻿ ノ( ゜-゜ノ)" to your message|`.unflip [text]`
 ### Fun
 Command | Description | Usage
 ---------------- | --------------| -------
-Guildicon|Get a guild's icon|`.guildicon [guild]`
+Guildstats|Get a guild's statistics|`.guildstats [guild]`
 8ball|Ask the Magical 8ball your question|`.8ball <question>`
 Choose|Have the Selfbot help you choose between a set of options|`.choose <choice>`
 Emoji|Turns your message into emojis|`.emoji <text>`
 Flip|Flip up to 100,000 coins|`.flip [amount]`
 Game|Shows what game a user is playing|`.game [@user]`
 Ghostping|Ghost pings all members of a role.|`.ghostping <@role>`
+Guildicon|Get a guild's icon|`.guildicon [guild]`
 Avatar|Get the avatar of a user|`.avatar [@user]`
-Guildstats|Get a guild's statistics|`.guildstats [guild]`
 Memberstats|Get a member's statistics|`.memberstats [@member]`
 Roll|Rolls a random number|`.roll [Max Roll]`
 Rps|Play Rock, Paper, Scissors against the selfbot|`.rps <choice>`
+Setavatar|Changes your avatar to the image provided|`.setavatar <pathToImageOrLink>`
 Setgame|Sets what game you are playing|`.setgame [name]`
 Slots|Play a Slot Machine|`.slots [Bet]`
 Userid|Get the uid of a user|`.userid [@user]`
@@ -62,4 +63,5 @@ Prune|Deletes your last messages in the current channel|`.prune [amount]`
 Reboot|Reboots the selfbot|`.reboot`
 Server|Sends an invite to this Selfbot's server|`.server`
 Stats|See some statistics about the Selfbot|`.stats`
+Status|Changes your status|`.status <status>`
 Uptime|See how long your selfbot has been running|`.uptime`
