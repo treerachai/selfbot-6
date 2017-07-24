@@ -39,6 +39,7 @@ Avatar|Get the avatar of a user|`.avatar [@user]`
 Guildstats|Get a guild's statistics|`.guildstats [guild]`
 Memberstats|Get a member's statistics|`.memberstats [@member]`
 Roll|Rolls a random number|`.roll [Max Roll]`
+Rps|Play Rock, Paper, Scissors against the selfbot|`.rps <choice>`
 Setgame|Sets what game you are playing|`.setgame [name]`
 Slots|Play a Slot Machine|`.slots [Bet]`
 Userid|Get the uid of a user|`.userid [@user]`
