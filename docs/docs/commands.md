@@ -1,4 +1,4 @@
-Total Number of Commands: 43
+Total Number of Commands: 44
 
 The syntax of the command usage is:
 
@@ -48,7 +48,7 @@ Userid|Get the uid of a user|`.userid [@user]`
 ### Utility
 Command | Description | Usage
 ---------------- | --------------| -------
-Help|View command information|`.help [command]`
+Install|Get a link to the setup page for this Selfbot|`.install`
 Altcheck|Check when a user's account was created and when they joined the guild|`.altcheck [@member]`
 Calc|Do basic adding, subtracting, multiplying, and dividing|`.calc <problem>`
 Discrim|Finds users with the specified discriminator|`.discrim <discrim>`
@@ -56,6 +56,7 @@ Djs|Get a link to the documentation of the Discord.js version this Selfbot uses|
 Eval|Evaluate JavaScript code|`.eval <code>`
 Exec|Execute JavaScript code|`.exec <code>`
 Git|Get a link to this Selfbot's Github Repository|`.git`
+Help|View command information|`.help [command]`
 Banall|Ban all users in a role from a specific guild.|`.banall <guild> <role name>`
 Nick|Changes your nickname in the current guild|`.nick <nickname>`
 Ping|See your ping|`.ping`
