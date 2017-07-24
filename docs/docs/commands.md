@@ -1,4 +1,4 @@
-All commands are catagorized by groups. Each of the following sections is a group.
+Total Number of Commands: 43
 
 The syntax of the command usage is:
 

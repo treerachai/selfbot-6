@@ -6,10 +6,10 @@ const util = require('../utility');
 
 class Documentation {
   async createAndSave(registry) {
-    let commandsDocumentation = 'All commands are catagorized by groups. Each of the following sections is a group.\n\nThe syntax of the command usage is:\n\n`Optional paramater: []`\n\n`Required paramater: <>`\n\n##Table Of Contents\n';
 
     let tableOfContents = '';
     let commandInfo = '';
+    let commandCount = 0;
 
     const sortedGroups = Array.from(registry.groups.values()).sort(util.StringUtil.alphabeticallySort);
 
@@ -27,10 +27,12 @@ class Documentation {
       commandInfo += 'Command | Description | Usage\n---------------- | --------------| -------\n';
 
       for (const command of Array.from(group.commands.values()).sort(util.StringUtil.alphabeticallySort)) {
+        commandCount++;
         commandInfo += util.StringUtil.upperFirstChar(command.name) + '|' + command.description + '|`' + credentials.prefix + command.getUsage() + '`\n';
       }
     }
 
+    let commandsDocumentation = 'Total Number of Commands: ' + commandCount + '\n\nThe syntax of the command usage is:\n\n`Optional paramater: []`\n\n`Required paramater: <>`\n\n##Table Of Contents\n';
     commandsDocumentation += tableOfContents + commandInfo;
 
     fs.writeFile(path.join(__dirname, '../../docs/docs/commands.md'), commandsDocumentation, (err) => {
