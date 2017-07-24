@@ -36,12 +36,12 @@ class Slots extends patron.Command {
     let winMessage = 'Better Luck Next Time. You lost: ' + util.NumberUtil.toUSD(args.bet);
     if (o1 === o2 && o1 === o3) {
       if (o1 === ':seven: ') {
-        winMessage = 'JACKPOT! You won: ' + util.NumberUtil.toUSD(args.bet * 777);
+        winMessage = 'JACKPOT! You won: ' + util.NumberUtil.toUSD(args.bet * 355);
       } else {
-        winMessage = 'Big Win! You won: ' + util.NumberUtil.toUSD(args.bet * 111);
+        winMessage = 'Big Win! You won: ' + util.NumberUtil.toUSD(args.bet * 55);
       }
     } else if (o1 === o2) {
-      winMessage = 'Small Win! You won: ' + util.NumberUtil.toUSD(args.bet * 2);
+      winMessage = 'Small Win! You won: ' + util.NumberUtil.toUSD(args.bet);
     }
 
     const embed = new Discord.RichEmbed()
