@@ -1,11 +1,11 @@
 const patron = require('patron.js');
 const util = require('../../utility');
 
-class Install extends patron.Command {
+class Setup extends patron.Command {
   constructor() {
     super({
-      name: 'install',
-      aliases: ['download', 'setup'],
+      name: 'setup',
+      aliases: ['download', 'install'],
       group: 'utility',
       description: 'Get a link to the setup page for this Selfbot',
       guildOnly: false
@@ -17,4 +17,4 @@ class Install extends patron.Command {
   }
 }
 
-module.exports = new Install();
+module.exports = new Setup();

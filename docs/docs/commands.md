@@ -48,7 +48,7 @@ Userid|Get the uid of a user|`.userid [@user]`
 ### Utility
 Command | Description | Usage
 ---------------- | --------------| -------
-Install|Get a link to the setup page for this Selfbot|`.install`
+Setup|Get a link to the setup page for this Selfbot|`.setup`
 Altcheck|Check when a user's account was created and when they joined the guild|`.altcheck [@member]`
 Calc|Do basic adding, subtracting, multiplying, and dividing|`.calc <problem>`
 Discrim|Finds users with the specified discriminator|`.discrim <discrim>`
