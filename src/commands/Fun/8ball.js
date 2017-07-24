@@ -25,7 +25,7 @@ class Eightball extends patron.Command {
 
   async run(msg, args) {
     const embed = new Discord.RichEmbed()
-      .setAuthor(args.question, msg.client.user.displayAvatarURL)
+      .setAuthor(args.question, msg.author.displayAvatarURL)
       .setDescription(':8ball:: ' + util.Random.arrayElement(data.eightBallAnswers));
     return util.Messenger.sendEmbed(msg.channel, embed);
   }
