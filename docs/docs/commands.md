@@ -48,7 +48,7 @@ Userid|Get the uid of a user|`.userid [@user]`
 ### Utility
 Command | Description | Usage
 ---------------- | --------------| -------
-Setup|Get a link to the setup page for this Selfbot|`.setup`
+Nick|Changes your nickname in the current guild|`.nick <nickname>`
 Altcheck|Check when a user's account was created and when they joined the guild|`.altcheck [@member]`
 Calc|Do basic adding, subtracting, multiplying, and dividing|`.calc <problem>`
 Discrim|Finds users with the specified discriminator|`.discrim <discrim>`
@@ -58,11 +58,11 @@ Exec|Execute JavaScript code|`.exec <code>`
 Git|Get a link to this Selfbot's Github Repository|`.git`
 Help|View command information|`.help [command]`
 Banall|Ban all users in a role from a specific guild.|`.banall <guild> <role name>`
-Nick|Changes your nickname in the current guild|`.nick <nickname>`
 Ping|See your ping|`.ping`
 Prune|Deletes your last messages in the current channel|`.prune [amount]`
 Reboot|Reboots the selfbot|`.reboot`
 Server|Sends an invite to this Selfbot's server|`.server`
+Setup|Get a link to the setup page for this Selfbot|`.setup`
 Stats|See some statistics about the Selfbot|`.stats`
 Status|Changes your status|`.status <status>`
 Uptime|See how long your selfbot has been running|`.uptime`

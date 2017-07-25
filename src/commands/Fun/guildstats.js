@@ -27,7 +27,7 @@ class Guildstats extends patron.Command {
     const embed = new Discord.RichEmbed()
       .setTitle(args.guild.name + ' (' + args.guild.id + ')')
       .setThumbnail(args.guild.iconURL);
-    if (args.guild.owner !== null) {
+    if (args.guild.owner !== undefined) {
       embed.addField('Guild Owner', '`' + args.guild.owner.user.tag + '`', true);
     }
     embed.addField('Members', args.guild.memberCount, true)
