@@ -8,7 +8,7 @@ class Userid extends patron.Command {
       name: 'userid',
       aliases: ['uid'],
       group: 'fun',
-      description: 'Get the uid of a user',
+      description: 'Get the id of a user',
       guildOnly: false,
       args: [
         new patron.Argument({
