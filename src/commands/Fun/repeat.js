@@ -8,6 +8,7 @@ class Repeat extends patron.Command {
   constructor() {
     super({
       name: 'repeat',
+      aliases: ['schedule'],
       group: 'fun',
       description: 'Schedule a message to send in the current channel',
       guildOnly: false,
