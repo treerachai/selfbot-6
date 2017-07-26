@@ -113,7 +113,7 @@
           <div role="main">
             <div class="section">
               
-                <p>Total Number of Commands: 44</p>
+                <p>Total Number of Commands: 45</p>
 <p>The syntax of the command usage is:</p>
 <p><code>Optional paramater: []</code></p>
 <p><code>Required paramater: &lt;&gt;</code></p>
@@ -246,6 +246,11 @@
 <td><code>.memberstats [@member]</code></td>
 </tr>
 <tr>
+<td>Repeat</td>
+<td>Schedule a message to send in the current channel</td>
+<td><code>.repeat &lt;delayInSeconds&gt; &lt;amount&gt; &lt;message&gt;</code></td>
+</tr>
+<tr>
 <td>Roll</td>
 <td>Rolls a random number</td>
 <td><code>.roll [Max Roll]</code></td>
@@ -288,9 +293,9 @@
 </thead>
 <tbody>
 <tr>
-<td>Setup</td>
-<td>Get a link to the setup page for this Selfbot</td>
-<td><code>.setup</code></td>
+<td>Nick</td>
+<td>Changes your nickname in the current guild</td>
+<td><code>.nick &lt;nickname&gt;</code></td>
 </tr>
 <tr>
 <td>Altcheck</td>
@@ -338,11 +343,6 @@
 <td><code>.banall &lt;guild&gt; &lt;role name&gt;</code></td>
 </tr>
 <tr>
-<td>Nick</td>
-<td>Changes your nickname in the current guild</td>
-<td><code>.nick &lt;nickname&gt;</code></td>
-</tr>
-<tr>
 <td>Ping</td>
 <td>See your ping</td>
 <td><code>.ping</code></td>
@@ -361,6 +361,11 @@
 <td>Server</td>
 <td>Sends an invite to this Selfbot's server</td>
 <td><code>.server</code></td>
+</tr>
+<tr>
+<td>Setup</td>
+<td>Get a link to the setup page for this Selfbot</td>
+<td><code>.setup</code></td>
 </tr>
 <tr>
 <td>Stats</td>

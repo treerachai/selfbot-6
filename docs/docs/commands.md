@@ -1,4 +1,4 @@
-Total Number of Commands: 44
+Total Number of Commands: 45
 
 The syntax of the command usage is:
 
@@ -38,6 +38,7 @@ Ghostping|Ghost pings all members of a role.|`.ghostping <@role>`
 Guildicon|Get a guild's icon|`.guildicon [guild]`
 Avatar|Get the avatar of a user|`.avatar [@user]`
 Memberstats|Get a member's statistics|`.memberstats [@member]`
+Repeat|Schedule a message to send in the current channel|`.repeat <delayInSeconds> <amount> <message>`
 Roll|Rolls a random number|`.roll [Max Roll]`
 Rps|Play Rock, Paper, Scissors against the selfbot|`.rps <choice>`
 Setavatar|Changes your avatar to the image provided|`.setavatar <pathToImageOrLink>`
