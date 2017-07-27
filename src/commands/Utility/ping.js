@@ -1,5 +1,6 @@
 const patron = require('patron.js');
 const util = require('../../utility');
+const colors = require('colors');
 
 class Ping extends patron.Command {
   constructor() {
@@ -12,7 +13,10 @@ class Ping extends patron.Command {
   }
 
   async run(msg) {
-    return util.Messenger.send(msg.channel, 'Ping: ' + msg.client.ping.toFixed(0) + ' ms');
+    const ping = msg.client.ping.toFixed(0);
+    const pingLog = '    ' + ping + ' ms';
+    console.log(pingLog.yellow);
+    return util.Messenger.send(msg.channel, 'Ping: ' + ping + ' ms');
   }
 }
 

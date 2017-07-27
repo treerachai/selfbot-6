@@ -2,6 +2,7 @@ const patron = require('patron.js');
 const util = require('../../utility');
 const Discord = require('discord.js');
 const Exclude = require('../../preconditions/exclude.js');
+const colors = require('colors');
 
 class Exec extends patron.Command {
   constructor() {
@@ -28,6 +29,7 @@ class Exec extends patron.Command {
     try {
       eval(args.code);
     } catch (err) {
+      console.log('    Execution failed. '.red + err.toString().red);
       return util.Messenger.sendError(msg.channel, '```js\n' + err + '```');
     }
   }
