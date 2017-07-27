@@ -15,7 +15,7 @@ class CommandService {
         return;
       } else if (msg.content.startsWith(prefix)) {
         console.log('  ' + msg.cleanContent.cyan);
-        msg.delete();
+        await msg.delete();
       } else {
         return;
       }

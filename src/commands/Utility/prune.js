@@ -1,6 +1,7 @@
 const patron = require('patron.js');
 const Minimum = require('../../preconditions/minimum.js');
 const Maximum = require('../../preconditions/maximum.js');
+const Decimal = require('../../preconditions/decimal.js');
 
 class Prune extends patron.Command {
   constructor() {
@@ -18,7 +19,7 @@ class Prune extends patron.Command {
           example: '10',
           remainder: true,
           defaultValue: 10,
-          preconditions: [new Minimum(1), new Maximum(100)]
+          preconditions: [new Minimum(1), new Maximum(100), new Decimal(0)]
         })
       ]
     });
@@ -31,7 +32,7 @@ class Prune extends patron.Command {
       .then(messages => {
         let msgArray = messages.array();
         msgArray = msgArray.filter(m => m.author.id === msg.client.user.id);
-        msgArray.length = args.amount + 1;
+        msgArray.length = args.amount;
         msgArray.map(m => {
           m.delete()
             .catch(() => null);
