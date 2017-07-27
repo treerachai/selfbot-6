@@ -1,4 +1,4 @@
-Total Number of Commands: 45
+Total Number of Commands: 46
 
 The syntax of the command usage is:
 
@@ -52,6 +52,7 @@ Command | Description | Usage
 ---------------- | --------------| -------
 Nick|Changes your nickname in the current guild|`.nick <nickname>`
 Altcheck|Check when a user's account was created and when they joined the guild|`.altcheck [@member]`
+Clear|Clears the console|`.clear`
 Discrim|Finds users with the specified discriminator|`.discrim <discrim>`
 Djs|Get a link to the documentation of the Discord.js version this Selfbot uses|`.djs`
 Eval|Evaluate JavaScript code|`.eval <code>`
