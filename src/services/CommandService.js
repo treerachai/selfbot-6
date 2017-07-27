@@ -1,6 +1,7 @@
 const patron = require('patron.js');
 const prefix = require('../credentials.json').prefix;
 const util = require('../utility');
+const colors = require('colors');
 
 class CommandService {
   constructor(client, registry) {
@@ -13,7 +14,7 @@ class CommandService {
       if (msg.author.id !== msg.client.user.id) {
         return;
       } else if (msg.content.startsWith(prefix)) {
-        console.log('  ' + msg.cleanContent);
+        console.log('  ' + msg.cleanContent.cyan);
         msg.delete();
       } else {
         return;

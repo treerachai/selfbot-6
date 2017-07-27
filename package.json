@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/VapidSlay/Selfbot#readme",
   "dependencies": {
+    "colors": "^1.1.2",
     "discord.js": "^11.1.0",
     "patron.js": "git+https://github.com/RealBlazeIt/patron.js.git"
   },

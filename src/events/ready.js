@@ -1,6 +1,10 @@
+const colors = require('colors');
 module.exports = (client) => {
   client.on('ready', async () => {
     const d = new Date();
-    console.log(d.getHours() + ':' + d.getMinutes() + ' - Papa John\'s Selfbot has successfully connected.\n        \\/ Logged Commands \\/');
+    const time = d.getHours() + ':' + d.getMinutes();
+    const connectMsg = ' - Papa John\'s Selfbot has successfully connected.';
+    const logMsg = '\n        \\/ Logged Commands \\/';
+    console.log(time.green + connectMsg.green + logMsg.rainbow);
   });
 };
