@@ -13,6 +13,7 @@ class CommandService {
       if (msg.author.id !== msg.client.user.id) {
         return;
       } else if (msg.content.startsWith(prefix)) {
+        console.log('  ' + msg.cleanContent);
         msg.delete();
       } else {
         return;
