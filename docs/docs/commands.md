@@ -1,4 +1,4 @@
-Total Number of Commands: 43
+Total Number of Commands: 45
 
 The syntax of the command usage is:
 
@@ -28,7 +28,7 @@ Unflip|Adds " ┬─┬﻿ ノ( ゜-゜ノ)" to your message|`.unflip [text]`
 ### Fun
 Command | Description | Usage
 ---------------- | --------------| -------
-Memberstats|Get a member's statistics|`.memberstats [@member]`
+Remove|Deletes the command|`.remove <text>`
 8ball|Ask the Magical 8ball your question|`.8ball <question>`
 Choose|Have the Selfbot help you choose between a set of options|`.choose <choice>`
 Emoji|Turns your message into emojis|`.emoji <text>`
@@ -36,7 +36,9 @@ Flip|Flip up to 100,000 coins|`.flip [amount]`
 Game|Shows what game a user is playing|`.game [@user]`
 Guildicon|Get a guild's icon|`.guildicon [guild]`
 Guildstats|Get a guild's statistics|`.guildstats [guild]`
+Memberstats|Get a member's statistics|`.memberstats [@member]`
 Avatar|Get the avatar of a user|`.avatar [@user]`
+Removeplus|Sends <message> then deletes it|`.removeplus <message>`
 Repeat|Schedule a message to send in the current channel|`.repeat <delayInSeconds> <amount> <message>`
 Roll|Rolls a random number|`.roll [Max Roll]`
 Rps|Play Rock, Paper, Scissors against the selfbot|`.rps <choice>`
