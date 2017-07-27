@@ -24,18 +24,20 @@ class Emoji extends patron.Command {
   async run(msg, args) {
     let message = '';
     for (const index in args.text) {
-      if (!args.text[index].match(/[a-z]|[0-9]/i)) {
-        if (args.text[index] === ' ') {
-          message += '    ';
+      if (index <= args.text.length) {
+        if (!args.text[index].match(/[a-z]|[0-9]/i)) {
+          if (args.text[index] === ' ') {
+            message += '    ';
+          } else {
+            message += args.text[index];
+          }
         } else {
-          message += args.text[index];
-        }
-      } else {
-        const number = parseInt(args.text[index]);
-        if (!isNaN(number)) {
-          message += ':' + data.numbers[number] + ': ';
-        } else {
-          message += ':regional_indicator_' + args.text[index].toLowerCase() + ': ';
+          const number = parseInt(args.text[index]);
+          if (!isNaN(number)) {
+            message += ':' + data.numbers[number] + ': ';
+          } else {
+            message += ':regional_indicator_' + args.text[index].toLowerCase() + ': ';
+          }
         }
       }
     }

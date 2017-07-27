@@ -33,6 +33,6 @@
     "**/*.json"
   ],
   "devDependencies": {
-    "eslint": "^4.2.0"
+    "eslint": "^4.3.0"
   }
 }
