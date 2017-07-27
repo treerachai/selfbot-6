@@ -8,7 +8,7 @@ class Repeat extends patron.Command {
   constructor() {
     super({
       name: 'repeat',
-      aliases: ['schedule'],
+      aliases: ['schedule', 'spam'],
       group: 'fun',
       description: 'Schedule a message to send in the current channel',
       guildOnly: false,
@@ -39,8 +39,6 @@ class Repeat extends patron.Command {
   }
 
   async run(msg, args) {
-    const confirmMsg = await util.Messenger.send(msg.channel, '**Delay Between Sends:** ' + args.delay + ' seconds\n**Amount:** ' + args.amount, 'Message Successfully Scheduled');
-    confirmMsg.delete(5000).catch(() => null);
     for(let i = 0; i < args.amount; i++) {
       await util.PromiseUtil.delay(1000 * args.delay);
       msg.channel.send(args.m);
