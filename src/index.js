@@ -7,7 +7,7 @@ const Documentation = require('./services/Documentation.js');
 const data = require('./data.json');
 const credentials = require('./credentials.json');
 
-const client = new discord.Client({ messageCacheMaxSize: 5, messageCacheLifetime: 10, messageSweepInterval: 1800, disabledEvents: data.disabledEvents, fetchAllMembers: true });
+const client = new discord.Client({ messageCacheMaxSize: 5, messageCacheLifetime: 10, messageSweepInterval: 1800, disabledEvents: data.disabledEvents, fetchAllMembers: true }).setMaxListeners(0);
 
 const registry = new patron.Registry();
 
