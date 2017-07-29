@@ -24,11 +24,16 @@ class Memberstats extends patron.Command {
   }
 
   async run(msg, args) {
+    const res = await msg.guild.search({
+      author: args.member.user
+    });
+    const results = res.totalResults;
+
     const embed = new Discord.RichEmbed()
       .setTitle(args.member.user.tag + ' (' + args.member.user.id + ')')
       .setThumbnail(args.member.user.displayAvatarURL)
       .addField('Nickname', '`' + args.member.displayName + '`', true)
-      .addField('Status', args.member.presence.status, true)
+      .addField('Total Messages Sent', results, true)
       .addField('Highest Role', args.member.highestRole, true);
       if (args.member.colorRole === null) {
         embed.addField('Color Role', msg.guild.defaultRole, true);
