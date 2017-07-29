@@ -30,10 +30,12 @@ class Memberstats extends patron.Command {
       .addField('Nickname', '`' + args.member.displayName + '`', true)
       .addField('Status', args.member.presence.status, true)
       .addField('Highest Role', args.member.highestRole, true);
-    if (args.member.user.lastMessage !== null) {
-      embed.addField('Last Message', args.member.lastMessage.createdAt.toString().substring(0, 24), true);
-    }
-    embed.addField('Account Created On', args.member.user.createdAt.toString().substring(0, 16), true)
+      if (args.member.colorRole === null) {
+        embed.addField('Color Role', msg.guild.defaultRole, true);
+      } else {
+        embed.addField('Color Role', args.member.colorRole + ' - ' + args.member.displayHexColor, true);
+      }
+      embed.addField('Account Created On', args.member.user.createdAt.toString().substring(0, 16), true)
       .addField('Joined This Server On', args.member.joinedAt.toString().substring(0, 16), true);
     return util.Messenger.sendEmbed(msg.channel, embed, args.member.displayHexColor);
 
