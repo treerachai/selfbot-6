@@ -24,6 +24,8 @@ class Guildstats extends patron.Command {
   }
 
   async run(msg, args) {
+    const totalMessages = await args.guild.search();
+
     const embed = new Discord.RichEmbed()
       .setTitle(args.guild.name + ' (' + args.guild.id + ')')
       .setThumbnail(args.guild.iconURL);
@@ -32,6 +34,7 @@ class Guildstats extends patron.Command {
     }
     embed.addField('Members', args.guild.memberCount, true)
       .addField('Channels', args.guild.channels.array().length, true)
+      .addField('Total Message Count', totalMessages.totalResults.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","), true)
       .addField('Region', args.guild.region, true)
       .addField('Created At', args.guild.createdAt.toString().substring(0, 16), true);
 

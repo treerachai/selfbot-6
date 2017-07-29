@@ -32,7 +32,7 @@ class Memberstats extends patron.Command {
       .setTitle(args.member.user.tag + ' (' + args.member.user.id + ')')
       .setThumbnail(args.member.user.displayAvatarURL)
       .addField('Nickname', '`' + args.member.displayName + '`', true)
-      .addField('Total Messages Sent', res.totalResults, true)
+      .addField('Total Messages Sent', res.totalResults.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","), true)
       .addField('Highest Role', args.member.highestRole, true);
       if (args.member.colorRole === null) {
         embed.addField('Color Role', msg.guild.defaultRole, true);
