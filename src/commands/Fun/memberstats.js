@@ -27,13 +27,12 @@ class Memberstats extends patron.Command {
     const res = await msg.guild.search({
       author: args.member.user
     });
-    const results = res.totalResults;
 
     const embed = new Discord.RichEmbed()
       .setTitle(args.member.user.tag + ' (' + args.member.user.id + ')')
       .setThumbnail(args.member.user.displayAvatarURL)
       .addField('Nickname', '`' + args.member.displayName + '`', true)
-      .addField('Total Messages Sent', results, true)
+      .addField('Total Messages Sent', res.totalResults, true)
       .addField('Highest Role', args.member.highestRole, true);
       if (args.member.colorRole === null) {
         embed.addField('Color Role', msg.guild.defaultRole, true);
@@ -42,9 +41,11 @@ class Memberstats extends patron.Command {
       }
       embed.addField('Account Created On', args.member.user.createdAt.toString().substring(0, 16), true)
       .addField('Joined This Server On', args.member.joinedAt.toString().substring(0, 16), true);
+
     return util.Messenger.sendEmbed(msg.channel, embed, args.member.displayHexColor);
 
   }
+
 }
 
 module.exports = new Memberstats();
