@@ -27,11 +27,12 @@ class Flip extends patron.Command {
   }
 
   async run(msg, args) {
+    const options = ['heads', 'tails'];
     let heads = 0;
     let tails = 0;
     for (let i = 0; i < args.flips; i++) {
-      const flip = Math.floor(Math.random() * 2);
-      if (flip === 0) {
+      const flip = util.Random.arrayElement(options);
+      if (flip === 'heads') {
         heads++;
       } else {
         tails++;
