@@ -15,7 +15,7 @@ class Calc extends patron.Command {
           name: 'problem',
           key: 'input',
           type: 'string',
-          example: '3*(2+3)/4-2',
+          example: '3*(2+3)/4-2e2',
           remainder: true
         })
       ]
@@ -23,7 +23,7 @@ class Calc extends patron.Command {
   }
 
   async run(msg, args) {
-    const code = args.input.replace(/[^0-9+\-*/().]/gi, '');
+    const code = args.input.replace(/[^0-9+\-*/().e]/gi, '');
     if (!code) {
       return util.Messenger.sendError(msg.channel, 'You must provide something valid to calculate');
     }
