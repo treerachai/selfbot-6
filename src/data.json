@@ -37,24 +37,6 @@
     "8⃣",
     "9⃣"
   ],
-  "eightBallAnswers":[
-    "Why certainly",
-    "It is certain",
-    "Absolutely",
-    "Unavoidably so",
-    "Without a doubt",
-    "Most definitely",
-    "As I see it, yes",
-    "Most likely",
-    "In your dreams",
-    "Don't count on it",
-    "Inevitably no",
-    "Surely not",
-    "My sources say no",
-    "Not a chance buddy",
-    "Not even a little bit",
-    "Very doubtful"
-  ],
   "disabledEvents":[
     "RESUMED",
     "GUILD_SYNC",
