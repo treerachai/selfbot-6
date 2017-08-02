@@ -45,7 +45,7 @@ class Slots extends patron.Command {
     }
 
     const embed = new Discord.RichEmbed()
-      .setTitle('🎰 Slot Machine')
+      .setTitle(':slot_machine: Slot Machine :slot_machine:')
       .setDescription(o1 + o2 + o3)
       .setFooter(winMessage);
 
