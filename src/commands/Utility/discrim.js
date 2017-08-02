@@ -26,7 +26,7 @@ class Discrim extends patron.Command {
   async run(msg, args) {
     const matches = msg.client.users.findAll('discriminator', args.discrim);
     if (matches.length === 0) {
-      return util.Messenger.sendError(msg.channel, 'No match found for discrim #' + args.discrim);
+      return util.Messenger.sendError(msg.channel, 'No match found for discrim #' + args.discrim + '\nJoin more guilds to add to the list of potential matches.');
     }
     let message = '```css\n';
     let discrimc = 0;

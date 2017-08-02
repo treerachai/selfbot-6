@@ -3,6 +3,7 @@ const util = require('../../utility');
 const Minimum = require('../../preconditions/minimum.js');
 const Maximum = require('../../preconditions/maximum.js');
 const Decimal = require('../../preconditions/decimal.js');
+const colors = require('colors');
 
 class Repeat extends patron.Command {
   constructor() {
@@ -41,8 +42,9 @@ class Repeat extends patron.Command {
   async run(msg, args) {
     for(let i = 0; i < args.amount; i++) {
       await util.PromiseUtil.delay(1000 * args.delay);
-      msg.channel.send(args.m);
+      await msg.channel.send(args.m).catch(() => null);
     }
+    console.log('Repeat Finished: '.yellow + args.m.magenta); 
   }
 }
 
