@@ -9,7 +9,7 @@ class Nick extends patron.Command {
       aliases: ['nickname', 'setnick', 'setnickname'],
       group: 'utility',
       description: 'Changes your nickname in the current guild',
-      memberPermissions: ['CHANGE_NICKNAME'],
+      botPermissions: ['CHANGE_NICKNAME'],
       args: [
         new patron.Argument({
           name: 'nickname',
