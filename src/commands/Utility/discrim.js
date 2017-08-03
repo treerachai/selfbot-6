@@ -40,11 +40,7 @@ class Discrim extends patron.Command {
       }
     }
 
-    const embed = new Discord.RichEmbed()
-      .setTitle('Results for Discrim #' + args.discrim)
-      .setDescription(message + '```');
-
-    return util.Messenger.sendEmbed(msg.channel, embed);
+    return util.Messenger.send(msg.channel, message + '```', 'Results for Discrim #' + args.discrim);
   }
 }
 
