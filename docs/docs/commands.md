@@ -1,4 +1,4 @@
-Total Number of Commands: 49
+Total Number of Commands: 50
 
 The syntax of the command usage is:
 
@@ -14,11 +14,12 @@ The syntax of the command usage is:
 ### Emote
 Command | Description | Usage
 ---------------- | --------------| -------
-Disapprove|Adds "ಠ_ಠ" to your message|`.disapprove [text]`
+Kms|Kill yourself in a 3 frame animation|`.kms`
+B|🅱|`.b <text>`
 Fliptable|Adds "ノ┬─┬ノ ︵ ( \o°o)\" to your message|`.fliptable [text]`
 Happy|Adds "ᕕ( ᐛ )ᕗ" to your message|`.happy [text]`
 Innocent|Adds "ʘ‿ʘ" to your message|`.innocent [text]`
-Kms|Kill yourself in a 3 frame animation|`.kms`
+Disapprove|Adds "ಠ_ಠ" to your message|`.disapprove [text]`
 Lenny|Adds "( ͡° ͜ʖ ͡°)" to your message|`.lenny [text]`
 Rageflip|Adds "┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻" to your message|`.rageflip [text]`
 Shrug|Adds "¯\_(ツ)_/¯" to your message|`.shrug [text]`
@@ -61,7 +62,7 @@ Eval|Evaluate JavaScript code|`.eval <code>`
 Exec|Execute JavaScript code|`.exec <code>`
 Git|Get a link to this Selfbot's Github Repository|`.git`
 Help|View command information|`.help [command]`
-Ban|Bans any user.|`.ban <@user>`
+Ban|Ban any user.|`.ban <@user> [reason]`
 Ping|See your ping|`.ping`
 Prune|Deletes your last messages in the current channel|`.prune [amount]`
 Reboot|Reboots the selfbot|`.reboot`

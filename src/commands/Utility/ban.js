@@ -1,4 +1,5 @@
 const patron = require('patron.js');
+const util = require('../../utility');
 
 class Ban extends patron.Command {
   constructor() {
@@ -12,14 +13,27 @@ class Ban extends patron.Command {
           key: 'user',
           type: 'user',
           name: 'user',
-          example: 'Bilbo Baggins#3838'
-        })
+          example: '"Bilbo Baggins#3838"'
+        }),
+        new patron.Argument({
+          key: 'reason',
+          type: 'string',
+          name: 'reason',
+          example: 'Raiding the server',
+          defaultValue: 'Banned via PapaJohn#7777\'s Selfbot',
+          remainder: true
+        })        
       ]
     });
   }
 
   async run(msg, args) {
-    return msg.guild.ban(args.user);
+    try {
+      await msg.guild.ban(args.user, {reason: args.reason});
+    } catch (err) {
+      return util.Messenger.sendError(msg.channel, 'Unable to ban user: ' + args.user.tag);
+    }
+    return util.Messenger.send(msg.channel, '__**Reason:**__ ' + args.reason , 'Banned: ' + args.user.tag);
   }
 }
 
