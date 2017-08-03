@@ -26,18 +26,16 @@ class Rps extends patron.Command {
     const choice = args.choice.charAt(0).toUpperCase() + args.choice.slice(1);
     const botOptions = ['Rock', 'Paper', 'Scissors'];
     const botChoice = util.Random.arrayElement(botOptions);
-    
+
     let winMessage = 'You Lose!';
     if (botChoice === choice) {
       winMessage = 'It\'s a Tie!';
-    } else {
-      if (choice === 'Rock' && botChoice === 'Scissors') {
-        winMessage = 'You Win!';
-      } else if (choice === 'Paper' && botChoice === 'Rock') {
-        winMessage = 'You Win!';
-      } else if (choice === 'Scissors' && botChoice === 'Paper') {
-        winMessage = 'You Win!'
-      }
+    } else if (choice === 'Rock' && botChoice === 'Scissors') {
+      winMessage = 'You Win!';
+    } else if (choice === 'Paper' && botChoice === 'Rock') {
+      winMessage = 'You Win!';
+    } else if (choice === 'Scissors' && botChoice === 'Paper') {
+      winMessage = 'You Win!';
     }
 
     const embed = new Discord.RichEmbed()

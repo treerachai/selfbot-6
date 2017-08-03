@@ -1,4 +1,3 @@
-const colors = require('colors');
 module.exports = (client) => {
   client.on('ready', async () => {
     const d = new Date();

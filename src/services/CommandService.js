@@ -1,7 +1,6 @@
 const patron = require('patron.js');
 const prefix = require('../credentials.json').prefix;
 const util = require('../utility');
-const colors = require('colors');
 
 class CommandService {
   constructor(client, registry) {

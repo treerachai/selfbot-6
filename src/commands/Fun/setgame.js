@@ -24,7 +24,7 @@ class Setgame extends patron.Command {
   async run(msg, args) {
     if (args.name !== null) {
       msg.client.user.setGame(args.name.substring(0, 128));
-    } else { 
+    } else {
       msg.client.user.setGame(null);
     }
   }

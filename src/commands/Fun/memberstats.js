@@ -32,14 +32,14 @@ class Memberstats extends patron.Command {
       .setTitle(args.member.user.tag + ' (' + args.member.user.id + ')')
       .setThumbnail(args.member.user.displayAvatarURL)
       .addField('Nickname', '`' + args.member.displayName + '`', true)
-      .addField('Total Messages Sent', res.totalResults.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","), true)
+      .addField('Total Messages Sent', res.totalResults.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','), true)
       .addField('Highest Role', args.member.highestRole, true);
-      if (args.member.colorRole === null) {
-        embed.addField('Color Role', msg.guild.defaultRole, true);
-      } else {
-        embed.addField('Color Role', args.member.colorRole + ' - ' + args.member.displayHexColor, true);
-      }
-      embed.addField('Account Created On', args.member.user.createdAt.toString().substring(0, 16), true)
+    if (args.member.colorRole === null) {
+      embed.addField('Color Role', msg.guild.defaultRole, true);
+    } else {
+      embed.addField('Color Role', args.member.colorRole + ' - ' + args.member.displayHexColor, true);
+    }
+    embed.addField('Account Created On', args.member.user.createdAt.toString().substring(0, 16), true)
       .addField('Joined This Server On', args.member.joinedAt.toString().substring(0, 16), true);
 
     return util.Messenger.sendEmbed(msg.channel, embed, args.member.displayHexColor);

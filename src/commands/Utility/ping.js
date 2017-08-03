@@ -1,6 +1,5 @@
 const patron = require('patron.js');
 const util = require('../../utility');
-const colors = require('colors');
 
 class Ping extends patron.Command {
   constructor() {

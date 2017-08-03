@@ -1,6 +1,4 @@
 const patron = require('patron.js');
-const util = require('../../utility');
-const Discord = require('discord.js');
 const MustBe = require('../../preconditions/mustBe.js');
 
 class Status extends patron.Command {

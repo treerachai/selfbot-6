@@ -34,7 +34,7 @@ class Guildstats extends patron.Command {
     }
     embed.addField('Members', args.guild.memberCount, true)
       .addField('Channels', args.guild.channels.array().length, true)
-      .addField('Total Message Count', totalMessages.totalResults.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","), true)
+      .addField('Total Message Count', totalMessages.totalResults.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','), true)
       .addField('Region', args.guild.region, true)
       .addField('Created At', args.guild.createdAt.toString().substring(0, 16), true);
 

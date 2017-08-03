@@ -10,7 +10,7 @@ class Roll extends patron.Command {
       name: 'roll',
       group: 'fun',
       description: 'Rolls a random number',
-      guildOnly: false, 
+      guildOnly: false,
       args: [
         new patron.Argument({
           name: 'Max Roll',

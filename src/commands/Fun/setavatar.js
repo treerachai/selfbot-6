@@ -1,6 +1,4 @@
 const patron = require('patron.js');
-const util = require('../../utility');
-const Discord = require('discord.js');
 
 class SetAvatar extends patron.Command {
   constructor() {

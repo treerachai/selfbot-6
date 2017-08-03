@@ -2,7 +2,6 @@ const patron = require('patron.js');
 const util = require('../../utility');
 const Discord = require('discord.js');
 const Exclude = require('../../preconditions/exclude.js');
-const colors = require('colors');
 
 class Eval extends patron.Command {
   constructor() {
