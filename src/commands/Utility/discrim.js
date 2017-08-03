@@ -25,17 +25,17 @@ class Discrim extends patron.Command {
 
   async run(msg, args) {
     const matches = msg.client.users.findAll('discriminator', args.discrim);
+
     if (matches.length === 0) {
       return util.Messenger.sendError(msg.channel, 'No match found for discrim #' + args.discrim + '\nJoin more guilds to add to the list of potential matches.');
     }
+
     let message = '```css\n';
-    let discrimc = 0;
 
-    for (const user in matches) {
-      discrimc++;
-      message += matches[user].username + '#' + args.discrim;
+    for (let i = 0; i < matches.length; i++) {
+      message += matches[i].tag;
 
-      if (discrimc !== matches.length) {
+      if (i !== matches.length) {
         message += ', ';
       }
     }
@@ -43,8 +43,8 @@ class Discrim extends patron.Command {
     const embed = new Discord.RichEmbed()
       .setTitle('Results for Discrim #' + args.discrim)
       .setDescription(message + '```');
-    util.Messenger.sendEmbed(msg.channel, embed);
 
+    return util.Messenger.sendEmbed(msg.channel, embed);
   }
 }
 
