@@ -21,7 +21,7 @@ class Stats extends patron.Command {
       .addField('Uptime', uptime.hours + ' hours, ' + uptime.minutes + ' minutes', true)
       .addField('Servers', msg.client.guilds.size, true)
       .addField('Channels', msg.client.channels.size, true)
-      .addField('Users', msg.client.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString(), true);
+      .addField('Users', msg.client.users.size, true);
     return util.Messenger.sendEmbed(msg.channel, embed);
   }
 }
