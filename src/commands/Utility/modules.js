@@ -1,6 +1,5 @@
 const patron = require('patron.js');
 const util = require('../../utility');
-const credentials = require('../../credentials.json');
 
 class Modules extends patron.Command {
   constructor() {

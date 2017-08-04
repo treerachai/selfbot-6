@@ -1,5 +1,4 @@
 const patron = require('patron.js');
-const data = require('../../data.json');
 
 class Clap extends patron.Command {
   constructor() {
