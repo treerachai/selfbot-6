@@ -1,4 +1,4 @@
-Total Number of Commands: 50
+Total Number of Commands: 51
 
 The syntax of the command usage is:
 
@@ -9,6 +9,7 @@ The syntax of the command usage is:
 ##Table Of Contents
 - [Emote](#emote)
 - [Fun](#fun)
+- [Moderation](#moderation)
 - [Utility](#utility)
 
 ### Emote
@@ -49,11 +50,16 @@ Setgame|Sets what game you are playing|`.setgame [name]`
 Slots|Play a Slot Machine|`.slots [Bet]`
 Userid|Get the id of a user|`.userid [@user]`
 
+### Moderation
+Command | Description | Usage
+---------------- | --------------| -------
+Ban|Ban any user.|`.ban <@user> [reason]`
+Kick|Kick a member from the guild|`.kick <@member> [reason]`
+
 ### Utility
 Command | Description | Usage
 ---------------- | --------------| -------
 Altcheck|Check when a user's account was created and when they joined the guild|`.altcheck [@member]`
-Ban|Ban any user.|`.ban <@user> [reason]`
 Calc|Do basic adding, subtracting, multiplying, and dividing|`.calc <problem>`
 Clear|Clears the console|`.clear`
 Discrim|Finds users with the specified discriminator|`.discrim <discrim>`

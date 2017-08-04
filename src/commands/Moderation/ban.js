@@ -5,7 +5,7 @@ class Ban extends patron.Command {
   constructor() {
     super({
       name: 'ban',
-      group: 'utility',
+      group: 'moderation',
       description: 'Ban any user.',
       botPermissions: ['BAN_MEMBERS'],
       args: [
