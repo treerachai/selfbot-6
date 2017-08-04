@@ -1,4 +1,4 @@
-Total Number of Commands: 52
+Total Number of Commands: 53
 
 The syntax of the command usage is:
 
@@ -69,6 +69,7 @@ Eval|Evaluate JavaScript code|`.eval <code>`
 Exec|Execute JavaScript code|`.exec <code>`
 Git|Get a link to this Selfbot's Github Repository|`.git`
 Help|View command information or list the commands in a module|`.help [command/module]`
+Modules|View the current command modules|`.modules`
 Nick|Changes your nickname in the current guild|`.nick <nickname>`
 Ping|See your ping|`.ping`
 Prune|Deletes your last messages in the current channel|`.prune [amount]`
