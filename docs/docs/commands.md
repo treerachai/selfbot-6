@@ -1,4 +1,4 @@
-Total Number of Commands: 53
+Total Number of Commands: 54
 
 The syntax of the command usage is:
 
@@ -17,6 +17,7 @@ The syntax of the command usage is:
 ### Developer
 Command | Description | Usage
 ---------------- | --------------| -------
+Commandcount|See how many commands have been added so far|`.commandcount`
 Djs|Get a link to the Discord.js docs|`.djs`
 Eval|Evaluate JavaScript code|`.eval <code>`
 Exec|Execute JavaScript code|`.exec <code>`
