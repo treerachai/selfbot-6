@@ -1,7 +1,5 @@
 const patron = require('patron.js');
 const Minimum = require('../../preconditions/minimum.js');
-const Maximum = require('../../preconditions/maximum.js');
-const Decimal = require('../../preconditions/decimal.js');
 
 class Prune extends patron.Command {
   constructor() {
@@ -15,29 +13,32 @@ class Prune extends patron.Command {
         new patron.Argument({
           name: 'amount',
           key: 'amount',
-          type: 'float',
+          type: 'int',
           example: '10',
           remainder: true,
           defaultValue: 10,
-          preconditions: [new Minimum(1), new Maximum(100), new Decimal(0)]
+          preconditions: [new Minimum(1)]
         })
       ]
     });
   }
 
   async run(msg, args) {
-    msg.channel.fetchMessages({
-      limit: 100
-    })
-      .then(messages => {
-        let msgArray = messages.array();
-        msgArray = msgArray.filter(m => m.author.id === msg.client.user.id);
-        msgArray.length = args.amount;
-        msgArray.map(m => {
-          m.delete()
-            .catch(() => null);
-        });
+    for (let n = 0; n < args.amount; n += 24) {
+      let search = await msg.channel.search({
+        author: msg.author
       });
+      if (search.messages.length === 0) {
+        break;
+      }
+
+      for (let i = 0; i < 24; i ++) {
+        if (i >= search.messages.length || args.amount - n <= i) {
+          break;
+        }
+        await search.messages[i].find(m => m.hit).delete().catch(() => null);
+      }
+    }
   }
 }
 
