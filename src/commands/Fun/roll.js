@@ -1,7 +1,6 @@
 const patron = require('patron.js');
 const util = require('../../utility');
 const Minimum = require('../../preconditions/minimum.js');
-const Decimal = require('../../preconditions/decimal.js');
 
 class Roll extends patron.Command {
   constructor() {
@@ -14,11 +13,11 @@ class Roll extends patron.Command {
         new patron.Argument({
           name: 'Max Roll',
           key: 'maxroll',
-          type: 'float',
+          type: 'int',
           example: '100',
           remainder: true,
           defaultValue: 6,
-          preconditions: [new Minimum(1), new Decimal(0)]
+          preconditions: [new Minimum(1)]
         })
       ]
     });
