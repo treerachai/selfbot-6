@@ -11,7 +11,7 @@ The syntax of the command usage is:
 - [Emote](#emote)
 - [Fun](#fun)
 - [Moderation](#moderation)
-- [Stats](#stats)
+- [Statistics](#statistics)
 - [Utility](#utility)
 
 ### Developer
@@ -67,7 +67,7 @@ Ban|Ban any user.|`.ban <@user> [reason]`
 Kick|Kick a member from the guild|`.kick <@member> [reason]`
 Unban|Unban a banned user.|`.unban <username>`
 
-### Stats
+### Statistics
 Command | Description | Usage
 ---------------- | --------------| -------
 Guildstats|Get a guild's statistics|`.guildstats [guild]`

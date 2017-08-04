@@ -7,7 +7,7 @@ class Memberstats extends patron.Command {
     super({
       name: 'memberstats',
       aliases: ['ms', 'userstats', 'us'],
-      group: 'stats',
+      group: 'statistics',
       description: 'Get a member\'s statistics',
       guildOnly: true,
       args: [

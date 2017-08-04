@@ -6,7 +6,7 @@ class Uptime extends patron.Command {
     super({
       name: 'uptime',
       aliases: ['ut'],
-      group: 'stats',
+      group: 'statistics',
       description: 'See how long your selfbot has been running',
       guildOnly: false
     });
