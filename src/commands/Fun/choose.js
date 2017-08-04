@@ -14,7 +14,7 @@ class Choose extends patron.Command {
           name: 'choice',
           key: 'choices',
           type: 'string',
-          example: '"Papa John\'s Pizza"',
+          example: '"Papa John\'s Pizza" "Domino\'s Pizza" "Little Caesar\'s Pizza',
           infinite: true
         })
       ]
@@ -22,15 +22,14 @@ class Choose extends patron.Command {
   }
 
   async run(msg, args) {
+    console.log(args.choices.length);
+    console.log(args.choices);
     let message = 'Out of: ';
-    for (const element of args.choices) {
-      message += '`' + element + '`';
-      if (element !== args.choices[args.choices.length-1]) {
-        message += ', ';
-      }
+    for (let i = 0; i < args.choices.length; i++) {
+      message += '`' + args.choices[i] + '`' + (i !== args.choices.length-1 ? ', ' : '\n');
     }
     const choice = util.Random.arrayElement(args.choices);
-    message += '\nI choose: `' + choice + '`';
+    message += 'I choose: `' + choice + '`';
     return util.Messenger.send(msg.channel, message);
   }
 }
