@@ -1,5 +1,6 @@
 const patron = require('patron.js');
 const data = require('../../data.json');
+const util = require('../../utility');
 
 class Emoji extends patron.Command {
   constructor() {
@@ -39,7 +40,10 @@ class Emoji extends patron.Command {
         }
       }
     }
-    return msg.channel.send(message);
+    if (message.length < 2000) {
+      return msg.channel.send(message);
+    }
+    return util.Messenger.sendError(msg.channel, 'Message too long');
   }
 }
 
