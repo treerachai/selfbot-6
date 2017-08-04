@@ -16,7 +16,7 @@ The syntax of the command usage is:
 ### Developer
 Command | Description | Usage
 ---------------- | --------------| -------
-Djs|Get a link to the documentation of the Discord.js version this Selfbot uses|`.djs`
+Djs|Get a link to the Discord.js docs|`.djs`
 Eval|Evaluate JavaScript code|`.eval <code>`
 Exec|Execute JavaScript code|`.exec <code>`
 Roleids|Gets all the role ids of a guild.|`.roleids`

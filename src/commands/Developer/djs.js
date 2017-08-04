@@ -8,7 +8,7 @@ class Djs extends patron.Command {
       name: 'djs',
       aliases: ['discordjs', 'discord.js', 'd.js'],
       group: 'developer',
-      description: 'Get a link to the documentation of the Discord.js version this Selfbot uses',
+      description: 'Get a link to the Discord.js docs',
       guildOnly: false
     });
   }
