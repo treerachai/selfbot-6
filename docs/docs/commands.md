@@ -1,4 +1,4 @@
-Total Number of Commands: 54
+Total Number of Commands: 56
 
 The syntax of the command usage is:
 
@@ -17,6 +17,8 @@ The syntax of the command usage is:
 ### Developer
 Command | Description | Usage
 ---------------- | --------------| -------
+Bf|Turn text into BF code|`.bf <text>`
+Bfreader|Turn text into BF code|`.bfreader <BF Code>`
 Commandcount|See how many commands have been added so far|`.commandcount`
 Djs|Get a link to the Discord.js docs|`.djs`
 Eval|Evaluate JavaScript code|`.eval <code>`
