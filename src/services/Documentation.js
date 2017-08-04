@@ -11,7 +11,7 @@ class Documentation {
     let commandInfo = '';
     let commandCount = 0;
 
-    const sortedGroups = Array.from(registry.groups.values()).sort(util.StringUtil.alphabeticallySort);
+    const sortedGroups = registry.groups.sort(util.StringUtil.alphabeticallySort).values();
 
     for (const group of sortedGroups) {
       const formattedGroupName = util.StringUtil.upperFirstChar(group.name);
@@ -26,7 +26,7 @@ class Documentation {
 
       commandInfo += 'Command | Description | Usage\n---------------- | --------------| -------\n';
 
-      for (const command of Array.from(group.commands.values()).sort(util.StringUtil.alphabeticallySort)) {
+      for (const command of group.commands.sort(util.StringUtil.alphabeticallySort).values()) {
         commandCount++;
         commandInfo += util.StringUtil.upperFirstChar(command.name) + '|' + command.description + '|`' + credentials.prefix + command.getUsage() + '`\n';
       }

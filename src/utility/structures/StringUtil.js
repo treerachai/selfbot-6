@@ -11,6 +11,10 @@ class StringUtil {
     return '**' + input.replace(/\*|~|`/g, '').replace(/_/g, ' ') + '**';
   }
 
+  static alphabeticallySort(a, b) {
+    return a.name.localeCompare(b.name);
+  }
+
 }
 
 module.exports = StringUtil;
