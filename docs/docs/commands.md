@@ -1,4 +1,4 @@
-Total Number of Commands: 52
+Total Number of Commands: 53
 
 The syntax of the command usage is:
 
@@ -25,7 +25,9 @@ Roleids|Gets all the role ids of a guild.|`.roleids`
 Command | Description | Usage
 ---------------- | --------------| -------
 B|🅱|`.b <text>`
+Clap|👏Emphasize👏your👏text👏|`.clap <text>`
 Disapprove|Adds "ಠ_ಠ" to your message|`.disapprove [text]`
+Emoji|Turns your message into emojis|`.emoji <text>`
 Fliptable|Adds "ノ┬─┬ノ ︵ ( \o°o)\" to your message|`.fliptable [text]`
 Happy|Adds "ᕕ( ᐛ )ᕗ" to your message|`.happy [text]`
 Innocent|Adds "ʘ‿ʘ" to your message|`.innocent [text]`
@@ -42,7 +44,6 @@ Command | Description | Usage
 8ball|Ask the Magical 8ball your question|`.8ball <question>`
 Avatar|Get the avatar of a user|`.avatar [@user]`
 Choose|Have the Selfbot help you choose between a set of options|`.choose <choice>`
-Emoji|Turns your message into emojis|`.emoji <text>`
 Flip|Flip up to 100,000 coins|`.flip [amount]`
 Game|Shows what game a user is playing|`.game [@user]`
 Guildicon|Get a guild's icon|`.guildicon [guild]`
