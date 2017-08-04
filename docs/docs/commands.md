@@ -1,4 +1,4 @@
-Total Number of Commands: 51
+Total Number of Commands: 52
 
 The syntax of the command usage is:
 
@@ -55,6 +55,7 @@ Command | Description | Usage
 ---------------- | --------------| -------
 Ban|Ban any user.|`.ban <@user> [reason]`
 Kick|Kick a member from the guild|`.kick <@member> [reason]`
+Unban|Unban a banned user.|`.unban <username>`
 
 ### Utility
 Command | Description | Usage
