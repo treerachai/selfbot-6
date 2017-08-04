@@ -22,7 +22,7 @@ class Kick extends patron.Command {
           example: 'Get outta here the server',
           defaultValue: 'Kicked via PapaJohn#7777\'s Selfbot',
           remainder: true
-        })        
+        })
       ]
     });
   }
@@ -33,7 +33,7 @@ class Kick extends patron.Command {
     } catch (err) {
       return util.Messenger.sendError(msg.channel, 'Unable to kick member: ' + args.member.user.tag);
     }
-    return util.Messenger.send(msg.channel, '__**Reason:**__ ' + args.reason , 'Kicked: ' + args.member.user.tag);
+    return util.Messenger.send(msg.channel, '__**Reason:**__ ' + args.reason, 'Kicked: ' + args.member.user.tag);
   }
 }
 

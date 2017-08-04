@@ -29,7 +29,7 @@ class Unban extends patron.Command {
       const user = matches[0];
 
       await msg.guild.unban(user);
-      return util.Messenger.send(msg.channel, '__**ID:**__ ' + user.id , 'Unbanned: ' + user.tag);
+      return util.Messenger.send(msg.channel, '__**ID:**__ ' + user.id, 'Unbanned: ' + user.tag);
     } else if (matches.length > 5) {
       return util.Messenger.sendError(msg.channel, 'Multiple matches found, please be more specific.');
     } else if (matches.length > 1) {

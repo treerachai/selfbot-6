@@ -24,7 +24,7 @@ class StringUtil {
 
     return formattedMembers.slice(0, -2);
   }
-  
+
 }
 
 module.exports = StringUtil;

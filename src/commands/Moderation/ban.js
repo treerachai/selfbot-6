@@ -22,18 +22,18 @@ class Ban extends patron.Command {
           example: 'Raiding the server',
           defaultValue: 'Banned via PapaJohn#7777\'s Selfbot',
           remainder: true
-        })        
+        })
       ]
     });
   }
 
   async run(msg, args) {
     try {
-      await msg.guild.ban(args.user, {reason: args.reason});
+      await msg.guild.ban(args.user, { reason: args.reason });
     } catch (err) {
       return util.Messenger.sendError(msg.channel, 'Unable to ban user: ' + args.user.tag);
     }
-    return util.Messenger.send(msg.channel, '__**Reason:**__ ' + args.reason , 'Banned: ' + args.user.tag);
+    return util.Messenger.send(msg.channel, '__**Reason:**__ ' + args.reason, 'Banned: ' + args.user.tag);
   }
 }
 

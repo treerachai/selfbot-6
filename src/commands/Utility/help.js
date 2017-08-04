@@ -35,7 +35,7 @@ class Help extends patron.Command {
     let group;
 
     if (command === undefined) {
-      let matches = msg.client.registry.commands.filterArray((value) => value.aliases.some((v) => v === lowerInput));
+      const matches = msg.client.registry.commands.filterArray((value) => value.aliases.some((v) => v === lowerInput));
 
       if (matches.length > 0) {
         command = matches[0];
@@ -48,22 +48,20 @@ class Help extends patron.Command {
         }
       }
     }
-    
 
     if (group === undefined) {
       return util.Messenger.send(msg.channel, '**Description:** `' + command.description + '`\n**Usage:** `' + credentials.prefix + command.getUsage() + '`\n**Example:** `' +
         credentials.prefix + command.getExample() + '`', util.StringUtil.upperFirstChar(command.name));
 
-    } else {
-      let groupMsg = '';
-      const groupCmds = group.commands.sort(util.StringUtil.alphabeticallySort).values();
-      
-      for (const cmd of groupCmds) {
-        groupMsg += '`' + cmd.name + '`, ';
-      }
-      groupMsg = groupMsg.substring(0, groupMsg.length - 2);
-      return util.Messenger.send(msg.channel, groupMsg, util.StringUtil.upperFirstChar(group.name) + ' Module\'s Commands');
     }
+    let groupMsg = '';
+    const groupCmds = group.commands.sort(util.StringUtil.alphabeticallySort).values();
+
+    for (const cmd of groupCmds) {
+      groupMsg += '`' + cmd.name + '`, ';
+    }
+    groupMsg = groupMsg.substring(0, groupMsg.length - 2);
+    return util.Messenger.send(msg.channel, groupMsg, util.StringUtil.upperFirstChar(group.name) + ' Module\'s Commands');
 
   }
 }
