@@ -13,7 +13,7 @@ class Ban extends patron.Command {
           key: 'user',
           type: 'user',
           name: 'user',
-          example: '"Bilbo Baggins#3838"'
+          example: '"PeePee Juanathog#7643"'
         }),
         new patron.Argument({
           key: 'reason',
