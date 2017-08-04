@@ -7,10 +7,19 @@ The syntax of the command usage is:
 `Required paramater: <>`
 
 ##Table Of Contents
+- [Developer](#developer)
 - [Emote](#emote)
 - [Fun](#fun)
 - [Moderation](#moderation)
 - [Utility](#utility)
+
+### Developer
+Command | Description | Usage
+---------------- | --------------| -------
+Djs|Get a link to the documentation of the Discord.js version this Selfbot uses|`.djs`
+Eval|Evaluate JavaScript code|`.eval <code>`
+Exec|Execute JavaScript code|`.exec <code>`
+Roleids|Gets all the role ids of a guild.|`.roleids`
 
 ### Emote
 Command | Description | Usage
@@ -52,6 +61,7 @@ Slots|Play a Slot Machine|`.slots [Bet]`
 ### Moderation
 Command | Description | Usage
 ---------------- | --------------| -------
+Altcheck|Check when a user's account was created and when they joined the guild|`.altcheck [@member]`
 Ban|Ban any user.|`.ban <@user> [reason]`
 Kick|Kick a member from the guild|`.kick <@member> [reason]`
 Unban|Unban a banned user.|`.unban <username>`
@@ -59,13 +69,9 @@ Unban|Unban a banned user.|`.unban <username>`
 ### Utility
 Command | Description | Usage
 ---------------- | --------------| -------
-Altcheck|Check when a user's account was created and when they joined the guild|`.altcheck [@member]`
 Calc|Do basic adding, subtracting, multiplying, and dividing|`.calc <problem>`
 Clear|Clears the console|`.clear`
 Discrim|Finds users with the specified discriminator|`.discrim <discrim>`
-Djs|Get a link to the documentation of the Discord.js version this Selfbot uses|`.djs`
-Eval|Evaluate JavaScript code|`.eval <code>`
-Exec|Execute JavaScript code|`.exec <code>`
 Git|Get a link to this Selfbot's Github Repository|`.git`
 Help|View command information or list the commands in a module|`.help [command/module]`
 Modules|View the current command modules|`.modules`
@@ -73,7 +79,6 @@ Nick|Changes your nickname in the current guild|`.nick <nickname>`
 Ping|See your ping|`.ping`
 Prune|Deletes your last messages in the current channel|`.prune [amount]`
 Reboot|Reboots the selfbot|`.reboot`
-Roleids|Gets all the role ids of a guild.|`.roleids`
 Server|Sends an invite to this Selfbot's server|`.server`
 Setup|Get a link to the setup page for this Selfbot|`.setup`
 Stats|See some statistics about the Selfbot|`.stats`

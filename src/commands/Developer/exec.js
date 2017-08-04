@@ -7,7 +7,7 @@ class Exec extends patron.Command {
     super({
       name: 'exec',
       aliases: ['execute'],
-      group: 'utility',
+      group: 'developer',
       description: 'Execute JavaScript code',
       guildOnly: false,
       args: [

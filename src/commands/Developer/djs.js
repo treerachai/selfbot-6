@@ -7,7 +7,7 @@ class Djs extends patron.Command {
     super({
       name: 'djs',
       aliases: ['discordjs', 'discord.js', 'd.js'],
-      group: 'utility',
+      group: 'developer',
       description: 'Get a link to the documentation of the Discord.js version this Selfbot uses',
       guildOnly: false
     });

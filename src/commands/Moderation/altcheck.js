@@ -7,7 +7,7 @@ class Altcheck extends patron.Command {
     super({
       name: 'altcheck',
       aliases: ['ac'],
-      group: 'utility',
+      group: 'moderation',
       description: 'Check when a user\'s account was created and when they joined the guild',
       guildOnly: true,
       args: [

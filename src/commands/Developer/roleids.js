@@ -4,7 +4,7 @@ class RoleIds extends patron.Command {
   constructor() {
     super({
       name: 'roleids',
-      group: 'utility',
+      group: 'developer',
       description: 'Gets all the role ids of a guild.'
     });
   }
