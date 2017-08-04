@@ -39,6 +39,7 @@ class Prune extends patron.Command {
         await search.messages[i].find(m => m.hit).delete().catch(() => null);
       }
     }
+  console.log('Prune Completed'.yellow);
   }
 }
 
