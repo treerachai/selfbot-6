@@ -5,7 +5,7 @@ class Emoji extends patron.Command {
   constructor() {
     super({
       name: 'emoji',
-      aliases: ['emote', 'e'],
+      aliases: ['e'],
       group: 'emote',
       description: 'Turns your message into emojis',
       guildOnly: false,
