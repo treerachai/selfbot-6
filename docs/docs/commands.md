@@ -1,4 +1,4 @@
-Total Number of Commands: 53
+Total Number of Commands: 52
 
 The syntax of the command usage is:
 
@@ -48,7 +48,6 @@ Rps|Play Rock, Paper, Scissors against the selfbot|`.rps <choice>`
 Setavatar|Changes your avatar to the image provided|`.setavatar <pathToImageOrLink>`
 Setgame|Sets what game you are playing|`.setgame [name]`
 Slots|Play a Slot Machine|`.slots [Bet]`
-Userid|Get the id of a user|`.userid [@user]`
 
 ### Moderation
 Command | Description | Usage

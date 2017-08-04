@@ -2,7 +2,6 @@ const patron = require('patron.js');
 const util = require('../../utility');
 const Minimum = require('../../preconditions/minimum.js');
 const Decimal = require('../../preconditions/decimal.js');
-const Discord = require('discord.js');
 
 class Roll extends patron.Command {
   constructor() {
@@ -27,9 +26,7 @@ class Roll extends patron.Command {
 
   async run(msg, args) {
     const roll = util.Random.nextInt(1, args.maxroll);
-    const embed = new Discord.RichEmbed()
-      .setTitle(':game_die: You rolled a ' + roll + ' out of ' + args.maxroll);
-    return util.Messenger.sendEmbed(msg.channel, embed);
+    return util.Messenger.sendTitle(msg.channel, ':game_die: You rolled a ' + roll + ' out of ' + args.maxroll);
   }
 }
 

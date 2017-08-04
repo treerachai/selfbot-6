@@ -15,7 +15,7 @@ class Ping extends patron.Command {
     const ping = msg.client.ping.toFixed(0);
     const pingLog = '    ' + ping + ' ms';
     console.log(pingLog.yellow);
-    return util.Messenger.send(msg.channel, 'Ping: ' + ping + ' ms');
+    return util.Messenger.sendTitle(msg.channel, 'Ping: ' + ping + ' ms');
   }
 }
 

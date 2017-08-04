@@ -16,6 +16,19 @@ class Messenger {
     return channel.send({ embed: embed });
   }
 
+  static sendTitle(channel, title, description = '', color = null) {
+    const embed = new discord.RichEmbed()
+      .setColor(color || Random.arrayElement(data.embedColors))
+      .setTitle(title);
+
+    if (!StringUtil.isNullOrWhiteSpace(description)) {
+      embed.setDescription(description);
+    }
+
+    return channel.send({ embed: embed });
+  }
+
+
   static sendEmbed(channel, commandEmbed, color = null) {
     const embed = commandEmbed
       .setColor(color || Random.arrayElement(data.embedColors));
