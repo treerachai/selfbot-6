@@ -6,7 +6,7 @@ class Shrug extends patron.Command {
       name: 'shrug',
       aliases: ['s'],
       group: 'emote',
-      description: 'Adds "¯\\_(ツ)_/¯" to your message',
+      description: 'Works like the desktop /shrug command',
       guildOnly: false,
       args: [
         new patron.Argument({

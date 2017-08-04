@@ -5,7 +5,7 @@ class Ping extends patron.Command {
   constructor() {
     super({
       name: 'ping',
-      group: 'utility',
+      group: 'stats',
       description: 'See your ping',
       guildOnly: false
     });

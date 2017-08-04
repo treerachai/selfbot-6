@@ -11,6 +11,7 @@ The syntax of the command usage is:
 - [Emote](#emote)
 - [Fun](#fun)
 - [Moderation](#moderation)
+- [Stats](#stats)
 - [Utility](#utility)
 
 ### Developer
@@ -34,7 +35,7 @@ Innocent|Adds "ʘ‿ʘ" to your message|`.innocent [text]`
 Kms|Kill yourself in a 3 frame animation|`.kms`
 Lenny|Adds "( ͡° ͜ʖ ͡°)" to your message|`.lenny [text]`
 Rageflip|Adds "┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻" to your message|`.rageflip [text]`
-Shrug|Adds "¯\_(ツ)_/¯" to your message|`.shrug [text]`
+Shrug|Works like the desktop /shrug command|`.shrug [text]`
 Tableflip|Adds "(╯°□°）╯︵ ┻━┻" to your message|`.tableflip [text]`
 Unflip|Adds " ┬─┬﻿ ノ( ゜-゜ノ)" to your message|`.unflip [text]`
 
@@ -47,8 +48,6 @@ Choose|Have the Selfbot help you choose between a set of options|`.choose <choic
 Flip|Flip up to 100,000 coins|`.flip [amount]`
 Game|Shows what game a user is playing|`.game [@user]`
 Guildicon|Get a guild's icon|`.guildicon [guild]`
-Guildstats|Get a guild's statistics|`.guildstats [guild]`
-Memberstats|Get a member's statistics|`.memberstats [@member]`
 Quote|Quote a message|`.quote <messageId> [#channel]`
 Remove|Deletes the command|`.remove <text>`
 Removeplus|Sends <message> then deletes it|`.removeplus <message>`
@@ -67,6 +66,15 @@ Ban|Ban any user.|`.ban <@user> [reason]`
 Kick|Kick a member from the guild|`.kick <@member> [reason]`
 Unban|Unban a banned user.|`.unban <username>`
 
+### Stats
+Command | Description | Usage
+---------------- | --------------| -------
+Guildstats|Get a guild's statistics|`.guildstats [guild]`
+Memberstats|Get a member's statistics|`.memberstats [@member]`
+Ping|See your ping|`.ping`
+Stats|See some statistics about the Selfbot|`.stats`
+Uptime|See how long your selfbot has been running|`.uptime`
+
 ### Utility
 Command | Description | Usage
 ---------------- | --------------| -------
@@ -77,11 +85,8 @@ Git|Get a link to this Selfbot's Github Repository|`.git`
 Help|View command information or list the commands in a module|`.help [command/module]`
 Modules|View the current command modules|`.modules`
 Nick|Changes your nickname in the current guild|`.nick <nickname>`
-Ping|See your ping|`.ping`
 Prune|Deletes your last messages in the current channel|`.prune [amount]`
 Reboot|Reboots the selfbot|`.reboot`
 Server|Sends an invite to this Selfbot's server|`.server`
 Setup|Get a link to the setup page for this Selfbot|`.setup`
-Stats|See some statistics about the Selfbot|`.stats`
 Status|Changes your status|`.status <status>`
-Uptime|See how long your selfbot has been running|`.uptime`

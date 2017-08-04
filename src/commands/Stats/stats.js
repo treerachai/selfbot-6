@@ -7,7 +7,7 @@ class Stats extends patron.Command {
     super({
       name: 'stats',
       aliases: ['statistics'],
-      group: 'utility',
+      group: 'stats',
       description: 'See some statistics about the Selfbot',
       guildOnly: false
     });
