@@ -25,7 +25,7 @@ Roleids|Gets all the role ids of a guild.|`.roleids`
 Command | Description | Usage
 ---------------- | --------------| -------
 B|🅱|`.b <text>`
-Clap|👏Emphasize👏your👏text👏|`.clap <text>`
+Clap|👏 Emphasize 👏 your 👏 text 👏|`.clap <text>`
 Disapprove|Adds "ಠ_ಠ" to your message|`.disapprove [text]`
 Emoji|Turns your message into emojis|`.emoji <text>`
 Fliptable|Adds "ノ┬─┬ノ ︵ ( \o°o)\" to your message|`.fliptable [text]`
