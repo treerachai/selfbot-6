@@ -22,8 +22,6 @@ class Choose extends patron.Command {
   }
 
   async run(msg, args) {
-    console.log(args.choices.length);
-    console.log(args.choices);
     let message = 'Out of: ';
     for (let i = 0; i < args.choices.length; i++) {
       message += '`' + args.choices[i] + '`' + (i !== args.choices.length-1 ? ', ' : '\n');
