@@ -68,7 +68,7 @@ Djs|Get a link to the documentation of the Discord.js version this Selfbot uses|
 Eval|Evaluate JavaScript code|`.eval <code>`
 Exec|Execute JavaScript code|`.exec <code>`
 Git|Get a link to this Selfbot's Github Repository|`.git`
-Help|View command information|`.help [command]`
+Help|View command information or list the commands in a module|`.help [command/module]`
 Nick|Changes your nickname in the current guild|`.nick <nickname>`
 Ping|See your ping|`.ping`
 Prune|Deletes your last messages in the current channel|`.prune [amount]`
