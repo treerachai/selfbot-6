@@ -42,7 +42,7 @@ class Eightball extends patron.Command {
       'Very doubtful'
     ];
     const embed = new Discord.RichEmbed()
-      .setAuthor(args.question, msg.author.displayAvatarURL)
+      .setAuthor(util.StringUtil.cleanContent(msg, args.question), msg.author.displayAvatarURL)
       .setDescription(':8ball:: ' + util.Random.arrayElement(answers));
     return util.Messenger.sendEmbed(msg.channel, embed);
   }
