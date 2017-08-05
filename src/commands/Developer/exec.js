@@ -45,6 +45,7 @@ class Exec extends patron.Command {
 
       return;
     } catch (err) {
+      console.log(err);
       return util.Messenger.sendError(msg.channel, '```js\n' + err + '```');
     }
   }
