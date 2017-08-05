@@ -1,4 +1,4 @@
-Total Number of Commands: 56
+Total Number of Commands: 57
 
 The syntax of the command usage is:
 
@@ -81,6 +81,7 @@ Uptime|See how long your selfbot has been running|`.uptime`
 ### Utility
 Command | Description | Usage
 ---------------- | --------------| -------
+Alias|View a command's aliases|`.alias <command>`
 Calc|Do basic adding, subtracting, multiplying, and dividing|`.calc <problem>`
 Clear|Clears the console|`.clear`
 Discrim|Finds users with the specified discriminator|`.discrim <discrim>`
