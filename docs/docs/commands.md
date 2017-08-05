@@ -1,4 +1,4 @@
-Total Number of Commands: 57
+Total Number of Commands: 58
 
 The syntax of the command usage is:
 
@@ -67,6 +67,7 @@ Command | Description | Usage
 Altcheck|Check when a user's account was created and when they joined the guild|`.altcheck [@member]`
 Ban|Ban any user.|`.ban <@user> [reason]`
 Kick|Kick a member from the guild|`.kick <@member> [reason]`
+Purge|Deletes a member's last messages in the current channel|`.purge [amount] [@member]`
 Unban|Unban a banned user.|`.unban <username>`
 
 ### Statistics

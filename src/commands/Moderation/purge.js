@@ -1,14 +1,13 @@
 const patron = require('patron.js');
 const Minimum = require('../../preconditions/minimum.js');
 
-class Prune extends patron.Command {
+class Purge extends patron.Command {
   constructor() {
     super({
-      name: 'prune',
-      aliases: ['p'],
-      group: 'utility',
-      description: 'Deletes your last messages in the current channel',
-      guildOnly: false,
+      name: 'purge',
+      group: 'moderation',
+      description: 'Deletes a member\'s last messages in the current channel',
+      botPermissions: ['MANAGE_MESSAGES'],
       args: [
         new patron.Argument({
           name: 'amount',
@@ -17,7 +16,15 @@ class Prune extends patron.Command {
           example: '10',
           defaultValue: 10,
           preconditions: [new Minimum(1)]
-        })
+        }),
+        new patron.Argument({
+          name: 'member',
+          key: 'member',
+          type: 'member',
+          example: 'Papi Juan#6545',
+          remainder: true,
+          defaultValue: patron.ArgumentDefault.Member
+        })        
       ]
     });
   }
@@ -26,7 +33,7 @@ class Prune extends patron.Command {
     let pruned = 0;
     for (let n = 0; n < args.amount; n += 24) {
       let search = await msg.channel.search({
-        author: msg.author,
+        author: args.member.user,
         before: msg.createdAt
       });
       if (search.messages.length === 0) {
@@ -45,4 +52,4 @@ class Prune extends patron.Command {
   }
 }
 
-module.exports = new Prune();
+module.exports = new Purge();
