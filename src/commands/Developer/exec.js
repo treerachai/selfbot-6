@@ -1,6 +1,6 @@
 const patron = require('patron.js');
 const util = require('../../utility');
-const Exclude = require('../../preconditions/exclude.js');
+const utility = require('util');
 
 class Exec extends patron.Command {
   constructor() {
@@ -16,8 +16,7 @@ class Exec extends patron.Command {
           key: 'code',
           type: 'string',
           example: 'msg.channel.send(\'This selfbot is good\');',
-          remainder: true,
-          preconditions: [new Exclude('client')]
+          remainder: true
         })
       ]
     });
@@ -25,9 +24,27 @@ class Exec extends patron.Command {
 
   async run(msg, args) {
     try {
-      eval(args.code);
+      const client = msg.client;
+      const message = msg;
+      const guild = msg.guild;
+      const channel = msg.channel;
+      const author = msg.author;
+      const member = msg.member;
+
+      let result = eval(args.code);
+      
+      if (result instanceof Promise) {
+        result = await result;
+      }
+
+      if (typeof result !== 'string') {
+        result = utility.inspect(result, { depth: 0 });
+      }
+
+      result = result.replace(msg.client.token, ' ').replace(/\[Object\]/g, 'Object').replace(/\[Array\]/g, 'Array');
+
+      return;
     } catch (err) {
-      console.log('    Execution failed. '.red + err.toString().red);
       return util.Messenger.sendError(msg.channel, '```js\n' + err + '```');
     }
   }

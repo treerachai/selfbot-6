@@ -1,6 +1,6 @@
 const patron = require('patron.js');
 const util = require('../../utility');
-const Discord = require('discord.js');
+const utility = require('util');
 
 class Calc extends patron.Command {
   constructor() {
@@ -24,22 +24,20 @@ class Calc extends patron.Command {
 
   async run(msg, args) {
     const code = args.input.replace(/[^0-9+\-*/().e]/gi, '');
-    if (!code) {
+    if (code === null) {
       return util.Messenger.sendError(msg.channel, 'You must provide something valid to calculate');
     }
     try {
-      let answer = eval(code);
-      if (typeof answer !== 'string') {
-        answer = require('util').inspect(answer);
+      let result = eval(code);
+
+      if (typeof result !== 'string') {
+        result = utility.inspect(result, { depth: 0 });
       }
-      const embed = new Discord.RichEmbed()
-        .setTitle('Calculator')
-        .setDescription('```js\n' + code + ' = ' + answer + '```');
-      return util.Messenger.sendEmbed(msg.channel, embed);
+
+      return util.Messenger.send(msg.channel, '```js\n' + code + ' = ' + result + '```', 'Calculator');
     } catch (err) {
       return util.Messenger.sendError(msg.channel, '```js\n' + err + '```');
     }
-
   }
 }
 

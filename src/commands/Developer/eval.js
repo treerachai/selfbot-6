@@ -1,7 +1,6 @@
 const patron = require('patron.js');
 const util = require('../../utility');
-const Discord = require('discord.js');
-const Exclude = require('../../preconditions/exclude.js');
+const utility = require('util');
 
 class Eval extends patron.Command {
   constructor() {
@@ -16,8 +15,7 @@ class Eval extends patron.Command {
           key: 'code',
           type: 'string',
           example: 'msg.author.tag',
-          remainder: true,
-          preconditions: [new Exclude('client')]
+          remainder: true
         })
       ]
     });
@@ -25,14 +23,26 @@ class Eval extends patron.Command {
 
   async run(msg, args) {
     try {
-      let evaled = eval(args.code);
-      if (typeof evaled !== 'string') {
-        evaled = require('util').inspect(evaled);
+      const client = msg.client;
+      const message = msg;
+      const guild = msg.guild;
+      const channel = msg.channel;
+      const author = msg.author;
+      const member = msg.member;
+
+      let result = eval(args.code);
+      
+      if (result instanceof Promise) {
+        result = await result;
       }
-      const embed = new Discord.RichEmbed()
-        .addField('Eval', '```js\n' + args.code + '```')
-        .addField('Returns', '```js\n' + evaled + '```');
-      return util.Messenger.sendEmbed(msg.channel, embed);
+
+      if (typeof result !== 'string') {
+        result = utility.inspect(result, { depth: 0 });
+      }
+
+      result = result.replace(msg.client.token, ' ').replace(/\[Object\]/g, 'Object').replace(/\[Array\]/g, 'Array');
+
+      return util.Messenger.sendFields(msg.channel, ['Eval', '```js\n' + args.code + '```', 'Returns', '```js\n' + result + '```'], false);
     } catch (err) {
       return util.Messenger.sendError(msg.channel, '```js\n' + err + '```');
     }

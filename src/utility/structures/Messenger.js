@@ -2,6 +2,7 @@ const data = require('../../data.json');
 const discord = require('discord.js');
 const Random = require('./Random.js');
 const StringUtil = require('./StringUtil.js');
+const NumberUtil = require('./NumberUtil.js');
 
 class Messenger {
   static send(channel, description, title = '', color = null) {
@@ -36,6 +37,23 @@ class Messenger {
 
   static sendError(channel, description, title = '') {
     return this.send(channel, description, title, data.errorColor);
+  }
+
+  static sendFields(channel, fieldsAndValues, inline = true, color = null) {
+    const embed = new discord.RichEmbed()
+      .setColor(color || Random.arrayElement(data.embedColors));
+
+    if (!NumberUtil.isEven(fieldsAndValues.length)) {
+      throw new TypeError('The fieldsAndValues length must be even.');
+    }
+
+    for (let i = 0; i < fieldsAndValues.length - 1; i++) {
+      if (NumberUtil.isEven(i)) {
+        embed.addField(fieldsAndValues[i], fieldsAndValues[i + 1], inline);
+      }
+    }
+
+    return channel.send({ embed });
   }
 
   static DM(user, description, title = '', color = null) {

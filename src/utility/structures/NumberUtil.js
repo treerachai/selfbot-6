@@ -11,5 +11,13 @@ class NumberUtil {
   static toUSD(input) {
     return '$' + input.toFixed(2);
   }
+
+  static isEven(input) {
+    return input % 2 === 0;
+  }
+
+  static addCommas(input) {
+    return input.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
 }
 module.exports = NumberUtil;
