@@ -34,13 +34,13 @@ class Slots extends patron.Command {
     const o3 = util.Random.arrayElement(options);
 
     let winMessage = 'Better Luck Next Time. You lost: ' + util.NumberUtil.toUSD(args.bet);
-    if (o1 === o2 && o1 === o3) {
-      if (o1 === ':seven: ') {
+    if (o1 === o2 && o1 === o3) {                                   //Odds:Payout Ratio: 0.9
+      if (o1 === ':seven: ') {                                      //Odds: 0.008
         winMessage = 'JACKPOT! You won: ' + util.NumberUtil.toUSD(args.bet * 112.5);
-      } else {
-        winMessage = 'Big Win! You won: ' + util.NumberUtil.toUSD(args.bet * 22.5);
+      } else {                                                      //Odds: 0.032
+        winMessage = 'Big Win! You won: ' + util.NumberUtil.toUSD(args.bet * 28.125);
       }
-    } else if (o1 === o2) {
+    } else if (o1 === o2) {                                         //Odds: 0.20
       winMessage = 'Small Win! You won: ' + util.NumberUtil.toUSD(args.bet * 4.5);
     }
 
