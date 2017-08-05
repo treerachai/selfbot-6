@@ -23,7 +23,7 @@ class BF extends patron.Command {
 
   async run(msg, args) {
 
-    const s = util.StringUtil.cleanContent(args.text);
+    const s = util.StringUtil.cleanContent(msg, args.text);
     let uniq = function (a) {
       let result = [];
       for (let i = 0; i < a.length; i++) {
