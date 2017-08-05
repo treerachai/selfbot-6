@@ -23,9 +23,9 @@ class Repeat extends patron.Command {
         new patron.Argument({
           name: 'amount',
           key: 'amount',
-          type: 'float',
+          type: 'int',
           example: '10',
-          preconditions: [new Minimum(1), new Maximum(100), new Decimal(0)]
+          preconditions: [new Minimum(1), new Maximum(100)]
         }),
         new patron.Argument({
           name: 'message',
@@ -43,7 +43,7 @@ class Repeat extends patron.Command {
       await util.PromiseUtil.delay(1000 * args.delay);
       await msg.channel.send(args.m).catch(() => null);
     }
-    console.log('Repeat Finished: '.yellow + args.m.magenta);
+    console.log('Repeat Finished: '.yellow + util.StringUtil.cleanContent(msg, args.m).magenta);
   }
 }
 
