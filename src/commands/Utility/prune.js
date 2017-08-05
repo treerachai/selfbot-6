@@ -24,6 +24,7 @@ class Prune extends patron.Command {
   }
 
   async run(msg, args) {
+    let pruned = 0;
     for (let n = 0; n < args.amount; n += 24) {
       let search = await msg.channel.search({
         author: msg.author
@@ -36,10 +37,11 @@ class Prune extends patron.Command {
         if (i >= search.messages.length || args.amount - n <= i) {
           break;
         }
+        pruned++;
         await search.messages[i].find(m => m.hit).delete().catch(() => null);
       }
     }
-  console.log('Prune Completed'.yellow);
+  console.log('Successfully Pruned '.yellow + pruned.toString().magenta + ' messages'.yellow);
   }
 }
 
