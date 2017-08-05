@@ -8,7 +8,7 @@ class BFReader extends patron.Command {
       name: 'bfreader',
       aliases: ['bfr', 'brainfuckreader'],
       group: 'developer',
-      description: 'Turn text into BF code',
+      description: 'Turn BF code into text',
       guildOnly: false,
       args: [
         new patron.Argument({
