@@ -13,10 +13,8 @@ class Clear extends patron.Command {
   }
 
   async run(msg) {
-    process.stdout.write('\x1B[2J\x1B[0f');
+    process.stdout.write('\x1Bc');
     console.log('Console Logs Successfully Cleared'.green);
-    const m = await util.Messenger.sendTitle(msg.channel, 'Console Cleared');
-    m.delete(5000);
   }
 }
 
