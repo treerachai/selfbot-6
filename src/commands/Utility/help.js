@@ -50,8 +50,16 @@ class Help extends patron.Command {
     }
 
     if (group === undefined) {
-      return util.Messenger.send(msg.channel, '**Description:** `' + command.description + '`\n**Usage:** `' + credentials.prefix + command.getUsage() + '`\n**Example:** `' +
-        credentials.prefix + command.getExample() + '`', util.StringUtil.upperFirstChar(command.name));
+      let cmdMsg = '**Description:** `' + command.description + '`\n**Usage:** `' + credentials.prefix + command.getUsage() + '`\n**Example:** `' + credentials.prefix + command.getExample() + '`';
+      if (command.botPermissions.length !== 0) {
+        cmdMsg += '\n**Required Permissions:** ';
+        for (const perm of command.botPermissions) {
+          cmdMsg += '`' + perm + '`, ';
+        }
+        cmdMsg = cmdMsg.substring(0, cmdMsg.length - 2);
+      }
+
+      return util.Messenger.send(msg.channel, cmdMsg , util.StringUtil.upperFirstChar(command.name));
 
     }
     let groupMsg = '';
