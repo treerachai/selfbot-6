@@ -95,3 +95,6 @@ Reboot|Reboots the selfbot|`.reboot`
 Server|Sends an invite to this Selfbot's server|`.server`
 Setup|Get a link to the setup page for this Selfbot|`.setup`
 Status|Changes your status|`.status <status>`
+
+
+As a bonus feature, you can also send your messages in embeds by doing `. [text]`
