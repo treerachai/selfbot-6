@@ -26,7 +26,7 @@ class Alias extends patron.Command {
     let cmd = msg.client.registry.commands.get(lowerInput);
 
     if (cmd === undefined) {
-      let matches = msg.client.registry.commands.filterArray((value) => value.aliases.some((v) => v === lowerInput));
+      const matches = msg.client.registry.commands.filterArray((value) => value.aliases.some((v) => v === lowerInput));
       if (matches.length === 0) {
         return util.Messenger.sendError(msg.channel, 'Command not found');
       }

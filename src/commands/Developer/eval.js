@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-vars */
 const patron = require('patron.js');
 const util = require('../../utility');
 const utility = require('util');
+const Discord = require('discord.js');
 
 class Eval extends patron.Command {
   constructor() {
@@ -31,7 +33,7 @@ class Eval extends patron.Command {
       const member = msg.member;
 
       let result = eval(args.code);
-      
+
       if (result instanceof Promise) {
         result = await result;
       }

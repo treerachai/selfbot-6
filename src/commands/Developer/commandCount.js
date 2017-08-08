@@ -1,6 +1,5 @@
 const patron = require('patron.js');
 const util = require('../../utility');
-const Discord = require('discord.js');
 
 class CommandCount extends patron.Command {
   constructor() {
@@ -16,7 +15,7 @@ class CommandCount extends patron.Command {
   async run(msg) {
     let commandCount = 0;
     let groupCount = 0;
-    let m = '__**Command Counts for Modules**__\n';
+    let m = '';
 
     const sortedGroups = msg.client.registry.groups.sort(util.StringUtil.alphabeticallySort).values();
 
@@ -24,7 +23,7 @@ class CommandCount extends patron.Command {
       const formattedGroupName = util.StringUtil.upperFirstChar(group.name);
       m += '`' + formattedGroupName + '` - ';
 
-      for (const command of group.commands.sort(util.StringUtil.alphabeticallySort).values()) {
+      for (let i = 0; i < group.commands.array().length; i++) {
         commandCount++;
         groupCount++;
       }
@@ -32,7 +31,7 @@ class CommandCount extends patron.Command {
       m += groupCount + '\n';
       groupCount = 0;
     }
-    
+
     return util.Messenger.send(msg.channel, m, 'Total Command Count: ' + commandCount);
   }
 }

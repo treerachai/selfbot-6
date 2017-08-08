@@ -59,7 +59,7 @@ class Help extends patron.Command {
         cmdMsg = cmdMsg.substring(0, cmdMsg.length - 2);
       }
 
-      return util.Messenger.send(msg.channel, cmdMsg , util.StringUtil.upperFirstChar(command.name));
+      return util.Messenger.send(msg.channel, cmdMsg, util.StringUtil.upperFirstChar(command.name));
 
     }
     let groupMsg = '';

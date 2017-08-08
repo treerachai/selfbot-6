@@ -24,7 +24,7 @@ class Purge extends patron.Command {
           example: 'Papi Juan#6545',
           remainder: true,
           defaultValue: patron.ArgumentDefault.Member
-        })        
+        })
       ]
     });
   }
@@ -32,7 +32,7 @@ class Purge extends patron.Command {
   async run(msg, args) {
     let pruned = 0;
     for (let n = 0; n < args.amount; n += 24) {
-      let search = await msg.channel.search({
+      const search = await msg.channel.search({
         author: args.member.user,
         before: msg.createdAt
       });
@@ -48,7 +48,7 @@ class Purge extends patron.Command {
         await search.messages[i].find(m => m.hit).delete().catch(() => null);
       }
     }
-  console.log('Successfully Pruned '.yellow + pruned.toString().magenta + ' messages'.yellow);
+    console.log('Successfully Pruned '.yellow + pruned.toString().magenta + ' messages'.yellow);
   }
 }
 

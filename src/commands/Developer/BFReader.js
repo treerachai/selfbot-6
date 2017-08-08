@@ -23,27 +23,37 @@ class BFReader extends patron.Command {
   }
 
   async run(msg, args) {
-    let input = args.code;
+    const input = args.code;
     let m = '';
     let char;
     let charPtr = 0;
-    let arr = [];
+    const arr = [];
     let ptr = 0;
-    let loopPtrs = [];
+    const loopPtrs = [];
 
     while ((char = input[charPtr]) !== undefined) {
-      if (char === '+') { arr[ptr] = arr[ptr] ? arr[ptr] + 1 : 1; }
-      else if (char === '-') { arr[ptr] = arr[ptr] ? arr[ptr] - 1 : - 1; }
-      else if (char === '>') { ptr++; }
-      else if (char === '<') { ptr--; }
-      else if (char === '[') { loopPtrs.push(charPtr); }
-      else if (char === ']') {
-        if (arr[ptr]){ charPtr = loopPtrs[loopPtrs.length - 1]; }
-        else { loopPtrs.pop(); }
-      } else if (char === '.') { m += (String.fromCharCode(arr[ptr] ? arr[ptr] : 0)); }
+      if (char === '+') {
+        arr[ptr] = arr[ptr] ? arr[ptr] + 1 : 1;
+      } else if (char === '-') {
+        arr[ptr] = arr[ptr] ? arr[ptr] - 1 : - 1;
+      } else if (char === '>') {
+        ptr++;
+      } else if (char === '<') {
+        ptr--;
+      } else if (char === '[') {
+        loopPtrs.push(charPtr);
+      } else if (char === ']') {
+        if (arr[ptr]) {
+          charPtr = loopPtrs[loopPtrs.length - 1];
+        } else {
+          loopPtrs.pop();
+        }
+      } else if (char === '.') {
+        m += (String.fromCharCode(arr[ptr] ? arr[ptr] : 0));
+      }
       charPtr++;
     }
-    
+
     if (args.code.length < 1010) {
       const embed = new Discord.RichEmbed()
         .addField('BF Code', '```\n' + args.code + '```')

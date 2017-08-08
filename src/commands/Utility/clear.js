@@ -1,5 +1,4 @@
 const patron = require('patron.js');
-const util = require('../../utility');
 
 class Clear extends patron.Command {
   constructor() {
