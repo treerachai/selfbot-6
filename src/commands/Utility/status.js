@@ -4,9 +4,8 @@ const MustBe = require('../../preconditions/mustBe.js');
 class Status extends patron.Command {
   constructor() {
     super({
-      name: 'status',
-      aliases: ['setstatus', 'afk'],
-      group: 'utility',
+      names: ['status', 'setstatus', 'afk'],
+      groupName: 'utility',
       description: 'Changes your status',
       args: [
         new patron.Argument({

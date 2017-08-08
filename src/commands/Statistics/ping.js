@@ -4,8 +4,8 @@ const util = require('../../utility');
 class Ping extends patron.Command {
   constructor() {
     super({
-      name: 'ping',
-      group: 'statistics',
+      names: ['ping'],
+      groupName: 'statistics',
       description: 'See your ping',
       guildOnly: false
     });

@@ -5,9 +5,8 @@ const Discord = require('discord.js');
 class Djs extends patron.Command {
   constructor() {
     super({
-      name: 'djs',
-      aliases: ['discordjs', 'discord.js', 'd.js'],
-      group: 'developer',
+      names: ['djs', 'discordjs', 'discord.js', 'd.js'],
+      groupName: 'developer',
       description: 'Get a link to the Discord.js docs',
       guildOnly: false
     });

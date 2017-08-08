@@ -5,9 +5,8 @@ const credentials = require('../../credentials.json');
 class Help extends patron.Command {
   constructor() {
     super({
-      name: 'help',
-      aliases: ['info', 'information', 'commands'],
-      group: 'utility',
+      names: ['help', 'info', 'information', 'commands'],
+      groupName: 'utility',
       description: 'View command information or list the commands in a module',
       guildOnly: false,
       args: [
@@ -31,21 +30,14 @@ class Help extends patron.Command {
 
     const lowerInput = args.input.toLowerCase();
 
-    let command = msg.client.registry.commands.get(lowerInput);
+    const command = msg.client.registry.commands.find((x) => x.names.some((y) => y === lowerInput));
     let group;
 
     if (command === undefined) {
-      const matches = msg.client.registry.commands.filterArray((value) => value.aliases.some((v) => v === lowerInput));
+      group = msg.client.registry.groups.find((x) => x.name === lowerInput);
 
-      if (matches.length > 0) {
-        command = matches[0];
-      } else {
-
-        group = msg.client.registry.groups.get(lowerInput);
-
-        if (group === undefined) {
-          return util.Messenger.sendError(msg.channel, 'There is no command or module titled: `' + lowerInput + '`', 'Command/Module not found.');
-        }
+      if (group === undefined) {
+        return util.Messenger.sendError(msg.channel, 'There is no command or module titled: `' + lowerInput + '`', 'Command/Module not found.');
       }
     }
 
@@ -59,14 +51,14 @@ class Help extends patron.Command {
         cmdMsg = cmdMsg.substring(0, cmdMsg.length - 2);
       }
 
-      return util.Messenger.send(msg.channel, cmdMsg, util.StringUtil.upperFirstChar(command.name));
+      return util.Messenger.send(msg.channel, cmdMsg, util.StringUtil.upperFirstChar(command.names[0]));
 
     }
     let groupMsg = '';
-    const groupCmds = group.commands.sort(util.StringUtil.alphabeticallySort).values();
+    const groupCmds = group.commands.sort((a, b) => a.names[0].localeCompare(b.names[0]));
 
     for (const cmd of groupCmds) {
-      groupMsg += '`' + cmd.name + '`, ';
+      groupMsg += '`' + cmd.names[0] + '`, ';
     }
     groupMsg = groupMsg.substring(0, groupMsg.length - 2);
     return util.Messenger.send(msg.channel, groupMsg, util.StringUtil.upperFirstChar(group.name) + ' Module\'s Commands');

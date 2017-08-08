@@ -4,9 +4,8 @@ const util = require('../../utility');
 class CommandCount extends patron.Command {
   constructor() {
     super({
-      name: 'commandcount',
-      aliases: ['cc', 'totalcommands'],
-      group: 'developer',
+      names: ['commandcount', 'cc', 'totalcommands'],
+      groupName: 'developer',
       description: 'See how many commands have been added so far',
       guildOnly: false
     });

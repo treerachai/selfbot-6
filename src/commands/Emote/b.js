@@ -3,9 +3,8 @@ const patron = require('patron.js');
 class B extends patron.Command {
   constructor() {
     super({
-      name: 'b',
-      aliases: [':b:'],
-      group: 'emote',
+      names: ['b', ':b:'],
+      groupName: 'emote',
       description: '🅱',
       guildOnly: false,
       args: [

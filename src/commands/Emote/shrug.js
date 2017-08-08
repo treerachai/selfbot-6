@@ -3,9 +3,8 @@ const patron = require('patron.js');
 class Shrug extends patron.Command {
   constructor() {
     super({
-      name: 'shrug',
-      aliases: ['s'],
-      group: 'emote',
+      names: ['shrug', 's'],
+      groupName: 'emote',
       description: 'Works like the desktop /shrug command',
       guildOnly: false,
       args: [

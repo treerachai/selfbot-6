@@ -3,9 +3,8 @@ const patron = require('patron.js');
 class SetAvatar extends patron.Command {
   constructor() {
     super({
-      name: 'setavatar',
-      aliases: ['sa'],
-      group: 'fun',
+      names: ['setavatar', 'sa'],
+      groupName: 'fun',
       description: 'Changes your avatar to the image provided',
       args: [
         new patron.Argument({

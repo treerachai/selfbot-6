@@ -5,9 +5,8 @@ const Discord = require('discord.js');
 class Eightball extends patron.Command {
   constructor() {
     super({
-      name: '8ball',
-      aliases: ['8'],
-      group: 'fun',
+      names: ['8ball', '8'],
+      groupName: 'fun',
       description: 'Ask the Magical 8ball your question',
       guildOnly: false,
       args: [

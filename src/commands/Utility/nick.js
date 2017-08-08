@@ -3,9 +3,8 @@ const patron = require('patron.js');
 class Nick extends patron.Command {
   constructor() {
     super({
-      name: 'nick',
-      aliases: ['nickname', 'setnick', 'setnickname'],
-      group: 'utility',
+      names: ['nick', 'nickname', 'setnick', 'setnickname'],
+      groupName: 'utility',
       description: 'Changes your nickname in the current guild',
       botPermissions: ['CHANGE_NICKNAME'],
       args: [

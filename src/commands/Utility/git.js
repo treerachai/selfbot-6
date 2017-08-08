@@ -4,9 +4,8 @@ const util = require('../../utility');
 class Git extends patron.Command {
   constructor() {
     super({
-      name: 'git',
-      aliases: ['github', 'repo', 'repository'],
-      group: 'utility',
+      names: ['git', 'github', 'repo', 'repository'],
+      groupName: 'utility',
       description: 'Get a link to this Selfbot\'s Github Repository',
       guildOnly: false
     });

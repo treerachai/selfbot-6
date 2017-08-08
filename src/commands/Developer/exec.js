@@ -7,9 +7,8 @@ const Discord = require('discord.js');
 class Exec extends patron.Command {
   constructor() {
     super({
-      name: 'exec',
-      aliases: ['execute'],
-      group: 'developer',
+      names: ['exec', 'execute'],
+      groupName: 'developer',
       description: 'Execute JavaScript code',
       guildOnly: false,
       args: [

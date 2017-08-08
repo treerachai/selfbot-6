@@ -4,8 +4,8 @@ const Minimum = require('../../preconditions/minimum.js');
 class Purge extends patron.Command {
   constructor() {
     super({
-      name: 'purge',
-      group: 'moderation',
+      names: ['purge'],
+      groupName: 'moderation',
       description: 'Deletes a member\'s last messages in the current channel',
       botPermissions: ['MANAGE_MESSAGES'],
       args: [

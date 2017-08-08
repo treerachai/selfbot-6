@@ -4,9 +4,8 @@ const util = require('../../utility');
 class BF extends patron.Command {
   constructor() {
     super({
-      name: 'bf',
-      aliases: ['brainfuck'],
-      group: 'developer',
+      names: ['bf', 'brainfuck'],
+      groupName: 'developer',
       description: 'Turn text into BF code',
       guildOnly: false,
       args: [

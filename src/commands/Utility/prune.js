@@ -4,9 +4,8 @@ const Minimum = require('../../preconditions/minimum.js');
 class Prune extends patron.Command {
   constructor() {
     super({
-      name: 'prune',
-      aliases: ['p'],
-      group: 'utility',
+      names: ['prune', 'p'],
+      groupName: 'utility',
       description: 'Deletes your last messages in the current channel',
       guildOnly: false,
       args: [

@@ -5,9 +5,8 @@ const Isdiscrim = require('../../preconditions/isdiscrim.js');
 class Discrim extends patron.Command {
   constructor() {
     super({
-      name: 'discrim',
-      aliases: ['discriminator'],
-      group: 'utility',
+      names: ['discrim', 'discriminator'],
+      groupName: 'utility',
       description: 'Finds users with the specified discriminator',
       guildOnly: false,
       args: [

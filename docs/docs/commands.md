@@ -1,4 +1,4 @@
-Total Number of Commands: 58
+All commands are catagorized by groups. Each of the following sections is a group.
 
 The syntax of the command usage is:
 
@@ -46,12 +46,12 @@ Unflip|Adds " ┬─┬﻿ ノ( ゜-゜ノ)" to your message|`.unflip [text]`
 Command | Description | Usage
 ---------------- | --------------| -------
 8ball|Ask the Magical 8ball your question|`.8ball <question>`
-Avatar|Get the avatar of a user|`.avatar [@user]`
+Avatar|Get the avatar of a user|`.avatar [user]`
 Choose|Have the Selfbot help you choose between a set of options|`.choose <choice>`
 Flip|Flip up to 100,000 coins|`.flip [amount]`
-Game|Shows what game a user is playing|`.game [@user]`
+Game|Shows what game a user is playing|`.game [user]`
 Guildicon|Get a guild's icon|`.guildicon [guild]`
-Quote|Quote a message|`.quote <messageId> [#channel]`
+Quote|Quote a message|`.quote <messageId> [channel]`
 Remove|Deletes the command|`.remove <text>`
 Removeplus|Sends <message> then deletes it|`.removeplus <message>`
 Repeat|Schedule a message to send in the current channel|`.repeat <delayInSeconds> <amount> <message>`
@@ -64,17 +64,17 @@ Slots|Play a Slot Machine|`.slots [Bet]`
 ### Moderation
 Command | Description | Usage
 ---------------- | --------------| -------
-Altcheck|Check when a user's account was created and when they joined the guild|`.altcheck [@member]`
-Ban|Ban any user.|`.ban <@user> [reason]`
-Kick|Kick a member from the guild|`.kick <@member> [reason]`
-Purge|Deletes a member's last messages in the current channel|`.purge [amount] [@member]`
+Altcheck|Check when a user's account was created and when they joined the guild|`.altcheck [member]`
+Ban|Ban any user.|`.ban <user> [reason]`
+Kick|Kick a member from the guild|`.kick <member> [reason]`
+Purge|Deletes a member's last messages in the current channel|`.purge [amount] [member]`
 Unban|Unban a banned user.|`.unban <username>`
 
 ### Statistics
 Command | Description | Usage
 ---------------- | --------------| -------
 Guildstats|Get a guild's statistics|`.guildstats [guild]`
-Memberstats|Get a member's statistics|`.memberstats [@member]`
+Memberstats|Get a member's statistics|`.memberstats [member]`
 Ping|See your ping|`.ping`
 Stats|See some statistics about the Selfbot|`.stats`
 Uptime|See how long your selfbot has been running|`.uptime`
@@ -97,4 +97,4 @@ Setup|Get a link to the setup page for this Selfbot|`.setup`
 Status|Changes your status|`.status <status>`
 
 
-As a bonus feature, you can also send your messages in embeds by doing: `. [text]`
+As a bonus feature, you can also send your message in an embed by doing: `. [text]`

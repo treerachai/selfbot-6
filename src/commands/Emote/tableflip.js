@@ -3,9 +3,8 @@ const patron = require('patron.js');
 class Tableflip extends patron.Command {
   constructor() {
     super({
-      name: 'tableflip',
-      aliases: ['tf'],
-      group: 'emote',
+      names: ['tableflip', 'tf'],
+      groupName: 'emote',
       description: 'Adds "(╯°□°）╯︵ ┻━┻" to your message',
       guildOnly: false,
       args: [

@@ -6,9 +6,8 @@ const Maximum = require('../../preconditions/maximum.js');
 class Flip extends patron.Command {
   constructor() {
     super({
-      name: 'flip',
-      aliases: ['coinflip', 'coin'],
-      group: 'fun',
+      names: ['flip', 'coinflip', 'coin'],
+      groupName: 'fun',
       description: 'Flip up to 100,000 coins',
       guildOnly: false,
       args: [

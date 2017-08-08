@@ -4,9 +4,8 @@ const util = require('../../utility');
 class Uptime extends patron.Command {
   constructor() {
     super({
-      name: 'uptime',
-      aliases: ['ut'],
-      group: 'statistics',
+      names: ['uptime', 'ut'],
+      groupName: 'statistics',
       description: 'See how long your selfbot has been running',
       guildOnly: false
     });

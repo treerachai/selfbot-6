@@ -5,9 +5,8 @@ const Discord = require('discord.js');
 class BFReader extends patron.Command {
   constructor() {
     super({
-      name: 'bfreader',
-      aliases: ['bfr', 'brainfuckreader'],
-      group: 'developer',
+      names: ['bfreader', 'bfr', 'brainfuckreader'],
+      groupName: 'developer',
       description: 'Turn BF code into text',
       guildOnly: false,
       args: [

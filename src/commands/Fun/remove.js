@@ -3,9 +3,8 @@ const patron = require('patron.js');
 class Remove extends patron.Command {
   constructor() {
     super({
-      name: 'remove',
-      aliases: ['r'],
-      group: 'fun',
+      names: ['remove', 'r'],
+      groupName: 'fun',
       description: 'Deletes the command',
       guildOnly: false,
       args: [

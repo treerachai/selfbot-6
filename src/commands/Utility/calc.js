@@ -5,9 +5,8 @@ const utility = require('util');
 class Calc extends patron.Command {
   constructor() {
     super({
-      name: 'calc',
-      aliases: ['calculate', 'calculator'],
-      group: 'utility',
+      names: ['calc', 'calculate', 'calculator'],
+      groupName: 'utility',
       description: 'Do basic adding, subtracting, multiplying, and dividing',
       guildOnly: false,
       args: [

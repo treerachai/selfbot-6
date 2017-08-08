@@ -3,9 +3,8 @@ const patron = require('patron.js');
 class Disapprove extends patron.Command {
   constructor() {
     super({
-      name: 'disapprove',
-      aliases: ['da'],
-      group: 'emote',
+      names: ['disapprove', 'da'],
+      groupName: 'emote',
       description: 'Adds "ಠ_ಠ" to your message',
       guildOnly: false,
       args: [

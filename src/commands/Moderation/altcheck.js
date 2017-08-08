@@ -5,9 +5,8 @@ const Discord = require('discord.js');
 class Altcheck extends patron.Command {
   constructor() {
     super({
-      name: 'altcheck',
-      aliases: ['ac'],
-      group: 'moderation',
+      names: ['altcheck', 'ac'],
+      groupName: 'moderation',
       description: 'Check when a user\'s account was created and when they joined the guild',
       guildOnly: true,
       args: [

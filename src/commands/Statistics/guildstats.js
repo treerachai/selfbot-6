@@ -5,9 +5,8 @@ const Discord = require('discord.js');
 class Guildstats extends patron.Command {
   constructor() {
     super({
-      name: 'guildstats',
-      aliases: ['gs', 'serverstats', 'ss'],
-      group: 'statistics',
+      names: ['guildstats', 'gs', 'serverstats', 'ss'],
+      groupName: 'statistics',
       description: 'Get a guild\'s statistics',
       guildOnly: true,
       args: [

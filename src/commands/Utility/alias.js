@@ -4,9 +4,8 @@ const util = require('../../utility');
 class Alias extends patron.Command {
   constructor() {
     super({
-      name: 'alias',
-      aliases: ['aliases'],
-      group: 'utility',
+      names: ['alias', 'aliases'],
+      groupName: 'utility',
       description: 'View a command\'s aliases',
       guildOnly: false,
       args: [
@@ -23,20 +22,16 @@ class Alias extends patron.Command {
   async run(msg, args) {
     const lowerInput = args.cmd.toLowerCase();
     let m = '';
-    let cmd = msg.client.registry.commands.get(lowerInput);
+    const cmd = msg.client.registry.commands.find((x) => x.names.some((y) => y === lowerInput));
 
     if (cmd === undefined) {
-      const matches = msg.client.registry.commands.filterArray((value) => value.aliases.some((v) => v === lowerInput));
-      if (matches.length === 0) {
-        return util.Messenger.sendError(msg.channel, 'Command not found');
-      }
-      cmd = matches[0];
+      return util.Messenger.sendError(msg.channel, 'Command not found');
     }
 
-    let aliases = cmd.aliases;
+    let aliases = cmd.names.slice(1, cmd.names.length);
 
     if (aliases.length === 0) {
-      return util.Messenger.sendTitle(msg.channel, util.StringUtil.upperFirstChar(cmd.name) + ' has no aliases');
+      return util.Messenger.sendTitle(msg.channel, util.StringUtil.upperFirstChar(cmd.names[0]) + ' has no aliases');
     }
 
     aliases = aliases.sort();
@@ -45,7 +40,7 @@ class Alias extends patron.Command {
     }
     m = m.substring(0, m.length - 2);
 
-    return util.Messenger.send(msg.channel, m, util.StringUtil.upperFirstChar(cmd.name) + '\'s Aliases');
+    return util.Messenger.send(msg.channel, m, util.StringUtil.upperFirstChar(cmd.names[0]) + '\'s Aliases');
   }
 }
 

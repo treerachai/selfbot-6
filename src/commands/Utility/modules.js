@@ -4,9 +4,8 @@ const util = require('../../utility');
 class Modules extends patron.Command {
   constructor() {
     super({
-      name: 'modules',
-      aliases: ['module', 'groups', 'group'],
-      group: 'utility',
+      names: ['modules', 'module', 'groups', 'group'],
+      groupName: 'utility',
       description: 'View the current command modules',
       guildOnly: false
     });

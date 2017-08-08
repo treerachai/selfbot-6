@@ -3,9 +3,8 @@ const patron = require('patron.js');
 class RemovePlus extends patron.Command {
   constructor() {
     super({
-      name: 'removeplus',
-      aliases: ['rp', 'rplus', 'r+'],
-      group: 'fun',
+      names: ['removeplus', 'rp', 'rplus', 'r+'],
+      groupName: 'fun',
       description: 'Sends <message> then deletes it',
       guildOnly: false,
       args: [

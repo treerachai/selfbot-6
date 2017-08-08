@@ -8,9 +8,8 @@ const Decimal = require('../../preconditions/decimal.js');
 class Slots extends patron.Command {
   constructor() {
     super({
-      name: 'slots',
-      aliases: ['slot', 'slotmachine'],
-      group: 'fun',
+      names: ['slots', 'slot', 'slotmachine'],
+      groupName: 'fun',
       description: 'Play a Slot Machine',
       guildOnly: false,
       args: [

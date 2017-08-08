@@ -3,9 +3,8 @@ const patron = require('patron.js');
 class Clear extends patron.Command {
   constructor() {
     super({
-      name: 'clear',
-      aliases: ['clearconsole', 'hide', 'hideconsole'],
-      group: 'utility',
+      names: ['clear', 'clearconsole', 'hide', 'hideconsole'],
+      groupName: 'utility',
       description: 'Clears the console',
       guildOnly: false
     });

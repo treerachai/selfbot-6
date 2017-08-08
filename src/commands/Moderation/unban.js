@@ -4,8 +4,8 @@ const util = require('../../utility');
 class Unban extends patron.Command {
   constructor() {
     super({
-      name: 'unban',
-      group: 'moderation',
+      names: ['unban'],
+      groupName: 'moderation',
       description: 'Unban a banned user.',
       botPermissions: ['BAN_MEMBERS'],
       args: [

@@ -4,8 +4,8 @@ const util = require('../../utility');
 class Kick extends patron.Command {
   constructor() {
     super({
-      name: 'kick',
-      group: 'moderation',
+      names: ['kick'],
+      groupName: 'moderation',
       description: 'Kick a member from the guild',
       botPermissions: ['KICK_MEMBERS'],
       args: [

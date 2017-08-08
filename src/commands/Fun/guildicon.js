@@ -5,9 +5,8 @@ const Discord = require('discord.js');
 class Guildicon extends patron.Command {
   constructor() {
     super({
-      name: 'guildicon',
-      aliases: ['gi', 'guildavatar', 'ga'],
-      group: 'fun',
+      names: ['guildicon', 'gi', 'guildavatar', 'ga'],
+      groupName: 'fun',
       description: 'Get a guild\'s icon',
       guildOnly: true,
       args: [

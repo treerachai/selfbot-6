@@ -3,9 +3,8 @@ const patron = require('patron.js');
 class Lenny extends patron.Command {
   constructor() {
     super({
-      name: 'lenny',
-      aliases: ['l'],
-      group: 'emote',
+      names: ['lenny', 'l'],
+      groupName: 'emote',
       description: 'Adds "( ͡° ͜ʖ ͡°)" to your message',
       guildOnly: false,
       args: [

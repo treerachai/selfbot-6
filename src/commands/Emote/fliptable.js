@@ -3,9 +3,8 @@ const patron = require('patron.js');
 class Fliptable extends patron.Command {
   constructor() {
     super({
-      name: 'fliptable',
-      aliases: ['ft'],
-      group: 'emote',
+      names: ['fliptable', 'ft'],
+      groupName: 'emote',
       description: 'Adds "ノ┬─┬ノ ︵ ( \\o°o)\\" to your message',
       guildOnly: false,
       args: [

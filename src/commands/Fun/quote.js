@@ -5,9 +5,8 @@ const Discord = require('discord.js');
 class Quote extends patron.Command {
   constructor() {
     super({
-      name: 'quote',
-      aliases: ['quoteid', 'q'],
-      group: 'fun',
+      names: ['quote', 'quoteid', 'q'],
+      groupName: 'fun',
       description: 'Quote a message',
       guildOnly: true,
       args: [

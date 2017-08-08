@@ -4,9 +4,8 @@ const util = require('../../utility');
 class Setup extends patron.Command {
   constructor() {
     super({
-      name: 'setup',
-      aliases: ['download', 'install'],
-      group: 'utility',
+      names: ['setup', 'download', 'install'],
+      groupName: 'utility',
       description: 'Get a link to the setup page for this Selfbot',
       guildOnly: false
     });

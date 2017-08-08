@@ -5,9 +5,8 @@ const Discord = require('discord.js');
 class Avatar extends patron.Command {
   constructor() {
     super({
-      name: 'avatar',
-      aliases: ['a'],
-      group: 'fun',
+      names: ['avatar', 'a'],
+      groupName: 'fun',
       description: 'Get the avatar of a user',
       guildOnly: false,
       args: [

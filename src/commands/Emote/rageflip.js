@@ -3,9 +3,8 @@ const patron = require('patron.js');
 class Rageflip extends patron.Command {
   constructor() {
     super({
-      name: 'rageflip',
-      aliases: ['rf'],
-      group: 'emote',
+      names: ['rageflip', 'rf'],
+      groupName: 'emote',
       description: 'Adds "┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻" to your message',
       guildOnly: false,
       args: [

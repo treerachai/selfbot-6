@@ -4,8 +4,8 @@ const util = require('../../utility');
 class Stats extends patron.Command {
   constructor() {
     super({
-      name: 'stats',
-      group: 'statistics',
+      names: ['stats'],
+      groupName: 'statistics',
       description: 'See some statistics about the Selfbot',
       guildOnly: false
     });

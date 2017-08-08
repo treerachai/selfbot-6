@@ -3,9 +3,8 @@ const patron = require('patron.js');
 class Setgame extends patron.Command {
   constructor() {
     super({
-      name: 'setgame',
-      aliases: ['sg'],
-      group: 'fun',
+      names: ['setgame', 'sg'],
+      groupName: 'fun',
       description: 'Sets what game you are playing',
       guildOnly: false,
       args: [

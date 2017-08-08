@@ -6,8 +6,8 @@ const MustBe = require('../../preconditions/mustBe.js');
 class Rps extends patron.Command {
   constructor() {
     super({
-      name: 'rps',
-      group: 'fun',
+      names: ['rps'],
+      groupName: 'fun',
       description: 'Play Rock, Paper, Scissors against the selfbot',
       guildOnly: false,
       args: [

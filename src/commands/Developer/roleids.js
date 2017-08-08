@@ -3,8 +3,8 @@ const patron = require('patron.js');
 class RoleIds extends patron.Command {
   constructor() {
     super({
-      name: 'roleids',
-      group: 'developer',
+      names: ['roleids'],
+      groupName: 'developer',
       description: 'Gets all the role ids of a guild.'
     });
   }

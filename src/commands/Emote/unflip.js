@@ -3,9 +3,8 @@ const patron = require('patron.js');
 class Unflip extends patron.Command {
   constructor() {
     super({
-      name: 'unflip',
-      aliases: ['uf'],
-      group: 'emote',
+      names: ['unflip', 'uf'],
+      groupName: 'emote',
       description: 'Adds " ┬─┬﻿ ノ( ゜-゜ノ)" to your message',
       guildOnly: false,
       args: [

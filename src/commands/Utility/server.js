@@ -4,8 +4,8 @@ const util = require('../../utility');
 class Server extends patron.Command {
   constructor() {
     super({
-      name: 'server',
-      group: 'utility',
+      names: ['server'],
+      groupName: 'utility',
       description: 'Sends an invite to this Selfbot\'s server',
       guildOnly: false
     });

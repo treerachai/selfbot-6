@@ -5,8 +5,8 @@ const Minimum = require('../../preconditions/minimum.js');
 class Roll extends patron.Command {
   constructor() {
     super({
-      name: 'roll',
-      group: 'fun',
+      names: ['roll'],
+      groupName: 'fun',
       description: 'Rolls a random number',
       guildOnly: false,
       args: [

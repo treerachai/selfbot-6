@@ -4,9 +4,8 @@ const util = require('../../utility');
 class Game extends patron.Command {
   constructor() {
     super({
-      name: 'game',
-      aliases: ['g'],
-      group: 'fun',
+      names: ['game', 'g'],
+      groupName: 'fun',
       description: 'Shows what game a user is playing',
       guildOnly: false,
       args: [

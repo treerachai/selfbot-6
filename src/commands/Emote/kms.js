@@ -4,9 +4,8 @@ const util = require('../../utility');
 class Kms extends patron.Command {
   constructor() {
     super({
-      name: 'kms',
-      aliases: ['suicide'],
-      group: 'emote',
+      names: ['kms', 'suicide'],
+      groupName: 'emote',
       description: 'Kill yourself in a 3 frame animation',
       guildOnly: false
     });

@@ -4,8 +4,8 @@ const util = require('../../utility');
 class Reboot extends patron.Command {
   constructor() {
     super({
-      name: 'reboot',
-      group: 'utility',
+      names: ['reboot'],
+      groupName: 'utility',
       description: 'Reboots the selfbot',
       guildOnly: false
     });

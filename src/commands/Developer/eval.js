@@ -7,8 +7,8 @@ const Discord = require('discord.js');
 class Eval extends patron.Command {
   constructor() {
     super({
-      name: 'eval',
-      group: 'developer',
+      names: ['eval'],
+      groupName: 'developer',
       description: 'Evaluate JavaScript code',
       guildOnly: false,
       args: [

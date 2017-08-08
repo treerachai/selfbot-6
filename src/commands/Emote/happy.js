@@ -3,9 +3,8 @@ const patron = require('patron.js');
 class Happy extends patron.Command {
   constructor() {
     super({
-      name: 'happy',
-      aliases: ['h'],
-      group: 'emote',
+      names: ['happy', 'h'],
+      groupName: 'emote',
       description: 'Adds "ᕕ( ᐛ )ᕗ" to your message',
       guildOnly: false,
       args: [

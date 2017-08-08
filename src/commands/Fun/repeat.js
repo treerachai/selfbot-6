@@ -7,9 +7,8 @@ const Decimal = require('../../preconditions/decimal.js');
 class Repeat extends patron.Command {
   constructor() {
     super({
-      name: 'repeat',
-      aliases: ['schedule', 'spam'],
-      group: 'fun',
+      names: ['repeat', 'schedule', 'spam'],
+      groupName: 'fun',
       description: 'Schedule a message to send in the current channel',
       guildOnly: false,
       args: [

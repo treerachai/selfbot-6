@@ -3,9 +3,8 @@ const patron = require('patron.js');
 class Clap extends patron.Command {
   constructor() {
     super({
-      name: 'clap',
-      aliases: ['clapping', ':clap:'],
-      group: 'emote',
+      names: ['clap', 'clapping', ':clap:'],
+      groupName: 'emote',
       description: '👏 Emphasize 👏 your 👏 text 👏',
       guildOnly: false,
       args: [

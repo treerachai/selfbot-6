@@ -4,9 +4,8 @@ const util = require('../../utility');
 class Choose extends patron.Command {
   constructor() {
     super({
-      name: 'choose',
-      aliases: ['ch'],
-      group: 'fun',
+      names: ['choose', 'ch'],
+      groupName: 'fun',
       description: 'Have the Selfbot help you choose between a set of options',
       guildOnly: false,
       args: [
