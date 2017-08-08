@@ -12,7 +12,7 @@ class Modules extends patron.Command {
   }
 
   async run(msg) {
-    const groups = msg.client.registry.groups.sort(util.StringUtil.alphabeticallySort).values();
+    const groups = msg.client.registry.groups.sort(util.StringUtil.alphabeticallySort);
     let m = '';
     for (const group of groups) {
       m += '`' + util.StringUtil.upperFirstChar(group.name) + '`, ';
