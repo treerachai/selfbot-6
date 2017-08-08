@@ -16,13 +16,13 @@ class CommandCount extends patron.Command {
     let groupCount = 0;
     let m = '';
 
-    const sortedGroups = msg.client.registry.groups.sort(util.StringUtil.alphabeticallySort).values();
+    const sortedGroups = msg.client.registry.groups.sort(util.StringUtil.alphabeticallySort);
 
     for (const group of sortedGroups) {
       const formattedGroupName = util.StringUtil.upperFirstChar(group.name);
       m += '`' + formattedGroupName + '` - ';
 
-      for (let i = 0; i < group.commands.array().length; i++) {
+      for (let i = 0; i < group.commands.length; i++) {
         commandCount++;
         groupCount++;
       }
