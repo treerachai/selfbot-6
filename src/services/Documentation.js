@@ -33,7 +33,7 @@ class Documentation {
     }
 
     let commandsDocumentation = 'Total Number of Commands: ' + commandCount + '\n\nThe syntax of the command usage is:\n\n`Optional paramater: []`\n\n`Required paramater: <>`\n\n##Table Of Contents\n';
-    commandsDocumentation += tableOfContents + commandInfo + '\n\nAs a bonus feature, you can also send your messages in embeds by doing `. [text]`';
+    commandsDocumentation += tableOfContents + commandInfo + '\n\nAs a bonus feature, you can also send your messages in embeds by doing: `. [text]`';
 
     fs.writeFile(path.join(__dirname, '../../docs/docs/commands.md'), commandsDocumentation, (err) => {
       assert.equal(err, null);
