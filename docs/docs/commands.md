@@ -32,6 +32,7 @@ B|🅱|`.b <text>`
 Clap|👏 Emphasize 👏 your 👏 text 👏|`.clap <text>`
 Disapprove|Adds "ಠ_ಠ" to your message|`.disapprove [text]`
 Emoji|Turns your message into emojis|`.emoji <text>`
+Enlarge|send a full-size version of a custom emoji|`.enlarge <emoji>`
 Fliptable|Adds "ノ┬─┬ノ ︵ ( \o°o)\" to your message|`.fliptable [text]`
 Happy|Adds "ᕕ( ᐛ )ᕗ" to your message|`.happy [text]`
 Innocent|Adds "ʘ‿ʘ" to your message|`.innocent [text]`
@@ -46,12 +47,13 @@ Unflip|Adds " ┬─┬﻿ ノ( ゜-゜ノ)" to your message|`.unflip [text]`
 Command | Description | Usage
 ---------------- | --------------| -------
 8ball|Ask the Magical 8ball your question|`.8ball <question>`
-Avatar|Get the avatar of a user|`.avatar [user]`
+Avatar|Get the avatar of a user|`.avatar [@user]`
 Choose|Have the Selfbot help you choose between a set of options|`.choose <choice>`
 Flip|Flip up to 100,000 coins|`.flip [amount]`
-Game|Shows what game a user is playing|`.game [user]`
+Game|Shows what game a user is playing|`.game [@user]`
 Guildicon|Get a guild's icon|`.guildicon [guild]`
-Quote|Quote a message|`.quote <messageId> [channel]`
+Quote|Quote a message|`.quote <message>`
+Quoteid|Quote a message via id|`.quoteid <messageId> [#channel]`
 Remove|Deletes the command|`.remove <text>`
 Removeplus|Sends <message> then deletes it|`.removeplus <message>`
 Repeat|Schedule a message to send in the current channel|`.repeat <delayInSeconds> <amount> <message>`
@@ -64,17 +66,18 @@ Slots|Play a Slot Machine|`.slots [Bet]`
 ### Moderation
 Command | Description | Usage
 ---------------- | --------------| -------
-Altcheck|Check when a user's account was created and when they joined the guild|`.altcheck [member]`
-Ban|Ban any user.|`.ban <user> [reason]`
-Kick|Kick a member from the guild|`.kick <member> [reason]`
-Purge|Deletes a member's last messages in the current channel|`.purge [amount] [member]`
-Unban|Unban a banned user.|`.unban <username>`
+Altcheck|Check when a user's account was created and when they joined the guild|`.altcheck [@member]`
+Ban|Ban any user.|`.ban <@user> [reason]`
+Kick|Kick a member from the guild|`.kick <@member> [reason]`
+Purge|Deletes a member's last messages in the current channel|`.purge [amount] [@member]`
+Unban|Unban a banned user.|`.unban <banned user>`
 
 ### Statistics
 Command | Description | Usage
 ---------------- | --------------| -------
+Emojistats|get information about a custom emoji|`.emojistats <emoji>`
 Guildstats|Get a guild's statistics|`.guildstats [guild]`
-Memberstats|Get a member's statistics|`.memberstats [member]`
+Memberstats|Get a member's statistics|`.memberstats [@member]`
 Ping|See your ping|`.ping`
 Stats|See some statistics about the Selfbot|`.stats`
 Uptime|See how long your selfbot has been running|`.uptime`

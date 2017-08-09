@@ -210,6 +210,11 @@
 <td><code>.emoji &lt;text&gt;</code></td>
 </tr>
 <tr>
+<td>Enlarge</td>
+<td>send a full-size version of a custom emoji</td>
+<td><code>.enlarge &lt;emoji&gt;</code></td>
+</tr>
+<tr>
 <td>Fliptable</td>
 <td>Adds "ノ┬─┬ノ ︵ ( \o°o)\" to your message</td>
 <td><code>.fliptable [text]</code></td>
@@ -274,7 +279,7 @@
 <tr>
 <td>Avatar</td>
 <td>Get the avatar of a user</td>
-<td><code>.avatar [user]</code></td>
+<td><code>.avatar [@user]</code></td>
 </tr>
 <tr>
 <td>Choose</td>
@@ -289,7 +294,7 @@
 <tr>
 <td>Game</td>
 <td>Shows what game a user is playing</td>
-<td><code>.game [user]</code></td>
+<td><code>.game [@user]</code></td>
 </tr>
 <tr>
 <td>Guildicon</td>
@@ -299,7 +304,12 @@
 <tr>
 <td>Quote</td>
 <td>Quote a message</td>
-<td><code>.quote &lt;messageId&gt; [channel]</code></td>
+<td><code>.quote &lt;message&gt;</code></td>
+</tr>
+<tr>
+<td>Quoteid</td>
+<td>Quote a message via id</td>
+<td><code>.quoteid &lt;messageId&gt; [#channel]</code></td>
 </tr>
 <tr>
 <td>Remove</td>
@@ -356,27 +366,27 @@
 <tr>
 <td>Altcheck</td>
 <td>Check when a user's account was created and when they joined the guild</td>
-<td><code>.altcheck [member]</code></td>
+<td><code>.altcheck [@member]</code></td>
 </tr>
 <tr>
 <td>Ban</td>
 <td>Ban any user.</td>
-<td><code>.ban &lt;user&gt; [reason]</code></td>
+<td><code>.ban &lt;@user&gt; [reason]</code></td>
 </tr>
 <tr>
 <td>Kick</td>
 <td>Kick a member from the guild</td>
-<td><code>.kick &lt;member&gt; [reason]</code></td>
+<td><code>.kick &lt;@member&gt; [reason]</code></td>
 </tr>
 <tr>
 <td>Purge</td>
 <td>Deletes a member's last messages in the current channel</td>
-<td><code>.purge [amount] [member]</code></td>
+<td><code>.purge [amount] [@member]</code></td>
 </tr>
 <tr>
 <td>Unban</td>
 <td>Unban a banned user.</td>
-<td><code>.unban &lt;username&gt;</code></td>
+<td><code>.unban &lt;banned user&gt;</code></td>
 </tr>
 </tbody>
 </table>
@@ -391,6 +401,11 @@
 </thead>
 <tbody>
 <tr>
+<td>Emojistats</td>
+<td>get information about a custom emoji</td>
+<td><code>.emojistats &lt;emoji&gt;</code></td>
+</tr>
+<tr>
 <td>Guildstats</td>
 <td>Get a guild's statistics</td>
 <td><code>.guildstats [guild]</code></td>
@@ -398,7 +413,7 @@
 <tr>
 <td>Memberstats</td>
 <td>Get a member's statistics</td>
-<td><code>.memberstats [member]</code></td>
+<td><code>.memberstats [@member]</code></td>
 </tr>
 <tr>
 <td>Ping</td>

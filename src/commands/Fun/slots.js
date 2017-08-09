@@ -16,7 +16,7 @@ class Slots extends patron.Command {
         new patron.Argument({
           name: 'Bet',
           key: 'bet',
-          type: 'float',
+          type: 'currency',
           example: '1000',
           remainder: true,
           defaultValue: 10,

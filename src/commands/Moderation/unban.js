@@ -10,9 +10,9 @@ class Unban extends patron.Command {
       botPermissions: ['BAN_MEMBERS'],
       args: [
         new patron.Argument({
-          key: 'username',
-          type: 'string',
-          name: 'username',
+          key: 'user',
+          type: 'banneduser',
+          name: 'banned user',
           example: '"PeePee Juanathog#7643"',
           remainder: true
         })
@@ -21,24 +21,8 @@ class Unban extends patron.Command {
   }
 
   async run(msg, args) {
-    const fetchedBans = await msg.guild.fetchBans();
-    const lowerInput = args.username.toLowerCase();
-    const matches = fetchedBans.filterArray(x => (x.username + '#' + x.discriminator).toLowerCase().includes(lowerInput));
-
-    if (matches.length === 1) {
-      const user = matches[0];
-
-      await msg.guild.unban(user);
-      return util.Messenger.sendTitle(msg.channel, 'Unbanned: ' + user.tag);
-    } else if (matches.length > 5) {
-      return util.Messenger.sendError(msg.channel, 'Multiple matches found, please be more specific.');
-    } else if (matches.length > 1) {
-      const formattedMatches = util.StringUtil.formatUsers(matches);
-
-      return util.Messenger.sendError(msg.channel, 'Multiple matches found: ' + formattedMatches + '.');
-    }
-
-    return util.Messenger.sendError(msg.channel, 'No matches found.');
+    await msg.guild.unban(args.user);
+    return util.Messenger.sendTitle(msg.channel, 'Unbanned: ' + args.user.tag);
   }
 }
 
