@@ -34,6 +34,7 @@ Disapprove|Adds "ಠ_ಠ" to your message|`.disapprove [text]`
 Emoji|Turns your message into emojis|`.emoji <text>`
 Enlarge|send a full-size version of a custom emoji|`.enlarge <emoji>`
 Fliptable|Adds "ノ┬─┬ノ ︵ ( \o°o)\" to your message|`.fliptable [text]`
+Globalemojis|List a guild's global emojis|`.globalemojis [guild]`
 Happy|Adds "ᕕ( ᐛ )ᕗ" to your message|`.happy [text]`
 Innocent|Adds "ʘ‿ʘ" to your message|`.innocent [text]`
 Kms|Kill yourself in a 3 frame animation|`.kms`

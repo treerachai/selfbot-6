@@ -8,7 +8,7 @@ class Guildstats extends patron.Command {
       names: ['guildstats', 'gs', 'serverstats', 'ss'],
       groupName: 'statistics',
       description: 'Get a guild\'s statistics',
-      guildOnly: true,
+      guildOnly: false,
       args: [
         new patron.Argument({
           name: 'guild',
@@ -23,6 +23,9 @@ class Guildstats extends patron.Command {
   }
 
   async run(msg, args) {
+    if (args.guild === null) {
+      return util.Messenger.sendError(msg.channel, 'Please specify a guild');
+    }
     const totalMessages = await args.guild.search();
 
     const embed = new Discord.RichEmbed()
