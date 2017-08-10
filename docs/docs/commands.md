@@ -39,6 +39,7 @@ Happy|Adds "ᕕ( ᐛ )ᕗ" to your message|`.happy [text]`
 Innocent|Adds "ʘ‿ʘ" to your message|`.innocent [text]`
 Kms|Kill yourself in a 3 frame animation|`.kms`
 Lenny|Adds "( ͡° ͜ʖ ͡°)" to your message|`.lenny [text]`
+Myemojis|List all global emojis to which you have access|`.myemojis [page]`
 Rageflip|Adds "┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻" to your message|`.rageflip [text]`
 Shrug|Works like the desktop /shrug command|`.shrug [text]`
 Tableflip|Adds "(╯°□°）╯︵ ┻━┻" to your message|`.tableflip [text]`

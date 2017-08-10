@@ -29,7 +29,7 @@ class GlobalEmojis extends patron.Command {
     if (emojis.length === 0) {
       return util.Messenger.sendError(msg.channel, '`' + args.guild.name + '` has no global emojis');
     }
-    emojis = emojis.sort(util.StringUtil.alphabeticallySort);
+    emojis = emojis.sort(util.StringUtil.alphabeticallySort).filter(emoji => emoji.requiresColons === true);
     let m = '';
     for (let i = 0; i < emojis.length; i++) {
       m += emojis[i] + ' ';
