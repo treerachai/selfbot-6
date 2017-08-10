@@ -1,6 +1,7 @@
 const patron = require('patron.js');
 const util = require('../../utility');
 const credentials = require('../../credentials.json');
+const Discord = require('discord.js');
 
 class Help extends patron.Command {
   constructor() {
@@ -61,7 +62,11 @@ class Help extends patron.Command {
       groupMsg += '`' + cmd.names[0] + '`, ';
     }
     groupMsg = groupMsg.substring(0, groupMsg.length - 2);
-    return util.Messenger.send(msg.channel, groupMsg, util.StringUtil.upperFirstChar(group.name) + ' Module\'s Commands');
+    const embed = new Discord.RichEmbed()
+      .setTitle(util.StringUtil.upperFirstChar(group.name) + ' Module\'s Commands')
+      .setDescription(groupMsg)
+      .setFooter(group.description);
+    return util.Messenger.sendEmbed(msg.channel, embed);
 
   }
 }

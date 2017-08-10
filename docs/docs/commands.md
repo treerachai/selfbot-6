@@ -15,6 +15,9 @@ The syntax of the command usage is:
 - [Utility](#utility)
 
 ### Developer
+
+These commands are mostly for the use of people with knowledge of Discord.js
+
 Command | Description | Usage
 ---------------- | --------------| -------
 Bf|Turn text into BF code|`.bf <text>`
@@ -26,6 +29,9 @@ Exec|Execute JavaScript code|`.exec <code>`
 Roleids|Gets all the role ids of a guild.|`.roleids`
 
 ### Emote
+
+These commands are related to emotes or emojis
+
 Command | Description | Usage
 ---------------- | --------------| -------
 B|🅱|`.b <text>`
@@ -46,6 +52,9 @@ Tableflip|Adds "(╯°□°）╯︵ ┻━┻" to your message|`.tableflip [tex
 Unflip|Adds " ┬─┬﻿ ノ( ゜-゜ノ)" to your message|`.unflip [text]`
 
 ### Fun
+
+These commands were made with fun and entertainment in mind
+
 Command | Description | Usage
 ---------------- | --------------| -------
 8ball|Ask the Magical 8ball your question|`.8ball <question>`
@@ -66,6 +75,9 @@ Setgame|Sets what game you are playing|`.setgame [name]`
 Slots|Play a Slot Machine|`.slots [Bet]`
 
 ### Moderation
+
+These commands aid in the moderation and management of servers
+
 Command | Description | Usage
 ---------------- | --------------| -------
 Altcheck|Check when a user's account was created and when they joined the guild|`.altcheck [@member]`
@@ -75,6 +87,9 @@ Purge|Deletes a member's last messages in the current channel|`.purge [amount] [
 Unban|Unban a banned user.|`.unban <banned user>`
 
 ### Statistics
+
+These commands display various statistics and information
+
 Command | Description | Usage
 ---------------- | --------------| -------
 Emojistats|get information about a custom emoji|`.emojistats <emoji>`
@@ -85,6 +100,9 @@ Stats|See some statistics about the Selfbot|`.stats`
 Uptime|See how long your selfbot has been running|`.uptime`
 
 ### Utility
+
+These commands provide various utilities and services
+
 Command | Description | Usage
 ---------------- | --------------| -------
 Alias|View a command's aliases|`.alias <command>`

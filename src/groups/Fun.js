@@ -2,7 +2,9 @@ const patron = require('patron.js');
 
 class Fun extends patron.Group {
   constructor() {
-    super({ name: 'fun' });
+    super({
+      name: 'fun',
+      description: 'These commands were made with fun and entertainment in mind' });
   }
 }
 
