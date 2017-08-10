@@ -4,7 +4,7 @@ class Unflip extends patron.Command {
   constructor() {
     super({
       names: ['unflip', 'uf'],
-      groupName: 'emote',
+      groupName: 'ascii',
       description: 'Adds " ┬─┬﻿ ノ( ゜-゜ノ)" to your message',
       guildOnly: false,
       args: [

@@ -5,7 +5,7 @@ class GlobalEmojis extends patron.Command {
   constructor() {
     super({
       names: ['globalemojis', 'ge', 'globalemotes'],
-      groupName: 'emote',
+      groupName: 'emoji',
       description: 'List a guild\'s global emojis',
       guildOnly: false,
       args: [

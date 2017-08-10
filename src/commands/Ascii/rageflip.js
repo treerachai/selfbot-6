@@ -4,7 +4,7 @@ class Rageflip extends patron.Command {
   constructor() {
     super({
       names: ['rageflip', 'rf'],
-      groupName: 'emote',
+      groupName: 'ascii',
       description: 'Adds "┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻" to your message',
       guildOnly: false,
       args: [

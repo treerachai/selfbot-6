@@ -4,7 +4,7 @@ class Clap extends patron.Command {
   constructor() {
     super({
       names: ['clap', 'clapping', ':clap:'],
-      groupName: 'emote',
+      groupName: 'emoji',
       description: '👏 Emphasize 👏 your 👏 text 👏',
       guildOnly: false,
       args: [

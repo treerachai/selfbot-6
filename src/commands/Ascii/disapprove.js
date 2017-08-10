@@ -4,7 +4,7 @@ class Disapprove extends patron.Command {
   constructor() {
     super({
       names: ['disapprove', 'da'],
-      groupName: 'emote',
+      groupName: 'ascii',
       description: 'Adds "ಠ_ಠ" to your message',
       guildOnly: false,
       args: [

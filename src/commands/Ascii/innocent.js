@@ -1,18 +1,18 @@
 const patron = require('patron.js');
 
-class Lenny extends patron.Command {
+class Innocent extends patron.Command {
   constructor() {
     super({
-      names: ['lenny', 'l'],
-      groupName: 'emote',
-      description: 'Adds "( ͡° ͜ʖ ͡°)" to your message',
+      names: ['innocent', 'in'],
+      groupName: 'ascii',
+      description: 'Adds "ʘ‿ʘ" to your message',
       guildOnly: false,
       args: [
         new patron.Argument({
           name: 'text',
           key: 'text',
           type: 'string',
-          example: 'I see what you did there',
+          example: 'Somehow the money just disappeared',
           remainder: true,
           defaultValue: ''
         })
@@ -21,8 +21,8 @@ class Lenny extends patron.Command {
   }
 
   async run(msg, args) {
-    return msg.channel.send(args.text + ' ( ͡° ͜ʖ ͡°)');
+    return msg.channel.send(args.text + ' ʘ‿ʘ');
   }
 }
 
-module.exports = new Lenny();
+module.exports = new Innocent();

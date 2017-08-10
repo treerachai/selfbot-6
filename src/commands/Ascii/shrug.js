@@ -1,18 +1,18 @@
 const patron = require('patron.js');
 
-class Happy extends patron.Command {
+class Shrug extends patron.Command {
   constructor() {
     super({
-      names: ['happy', 'h'],
-      groupName: 'emote',
-      description: 'Adds "ᕕ( ᐛ )ᕗ" to your message',
+      names: ['shrug', 's'],
+      groupName: 'ascii',
+      description: 'Works like the desktop /shrug command',
       guildOnly: false,
       args: [
         new patron.Argument({
           name: 'text',
           key: 'text',
           type: 'string',
-          example: 'I love this selfbot',
+          example: 'I don\'t know',
           remainder: true,
           defaultValue: ''
         })
@@ -21,8 +21,8 @@ class Happy extends patron.Command {
   }
 
   async run(msg, args) {
-    return msg.channel.send(args.text + ' ᕕ( ᐛ )ᕗ');
+    return msg.channel.send(args.text + ' ¯\\_(ツ)_/¯');
   }
 }
 
-module.exports = new Happy();
+module.exports = new Shrug();

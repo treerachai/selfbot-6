@@ -5,7 +5,7 @@ class Kms extends patron.Command {
   constructor() {
     super({
       names: ['kms', 'suicide'],
-      groupName: 'emote',
+      groupName: 'emoji',
       description: 'Kill yourself in a 3 frame animation',
       guildOnly: false
     });

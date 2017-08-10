@@ -4,7 +4,7 @@ class B extends patron.Command {
   constructor() {
     super({
       names: ['b', ':b:'],
-      groupName: 'emote',
+      groupName: 'emoji',
       description: '🅱',
       guildOnly: false,
       args: [

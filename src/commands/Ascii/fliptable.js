@@ -4,7 +4,7 @@ class Fliptable extends patron.Command {
   constructor() {
     super({
       names: ['fliptable', 'ft'],
-      groupName: 'emote',
+      groupName: 'ascii',
       description: 'Adds "ノ┬─┬ノ ︵ ( \\o°o)\\" to your message',
       guildOnly: false,
       args: [

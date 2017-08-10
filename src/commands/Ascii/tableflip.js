@@ -4,7 +4,7 @@ class Tableflip extends patron.Command {
   constructor() {
     super({
       names: ['tableflip', 'tf'],
-      groupName: 'emote',
+      groupName: 'ascii',
       description: 'Adds "(╯°□°）╯︵ ┻━┻" to your message',
       guildOnly: false,
       args: [

@@ -1,11 +1,11 @@
 const patron = require('patron.js');
 
-class Emote extends patron.Group {
+class Emoji extends patron.Group {
   constructor() {
     super({
-      name: 'emote',
-      description: 'These commands are related to emotes or emojis' });
+      name: 'emoji',
+      description: 'These commands are related to emojis or emotes' });
   }
 }
 
-module.exports = new Emote();
+module.exports = new Emoji();

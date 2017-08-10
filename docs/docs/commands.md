@@ -7,12 +7,29 @@ The syntax of the command usage is:
 `Required paramater: <>`
 
 ##Table Of Contents
+- [Ascii](#ascii)
 - [Developer](#developer)
-- [Emote](#emote)
+- [Emoji](#emoji)
 - [Fun](#fun)
 - [Moderation](#moderation)
 - [Statistics](#statistics)
 - [Utility](#utility)
+
+### Ascii
+
+These commands add ascii emotes to your messages
+
+Command | Description | Usage
+---------------- | --------------| -------
+Disapprove|Adds "ಠ_ಠ" to your message|`.disapprove [text]`
+Fliptable|Adds "ノ┬─┬ノ ︵ ( \o°o)\" to your message|`.fliptable [text]`
+Happy|Adds "ᕕ( ᐛ )ᕗ" to your message|`.happy [text]`
+Innocent|Adds "ʘ‿ʘ" to your message|`.innocent [text]`
+Lenny|Adds "( ͡° ͜ʖ ͡°)" to your message|`.lenny [text]`
+Rageflip|Adds "┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻" to your message|`.rageflip [text]`
+Shrug|Works like the desktop /shrug command|`.shrug [text]`
+Tableflip|Adds "(╯°□°）╯︵ ┻━┻" to your message|`.tableflip [text]`
+Unflip|Adds " ┬─┬﻿ ノ( ゜-゜ノ)" to your message|`.unflip [text]`
 
 ### Developer
 
@@ -28,28 +45,20 @@ Eval|Evaluate JavaScript code|`.eval <code>`
 Exec|Execute JavaScript code|`.exec <code>`
 Roleids|Gets all the role ids of a guild.|`.roleids`
 
-### Emote
+### Emoji
 
-These commands are related to emotes or emojis
+These commands are related to emojis or emotes
 
 Command | Description | Usage
 ---------------- | --------------| -------
 B|🅱|`.b <text>`
 Clap|👏 Emphasize 👏 your 👏 text 👏|`.clap <text>`
-Disapprove|Adds "ಠ_ಠ" to your message|`.disapprove [text]`
-Emoji|Turns your message into emojis|`.emoji <text>`
+Emojify|Turns your message into emojis|`.emojify <text>`
 Enlarge|send a full-size version of a custom emoji|`.enlarge <emoji>`
-Fliptable|Adds "ノ┬─┬ノ ︵ ( \o°o)\" to your message|`.fliptable [text]`
 Globalemojis|List a guild's global emojis|`.globalemojis [guild]`
-Happy|Adds "ᕕ( ᐛ )ᕗ" to your message|`.happy [text]`
-Innocent|Adds "ʘ‿ʘ" to your message|`.innocent [text]`
 Kms|Kill yourself in a 3 frame animation|`.kms`
-Lenny|Adds "( ͡° ͜ʖ ͡°)" to your message|`.lenny [text]`
 Myemojis|List all global emojis to which you have access|`.myemojis [page]`
-Rageflip|Adds "┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻" to your message|`.rageflip [text]`
-Shrug|Works like the desktop /shrug command|`.shrug [text]`
-Tableflip|Adds "(╯°□°）╯︵ ┻━┻" to your message|`.tableflip [text]`
-Unflip|Adds " ┬─┬﻿ ノ( ゜-゜ノ)" to your message|`.unflip [text]`
+Searchemoji|Find all global emojis to which you have access that match a search|`.searchemoji <name>`
 
 ### Fun
 

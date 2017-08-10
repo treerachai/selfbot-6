@@ -4,7 +4,7 @@ class Enlarge extends patron.Command {
   constructor() {
     super({
       names: ['enlarge', 'el', 'womboji', 'wumbo'],
-      groupName: 'emote',
+      groupName: 'emoji',
       description: 'send a full-size version of a custom emoji',
       guildOnly: false,
       args: [
