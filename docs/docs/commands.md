@@ -43,6 +43,7 @@ Commandcount|See how many commands have been added so far|`.commandcount`
 Djs|Get a link to the Discord.js docs|`.djs`
 Eval|Evaluate JavaScript code|`.eval <code>`
 Exec|Execute JavaScript code|`.exec <code>`
+Patron|Get a link to the Patron.js docs|`.patron`
 Roleids|Gets all the role ids of a guild.|`.roleids`
 
 ### Emoji
@@ -54,7 +55,7 @@ Command | Description | Usage
 B|🅱|`.b <text>`
 Clap|👏 Emphasize 👏 your 👏 text 👏|`.clap <text>`
 Emojify|Turns your message into emojis|`.emojify <text>`
-Enlarge|send a full-size version of a custom emoji|`.enlarge <emoji>`
+Enlarge|Send a full-size version of a custom emoji|`.enlarge <emoji>`
 Globalemojis|List a guild's global emojis|`.globalemojis [guild]`
 Kms|Kill yourself in a 3 frame animation|`.kms`
 Myemojis|List all global emojis to which you have access|`.myemojis [page]`
@@ -66,7 +67,7 @@ These commands were made with fun and entertainment in mind
 
 Command | Description | Usage
 ---------------- | --------------| -------
-8ball|Ask the Magical 8ball your question|`.8ball <question>`
+8ball|Ask the magic 8ball your question|`.8ball <question>`
 Avatar|Get the avatar of a user|`.avatar [@user]`
 Choose|Have the Selfbot help you choose between a set of options|`.choose <choice>`
 Flip|Flip up to 100,000 coins|`.flip [amount]`
@@ -101,7 +102,7 @@ These commands display various statistics and information
 
 Command | Description | Usage
 ---------------- | --------------| -------
-Emojistats|get information about a custom emoji|`.emojistats <emoji>`
+Emojistats|Get information about a custom emoji|`.emojistats <emoji>`
 Guildstats|Get a guild's statistics|`.guildstats [guild]`
 Memberstats|Get a member's statistics|`.memberstats [@member]`
 Ping|See your ping|`.ping`

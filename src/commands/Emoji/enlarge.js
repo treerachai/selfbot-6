@@ -5,7 +5,7 @@ class Enlarge extends patron.Command {
     super({
       names: ['enlarge', 'el', 'womboji', 'wumbo'],
       groupName: 'emoji',
-      description: 'send a full-size version of a custom emoji',
+      description: 'Send a full-size version of a custom emoji',
       guildOnly: false,
       args: [
         new patron.Argument({

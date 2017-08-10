@@ -7,7 +7,7 @@ class Eightball extends patron.Command {
     super({
       names: ['8ball', '8'],
       groupName: 'fun',
-      description: 'Ask the Magical 8ball your question',
+      description: 'Ask the magic 8ball your question',
       guildOnly: false,
       args: [
         new patron.Argument({

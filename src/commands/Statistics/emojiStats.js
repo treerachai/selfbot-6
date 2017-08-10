@@ -7,7 +7,7 @@ class Enlarge extends patron.Command {
     super({
       names: ['emojistats', 'es', 'emotestats', 'emojiinfo', 'emoteinfo'],
       groupName: 'statistics',
-      description: 'get information about a custom emoji',
+      description: 'Get information about a custom emoji',
       guildOnly: false,
       args: [
         new patron.Argument({
