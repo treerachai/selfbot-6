@@ -6,7 +6,7 @@ class Guildicon extends patron.Command {
   constructor() {
     super({
       names: ['guildicon', 'gi', 'guildavatar', 'ga'],
-      groupName: 'fun',
+      groupName: 'information',
       description: 'Get a guild\'s icon',
       guildOnly: true,
       args: [

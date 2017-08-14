@@ -5,7 +5,7 @@ class Game extends patron.Command {
   constructor() {
     super({
       names: ['game', 'g'],
-      groupName: 'fun',
+      groupName: 'information',
       description: 'Shows what game a user is playing',
       guildOnly: false,
       args: [

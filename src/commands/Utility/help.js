@@ -6,7 +6,7 @@ const Discord = require('discord.js');
 class Help extends patron.Command {
   constructor() {
     super({
-      names: ['help', 'info', 'information', 'commands'],
+      names: ['help', 'info', 'commands'],
       groupName: 'utility',
       description: 'View command information or list the commands in a module',
       guildOnly: false,

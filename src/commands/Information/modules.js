@@ -5,7 +5,7 @@ class Modules extends patron.Command {
   constructor() {
     super({
       names: ['modules', 'module', 'groups', 'group'],
-      groupName: 'utility',
+      groupName: 'information',
       description: 'View the current command modules',
       guildOnly: false
     });

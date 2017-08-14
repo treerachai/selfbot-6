@@ -4,7 +4,7 @@ class Setgame extends patron.Command {
   constructor() {
     super({
       names: ['setgame', 'sg'],
-      groupName: 'fun',
+      groupName: 'utility',
       description: 'Sets what game you are playing',
       guildOnly: false,
       args: [

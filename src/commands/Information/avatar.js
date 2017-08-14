@@ -6,7 +6,7 @@ class Avatar extends patron.Command {
   constructor() {
     super({
       names: ['avatar', 'a'],
-      groupName: 'fun',
+      groupName: 'information',
       description: 'Get the avatar of a user',
       guildOnly: false,
       args: [

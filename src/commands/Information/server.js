@@ -5,7 +5,7 @@ class Server extends patron.Command {
   constructor() {
     super({
       names: ['server'],
-      groupName: 'utility',
+      groupName: 'information',
       description: 'Sends an invite to this Selfbot\'s server',
       guildOnly: false
     });

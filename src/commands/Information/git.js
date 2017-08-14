@@ -5,7 +5,7 @@ class Git extends patron.Command {
   constructor() {
     super({
       names: ['git', 'github', 'repo', 'repository'],
-      groupName: 'utility',
+      groupName: 'information',
       description: 'Get a link to this Selfbot\'s Github Repository',
       guildOnly: false
     });

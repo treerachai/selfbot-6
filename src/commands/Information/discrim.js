@@ -6,7 +6,7 @@ class Discrim extends patron.Command {
   constructor() {
     super({
       names: ['discrim', 'discriminator'],
-      groupName: 'utility',
+      groupName: 'information',
       description: 'Finds users with the specified discriminator',
       guildOnly: false,
       args: [

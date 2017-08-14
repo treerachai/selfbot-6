@@ -5,7 +5,7 @@ class Alias extends patron.Command {
   constructor() {
     super({
       names: ['alias', 'aliases'],
-      groupName: 'utility',
+      groupName: 'information',
       description: 'View a command\'s aliases',
       guildOnly: false,
       args: [

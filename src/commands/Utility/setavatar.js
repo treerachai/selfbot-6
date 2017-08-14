@@ -4,7 +4,7 @@ class SetAvatar extends patron.Command {
   constructor() {
     super({
       names: ['setavatar', 'sa'],
-      groupName: 'fun',
+      groupName: 'utility',
       description: 'Changes your avatar to the image provided',
       args: [
         new patron.Argument({
