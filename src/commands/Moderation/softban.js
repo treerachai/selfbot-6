@@ -38,12 +38,12 @@ class Softban extends patron.Command {
   }
 
   async run(msg, args) {
-    //    try {
-    await msg.guild.ban(args.user, { reason: args.reason, days: args.days });
-    await msg.guild.unban(args.user);
-    //    } catch (err) {
-    //      return util.Messenger.sendError(msg.channel, 'A problem occured softbanning: ' + args.user.tag);
-    //    }
+    try {
+      await msg.guild.ban(args.user, { reason: args.reason, days: args.days });
+      await msg.guild.unban(args.user);
+    } catch (err) {
+      return util.Messenger.sendError(msg.channel, 'A problem occured softbanning: ' + args.user.tag);
+    }
     return util.Messenger.send(msg.channel, '__**Messages Removed:**__ ' + args.days + ' days\n__**Reason:**__ ' + args.reason, 'Softbanned: ' + args.user.tag);
   }
 }
