@@ -11,6 +11,7 @@ The syntax of the command usage is:
 - [Developer](#developer)
 - [Emoji](#emoji)
 - [Fun](#fun)
+- [Information](#information)
 - [Moderation](#moderation)
 - [Statistics](#statistics)
 - [Utility](#utility)
@@ -69,21 +70,31 @@ These commands were made with fun and entertainment in mind
 Command | Description | Usage
 ---------------- | --------------| -------
 8ball|Ask the magic 8ball your question|`.8ball <question>`
-Avatar|Get the avatar of a user|`.avatar [@user]`
 Choose|Have the Selfbot help you choose between a set of options|`.choose <choice>`
 Flip|Flip up to 100,000 coins|`.flip [amount]`
-Game|Shows what game a user is playing|`.game [@user]`
-Guildicon|Get a guild's icon|`.guildicon [guild]`
 Quote|Quote a message|`.quote <message>`
 Quoteid|Quote a message via id|`.quoteid <messageId> [#channel]`
 Remove|Deletes the command|`.remove <text>`
 Removeplus|Sends <message> then deletes it|`.removeplus <message>`
-Repeat|Schedule a message to send in the current channel|`.repeat <delayInSeconds> <amount> <message>`
 Roll|Rolls a random number|`.roll [Max Roll]`
 Rps|Play Rock, Paper, Scissors against the selfbot|`.rps <choice>`
-Setavatar|Changes your avatar to the image provided|`.setavatar <pathToImageOrLink>`
-Setgame|Sets what game you are playing|`.setgame [name]`
 Slots|Play a Slot Machine|`.slots [Bet]`
+
+### Information
+
+These commands provide you with various bits of information
+
+Command | Description | Usage
+---------------- | --------------| -------
+Alias|View a command's aliases|`.alias <command>`
+Avatar|Get the avatar of a user|`.avatar [@user]`
+Discrim|Finds users with the specified discriminator|`.discrim <discrim>`
+Game|Shows what game a user is playing|`.game [@user]`
+Git|Get a link to this Selfbot's Github Repository|`.git`
+Guildicon|Get a guild's icon|`.guildicon [guild]`
+Modules|View the current command modules|`.modules`
+Server|Sends an invite to this Selfbot's server|`.server`
+Setup|Get a link to the setup page for this Selfbot|`.setup`
 
 ### Moderation
 
@@ -117,18 +128,15 @@ These commands provide various utilities and services
 
 Command | Description | Usage
 ---------------- | --------------| -------
-Alias|View a command's aliases|`.alias <command>`
 Calc|Do basic adding, subtracting, multiplying, and dividing|`.calc <problem>`
 Clear|Clears the console|`.clear`
-Discrim|Finds users with the specified discriminator|`.discrim <discrim>`
-Git|Get a link to this Selfbot's Github Repository|`.git`
 Help|View command information or list the commands in a module|`.help [command/module]`
-Modules|View the current command modules|`.modules`
 Nick|Changes your nickname in the current guild|`.nick <nickname>`
 Prune|Deletes your last messages in the current channel|`.prune [amount]`
 Reboot|Reboots the selfbot|`.reboot`
-Server|Sends an invite to this Selfbot's server|`.server`
-Setup|Get a link to the setup page for this Selfbot|`.setup`
+Repeat|Schedule a message to send in the current channel|`.repeat <delayInSeconds> <amount> <message>`
+Setavatar|Changes your avatar to the image provided|`.setavatar <pathToImageOrLink>`
+Setgame|Sets what game you are playing|`.setgame [name]`
 Status|Changes your status|`.status <status>`
 
 

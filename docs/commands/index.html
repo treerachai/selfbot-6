@@ -74,6 +74,8 @@
         
             <li><a class="toctree-l3" href="#fun">Fun</a></li>
         
+            <li><a class="toctree-l3" href="#information">Information</a></li>
+        
             <li><a class="toctree-l3" href="#moderation">Moderation</a></li>
         
             <li><a class="toctree-l3" href="#statistics">Statistics</a></li>
@@ -131,6 +133,7 @@
 <li><a href="#developer">Developer</a></li>
 <li><a href="#emoji">Emoji</a></li>
 <li><a href="#fun">Fun</a></li>
+<li><a href="#information">Information</a></li>
 <li><a href="#moderation">Moderation</a></li>
 <li><a href="#statistics">Statistics</a></li>
 <li><a href="#utility">Utility</a></li>
@@ -321,11 +324,6 @@
 <td><code>.8ball &lt;question&gt;</code></td>
 </tr>
 <tr>
-<td>Avatar</td>
-<td>Get the avatar of a user</td>
-<td><code>.avatar [@user]</code></td>
-</tr>
-<tr>
 <td>Choose</td>
 <td>Have the Selfbot help you choose between a set of options</td>
 <td><code>.choose &lt;choice&gt;</code></td>
@@ -334,16 +332,6 @@
 <td>Flip</td>
 <td>Flip up to 100,000 coins</td>
 <td><code>.flip [amount]</code></td>
-</tr>
-<tr>
-<td>Game</td>
-<td>Shows what game a user is playing</td>
-<td><code>.game [@user]</code></td>
-</tr>
-<tr>
-<td>Guildicon</td>
-<td>Get a guild's icon</td>
-<td><code>.guildicon [guild]</code></td>
 </tr>
 <tr>
 <td>Quote</td>
@@ -366,11 +354,6 @@
 <td><code>.removeplus &lt;message&gt;</code></td>
 </tr>
 <tr>
-<td>Repeat</td>
-<td>Schedule a message to send in the current channel</td>
-<td><code>.repeat &lt;delayInSeconds&gt; &lt;amount&gt; &lt;message&gt;</code></td>
-</tr>
-<tr>
 <td>Roll</td>
 <td>Rolls a random number</td>
 <td><code>.roll [Max Roll]</code></td>
@@ -381,19 +364,67 @@
 <td><code>.rps &lt;choice&gt;</code></td>
 </tr>
 <tr>
-<td>Setavatar</td>
-<td>Changes your avatar to the image provided</td>
-<td><code>.setavatar &lt;pathToImageOrLink&gt;</code></td>
-</tr>
-<tr>
-<td>Setgame</td>
-<td>Sets what game you are playing</td>
-<td><code>.setgame [name]</code></td>
-</tr>
-<tr>
 <td>Slots</td>
 <td>Play a Slot Machine</td>
 <td><code>.slots [Bet]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="information">Information</h3>
+<p>These commands provide you with various bits of information</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alias</td>
+<td>View a command's aliases</td>
+<td><code>.alias &lt;command&gt;</code></td>
+</tr>
+<tr>
+<td>Avatar</td>
+<td>Get the avatar of a user</td>
+<td><code>.avatar [@user]</code></td>
+</tr>
+<tr>
+<td>Discrim</td>
+<td>Finds users with the specified discriminator</td>
+<td><code>.discrim &lt;discrim&gt;</code></td>
+</tr>
+<tr>
+<td>Game</td>
+<td>Shows what game a user is playing</td>
+<td><code>.game [@user]</code></td>
+</tr>
+<tr>
+<td>Git</td>
+<td>Get a link to this Selfbot's Github Repository</td>
+<td><code>.git</code></td>
+</tr>
+<tr>
+<td>Guildicon</td>
+<td>Get a guild's icon</td>
+<td><code>.guildicon [guild]</code></td>
+</tr>
+<tr>
+<td>Modules</td>
+<td>View the current command modules</td>
+<td><code>.modules</code></td>
+</tr>
+<tr>
+<td>Server</td>
+<td>Sends an invite to this Selfbot's server</td>
+<td><code>.server</code></td>
+</tr>
+<tr>
+<td>Setup</td>
+<td>Get a link to the setup page for this Selfbot</td>
+<td><code>.setup</code></td>
 </tr>
 </tbody>
 </table>
@@ -495,11 +526,6 @@
 </thead>
 <tbody>
 <tr>
-<td>Alias</td>
-<td>View a command's aliases</td>
-<td><code>.alias &lt;command&gt;</code></td>
-</tr>
-<tr>
 <td>Calc</td>
 <td>Do basic adding, subtracting, multiplying, and dividing</td>
 <td><code>.calc &lt;problem&gt;</code></td>
@@ -510,24 +536,9 @@
 <td><code>.clear</code></td>
 </tr>
 <tr>
-<td>Discrim</td>
-<td>Finds users with the specified discriminator</td>
-<td><code>.discrim &lt;discrim&gt;</code></td>
-</tr>
-<tr>
-<td>Git</td>
-<td>Get a link to this Selfbot's Github Repository</td>
-<td><code>.git</code></td>
-</tr>
-<tr>
 <td>Help</td>
 <td>View command information or list the commands in a module</td>
 <td><code>.help [command/module]</code></td>
-</tr>
-<tr>
-<td>Modules</td>
-<td>View the current command modules</td>
-<td><code>.modules</code></td>
 </tr>
 <tr>
 <td>Nick</td>
@@ -545,14 +556,19 @@
 <td><code>.reboot</code></td>
 </tr>
 <tr>
-<td>Server</td>
-<td>Sends an invite to this Selfbot's server</td>
-<td><code>.server</code></td>
+<td>Repeat</td>
+<td>Schedule a message to send in the current channel</td>
+<td><code>.repeat &lt;delayInSeconds&gt; &lt;amount&gt; &lt;message&gt;</code></td>
 </tr>
 <tr>
-<td>Setup</td>
-<td>Get a link to the setup page for this Selfbot</td>
-<td><code>.setup</code></td>
+<td>Setavatar</td>
+<td>Changes your avatar to the image provided</td>
+<td><code>.setavatar &lt;pathToImageOrLink&gt;</code></td>
+</tr>
+<tr>
+<td>Setgame</td>
+<td>Sets what game you are playing</td>
+<td><code>.setgame [name]</code></td>
 </tr>
 <tr>
 <td>Status</td>
