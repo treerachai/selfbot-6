@@ -54,6 +54,7 @@ Command | Description | Usage
 ---------------- | --------------| -------
 B|🅱|`.b <text>`
 Clap|👏 Emphasize 👏 your 👏 text 👏|`.clap <text>`
+Duplicateemojis|Find all global emojis to which you have access that exactly match a search|`.duplicateemojis <name>`
 Emojify|Turns your message into emojis|`.emojify <text>`
 Enlarge|Send a full-size version of a custom emoji|`.enlarge <emoji>`
 Globalemojis|List a guild's global emojis|`.globalemojis [guild]`
