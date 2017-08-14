@@ -94,6 +94,7 @@ Altcheck|Check when a user's account was created and when they joined the guild|
 Ban|Ban any user.|`.ban <@user> [reason]`
 Kick|Kick a member from the guild|`.kick <@member> [reason]`
 Purge|Deletes a member's last messages in the current channel|`.purge [amount] [@member]`
+Softban|Softban a user to delete their messages|`.softban <@user> [days to delete] [reason]`
 Unban|Unban a banned user.|`.unban <banned user>`
 
 ### Statistics

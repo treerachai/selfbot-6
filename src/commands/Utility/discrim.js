@@ -28,17 +28,11 @@ class Discrim extends patron.Command {
       return util.Messenger.sendError(msg.channel, 'No match found for discrim #' + args.discrim + '\nJoin more guilds to add to the list of potential matches.');
     }
 
-    let message = '```css\n';
+    const message = '```css\n' + util.StringUtil.commaList(matches.map((user) => {
+      return user.tag;
+    })) + '```';
 
-    for (let i = 0; i < matches.length; i++) {
-      message += matches[i].tag;
-
-      if (i !== matches.length) {
-        message += ', ';
-      }
-    }
-
-    return util.Messenger.send(msg.channel, message + '```', 'Results for Discrim #' + args.discrim);
+    return util.Messenger.send(msg.channel, message, 'Results for Discrim #' + args.discrim);
   }
 }
 

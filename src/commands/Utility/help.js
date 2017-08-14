@@ -55,13 +55,10 @@ class Help extends patron.Command {
       return util.Messenger.send(msg.channel, cmdMsg, util.StringUtil.upperFirstChar(command.names[0]));
 
     }
-    let groupMsg = '';
-    const groupCmds = group.commands.sort((a, b) => a.names[0].localeCompare(b.names[0]));
-
-    for (const cmd of groupCmds) {
-      groupMsg += '`' + cmd.names[0] + '`, ';
-    }
-    groupMsg = groupMsg.substring(0, groupMsg.length - 2);
+    const groupCmdNames = group.commands.sort((a, b) => a.names[0].localeCompare(b.names[0])).map((command) => {
+      return command.names[0];
+    });
+    const groupMsg = util.StringUtil.inLineList(groupCmdNames);
     const embed = new Discord.RichEmbed()
       .setTitle(util.StringUtil.upperFirstChar(group.name) + ' Module\'s Commands')
       .setDescription(groupMsg)

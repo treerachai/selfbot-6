@@ -12,12 +12,10 @@ class Modules extends patron.Command {
   }
 
   async run(msg) {
-    const groups = msg.client.registry.groups.sort(util.StringUtil.alphabeticallySort);
-    let m = '';
-    for (const group of groups) {
-      m += '`' + util.StringUtil.upperFirstChar(group.name) + '`, ';
-    }
-    m = m.substring(0, m.length - 2);
+    const groupNames = msg.client.registry.groups.sort(util.StringUtil.alphabeticallySort).map((group) => {
+      return util.StringUtil.upperFirstChar(group.name);
+    });
+    const m = util.StringUtil.inLineList(groupNames);
 
     return util.Messenger.send(msg.channel, m, 'Current Command Modules');
   }

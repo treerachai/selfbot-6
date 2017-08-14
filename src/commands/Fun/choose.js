@@ -21,12 +21,7 @@ class Choose extends patron.Command {
   }
 
   async run(msg, args) {
-    let message = 'Out of: ';
-    for (let i = 0; i < args.choices.length; i++) {
-      message += '`' + args.choices[i] + '`' + (i !== args.choices.length-1 ? ', ' : '\n');
-    }
-    const choice = util.Random.arrayElement(args.choices);
-    message += 'I choose: `' + choice + '`';
+    const message = 'Out of: ' + util.StringUtil.inLineList(args.choices) + '\nI choose: `' + util.Random.arrayElement(args.choices) + '`';
     return util.Messenger.send(msg.channel, message);
   }
 }

@@ -66,6 +66,24 @@ class StringUtil {
       });
   }
 
+  static inLineList(stringArray) {
+    let str = '';
+    for (let i = 0; i < stringArray.length; i++) {
+      str += '`' + stringArray[i] + '`, ';
+    }
+    str = str.substring(0, str.length - 2);
+    return str;
+  }
+
+  static commaList(stringArray) {
+    let str = '';
+    for (let i = 0; i < stringArray.length; i++) {
+      str += stringArray[i] + ', ';
+    }
+    str = str.substring(0, str.length - 2);
+    return str;
+  }
+
 }
 
 module.exports = StringUtil;
