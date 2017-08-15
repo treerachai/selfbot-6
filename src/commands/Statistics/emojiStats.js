@@ -27,7 +27,7 @@ class Enlarge extends patron.Command {
       .setTitle(args.emoji.name + ' (' + args.emoji.id + ')')
       .addField('Name', '`' + args.emoji.name + '`', true)
       .addField('Guild', '`' + args.emoji.guild.name + '`', true)
-      .addField('Global', args.emoji.managed, true)
+      .addField('Global', (args.emoji.managed && args.emoji.requiresColons), true)
       .addField('Created At', args.emoji.createdAt.toString().substring(0, 16), true);
     return util.Messenger.sendEmbed(msg.channel, embed);
   }
