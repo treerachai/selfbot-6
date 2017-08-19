@@ -118,6 +118,7 @@ Command | Description | Usage
 ---------------- | --------------| -------
 Emojistats|Get information about a custom emoji|`.emojistats <emoji>`
 Guildstats|Get a guild's statistics|`.guildstats [guild]`
+Host|See some statistics about the host of your selfbot|`.host`
 Memberstats|Get a member's statistics|`.memberstats [@member]`
 Ping|See your ping|`.ping`
 Stats|See some statistics about the Selfbot|`.stats`

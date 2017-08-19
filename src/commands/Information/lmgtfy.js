@@ -30,7 +30,7 @@ class Lmgtfy extends patron.Command {
       if (text.charAt(i) === ' ') {
         message += '+';
       }else{
-        message += text.charAt(i); 
+        message += text.charAt(i);
       }
     }
 
