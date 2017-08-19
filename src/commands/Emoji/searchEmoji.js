@@ -41,10 +41,7 @@ class SearchEmoji extends patron.Command {
 
       return util.Messenger.send(msg.channel, m, 'Found ' + emojis.length + ' Results for: ' + args.input);
     } catch(e) {
-      if (e === 'Cannot read property \'values\' of undefined') {
-        return util.Messenger.sendError(msg.channel, 'You are using this command too soon after starting the selfbot. Give me some time to load in all your insane emojis ;)');
-      }
-      return util.Messenger.sendError(msg.channel, 'Something went wrong.\n' + e);
+      return util.Messenger.sendError(msg.channel, 'You are using this command too soon after starting the selfbot. Give me some time to load in all your insane emojis ;)');
     }
   }
 }

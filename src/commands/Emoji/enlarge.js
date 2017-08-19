@@ -20,7 +20,7 @@ class Enlarge extends patron.Command {
   }
 
   async run(msg, args) {
-    msg.channel.send({ files: [args.emoji.url] }).catch(() => null);
+    msg.channel.send({ files: [{ attachment: args.emoji.url, name: args.emoji.name + '.png' }] }).catch(() => null);
   }
 }
 

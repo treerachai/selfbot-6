@@ -92,6 +92,7 @@ Discrim|Finds users with the specified discriminator|`.discrim <discrim>`
 Game|Shows what game a user is playing|`.game [@user]`
 Git|Get a link to this Selfbot's Github Repository|`.git`
 Guildicon|Get a guild's icon|`.guildicon [guild]`
+Lmgtfy|Help someone learn how to google their question|`.lmgtfy <search>`
 Modules|View the current command modules|`.modules`
 Server|Sends an invite to this Selfbot's server|`.server`
 Setup|Get a link to the setup page for this Selfbot|`.setup`

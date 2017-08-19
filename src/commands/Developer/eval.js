@@ -46,7 +46,7 @@ class Eval extends patron.Command {
 
       return util.Messenger.sendFields(msg.channel, ['Eval', '```js\n' + args.code + '```', 'Returns', '```js\n' + result + '```'], false);
     } catch (err) {
-      return util.Messenger.sendError(msg.channel, '```js\n' + err + '```');
+      return util.Messenger.sendError(msg.channel, ['Eval', '```js\n' + args.code + '```', 'Error', '```js\n' + err + '```'], false);
     }
   }
 }

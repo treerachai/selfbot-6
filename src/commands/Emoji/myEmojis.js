@@ -52,10 +52,7 @@ class MyEmojis extends patron.Command {
         .setFooter('Page ' + args.page + '/' + msgArray.length + ' | Total Emoji Count: ' + emojis.length);
       return util.Messenger.sendEmbed(msg.channel, embed);
     } catch (e) {
-      if (e === 'TypeError: Cannot read property \'values\' of undefined') {
-        return util.Messenger.sendError(msg.channel, 'You are using this command too soon after starting the selfbot. Give me some time to load in all your insane emojis ;)');
-      }
-      return util.Messenger.sendError(msg.channel, 'Something went wrong.\n' + e);
+      return util.Messenger.sendError(msg.channel, 'You are using this command too soon after starting the selfbot. Give me some time to load in all your insane emojis ;)');
     }
   }
 }

@@ -41,10 +41,7 @@ class DuplicateEmojis extends patron.Command {
 
       return util.Messenger.send(msg.channel, m, 'Found ' + emojis.length + ' Matches for: ' + args.input);
     } catch(e) {
-      if (e === 'TypeError: Cannot read property \'values\' of undefined') {
-        return util.Messenger.sendError(msg.channel, 'You are using this command too soon after starting the selfbot. Give me some time to load in all your insane emojis ;)');
-      }
-      return util.Messenger.sendError(msg.channel, 'Something went wrong.\n' + e);
+      return util.Messenger.sendError(msg.channel, 'You are using this command too soon after starting the selfbot. Give me some time to load in all your insane emojis ;)');
     }
   }
 }
