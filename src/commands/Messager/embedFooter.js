@@ -21,7 +21,7 @@ class EmbedFooter extends patron.Command {
   }
 
   async run(msg, args) {
-    return util.Messenger.sendFooter(msg.channel, args.m);
+    return util.Messenger.sendFooter(msg.channel, util.StringUtil.cleanContent(args.m));
   }
 }
 

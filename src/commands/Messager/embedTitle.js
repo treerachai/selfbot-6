@@ -23,7 +23,7 @@ class EmbedTitle extends patron.Command {
   }
 
   async run(msg, args) {
-    return util.Messenger.sendTitle(msg.channel, args.m);
+    return util.Messenger.sendTitle(msg.channel, util.StringUtil.cleanContent(args.m));
   }
 }
 
