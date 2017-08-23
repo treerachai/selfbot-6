@@ -5,7 +5,7 @@ const util = require('../../utility');
 class Emojify extends patron.Command {
   constructor() {
     super({
-      names: ['emojify', 'e', 'emote'],
+      names: ['emojify', 'emote'],
       groupName: 'emoji',
       description: 'Turns your message into emojis',
       guildOnly: false,

@@ -33,7 +33,7 @@ class Documentation {
       }
     }
 
-    commandsDocumentation += tableOfContents + commandInfo + '\n\nAs a bonus feature, you can also send your message in an embed by doing: `. [text]`';
+    commandsDocumentation += tableOfContents + commandInfo;
 
     fs.writeFile(path.join(__dirname, '../../docs/docs/commands.md'), commandsDocumentation, (err) => {
       assert.equal(err, null);

@@ -1,3 +1,4 @@
+/* eslint-disable multiline-ternary */
 const patron = require('patron.js');
 const prefix = require('../credentials.json').prefix;
 const util = require('../utility');
@@ -26,7 +27,10 @@ class CommandService {
 
         switch (result.commandError) {
           case patron.CommandError.CommandNotFound:
-            return util.Messenger.send(msg.channel, msg.content.slice(prefix.length));
+            return util.Messenger.sendError(msg.channel, util.StringUtil.isNullOrWhiteSpace(
+              msg.content.substring(msg.content.indexOf(prefix)+1, msg.content.indexOf(' ') === -1 ? msg.content.length : msg.content.indexOf(' ')))
+              ? 'You must provide a valid command' : '`' + (msg.content.substring(msg.content.indexOf(prefix)+1, msg.content.indexOf(' ') === -1 ? msg.content.length : msg.content.indexOf(' ')) +
+              '` is not a valid command'));
           case patron.CommandError.Exception:
             if (result.error.code !== undefined) {
               if (result.error.code === 400) {

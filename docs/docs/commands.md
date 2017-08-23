@@ -12,6 +12,7 @@ The syntax of the command usage is:
 - [Emoji](#emoji)
 - [Fun](#fun)
 - [Information](#information)
+- [Messager](#messager)
 - [Moderation](#moderation)
 - [Statistics](#statistics)
 - [Utility](#utility)
@@ -97,6 +98,16 @@ Modules|View the current command modules|`.modules`
 Server|Sends an invite to this Selfbot's server|`.server`
 Setup|Get a link to the setup page for this Selfbot|`.setup`
 
+### Messager
+
+These commands allow you to send your messages in unique ways
+
+Command | Description | Usage
+---------------- | --------------| -------
+Embed|Sends your text in an embed|`.embed <text>`
+Embedfooter|Sends your text in an embed footer|`.embedfooter <text>`
+Embedtitle|Sends your text in an embed title|`.embedtitle <text>`
+
 ### Moderation
 
 These commands aid in the moderation and management of servers
@@ -140,6 +151,3 @@ Repeat|Schedule a message to send in the current channel|`.repeat <delayInSecond
 Setavatar|Changes your avatar to the image provided|`.setavatar <pathToImageOrLink>`
 Setgame|Sets what game you are playing|`.setgame [name]`
 Status|Changes your status|`.status <status>`
-
-
-As a bonus feature, you can also send your message in an embed by doing: `. [text]`
