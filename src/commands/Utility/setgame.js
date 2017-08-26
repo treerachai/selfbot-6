@@ -1,4 +1,5 @@
 const patron = require('patron.js');
+const util = require('../../utility');
 
 class Setgame extends patron.Command {
   constructor() {
@@ -21,8 +22,8 @@ class Setgame extends patron.Command {
   }
 
   async run(msg, args) {
-    if (args.name !== null) {
-      msg.client.user.setGame(args.name.substring(0, 128));
+    if (!util.StringUtil.isNullOrWhiteSpace(args.name)) {
+      msg.client.user.setPresence({ game: { name: args.name.substring(0, 128), type: 0 } });
     } else {
       msg.client.user.setGame(null);
     }
