@@ -3,6 +3,7 @@ const util = require('../../utility');
 const Minimum = require('../../preconditions/minimum.js');
 const Maximum = require('../../preconditions/maximum.js');
 const Decimal = require('../../preconditions/decimal.js');
+const SafeMode = require('../../preconditions/safeMode.js');
 
 class Repeat extends patron.Command {
   constructor() {
@@ -11,6 +12,7 @@ class Repeat extends patron.Command {
       groupName: 'utility',
       description: 'Schedule a message to send in the current channel',
       guildOnly: false,
+      preconditions: [SafeMode],
       args: [
         new patron.Argument({
           name: 'delayInSeconds',

@@ -14,7 +14,8 @@ class Embed extends patron.Command {
           key: 'm',
           type: 'string',
           example: 'This is an embed',
-          remainder: true
+          remainder: true,
+          defaultValue: ' '
         })
       ]
     });

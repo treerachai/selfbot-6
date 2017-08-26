@@ -3,6 +3,7 @@ const patron = require('patron.js');
 const util = require('../../utility');
 const utility = require('util');
 const Discord = require('discord.js');
+const SafeMode = require('../../preconditions/safeMode.js');
 
 class Eval extends patron.Command {
   constructor() {
@@ -11,6 +12,7 @@ class Eval extends patron.Command {
       groupName: 'developer',
       description: 'Evaluate JavaScript code',
       guildOnly: false,
+      preconditions: [SafeMode],
       args: [
         new patron.Argument({
           name: 'code',

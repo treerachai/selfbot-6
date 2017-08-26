@@ -1,12 +1,14 @@
 const patron = require('patron.js');
+const SafeMode = require('../../preconditions/safeMode.js');
 
 class RemovePlus extends patron.Command {
   constructor() {
     super({
       names: ['removeplus', 'rp', 'rplus', 'r+'],
-      groupName: 'fun',
+      groupName: 'messager',
       description: 'Sends <message> then deletes it',
       guildOnly: false,
+      preconditions: [SafeMode],
       args: [
         new patron.Argument({
           name: 'message',

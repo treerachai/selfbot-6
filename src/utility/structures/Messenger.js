@@ -14,7 +14,7 @@ class Messenger {
       embed.setTitle(title);
     }
 
-    return channel.send({ embed: embed });
+    return channel.send({ embed: embed }).catch(() => null);
   }
 
   static sendTitle(channel, title, description = '', color = null) {
@@ -26,7 +26,7 @@ class Messenger {
       embed.setDescription(description);
     }
 
-    return channel.send({ embed: embed });
+    return channel.send({ embed: embed }).catch(() => null);
   }
 
   static sendFooter(channel, footer, description = '', color = null) {
@@ -38,13 +38,13 @@ class Messenger {
       embed.setDescription(description);
     }
 
-    return channel.send({ embed: embed });
+    return channel.send({ embed: embed }).catch(() => null);
   }
 
   static sendEmbed(channel, commandEmbed, color = null) {
     const embed = commandEmbed
       .setColor(color || Random.arrayElement(data.embedColors));
-    return channel.send({ embed: embed });
+    return channel.send({ embed: embed }).catch(() => null);
   }
 
   static sendError(channel, description, title = '') {
@@ -65,7 +65,7 @@ class Messenger {
       }
     }
 
-    return channel.send({ embed });
+    return channel.send({ embed }).catch(() => null);
   }
 
   static DM(user, description, title = '', color = null) {

@@ -76,7 +76,6 @@ Flip|Flip up to 100,000 coins|`-flip [amount]`
 Quote|Quote a message|`-quote <message>`
 Quoteid|Quote a message via id|`-quoteid <messageId> [#channel]`
 Remove|Deletes the command|`-remove <text>`
-Removeplus|Sends <message> then deletes it|`-removeplus <message>`
 Roll|Rolls a random number|`-roll [Max Roll]`
 Rps|Play Rock, Paper, Scissors against the selfbot|`-rps <choice>`
 Slots|Play a Slot Machine|`-slots [Bet]`
@@ -105,9 +104,10 @@ These commands allow you to send your messages in unique ways
 Command | Description | Usage
 ---------------- | --------------| -------
 Customembed|Allows you to send more customized embeds. To skip an arg, use " "|`-customembed <description> [title] [footer] [image] [thumbnail] [fields]`
-Embed|Sends your text in an embed|`-embed <text>`
+Embed|Sends your text in an embed|`-embed [text]`
 Embedfooter|Sends your text in an embed footer|`-embedfooter <text>`
 Embedtitle|Sends your text in an embed title|`-embedtitle <text>`
+Removeplus|Sends <message> then deletes it|`-removeplus <message>`
 
 ### Moderation
 
@@ -131,7 +131,6 @@ Command | Description | Usage
 ---------------- | --------------| -------
 Emojistats|Get information about a custom emoji|`-emojistats <emoji>`
 Guildstats|Get a guild's statistics|`-guildstats [guild]`
-Host|See some statistics about the host of your selfbot|`-host`
 Memberstats|Get a member's statistics|`-memberstats [@member]`
 Ping|See your ping|`-ping`
 Stats|See some statistics about the Selfbot|`-stats`

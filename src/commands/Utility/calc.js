@@ -1,6 +1,7 @@
 const patron = require('patron.js');
 const util = require('../../utility');
 const utility = require('util');
+const SafeMode = require('../../preconditions/safeMode.js');
 
 class Calc extends patron.Command {
   constructor() {
@@ -9,6 +10,7 @@ class Calc extends patron.Command {
       groupName: 'utility',
       description: 'Do basic adding, subtracting, multiplying, and dividing',
       guildOnly: false,
+      preconditions: [SafeMode],
       args: [
         new patron.Argument({
           name: 'problem',
