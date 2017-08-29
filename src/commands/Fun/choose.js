@@ -13,7 +13,7 @@ class Choose extends patron.Command {
           name: 'choice',
           key: 'choices',
           type: 'string',
-          example: '"Papa John\'s Pizza" "Domino\'s Pizza" "Little Caesar\'s Pizza',
+          example: '"Papa John\'s Pizza" "Domino\'s Pizza" "Little Caesar\'s Pizza"',
           infinite: true
         })
       ]

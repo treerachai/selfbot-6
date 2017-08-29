@@ -1,6 +1,8 @@
 const patron = require('patron.js');
 const util = require('../../utility');
 const Discord = require('discord.js');
+const answers = ['Why certainly', 'It is certain', 'Absolutely', 'Unavoidably so', 'Without a doubt', 'Most definitely', 'As I see it, yes', 'Most likely', 'In your dreams',
+  'Don\'t count on it', 'Inevitably no', 'Surely not', 'My sources say no', 'Not a chance buddy', 'Not even a little bit', 'Very doubtful'];
 
 class Eightball extends patron.Command {
   constructor() {
@@ -22,24 +24,6 @@ class Eightball extends patron.Command {
   }
 
   async run(msg, args) {
-    const answers = [
-      'Why certainly',
-      'It is certain',
-      'Absolutely',
-      'Unavoidably so',
-      'Without a doubt',
-      'Most definitely',
-      'As I see it, yes',
-      'Most likely',
-      'In your dreams',
-      'Don\'t count on it',
-      'Inevitably no',
-      'Surely not',
-      'My sources say no',
-      'Not a chance buddy',
-      'Not even a little bit',
-      'Very doubtful'
-    ];
     const embed = new Discord.RichEmbed()
       .setAuthor(util.StringUtil.cleanContent(msg, args.question), msg.author.displayAvatarURL)
       .setDescription(':8ball:: ' + util.Random.arrayElement(answers));

@@ -73,6 +73,7 @@ Command | Description | Usage
 8ball|Ask the magic 8ball your question|`-8ball <question>`
 Choose|Have the Selfbot help you choose between a set of options|`-choose <choice>`
 Flip|Flip up to 100,000 coins|`-flip [amount]`
+Poll|Create a poll with up to 9 options|`-poll <title> <choice>`
 Quote|Quote a message|`-quote <message>`
 Quoteid|Quote a message via id|`-quoteid <messageId> [#channel]`
 Remove|Deletes the command|`-remove <text>`
