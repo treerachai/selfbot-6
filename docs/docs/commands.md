@@ -107,6 +107,8 @@ Customembed|Allows you to send more customized embeds. To skip an arg, use " "|`
 Embed|Sends your text in an embed|`-embed [text]`
 Embedfooter|Sends your text in an embed footer|`-embedfooter <text>`
 Embedtitle|Sends your text in an embed title|`-embedtitle <text>`
+Forward|Sends your message to another channel|`-forward [#channel] <text>`
+Forwardmessage|Forwards a message from chat to another channel|`-forwardmessage [#channel] <message>`
 Removeplus|Sends <message> then deletes it|`-removeplus <message>`
 
 ### Moderation

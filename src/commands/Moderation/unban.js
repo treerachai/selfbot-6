@@ -13,7 +13,7 @@ class Unban extends patron.Command {
           key: 'user',
           type: 'banneduser',
           name: 'banned user',
-          example: '"PeePee Juanathog#7643"',
+          example: 'PeePee Juanathog#7643',
           remainder: true
         })
       ]

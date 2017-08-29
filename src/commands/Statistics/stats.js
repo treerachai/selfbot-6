@@ -15,7 +15,7 @@ class Stats extends patron.Command {
     const uptime = util.NumberUtil.msToTime(msg.client.uptime);
     return util.Messenger.sendFields(msg.channel, [
       'Ping', util.NumberUtil.addCommas(msg.client.ping.toFixed(0)) + ' ms',
-      'Memory', (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2) + ' MB',
+      'Memory', (process.memoryUsage().heapUsed / 1048576).toFixed(2) + ' MB',
       'Uptime', uptime.hours + ' hours, ' + uptime.minutes + ' minutes',
       'Servers', msg.client.guilds.size,
       'Channels', util.NumberUtil.addCommas(msg.client.channels.size),
