@@ -2,6 +2,7 @@ const patron = require('patron.js');
 const util = require('../../utility');
 const Minimum = require('../../preconditions/minimum.js');
 const Maximum = require('../../preconditions/maximum.js');
+const options = ['heads', 'tails'];
 
 class Flip extends patron.Command {
   constructor() {
@@ -25,22 +26,24 @@ class Flip extends patron.Command {
   }
 
   async run(msg, args) {
-    const options = ['heads', 'tails'];
-    let heads = 0;
-    let tails = 0;
-    for (let i = 0; i < args.flips; i++) {
-      const flip = util.Random.arrayElement(options);
-      if (flip === 'heads') {
-        heads++;
-      } else {
-        tails++;
+    if (args.flips > 1) {
+      let heads = 0;
+      let tails = 0;
+      for (let i = 0; i < args.flips; i++) {
+        const flip = util.Random.arrayElement(options);
+        if (flip === 'heads') {
+          heads++;
+        } else {
+          tails++;
+        }
       }
+
+      const headPercent = ((heads / args.flips) * 100).toFixed(2);
+      const tailsPercent = (100 - headPercent).toFixed(2);
+
+      return util.Messenger.send(msg.channel, '```ruby\nHeads: ' + heads + ' (' + headPercent + '%)\nTails: ' + tails + ' (' + tailsPercent + '%)```', 'Results of ' + args.flips + ' coin flips');
     }
-
-    const headPercent = ((heads / args.flips) * 100).toFixed(2);
-    const tailsPercent = (100 - headPercent).toFixed(2);
-
-    return util.Messenger.send(msg.channel, '```ruby\nHeads: ' + heads + ' (' + headPercent + '%)\nTails: ' + tails + ' (' + tailsPercent + '%)```', 'Results of ' + args.flips + ' coin flips');
+    return util.Messenger.sendTitle(msg.channel, ':arrows_counterclockwise: The coin landed on: ' + util.StringUtil.upperFirstChar(util.Random.arrayElement(options)));
   }
 }
 

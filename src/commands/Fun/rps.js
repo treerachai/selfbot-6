@@ -2,6 +2,7 @@ const patron = require('patron.js');
 const util = require('../../utility');
 const Discord = require('discord.js');
 const MustBe = require('../../preconditions/mustBe.js');
+const botOptions = ['Rock', 'Paper', 'Scissors'];
 
 class Rps extends patron.Command {
   constructor() {
@@ -24,7 +25,6 @@ class Rps extends patron.Command {
 
   async run(msg, args) {
     const choice = args.choice.charAt(0).toUpperCase() + args.choice.slice(1);
-    const botOptions = ['Rock', 'Paper', 'Scissors'];
     const botChoice = util.Random.arrayElement(botOptions);
 
     let winMessage = 'You Lose!';

@@ -15,9 +15,8 @@ class Modules extends patron.Command {
     const groupNames = msg.client.registry.groups.sort(util.StringUtil.alphabeticallySort).map((group) => {
       return util.StringUtil.upperFirstChar(group.name);
     });
-    const m = util.StringUtil.inLineList(groupNames);
 
-    return util.Messenger.send(msg.channel, m, 'Current Command Modules');
+    return util.Messenger.send(msg.channel, util.StringUtil.inLineList(groupNames), 'Current Command Modules');
   }
 }
 

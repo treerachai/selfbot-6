@@ -46,6 +46,14 @@ class CustomEmbed extends patron.Command {
           defaultValue: ''
         }),
         new patron.Argument({
+          name: 'color',
+          key: 'color',
+          type: 'string',
+          example: '#ffffff',
+          defaultValue: null
+        }),
+
+        new patron.Argument({
           name: 'fields',
           key: 'fields',
           type: 'string',
@@ -69,13 +77,16 @@ class CustomEmbed extends patron.Command {
     if (!util.StringUtil.isNullOrWhiteSpace(args.thumbnail)) {
       embed.setThumbnail(args.thumbnail);
     }
+    if (util.StringUtil.isNullOrWhiteSpace(args.color)) {
+      args.color = null;
+    }
 
     if (args.fields.length !== 0) {
       for (let i = 0; i < args.fields.length; i+=2) {
         embed.addField(args.fields[i], args.fields[i+1], true);
       }
     }
-    return util.Messenger.sendEmbed(msg.channel, embed);
+    return util.Messenger.sendEmbed(msg.channel, embed, args.color);
   }
 }
 

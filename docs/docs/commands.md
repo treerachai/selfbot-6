@@ -104,7 +104,7 @@ These commands allow you to send your messages in unique ways
 
 Command | Description | Usage
 ---------------- | --------------| -------
-Customembed|Allows you to send more customized embeds. To skip an arg, use " "|`-customembed <description> [title] [footer] [image] [thumbnail] [fields]`
+Customembed|Allows you to send more customized embeds. To skip an arg, use " "|`-customembed <description> [title] [footer] [image] [thumbnail] [color] [fields]`
 Embed|Sends your text in an embed|`-embed [text]`
 Embedfooter|Sends your text in an embed footer|`-embedfooter <text>`
 Embedtitle|Sends your text in an embed title|`-embedtitle <text>`

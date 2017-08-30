@@ -4,6 +4,7 @@ const Discord = require('discord.js');
 const Minimum = require('../../preconditions/minimum.js');
 const Maximum = require('../../preconditions/maximum.js');
 const Decimal = require('../../preconditions/decimal.js');
+const options = [':seven: ', ':cherries: ', ':lemon: ', ':grapes: ', ':strawberry: '];
 
 class Slots extends patron.Command {
   constructor() {
@@ -27,7 +28,6 @@ class Slots extends patron.Command {
   }
 
   async run(msg, args) {
-    const options = [':seven: ', ':cherries: ', ':lemon: ', ':grapes: ', ':strawberry: '];
     const o1 = util.Random.arrayElement(options);
     const o2 = util.Random.arrayElement(options);
     const o3 = util.Random.arrayElement(options);
