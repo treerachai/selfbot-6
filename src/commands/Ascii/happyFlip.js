@@ -1,18 +1,18 @@
 const patron = require('patron.js');
 
-class Lenny extends patron.Command {
+class HappyFlip extends patron.Command {
   constructor() {
     super({
-      names: ['lenny'],
+      names: ['happyflip', 'hf'],
       groupName: 'ascii',
-      description: 'Adds "( ͡° ͜ʖ ͡°)" to your message',
+      description: 'Adds "(╯ᐛ)╯ ︵ ┻━┻" to your message',
       guildOnly: false,
       args: [
         new patron.Argument({
           name: 'text',
           key: 'text',
           type: 'string',
-          example: 'I see what you did there',
+          example: 'Don\'t you love it when people complain about things for no reason',
           remainder: true,
           defaultValue: ''
         })
@@ -21,8 +21,8 @@ class Lenny extends patron.Command {
   }
 
   async run(msg, args) {
-    return msg.channel.send(args.text + ' ( ͡° ͜ʖ ͡°)');
+    return msg.channel.send(args.text + ' (╯ᐛ)╯ ︵ ┻━┻');
   }
 }
 
-module.exports = new Lenny();
+module.exports = new HappyFlip();

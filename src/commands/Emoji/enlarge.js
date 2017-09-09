@@ -7,6 +7,7 @@ class Enlarge extends patron.Command {
       groupName: 'emoji',
       description: 'Send a full-size version of a custom emoji',
       guildOnly: false,
+      botPermissions: ['ATTACH_FILES'],
       args: [
         new patron.Argument({
           name: 'emoji',
@@ -20,7 +21,7 @@ class Enlarge extends patron.Command {
   }
 
   async run(msg, args) {
-    msg.channel.send({ files: [{ attachment: args.emoji.url, name: args.emoji.name + '.png' }] }).catch(() => null);
+    return msg.channel.send({ files: [{ attachment: args.emoji.url, name: args.emoji.name + '.png' }] });
   }
 }
 

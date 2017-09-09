@@ -17,7 +17,7 @@ class RoleIds extends patron.Command {
         continue;
       }
 
-      content += role.name + ':' + role.id + '\n';
+      content += role.name + ': ' + role.id + '\n';
     }
 
     return msg.channel.send(content, { split: true });

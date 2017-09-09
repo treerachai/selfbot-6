@@ -14,7 +14,7 @@ class Altcheck extends patron.Command {
           name: 'member',
           key: 'member',
           type: 'member',
-          example: 'PapaJohn#7777',
+          example: 'PeePee Juanathog#7643',
           remainder: true,
           defaultValue: patron.ArgumentDefault.Member
         })

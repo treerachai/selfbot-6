@@ -1,6 +1,6 @@
 ## Install Instructions (Windows)
 
-1. Install node.js (most recent version) WITH NPM: (https://nodejs.org/en/) MAKE SURE YOU HAVE THE NPM OPTION SELECTED WHEN INSTALLING, AS SEEN [HERE](http://prntscr.com/fkwdax)
+1. Install node.js (most recent version, **not** LTS version) WITH NPM: https://nodejs.org/en/ **MAKE SURE YOU HAVE THE NPM OPTION SELECTED WHEN INSTALLING,** AS SEEN [HERE](http://prntscr.com/fkwdax)
 
 2. Install git here: https://git-scm.com/download/win (when installing, just use whatever defaults it gives to you in any options)
 

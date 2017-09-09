@@ -11,6 +11,7 @@ The syntax of the command usage is:
 - [Developer](#developer)
 - [Emoji](#emoji)
 - [Fun](#fun)
+- [Image](#image)
 - [Information](#information)
 - [Messager](#messager)
 - [Moderation](#moderation)
@@ -26,6 +27,7 @@ Command | Description | Usage
 Disapprove|Adds "ಠ_ಠ" to your message|`-disapprove [text]`
 Fliptable|Adds "ノ┬─┬ノ ︵ ( \o°o)\" to your message|`-fliptable [text]`
 Happy|Adds "ᕕ( ᐛ )ᕗ" to your message|`-happy [text]`
+Happyflip|Adds "(╯ᐛ)╯ ︵ ┻━┻" to your message|`-happyflip [text]`
 Innocent|Adds "ʘ‿ʘ" to your message|`-innocent [text]`
 Lenny|Adds "( ͡° ͜ʖ ͡°)" to your message|`-lenny [text]`
 Rageflip|Adds "┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻" to your message|`-rageflip [text]`
@@ -73,6 +75,7 @@ Command | Description | Usage
 8ball|Ask the magic 8ball your question|`-8ball <question>`
 Choose|Have the Selfbot help you choose between a set of options|`-choose <choice>`
 Flip|Flip up to 100,000 coins|`-flip [amount]`
+Lovedetector|See how much two people love each other|`-lovedetector <person 1> <person 2>`
 Poll|Create a poll with up to 9 options|`-poll <title> <choice>`
 Quote|Quote a message|`-quote <message>`
 Quoteid|Quote a message via id|`-quoteid <messageId> [#channel]`
@@ -80,6 +83,18 @@ Remove|Deletes the command|`-remove <text>`
 Roll|Rolls a random number|`-roll [Max Roll]`
 Rps|Play Rock, Paper, Scissors against the selfbot|`-rps <choice>`
 Slots|Play a Slot Machine|`-slots [Bet]`
+
+### Image
+
+These commands are for when text just doesn't quite capture how you feel
+
+Command | Description | Usage
+---------------- | --------------| -------
+Boi|Use this when your buddy says something so stupid you dont even know how to respond|`-boi`
+Facepalm|Give your buddy the classic facepalm when he says something stupid|`-facepalm`
+L|Use this when someone needs to just take the L|`-l`
+Reverse|Sends an image of an Uno reverse card|`-reverse`
+Waitwhat|Useful for when your pal says something that makes absolutely no sense|`-waitwhat`
 
 ### Information
 
@@ -121,10 +136,14 @@ Command | Description | Usage
 Altcheck|Check when a user's account was created and when they joined the guild|`-altcheck [@member]`
 Ban|Ban any user.|`-ban <@user> [reason]`
 Chill|Prevents the @everyone role from speaking in the current channel for a given time|`-chill <delayInSeconds>`
+Escapepod|Kick a user out of voice via escape pod|`-escapepod [@members]`
 Kick|Kick a member from the guild|`-kick <@member> [reason]`
+Mute|Prevent a member from speaking in any text channel.|`-mute <@member>`
+Pin|Pin a message in the current channel.|`-pin <message>`
 Purge|Deletes a member's last messages in the current channel|`-purge [amount] [@member]`
 Softban|Softban a user to delete their messages|`-softban <@user> [days to delete] [reason]`
 Unban|Unban a banned user.|`-unban <banned user>`
+Unmute|Unmute a muted member.|`-unmute <@member>`
 
 ### Statistics
 
